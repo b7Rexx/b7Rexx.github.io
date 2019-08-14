@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row content-justify-center border" style="min-height: 500px;">
+        <div class="col-sm-12" id="app">
+            <label for='get_word'><b>Type hang man word:</b></label>
+            <input type='text' id='get_word' min='5' max='25' class='form-control'>
+            <hr>
+            <b>Hints:</b>
+            <div id='hint_options'></div>
+            <br>
+            <hr>
+            <button id='start_btn' class="btn btn-primary">Start</button>
+
+        </div>
+        <div class="col-sm-12" id="app_start" style="display:none;">
+
+        </div>
+    </div>
+</div>
+
+<script src="js/hangword.js"></script>
+<script src="js/start.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

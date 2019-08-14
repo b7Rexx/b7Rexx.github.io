@@ -18,6 +18,11 @@ class HangWord {
                 that.word = thatvalue;
                 that.hints = [];
 
+                if (thatvalue.trim() === '')
+                    document.getElementById('start_btn').disabled = true;
+                else
+                    document.getElementById('start_btn').disabled = false;
+
                 if (!(hintOptions.includes(e.key))) {
                     if (e.keyCode >= 48 && e.keyCode <= 57)
                         hintOptions.push(e.key);
@@ -49,9 +54,11 @@ class HangWord {
 
             //return  word with hint
             document.getElementById('start_btn').onclick = function () {
+                var guess_count = document.getElementById('guess_count_input').value || 5;
                 var start = {
                     'word': that.word,
-                    'hints': that.hints
+                    'hints': that.hints,
+                    'guess_count': guess_count
                 };
                 callback(start);
             };

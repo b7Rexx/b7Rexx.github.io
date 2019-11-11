@@ -1,0 +1,10 @@
+.table {
+    width: 400px;
+    overflow: auto;
+    margin: 10px;
+}
+
+.table tr td {
+    border: 1px solid #131313;
+    padding: 10px 5px;
+}

@@ -1,0 +1,79 @@
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 48em;
+        padding: 0.25em;
+    }
+
+    .nav ul li {
+        margin-top: 0;
+        margin-bottom: 1.8em;
+    }
+
+    .col1-right-footer, .col1-left-footer {
+        width: 45%;
+    }
+
+    .col-left-footer, .col3-r-right-footer {
+        width: 100%;
+        float: left;
+        padding-left: 10px;
+    }
+
+    .col-right-footer-title {
+        padding-left: 10px;
+    }
+
+    .col-left {
+        width: 70%;
+        margin-left: 30%;
+    }
+
+    .col-right {
+        width: 70%;
+        float: left;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .container {
+        max-width: 22.5em;
+    }
+
+
+    .col-left-footer, .col1-left-footer, .col3-r-right-footer, .col1-right-footer, .col1-right-footer {
+        width: 100%;
+        float: left;
+        padding-left: 10px;
+    }
+
+    .col-right-footer-title {
+        margin-left: 10px;
+    }
+
+    .nav ul li {
+        width: 100%;
+    }
+
+    .nav ul li a {
+        width: 100%;
+    }
+
+    .nav ul li.search-block span {
+        position: absolute;
+        bottom: 1.625em;
+        right: 0;
+    }
+
+
+    .nav {
+        display: none;
+    }
+
+    .mobile-menu {
+        /*position: absolute;*/
+        float: right;
+        display: block;
+    }
+}

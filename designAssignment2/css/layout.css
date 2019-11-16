@@ -37,75 +37,11 @@
 }
 
 
-.col-left {
-    float: left;
-    /*width: 26.4957%;*/
-    width: 19.375em;
-    padding-bottom: 1em;
-}
-
-
-.col2-right {
-    float: right;
-    /*width: 73.5043%;*/
-}
-
-.col-main {
-    float: left;
-    /*width: 63.9534%;*/
-    width: 34.375em;
-    margin: auto;
-}
-
-.col-right {
-    float: right;
-    /*width: 36.0466%;*/
-    width: 19.375em;
-}
-
-
-.col-main-bottom ul li {
-    float: left;
-    width: 7.5em;
-}
-
-
-.col-scroll-left {
-    float: left;
-}
-
-.col-scroll-right-button {
-    float: right;
-}
-
-.col-scroll-button {
-    float: right;
-}
-
-.list-image ul li {
-    margin-top: 3.125em;
-    float: left;
-    height: 5.625em;
-    width: 10.625em;
-    margin-left: 1.875em;
-    background-image: url("../../images/noimg.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.list-image ul li img {
-    height: 100%;
-    width: 100%;
-}
-
-.list-image ul li:first-child {
-    margin-left: 0;
-}
 
 /* Footer CSS*/
 .footer-wrapper-top {
     background: #76c7c1;
-    background-image: url("../../images/footer-bg.png");
+    background-image: url("../images/footer-bg.png");
     background-repeat: repeat-x;
     min-height: 18.75em;
 }
@@ -190,7 +126,7 @@ ul.footer-info li span {
     color: white;
     line-height: 1.5625em;
     padding-left: 1.25em;
-    background-image: url("../../images/right-arrow.png");
+    background-image: url("../images/right-arrow.png");
     background-position: left;
     background-size: 1.25em;
     background-repeat: no-repeat;
@@ -219,7 +155,7 @@ ul.footer-info li span {
     float: left;
     height: 4.375em;
     width: 4.375em;
-    background-image: url("../../images/noimg1.png");
+    background-image: url("../images/noimg1.png");
     background-repeat: no-repeat;
 }
 
@@ -263,24 +199,3 @@ ul.footer-info li span {
     float: left;
     padding: 0 0.3125em;
 }
-
-
-.ourteam-col-left {
-    float: left;
-}
-
-.ourteam-col-right {
-    float: right;
-}
-
-.ourteam-col3-l-right {
-    float: right;
-}
-
-.col2-l-right {
-    float: right;
-}
-
-
-/**/
-

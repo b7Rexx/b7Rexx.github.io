@@ -44,6 +44,17 @@
     .col-right-footer-title {
         padding-left: 10px;
     }
+
+    .col-left {
+        width: 70%;
+        margin-left: 30%;
+    }
+
+    .col-right {
+        width: 70%;
+        float: left;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -86,6 +97,7 @@
     .nav {
         display: none;
     }
+
     .mobile-menu {
         /*position: absolute;*/
         float: right;

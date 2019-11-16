@@ -1,0 +1,286 @@
+.body-wrapper {
+    width: 100%;
+}
+
+.container {
+    max-width: 73.125em;
+    /*width: 100%;*/
+    margin: auto;
+}
+
+.navbar {
+    float: right;
+}
+
+.nav {
+    float: left;
+}
+
+.nav ul {
+    float: right;
+}
+
+.nav ul li {
+    margin-top: 1.5em;
+    margin-bottom: 0;
+    margin-left: 0.625em;
+    float: left;
+}
+
+.title-content {
+    float: left;
+}
+
+
+.breadcrumb {
+    float: right;
+}
+
+
+.col-left {
+    float: left;
+    /*width: 26.4957%;*/
+    width: 19.375em;
+    padding-bottom: 1em;
+}
+
+
+.col2-right {
+    float: right;
+    /*width: 73.5043%;*/
+}
+
+.col-main {
+    float: left;
+    /*width: 63.9534%;*/
+    width: 34.375em;
+    margin: auto;
+}
+
+.col-right {
+    float: right;
+    /*width: 36.0466%;*/
+    width: 19.375em;
+}
+
+
+.col-main-bottom ul li {
+    float: left;
+    width: 7.5em;
+}
+
+
+.col-scroll-left {
+    float: left;
+}
+
+.col-scroll-right-button {
+    float: right;
+}
+
+.col-scroll-button {
+    float: right;
+}
+
+.list-image ul li {
+    margin-top: 3.125em;
+    float: left;
+    height: 5.625em;
+    width: 10.625em;
+    margin-left: 1.875em;
+    background-image: url("../../images/noimg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.list-image ul li img {
+    height: 100%;
+    width: 100%;
+}
+
+.list-image ul li:first-child {
+    margin-left: 0;
+}
+
+/* Footer CSS*/
+.footer-wrapper-top {
+    background: #76c7c1;
+    background-image: url("../../images/footer-bg.png");
+    background-repeat: repeat-x;
+    min-height: 18.75em;
+}
+
+.col-left-footer {
+    float: left;
+    /*width: 32.4786%;*/
+    width: 23.75em;
+    margin-top: 2.8125em;
+    padding: 0 0.625em;
+}
+
+.col3-r-right-footer {
+    float: right;
+    /*width: 65.8119%;*/
+}
+
+.col2-left-footer {
+    float: left;
+    /*width: 51.9480%;*/
+}
+
+.col-right-footer {
+    float: right;
+    /*width: 48.052%;*/
+    width: 23.125em;
+}
+
+.col1-left-footer {
+    float: left;
+    /*width: 50.0000%;*/
+    width: 12.5em;
+}
+
+.col1-right-footer {
+    float: right;
+    /*width: 50.0000%;*/
+    width: 12.5em;
+}
+
+.footer-logo {
+    margin-bottom: 1.875em;
+}
+
+.footer-info {
+    color: white;
+    line-height: 1.5625em;
+    font-size: 1.0625em;
+}
+
+ul.footer-info {
+    margin-top: 2.1875em;
+    font-size: 1.0625em;
+    color: white;
+}
+
+ul.footer-info li {
+    line-height: 1.5625em;
+}
+
+ul.footer-info li span {
+    font-style: italic;
+    font-size: 1.25em;
+    padding-left: 1.25em;
+}
+
+.col1-right-footer, .col1-left-footer {
+    margin-top: 3.125em;
+}
+
+.col1-right-footer strong, .col1-left-footer strong {
+    font-size: 1.25em;
+    color: #477b77;
+}
+
+.col1-right-footer ul, .col1-left-footer ul {
+    margin-top: 2.1875em;
+}
+
+.col1-right-footer ul li a, .col1-left-footer ul li a {
+    text-decoration: none;
+    color: white;
+    line-height: 1.5625em;
+    padding-left: 1.25em;
+    background-image: url("../../images/right-arrow.png");
+    background-position: left;
+    background-size: 1.25em;
+    background-repeat: no-repeat;
+}
+
+
+.col-right-footer {
+    margin-top: 3.125em;
+}
+
+.col-right-footer em {
+    color: white;
+    font-size: 1.25em;
+}
+
+.col-right-footer strong {
+    color: white;
+    font-size: 1.25em;
+}
+
+.col-right-footer-title {
+    margin-bottom: 1.875em;
+}
+
+.footer-right-col1 {
+    float: left;
+    height: 4.375em;
+    width: 4.375em;
+    background-image: url("../../images/noimg1.png");
+    background-repeat: no-repeat;
+}
+
+.footer-right-col2 {
+    float: right;
+    width: 17.75em;
+}
+
+.footer-right-col2 p {
+    color: white;
+    font-size: 1.0625em;
+}
+
+.footer-right-col2 span {
+    color: #477b77;
+    font-size: 1.0625em;
+}
+
+.footer-right-li {
+    margin-bottom: 1.25em;
+}
+
+.footer-wrapper-bottom {
+    background: #6bb4ad;
+    height: 3.125em;
+}
+
+.left-footer-end {
+    padding: 0.625em 1.25em;
+    float: left;
+    color: white;
+}
+
+.right-footer-end {
+    padding: 0.625em 1.25em;
+    float: right;
+    color: white;
+}
+
+.right-footer-end ul li {
+    float: left;
+    padding: 0 0.3125em;
+}
+
+
+.ourteam-col-left {
+    float: left;
+}
+
+.ourteam-col-right {
+    float: right;
+}
+
+.ourteam-col3-l-right {
+    float: right;
+}
+
+.col2-l-right {
+    float: right;
+}
+
+
+/**/
+

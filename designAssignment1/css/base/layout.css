@@ -1,0 +1,262 @@
+.body-wrapper {
+    width: 100%;
+}
+
+.container {
+    width: 1170px;
+    margin: auto;
+}
+
+
+.navbar {
+    float: right;
+}
+
+.nav {
+    float: left;
+}
+
+.nav ul {
+    float: right;
+}
+
+.nav ul li {
+    margin-top: 24px;
+    margin-left: 10px;
+    float: left;
+}
+
+.title-content {
+    float: left;
+}
+
+
+.breadcrumb {
+    float: right;
+}
+
+
+.col-left {
+    float: left;
+    width: 310px;
+}
+
+
+.col2-right {
+    float: right
+}
+
+.col-main {
+    float: left;
+    width: 550px;
+}
+
+.col-right {
+    float: right;
+    width: 310px;
+}
+
+
+.col-main-bottom ul li {
+    float: left;
+    /*width: ;*/
+    width: 120px;
+}
+
+
+.col-scroll-left {
+    float: left;
+}
+
+.col-scroll-right-button {
+    float: right;
+}
+
+.col-scroll-button {
+    float: right;
+}
+
+.list-image ul li {
+    margin-top: 50px;
+    float: left;
+    height: 90px;
+    width: 170px;
+    margin-right: 30px;
+}
+
+.list-image ul li:last-child {
+    margin-right: 0;
+}
+
+/* Footer CSS*/
+.footer-wrapper-top {
+    background: #76c7c1;
+    background-image: url("../../images/footer-bg.png");
+    background-repeat: repeat-x;
+    min-height: 300px;
+}
+
+.col-left-footer {
+    float: left;
+    width: 380px;
+    margin-top: 45px;
+    padding: 0 10px;
+}
+
+.col3-r-right-footer {
+    float: right;
+}
+
+.col2-left-footer {
+    float: left;
+}
+
+.col-right-footer {
+    float: right;
+    width: 370px;
+}
+
+.col1-left-footer {
+    float: left;
+    width: 200px;
+}
+
+.col1-right-footer {
+    float: right;
+    width: 200px;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-info {
+    color: white;
+    line-height: 25px;
+    font-size: 17px;
+}
+
+ul.footer-info {
+    margin-top: 35px;
+    font-size: 17px;
+    color: white;
+}
+
+ul.footer-info li {
+    line-height: 25px;
+}
+
+ul.footer-info li span {
+    font-style: italic;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.col1-right-footer, .col1-left-footer {
+    margin-top: 50px;
+}
+
+.col1-right-footer strong, .col1-left-footer strong {
+    font-size: 20px;
+    color: #477b77;
+}
+
+.col1-right-footer ul, .col1-left-footer ul {
+    margin-top: 35px;
+}
+
+.col1-right-footer ul li a, .col1-left-footer ul li a {
+    text-decoration: none;
+    color: white;
+    line-height: 25px;
+    padding-left: 20px;
+    background-image: url("../../images/right-arrow.png");
+    background-position: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+
+
+.col-right-footer {
+    margin-top: 50px;
+}
+
+.col-right-footer em {
+    color: white;
+    font-size: 20px;
+}
+
+.col-right-footer strong {
+    color: white;
+    font-size: 20px;
+}
+
+.col-right-footer-title {
+    margin-bottom: 30px;
+}
+
+.footer-right-col1 {
+    float: left;
+    height: 70px;
+    width: 70px;
+    background-image: url("../../images/noimg1.png");
+    background-repeat: no-repeat;
+}
+
+.footer-right-col2 {
+    float: right;
+    width: 284px;
+}
+
+.footer-right-col2 p {
+    color: white;
+    font-size: 17px;
+}
+
+.footer-right-col2 span {
+    color: #477b77;
+    font-size: 17px;
+}
+
+.footer-right-li {
+    margin-bottom: 20px;
+}
+
+.footer-wrapper-bottom {
+    background: #6bb4ad;
+    height: 50px;
+}
+
+.left-footer-end {
+    padding: 10px 20px;
+    float: left;
+    color: white;
+}
+
+.right-footer-end {
+    padding: 10px 20px;
+    float: right;
+    color: white;
+}
+
+.right-footer-end ul li {
+    float: left;
+    padding: 0 5px;
+}
+
+
+.ourteam-col-left {
+    float: left;
+}
+
+.ourteam-col-right {
+    float: right;
+}
+
+.ourteam-col3-l-right {
+    float: right;
+}
+
+.col2-l-right {
+    float: right;
+}

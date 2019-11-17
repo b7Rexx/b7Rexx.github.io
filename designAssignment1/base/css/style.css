@@ -1,21 +1,19 @@
 .header-wrapper {
-    background: #75c6bf;
     background-image: url("../../images/header-bg.png");
     background-repeat: repeat-x;
-    background-position: bottom;
-    min-height: 5rem;
+    min-height: 80px;
 }
 
 .logo {
     float: left;
-    padding: 1.25rem 0.5rem;
+    padding: 20px 8px;
     color: white;
 }
 
 .nav ul li a {
-    font-size: 0.875rem;
-    width: 6.25rem;
-    padding: 0.625rem;
+    font-size: 14px;
+    width: 100px;
+    padding: 10px;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
@@ -47,8 +45,8 @@ span.search {
     background-image: url("../../images/search-icon.png");
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 1.1875rem;
-    width: 1.1875rem;
+    height: 1.1875em;
+    width: 1.1875em;
     display: block;
 }
 
@@ -56,13 +54,11 @@ span.search {
     background-image: url("../../images/search-red.png");
 }
 
-
 div.search-input {
     position: absolute;
-    padding: 0.2125rem;
+    padding: 0.2125em;
     right: 0;
     display: none;
-    /*border: 2px solid #e35241;*/
     background-image: url("../../images/search-box.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -76,7 +72,7 @@ div.search-input {
     position: absolute;
     display: none;
     background: #76c7b1;
-    width: 8.75rem;
+    width: 140px;
 }
 
 .dropdown:hover .dropdown-list {
@@ -85,19 +81,19 @@ div.search-input {
 
 .main-top-content {
     background: #ececec;
-    min-height: 5rem;
+    min-height: 80px;
 }
 
 .title {
-    padding: 1.875rem 0.5rem 0 0;
-    font-size: 1.25rem;
+    padding: 30px 8px 0 0;
+    font-size: 20px;
     color: #87908d;
 }
 
 .breadcrumb ul li {
     float: left;
-    margin-top: 1.5625rem;
-    padding: 0.625rem;
+    margin-top: 25px;
+    padding: 10px 10px;
     background-image: url(../../images/seperator.png);
     background-repeat: no-repeat;
     background-position: right;
@@ -117,28 +113,28 @@ div.search-input {
 }
 
 .image-down-arrow {
-    height: 3.375rem;
+    height: 54px;
 }
 
 .content-first-section h1 {
-    margin: 0 0.125rem;
+    margin: 0 2px;
     color: #e35241;
-    font-size: 2.125rem;
+    font-size: 34px;
 }
 
 .content-first-section p {
-    margin-top: 1.75rem;
+    margin-top: 28px;
     color: #87908d;
-    font-size: 1rem;
-    height: 8rem;
-    line-height: 1.25rem;
+    font-size: 16px;
+    height: 128px;
+    line-height: 20px;
 }
 
 .col-main-top {
-    padding: 0 0.75rem;
+    padding: 0 12px;
     color: #777777;
-    min-height: 6.25rem;
-    line-height: 1.5625rem;
+    min-height: 100px;
+    line-height: 25px;
 }
 
 .col-main-top a {
@@ -147,116 +143,111 @@ div.search-input {
 
 .title-first-left-section {
     color: #828a8c;
-    font-size: 1.0625rem;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 2.1875rem;
+    margin-bottom: 35px;
 }
 
 .list-first-left-section ul li {
-    font-size: 0.875rem;
+    font-size: 14px;
     color: #777777;
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     background-image: url(../../images/red-list-arrow.png);
     background-repeat: no-repeat;
     background-position: left;
 }
 
 .progress {
-    /*height: 1.5625rem;*/
-    /*width: 7.5rem;*/
-    padding-top: 2.1875rem;
+    height: 25px;
+    width: 120px;
+    padding: 35px 0 2px 0;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: bold;
     color: #87908d;
-    margin-bottom: 1.5625rem;
+    margin-bottom: 25px;
 }
 
 .progress-50 {
     background-image: url("../../images/circle1.png");
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 .progress-70 {
     background-image: url("../../images/circle2.png");
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 .progress-80 {
     background-image: url("../../images/circle3.png");
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 .progress-100 {
     background-image: url("../../images/circle4.png");
     background-repeat: no-repeat;
-    background-position: center;
 }
 
 .progress-head h3 {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: bold;
     color: #87908d;
     text-align: center;
-    /*margin-bottom: 4.6875rem;*/
+    margin-bottom: 75px;
 }
 
 .title-first-right-section {
     color: #828a8c;
-    font-size: 1.0625rem;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 1.5625rem;
+    margin-bottom: 25px;
 }
 
 .list-first-right-section {
     background: #f8f8f8;
-    margin: 0 1.25rem;
-    width: 14.375rem;
-    height: 5rem;
-    padding: 1.25rem;
+    margin: 0 20px;
+    width: 230px;
+    height: 80px;
+    padding: 20px;
     color: #777777;
 }
 
 .bubble-arrow img {
-    margin-left: 1.25rem;
+    margin-left: 20px;
 }
 
 .username {
     color: #828a8c;
-    font-size: 1.25rem;
+    font-size: 20px;
 }
 
 .content-bottom-section {
-    padding: 4.375rem 0;
+    padding: 70px 0;
 }
 
 .bottom-section-title span {
     color: #d7504a;
-    font-size: 2.75rem;
-    margin-bottom: 1.5625rem;
+    font-size: 44px;
+    margin-bottom: 25px;
 
 }
 
 .bottom-section-title {
     text-align: center;
-    margin-bottom: 3.125rem;
+    margin-bottom: 50px;
 }
 
 
 .bottom-section-title p {
-    font-size: 1.0625rem;
+    font-size: 16px;
     color: #777777;
-    line-height: 1.25rem;
+    line-height: 20px;
 }
 
 .col-scroll-title {
     float: left;
-    /*width: 62.5rem;*/
-    width: 85%;
-    height: 2.1875rem;
+    width: 1000px;
+    height: 35px;
     background-image: url(../../images/dot1.png);
     background-repeat: repeat-x;
     background-position: center;
@@ -266,22 +257,22 @@ div.search-input {
 .col-scroll-title span {
     float: left;
     font-weight: bold;
-    font-size: 1.0625rem;
+    font-size: 16px;
     color: #828a83;
-    padding-right: 1.5625rem;
+    padding-right: 25px;
     background-image: url("../../images/dot.png");
     background-repeat: no-repeat;
     background-position: right;
-    margin-top: 0.4375rem;
+    margin-top: 7px;
     z-index: 2;
 }
 
 .btn-arrow {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 40px;
+    width: 40px;
     background: #99a3a4;
     border: none;
-    margin-left: 1.25rem;
+    margin-left: 20px;
 }
 
 .left-arrow-btn {
@@ -318,18 +309,18 @@ div.search-input {
 }
 
 .mid-content-title {
-    padding: 4.375rem;
+    padding: 70px;
     text-align: center;
-    font-size: 2.75rem;
+    font-size: 44px;
     font-weight: bold;
     color: #818f8f;
 }
 
 
 .team-block {
-    width: 16.875rem;
-    height: 21.25rem;
-    margin-right: 1.875rem;
+    width: 270px;
+    height: 340px;
+    margin-right: 30px;
     background-image: url("../../images/ourteam-block-bg.png");
     background-repeat: no-repeat;
     position: relative;
@@ -342,11 +333,11 @@ div.search-input {
 .ourteam-button {
     position: absolute;
     bottom: 0;
-    left: 2.1875rem;
+    left: 35px;
     text-align: center;
-    padding-top: 1.25rem;
-    height: 2.1875rem;
-    width: 12.5rem;
+    padding-top: 20px;
+    height: 35px;
+    width: 200px;
     background-image: url("../../images/ourteam-button.png");
     background-repeat: no-repeat;
 }
@@ -355,33 +346,33 @@ div.search-input {
 .ourteam-button a {
     text-decoration: none;
     color: white;
-    font-size: 1.0625rem;
+    font-size: 16px;
 }
 
 .ourteam-para {
     position: absolute;
-    padding: 2.5rem;
+    padding: 40px;
     left: 0;
     color: white;
-    font-size: 1.0625rem;
+    font-size: 16px;
 }
 
 .ourteam-links {
     position: absolute;
-    bottom: 5rem;
-    padding: 0 2.5rem;
+    bottom: 80px;
+    padding: 0 40px;
 }
 
 .ourteam-links ul li {
     float: left;
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-right: 0.625rem;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
     background: #81bcb6;
 }
 
 .ourteam-links ul li a img {
-    padding-top: 0.625rem;
+    padding-top: 0.625em;
 }
 
 .ourteam-links ul li:last-child {
@@ -389,8 +380,8 @@ div.search-input {
 }
 
 .hover-bg-ourteam {
-    height: 19.375rem;
-    width: 16.875rem;
+    height: 310px;
+    width: 270px;
     background-image: url("../../images/ourteam-hover-bg.png");
 }
 
@@ -404,19 +395,5 @@ div.search-input {
 
 .team-block:hover .ourteam-button {
     background-image: url("../../images/ourteam-button-hover.png");
-}
 
-.mobile-menu img {
-    margin: 10px;
-    padding: 10px;
-    height: 25px;
-    width: 25px;
-}
-
-.mobile-menu {
-    display: none;
-}
-
-.mobile-menu-container:hover .nav {
-    display: block;
 }

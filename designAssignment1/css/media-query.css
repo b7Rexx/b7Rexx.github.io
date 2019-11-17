@@ -15,15 +15,15 @@
 
     .col-scroll-title {
         float: left;
-        /*width: 62.5rem;*/
+        /*width: 62.5em;*/
         width: 70%;
     }
 
     .col-left {
         float: left;
         width: 40%;
-        /*width: 19.375rem;*/
-        padding-bottom: 1rem;
+        /*width: 19.375em;*/
+        padding-bottom: 1em;
     }
 
 
@@ -35,14 +35,14 @@
     .col-main {
         float: left;
         width: 100%;
-        /*width: 34.375rem;*/
+        /*width: 34.375em;*/
         /*margin: auto;*/
     }
 
     .col-right {
         float: right;
         width: 100%;
-        /*width: 19.375rem;*/
+        /*width: 19.375em;*/
     }
 
     .col-main-bottom ul li {
@@ -71,6 +71,10 @@
         padding-left: 3%;
     }
 
+    .col2-left-footer {
+        width: 100%;
+    }
+
     /*.col-left {*/
     /*    width: 70%;*/
     /*    margin-left: 30%;*/
@@ -90,7 +94,7 @@
 
     .col-scroll-title {
         float: left;
-        /*width: 62.5rem;*/
+        /*width: 62.5em;*/
         width: 60%;
     }
 

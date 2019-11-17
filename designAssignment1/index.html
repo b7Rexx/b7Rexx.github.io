@@ -1,26 +1,422 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Design Assignment 1:1A-home-search.jpg</title>
+
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-query.css">
 </head>
 <body>
 <div class="body-wrapper">
-    <div class="index-wrapper">
-        <div class="header">
-            <h2>Design Assignment 1:1A-home-search.jpg</h2>
-            <hr>
+    <!--   Header start -->
+    <div class="header">
+        <div class="header-wrapper">
+            <div class="container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Tollens Logo">
+                </div>
+                <div class="mobile-menu-container">
+                    <div class="mobile-menu">
+                        <a href="#"><img src="images/list.png" alt="list"></a>
+                    </div>
+
+                    <div class="navbar">
+                        <div class="nav">
+                            <div class="nav-block">
+                                <ul class="relative-block">
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">about</a></li>
+                                    <li><a href="#">services</a></li>
+                                    <li class="dropdown">
+                                        <a href="#"><img src="images/drop-arrow.png" alt="dropdown"> portfolio</a>
+                                        <div class="dropdown-list">
+                                            <ul>
+                                                <li><a href="#">portfolio 1</a></li>
+                                                <li><a href="#">portfolio 2</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">blog</a></li>
+                                    <li><a href="#">features</a></li>
+                                    <li><a href="#">contacts</a></li>
+                                    <li class="search-block">
+                                        <span class="search">
+                                        </span>
+                                        <div class="search-input    ">
+                                            <input type="text" placeholder="Search">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
         </div>
-        <div class="col-index-left button">
-            <a href="base.html">Not Responsive</a>
-        </div>
-        <div class="col-index-right button">
-            <a href="responsive.html">Responsive</a>
-        </div>
-        <div class="clearfix"></div>
+        <!--        <div class="clearfix"></div>-->
     </div>
+    <!-- Header End   -->
+
+    <!--    Main Start-->
+    <div class="main">
+        <div class="main-wrapper">
+            <div class="main-top-content">
+                <div class="container">
+                    <div class="title-content">
+                        <h2 class="title">ABOUT US</h2>
+                    </div>
+                    <div class="breadcrumb">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">About us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-bottom-content">
+                <div class="container">
+                    <div class="image-down-arrow">
+                        <img src="images/main-top-bg.png" alt="arrow down">
+                    </div>
+
+                    <div class="content-first-section">
+                        <h1>Donec faucibus ultricies congue</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, atque cum deleniti
+                            exercitationem fuga iusto laborum, laudantium molestiae mollitia nihil qui ratione
+                            repellendus voluptatum? Fugit laudantium magni natus nisi porro?
+                        </p>
+                        <div class="col3-left">
+                            <div class="col-left">
+                                <div class="title-first-left-section">Why Choose Us ?</div>
+                                <div class="list-first-left-section">
+                                    <ul>
+                                        <li>Quisque at massa ipsum</li>
+                                        <li>Quisque at massa ipsum</li>
+                                        <li>Quisque at massa ipsum</li>
+                                        <li>Quisque at massa ipsum</li>
+                                        <li>Quisque at massa ipsum</li>
+                                        <li>Quisque at massa ipsum</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col2-right">
+                                <div class="col-main">
+                                    <div class="col-main-top">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+                                        <!--                                        consequatur corporis debitis delectus expedita id incidunt laudantium magnam-->
+                                        maxime minima <a href="#">mollitia</a> nobis porro praesentium quis repellat
+                                        <!--                                        sequi, vel-->
+                                        <!--                                        voluptate voluptatibus!-->
+                                    </div>
+                                    <div class="col-main-bottom">
+                                        <ul class="progress-list">
+                                            <li>
+                                                <div class="progress progress-50">50</div>
+                                                <div class="progress-head"><h3>SUSPENDISSE</h3></div>
+                                            </li>
+                                            <li>
+                                                <div class="progress progress-70">70</div>
+                                                <div class="progress-head"><h3>MAECENAS</h3></div>
+                                            </li>
+                                            <li>
+                                                <div class="progress progress-80">80</div>
+                                                <div class="progress-head"><h3>ALIQUAM</h3></div>
+                                            </li>
+                                            <li>
+                                                <div class="progress progress-100">100</div>
+                                                <div class="progress-head"><h3>HABITASSE</h3></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-right">
+                                    <div class="title-first-right-section">Why Client's Say ?</div>
+                                    <div class="list-first-right-section">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aliquid
+                                        sapiente tenetur voluptate voluptatem.
+                                    </div>
+                                    <div class="bubble-arrow">
+                                        <img src="images/bubble-arrow.png" alt="bubble arrow">
+                                        <span class="username">John Doe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--                    Our team section start     -->
+            <div class="content-mid-section">
+                <div class="mid-content-wrapper">
+                    <div class="container">
+                        <div class="mid-content-title">OUR TEAM</div>
+                        <div class="team-content-block">
+                            <div class="ourteam-col-left">
+                                <div class="team-block">
+                                    <div class="team-content">
+                                        <div class="hover-bg-ourteam">
+                                            <div class="ourteam-para">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+                                                aliquid,
+                                            </div>
+                                            <div class="ourteam-links">
+                                                <ul>
+                                                    <li><a href="#"><img src="images/link1.png" alt="link"></a></li>
+                                                    <li><a href="#"><img src="images/link2.png" alt="link"></a></li>
+                                                    <li><a href="#"><img src="images/link3.png" alt="link"></a></li>
+                                                    <li><a href="#"><img src="images/link4.png" alt="link"></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ourteam-button">
+                                            <a href="#">John Doe</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ourteam-col3-l-right">
+                                <div class="ourteam-col-left">
+                                    <div class="team-block">
+                                        <div class="team-content">
+                                            <div class="hover-bg-ourteam">
+                                                <div class="ourteam-para">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+                                                    aliquid,
+                                                </div>
+                                                <div class="ourteam-links">
+                                                    <ul>
+                                                        <li><a href="#"><img src="images/link1.png" alt="link"></a></li>
+                                                        <li><a href="#"><img src="images/link2.png" alt="link"></a></li>
+                                                        <li><a href="#"><img src="images/link3.png" alt="link"></a></li>
+                                                        <li><a href="#"><img src="images/link4.png" alt="link"></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="ourteam-button">
+                                                <a href="#">John Doe</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2-l-right">
+                                    <div class="ourteam-col-left">
+                                        <div class="team-block">
+                                            <div class="team-content">
+                                                <div class="hover-bg-ourteam">
+                                                    <div class="ourteam-para">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        Aliquam
+                                                        aliquid,
+                                                    </div>
+                                                    <div class="ourteam-links">
+                                                        <ul>
+                                                            <li><a href="#"><img src="images/link1.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link2.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link3.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link4.png" alt="link"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="ourteam-button">
+                                                    <a href="#">John Doe</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ourteam-col-right">
+                                        <div class="team-block last-block">
+                                            <div class="team-content">
+                                                <div class="hover-bg-ourteam">
+                                                    <div class="ourteam-para">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        Aliquam
+                                                        aliquid,
+                                                    </div>
+                                                    <div class="ourteam-links">
+                                                        <ul>
+                                                            <li><a href="#"><img src="images/link1.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link2.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link3.png" alt="link"></a>
+                                                            </li>
+                                                            <li><a href="#"><img src="images/link4.png" alt="link"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="ourteam-button">
+                                                    <a href="#">John Doe</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--                    Our team section end    -->
+            <div class="main-bottom-content">
+                <div class="container">
+
+                    <div class="content-bottom-section">
+                        <div class="bottom-section-title">
+                            <span>Best Solution is the simplest IDEA!</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos explicabo impedit natus? Ab
+                                ad autem corporis, cum cupiditate deleniti est eum expedita incidunt nemo nihil quaerat
+                                quia quis, sapiente temporibus?</p>
+                        </div>
+
+                        <div class="bottom-list">
+                            <div class="list-title-scroll">
+                                <div class="col-scroll-title">
+                                    <span>Our Happy Clients</span>
+                                </div>
+                                <div class="col-scroll-button">
+                                    <button class="btn-arrow left-arrow-btn"></button>
+                                    <button class="btn-arrow right-arrow-btn"></button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-image">
+                                <ul>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                    <li><img src="images/noimg.png" alt="image"></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    Main End-->
+
+
+    <!--   Footer start -->
+    <div class="footer">
+        <div class="footer-wrapper-top">
+            <div class="container">
+                <div class="col-left-footer">
+                    <div class="footer-logo"><img src="images/logo.png" alt="logo"></div>
+                    <div class="footer-info">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid, beatae corporis
+                            reiciendis sint, voluptatum! Aspernatur, quas!
+                        </p>
+                    </div>
+
+                    <ul class="footer-info">
+                        <li>phone:<span>182 2569 5896</span></li>
+                        <li>e-mail:<span>info@tollens.info</span></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col3-r-right-footer">
+                    <div class="col2-left-footer">
+                        <div class="col1-left-footer">
+                            <strong>Company</strong>
+                            <ul>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col1-right-footer">
+                            <strong>Community</strong>
+                            <ul>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Forum</a></li>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Newsletter</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="col-right-footer">
+                        <div class="col-right-footer-title">
+                            <em>from the </em><strong>BLOG</strong>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="footer-right-li">
+                                    <div class="footer-right-col1">
+                                        <img src="images/noimg1.png" alt="image">
+                                    </div>
+                                    <div class="footer-right-col2">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </p>
+                                        <span class="date">26 may, 2013</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-right-li">
+                                    <div class="footer-right-col1">
+                                        <img src="images/noimg1.png" alt="image">
+                                    </div>
+                                    <div class="footer-right-col2">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </p>
+                                        <span class="date">26 may, 2013</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="footer-wrapper-bottom">
+            <div class="container">
+                <div class="left-footer-end">2013 Tollens</div>
+                <div class="right-footer-end">
+                    <ul>
+                        <li><a href="#"><img src="images/link1.png" alt="link"></a></li>
+                        <li><a href="#"><img src="images/link2.png" alt="link"></a></li>
+                        <li><a href="#"><img src="images/link3.png" alt="link"></a></li>
+                        <li><a href="#"><img src="images/link4.png" alt="link"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End   -->
 </div>
 </body>
 </html>

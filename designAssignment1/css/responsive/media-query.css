@@ -1,7 +1,7 @@
 @media screen and (max-width: 992px) {
     .container {
         max-width: 48em;
-        padding: 0.25em;
+        padding: 0 0.25em;
     }
 
     .nav ul li {
@@ -35,14 +35,14 @@
         width: 45%;
     }
 
-    .col-left-footer, .col3-r-right-footer {
+    .col-right-footer {
         width: 100%;
-        float: left;
-        padding-left: 10px;
     }
 
-    .col-right-footer-title {
-        padding-left: 10px;
+    .col-left-footer, .col3-r-right-footer {
+        width: 95%;
+        float: left;
+        padding-left: 3%;
     }
 
     .col-left {
@@ -70,13 +70,9 @@
     }
 
     .col-left-footer, .col1-left-footer, .col3-r-right-footer, .col1-right-footer, .col1-right-footer {
-        width: 100%;
+        width: 95%;
         float: left;
-        padding-left: 10px;
-    }
-
-    .col-right-footer-title {
-        margin-left: 10px;
+        padding-left: 3%;
     }
 
     .nav ul li {
@@ -102,5 +98,9 @@
         /*position: absolute;*/
         float: right;
         display: block;
+    }
+
+    .col-left {
+        margin-left: 5%;
     }
 }

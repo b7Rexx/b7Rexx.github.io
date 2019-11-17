@@ -19,8 +19,34 @@
         width: 70%;
     }
 
+    .col-left {
+        float: left;
+        width: 40%;
+        /*width: 19.375rem;*/
+        padding-bottom: 1rem;
+    }
+
+
+    .col2-right {
+        float: right;
+        width: 60%;
+    }
+
     .col-main {
-        width: 90%;
+        float: left;
+        width: 100%;
+        /*width: 34.375rem;*/
+        /*margin: auto;*/
+    }
+
+    .col-right {
+        float: right;
+        width: 100%;
+        /*width: 19.375rem;*/
+    }
+
+    .col-main-bottom ul li {
+        width: 50%;
     }
 
     .list-image ul li {
@@ -45,15 +71,14 @@
         padding-left: 3%;
     }
 
-    .col-left {
-        width: 70%;
-        margin-left: 30%;
-    }
-
-    .col-right {
-        width: 70%;
-        float: left;
-    }
+    /*.col-left {*/
+    /*    width: 70%;*/
+    /*    margin-left: 30%;*/
+    /*}*/
+    /*.col-right {*/
+    /*    width: 70%;*/
+    /*    float: left;*/
+    /*}*/
 
 }
 
@@ -101,6 +126,15 @@
     }
 
     .col-left {
-        margin-left: 5%;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .col2-right {
+        width: 100%;
+    }
+
+    .col-main-bottom ul li {
+        width: 50%;
     }
 }

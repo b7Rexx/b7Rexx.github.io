@@ -162,8 +162,8 @@ div.search-input {
 }
 
 .progress {
-    height: 1.5625rem;
-    width: 7.5rem;
+    /*height: 1.5625rem;*/
+    /*width: 7.5rem;*/
     padding-top: 2.1875rem;
     text-align: center;
     font-size: 1.5rem;
@@ -175,21 +175,25 @@ div.search-input {
 .progress-50 {
     background-image: url("../../images/circle1.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .progress-70 {
     background-image: url("../../images/circle2.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .progress-80 {
     background-image: url("../../images/circle3.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .progress-100 {
     background-image: url("../../images/circle4.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .progress-head h3 {
@@ -197,7 +201,7 @@ div.search-input {
     font-weight: bold;
     color: #87908d;
     text-align: center;
-    margin-bottom: 4.6875rem;
+    /*margin-bottom: 4.6875rem;*/
 }
 
 .title-first-right-section {

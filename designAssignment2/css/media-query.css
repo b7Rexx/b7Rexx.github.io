@@ -1,4 +1,11 @@
 @media screen and (max-width: 992px) {
+
+    .body-wrapper {
+        width: 100%;
+        min-width: auto;
+        overflow: hidden;
+    }
+
     .container {
         max-width: 48em;
         padding: 0 0.25em;

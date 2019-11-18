@@ -269,6 +269,7 @@ div.search-input {
     font-weight: bold;
     font-size: 1em;
     color: #828a83;
+    background: #f3f3f3;
     padding-right: 1.5625em;
     background-image: url("../images/dot.png");
     background-repeat: no-repeat;

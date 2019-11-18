@@ -486,11 +486,12 @@ ul.footer-info li span {
     width: 23.0769%;
     float: left;
     margin-right: 2.5641%;
+    margin-bottom: 3.4375em;
 }
 
 .type-3-block {
     position: relative;
-    margin-bottom: 3.4375em;
+    /*margin-bottom: 3.4375em;*/
     height: 21.25em;
     width: 16.875em;
     background-image: url("../images/white-bg-block.png");
@@ -516,6 +517,7 @@ ul.footer-info li span {
     text-decoration: none;
     color: white;
     font-size: 1em;
+    padding: 1.25em 3.75em;
 }
 
 .type-3-content {

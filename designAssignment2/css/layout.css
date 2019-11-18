@@ -618,8 +618,8 @@ ul.footer-info li span {
 }
 
 .type-5-tabs ul li.active a {
-    background: #f8f8f8 !important;
-    color: #869091 !important;
+    background: #f8f8f8;
+    color: #869091;
 }
 
 .type-5-content ul li {

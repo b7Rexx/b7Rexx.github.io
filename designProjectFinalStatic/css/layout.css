@@ -1,0 +1,47 @@
+.wrapper {
+    width: 100%;
+    min-width: 90em;
+    background-image: url("../images/square-pattern-bg.png");
+}
+
+.container {
+    width: 61.25em;
+    margin: auto;
+}
+
+.header-top {
+    padding: 24px 0;
+}
+
+.header-top-left {
+    float: left;
+}
+
+.header-top-right {
+    float: right;
+}
+
+.login-form-block {
+    padding: 15px 165px;
+}
+
+nav {
+    padding: 20px 0;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+}
+
+.slider-section {
+    width: 90em;
+    margin: auto;
+}
+
+.slider-number-block {
+    padding-bottom: 12px
+}

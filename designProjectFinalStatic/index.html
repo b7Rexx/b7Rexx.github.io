@@ -1,0 +1,144 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+    <title>Design Final Project : Static</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <!--    Google Fonts | for IE8 compatibility-->
+    <!--[if lte IE 8]>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Source+Sans+Pro&display=swap"
+          rel="stylesheet">
+    <![endif]-->
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/layout.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="wrapper">
+    <header class="container">
+        <div class="header-top dotted-spacer-separator">
+            <div class="header-top-left">
+                <h2>PANDORA</h2>
+                <span>fantastic products & great prices</span>
+            </div>
+            <div class="header-top-right">
+                <div class="header-top-right-list">
+                    <ul>
+                        <li>
+                            <a href="#" class="header-has-icon icon-cart">
+                                <span class="items-count">0</span> items (<span class="items-price">$0.00</span> in
+                                total)</a>
+                        </li>
+                        <li><a href="#">Checkout</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="header-has-icon icon-user">My account</a>
+                                <div class="dropdown-list">
+                                    <ul>
+                                        <li><a href="#">my profile</a></li>
+                                        <li><a href="#">logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="header-bottom dotted-spacer-separator">
+            <div class="login-form-block">
+                <form action="#">
+                    <label>Log-in: </label>
+                    <div class="form-input">
+                        <input type="email" placeholder="E-mail address" name="email" value="">
+                    </div>
+                    <div class="form-input has-forgot-pass">
+                        <input type="password" placeholder="Password" name="password" value="">
+                        <a href="#">Forget?</a>
+                    </div>
+                    <input type="submit" value="Log-in" class="button-red">
+                </form>
+                <a href="#" class="button-red">Continue as guest</a>
+            </div>
+        </div>
+    </header>
+    <nav class="container">
+        <div class="nav-left">
+            <div class="navbar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        <div class="nav-dropdown">
+                            <a href="#" class="dropdown-head">Women</a>
+                            <div class="nav-dropdown-list">
+                                <ul>
+                                    <li><a href="#">Women 1</a></li>
+                                    <li><a href="#">Women 2</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-dropdown">
+                            <a href="#" class="dropdown-head">Men</a>
+                            <div class="nav-dropdown-list">
+                                <ul>
+                                    <li><a href="#">Men 1</a></li>
+                                    <li><a href="#">Men 2</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact & info</a></li>
+                    <li><a href="#">Features</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-form">
+                <figure>
+                    <img src="images/search-icon.png" alt="search">
+                </figure>
+                <input type="text" placeholder="search here">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </nav>
+    <section>
+        <div class="slider-section">
+            <div class="slider-image-block">
+                <ul>
+                    <li>
+                        <figure><img src="images/slider1.png" alt="slider1"></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="slider-text-block">
+                    <ul>
+                        <li>
+                            <div class="slider-text-content">
+                                <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+                                <div class="clearfix"></div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
+                                    non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
+                                    +</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slider-number-block">
+                    <ul>
+                        <li><a href="#">1</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

@@ -486,12 +486,13 @@ span.sale-tag {
 
 .best-seller-content figure {
     /*padding-bottom: 14px;*/
+    max-height: 122px;
+    overflow: hidden;
 }
 
 .best-seller-content figure img {
     width: 100%;
-    max-height: 122px;
-    overflow: hidden;
+    height: auto;
 }
 
 .best-seller-price {
@@ -550,4 +551,106 @@ footer.dark-bg-wrapper {
 .footer-top * {
     color: #e2e2e2;
     text-decoration: none;
+}
+
+.navigation-title, .tweets-title, .newsletter-title, .aboutus-title {
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #515151;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.navigation-content, .tweets-content, .newsletter-content, .aboutus-content {
+    padding-top: 30px;
+}
+
+.navigation-content ul li a {
+    font-size: 0.75em;
+    line-height: 1.917em;
+    padding-left: 18px;
+    background-image: url("../images/red-dot.png");
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.tweets-content ul li {
+    padding-bottom: 30px;
+}
+
+.tweets-content ul li p {
+    font-size: 0.75em;
+    line-height: 1.667em;
+    padding-left: 30px;
+    background-image: url("../images/t-bubble.png");
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.tweets-content ul li p a {
+    color: #cc003e;
+}
+
+.newsletter-content {
+    font-size: 0.75em;
+    line-height: 1.667em;
+}
+
+.newsletter-input {
+    background: #e2e2e2;
+    margin-top: 15px;
+    padding: 10px 10px 10px 40px;
+    background-image: url("../images/mail-black-icon.png");
+    background-repeat: no-repeat;
+    background-position: 10px;
+}
+
+.newsletter-input input {
+    width: 100%;
+    background: #e2e2e2;
+    border: none;
+    color: #565656;
+}
+
+.aboutus-content p {
+    font-size: 0.75em;
+    line-height: 1.667em;
+}
+
+.social {
+    padding-top: 25px;
+}
+
+.social ul li {
+    float: left;
+    padding-right: 5px;
+}
+
+.credit-card {
+    padding-top: 25px;
+}
+
+.credit-card ul li {
+    float: left;
+    padding-right: 5px;
+}
+
+.footer-bottom {
+    margin-top: 45px;
+    text-align: center;
+    font-size: 0.6875em;
+    padding: 40px 0;
+    color: #909090;
+}
+
+.footer-bottom * {
+    display: inline
+}
+
+.software-by {
+    padding-left: 15px;
+    margin-left: 15px;
+    background-image: url("../images/dot-seperator.png");
+    background-repeat: no-repeat;
+    background-position: left;
 }

@@ -10,135 +10,636 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Source+Sans+Pro&display=swap"
           rel="stylesheet">
     <![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/layout.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<body>
-<div class="wrapper">
-    <header class="container">
-        <div class="header-top dotted-spacer-separator">
-            <div class="header-top-left">
-                <h2>PANDORA</h2>
-                <span>fantastic products & great prices</span>
+<body class="wrapper">
+<header class="container">
+    <div class="header-top dotted-spacer-separator">
+        <div class="header-top-left">
+            <h2>PANDORA</h2>
+            <span>fantastic products & great prices</span>
+        </div>
+        <div class="header-top-right">
+            <div class="header-top-right-list">
+                <ul>
+                    <li>
+                        <a href="#" class="header-has-icon icon-cart">
+                            <span class="items-count">0</span> items (<span class="items-price">$0.00</span> in
+                            total)</a>
+                    </li>
+                    <li><a href="#">Checkout</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="header-has-icon icon-user">My account</a>
+                            <div class="dropdown-list">
+                                <ul>
+                                    <li><a href="#">my profile</a></li>
+                                    <li><a href="#">logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="header-top-right">
-                <div class="header-top-right-list">
-                    <ul>
-                        <li>
-                            <a href="#" class="header-has-icon icon-cart">
-                                <span class="items-count">0</span> items (<span class="items-price">$0.00</span> in
-                                total)</a>
-                        </li>
-                        <li><a href="#">Checkout</a></li>
-                        <li>
-                            <div class="dropdown">
-                                <a href="#" class="header-has-icon icon-user">My account</a>
-                                <div class="dropdown-list">
-                                    <ul>
-                                        <li><a href="#">my profile</a></li>
-                                        <li><a href="#">logout</a></li>
-                                    </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="header-bottom dotted-spacer-separator">
+        <div class="login-form-block">
+            <form action="#">
+                <label>Log-in: </label>
+                <div class="form-input">
+                    <input type="email" placeholder="E-mail address" name="email" value="">
+                </div>
+                <div class="form-input has-forgot-pass">
+                    <input type="password" placeholder="Password" name="password" value="">
+                    <a href="#">Forget?</a>
+                </div>
+                <input type="submit" value="Log-in" class="button-red">
+            </form>
+            <a href="#" class="button-red">Continue as guest</a>
+        </div>
+    </div>
+</header>
+<nav class="container">
+    <div class="nav-left">
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="#" class="dropdown-head">Women</a>
+                        <div class="nav-dropdown-list">
+                            <ul>
+                                <li><a href="#">Women 1</a></li>
+                                <li><a href="#">Women 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-dropdown">
+                        <a href="#" class="dropdown-head">Men</a>
+                        <div class="nav-dropdown-list">
+                            <ul>
+                                <li><a href="#">Men 1</a></li>
+                                <li><a href="#">Men 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact & info</a></li>
+                <li><a href="#">Features</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav-right">
+        <div class="search-form">
+            <figure>
+                <img src="images/search-icon.png" alt="search">
+            </figure>
+            <input type="text" placeholder="search here">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</nav>
+<section>
+    <!-- active class on ul > li to display block -->
+    <div class="slider-section">
+        <div class="slider-image-block">
+            <ul>
+                <li>
+                    <figure><img src="images/slider1.png" alt="slider1"></figure>
+                </li>
+                <li class="active">
+                    <figure><img src="images/slider1.png" alt="slider1"></figure>
+                </li>
+                <li>
+                    <figure><img src="images/slider1.png" alt="slider1"></figure>
+                </li>
+                <li>
+                    <figure><img src="images/slider1.png" alt="slider1"></figure>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="slider-text-block">
+                <ul>
+                    <li>
+                        <div class="slider-text-content">
+                            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+                            <div class="clearfix"></div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
+                                non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
+                                +</a></p>
+                        </div>
+                    </li>
+                    <li class="active">
+                        <div class="slider-text-content">
+                            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+                            <div class="clearfix"></div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
+                                non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
+                                +</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-text-content">
+                            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+                            <div class="clearfix"></div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
+                                non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
+                                +</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-text-content">
+                            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+                            <div class="clearfix"></div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
+                                non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
+                                +</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="slider-number-block">
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="welcome-section">
+            <figure class="welcome-image">
+                <img src="images/pc-tab-mob.png" alt="desktop tablet mobile">
+            </figure>
+            <div class="welcome-content">
+                <h2>Welcome to <strong>PANDORA</strong>, responsive Shopify theme</h2>
+                <p>
+                    <strong>Congratulations on starting your own e-commerce store!</strong>
+                    GANYMEDE is an elegant & responsive Shopify theme which dynamically adjusts for all screen sizes
+                    and devices. Your shop will look great and will be easy to use on desktops, laptops, tablets and
+                    mobile smartphones.
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="featured-section">
+            <div class="featured-head dotted-spacer-separator">
+                <h3>Featured items</h3>
+                <div class="featured-view-more">
+                    <i class="fa fa-eye"></i><a href="#">view more items</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="featured-list">
+                <ul>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <!--                                    <span class="sale-tag"></span>-->
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block1.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Striped colorfull dress </h4>
+                                        <span>$29.99</span>
+                                    </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <span class="sale-tag"></span>
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block2.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Elegant sweater with tie</h4>
+                                        <span>$59.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <span class="sale-tag"></span>
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block1.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Striped colorfull dress </h4>
+                                        <span>$29.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <!--                                    <span class="sale-tag"></span>-->
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block2.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Elegant sweater with tie</h4>
+                                        <span>$59.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="featured-list">
+                <ul>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <span class="sale-tag"></span>
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block1.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Striped colorfull dress </h4>
+                                        <span>$29.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <span class="sale-tag"></span>
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block2.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Elegant sweater with tie</h4>
+                                        <span>$59.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <!--                                    <span class="sale-tag"></span>-->
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block1.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Striped colorfull dress </h4>
+                                        <span>$29.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-block">
+                            <div class="item-shadow-box">
+                                <!--  span sale tag -->
+                                <!--                                    <span class="sale-tag"></span>-->
+                                <div class="item-content">
+                                    <figure>
+                                        <img src="images/img-block2.png" alt="item image">
+                                    </figure>
+                                    <div class="item-price">
+                                        <h4>Elegant sweater with tie</h4>
+                                        <span>$59.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="special-section">
+            <div class="special-head dotted-spacer-separator">
+                <h3>Special Offers</h3>
+                <div class="clearfix"></div>
+            </div>
+            <div class="special-list">
+                <ul>
+                    <li>
+                        <div class="special-block">
+                            <div class="special-content green-special">
+                                <a href="#">
+                                    <span class="special-title">sale</span>
+                                    <span class="special-detail">checkout all items on sale</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="special-block">
+                            <div class="special-content green-special">
+                                <a href="#">
+                                    <span class="special-title">sale</span>
+                                    <span class="special-detail">checkout all items on sale</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="special-block">
+                            <div class="special-content green-special">
+                                <a href="#">
+                                    <span class="special-title">sale</span>
+                                    <span class="special-detail">checkout all items on sale</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="bottom-section">
+            <div class="col-1-left">
+                <div class="blog-block">
+                    <div class="blog-section">
+                        <div class="blog-head dotted-spacer-separator">
+                            <h3>Latest from news blog</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="blog-list">
+                            <ul>
+                                <li>
+                                    <div class="blog">
+                                        <h3>Praesent feugiat felis congue nulla dapibus</h3>
+                                        <div class="blog-text">
+                                            <i class="fa fa-clock"></i><span>May 23, 2012</span>
+                                            <div class="comment">
+                                                <i class="fa fa-comment"></i>
+                                                <a href="#">6</a>
+                                            </div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                                            blanditiis cum debitis dolorem ducimus eligendi, enim exercitationem
+                                            sapiente temporibus voluptas! <a href="#">Read more +</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="blog">
+                                        <h3>Praesent feugiat felis congue nulla dapibus</h3>
+                                        <div class="blog-text">
+                                            <i class="fa fa-clock"></i><span>May 23, 2012</span>
+                                            <div class="comment">
+                                                <i class="fa fa-comment"></i>
+                                                <a href="#">6</a>
+                                            </div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                                            blanditiis cum debitis dolorem ducimus eligendi, enim exercitationem
+                                            sapiente temporibus voluptas! <a href="#">Read more +</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="blog">
+                                        <h3>Praesent feugiat felis congue nulla dapibus</h3>
+                                        <div class="blog-text">
+                                            <i class="fa fa-clock"></i><span>May 23, 2012</span>
+                                            <div class="comment">
+                                                <i class="fa fa-comment"></i>
+                                                <a href="#">6</a>
+                                            </div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+                                            blanditiis cum debitis dolorem ducimus eligendi, enim exercitationem
+                                            sapiente temporibus voluptas! <a href="#">Read more +</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1-right">
+                <div class="best-seller-block">
+                    <div class="best-seller-section">
+                        <div class="best-seller-head dotted-spacer-separator">
+                            <h3>Best Sellers</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="list-layers">
+                            <div class="best-seller-list">
+                                <ul>
+                                    <li>
+                                        <div class="best-seller">
+                                            <div class="best-seller-shadow-box">
+                                                <!--  span sale tag -->
+                                                <span class="sale-tag"></span>
+                                                <div class="best-seller-content">
+                                                    <figure>
+                                                        <img src="images/img-block1.png" alt="best-seller image">
+                                                    </figure>
+                                                    <div class="best-seller-price">
+                                                        <span>$29.99</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="best-seller">
+                                            <div class="best-seller-shadow-box">
+                                                <!--  span sale tag -->
+                                                <!--                                                <span class="sale-tag"></span>-->
+                                                <div class="best-seller-content">
+                                                    <figure>
+                                                        <img src="images/img-block2.png" alt="best-seller image">
+                                                    </figure>
+                                                    <div class="best-seller-price">
+                                                        <span>$29.99</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="best-seller-list">
+                                <ul>
+                                    <li>
+                                        <div class="best-seller">
+                                            <div class="best-seller-shadow-box">
+                                                <!--  span sale tag -->
+                                                <!--                                                <span class="sale-tag"></span>-->
+                                                <div class="best-seller-content">
+                                                    <figure>
+                                                        <img src="images/img-block1.png" alt="best-seller image">
+                                                    </figure>
+                                                    <div class="best-seller-price">
+                                                        <span>$29.99</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="best-seller">
+                                            <div class="best-seller-shadow-box">
+                                                <!--  span sale tag -->
+                                                <span class="sale-tag"></span>
+                                                <div class="best-seller-content">
+                                                    <figure>
+                                                        <img src="images/img-block2.png" alt="best-seller image">
+                                                    </figure>
+                                                    <div class="best-seller-price">
+                                                        <span>$29.99</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-block">
+                    <div class="about-section">
+                        <div class="about-head dotted-spacer-separator">
+                            <h3>Best Sellers</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="about-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores cum
+                                cumque delectus earum error, ex harum hic, ipsam, nemo obcaecati officia omnis
+                                praesentium provident quibusdam ullam unde voluptatem voluptatibus!</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse et facilis, hic,
+                                Blanditiis dignissimos in minima molestias rerum ullam velit.</p>
+                            <div class="contact">
+                                <i class="fa fa-phone"></i><a href="#" class="phone">7-685-513-2605</a>
+                            </div>
+                            <div class="contact">
+                                <i class="fa fa-envelope"></i><a href="#" class="mail">info@planetshine.net</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="header-bottom dotted-spacer-separator">
-            <div class="login-form-block">
-                <form action="#">
-                    <label>Log-in: </label>
-                    <div class="form-input">
-                        <input type="email" placeholder="E-mail address" name="email" value="">
+    </div>
+</section>
+
+<footer class="dark-bg-wrapper">
+    <div class="container">
+        <div class="footer-top">
+            <div class="col-footer-left">
+                <div class="navigation-section">
+                    <div class="navigation-title dotted-spacer-separator">Navigation</div>
+                    <div class="navigation-content">
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">Women</a></li>
+                            <li><a href="#">Featured Items</a></li>
+                            <li><a href="#">News blog</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Contact & info</a></li>
+                        </ul>
                     </div>
-                    <div class="form-input has-forgot-pass">
-                        <input type="password" placeholder="Password" name="password" value="">
-                        <a href="#">Forget?</a>
-                    </div>
-                    <input type="submit" value="Log-in" class="button-red">
-                </form>
-                <a href="#" class="button-red">Continue as guest</a>
-            </div>
-        </div>
-    </header>
-    <nav class="container">
-        <div class="nav-left">
-            <div class="navbar">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li>
-                        <div class="nav-dropdown">
-                            <a href="#" class="dropdown-head">Women</a>
-                            <div class="nav-dropdown-list">
-                                <ul>
-                                    <li><a href="#">Women 1</a></li>
-                                    <li><a href="#">Women 2</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="nav-dropdown">
-                            <a href="#" class="dropdown-head">Men</a>
-                            <div class="nav-dropdown-list">
-                                <ul>
-                                    <li><a href="#">Men 1</a></li>
-                                    <li><a href="#">Men 2</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact & info</a></li>
-                    <li><a href="#">Features</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="nav-right">
-            <div class="search-form">
-                <figure>
-                    <img src="images/search-icon.png" alt="search">
-                </figure>
-                <input type="text" placeholder="search here">
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </nav>
-    <section>
-        <div class="slider-section">
-            <div class="slider-image-block">
-                <ul>
-                    <li>
-                        <figure><img src="images/slider1.png" alt="slider1"></figure>
-                    </li>
-                </ul>
-            </div>
-            <div class="container">
-                <div class="slider-text-block">
-                    <ul>
-                        <li>
-                            <div class="slider-text-content">
-                                <h1>Lorem ipsum dolor sit amet, consectetur</h1>
-                                <div class="clearfix"></div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi dignissimos
-                                    non sed velit velit voluptates? Ex labore nihil perspiciatis. <a href="#">Read more
-                                    +</a></p>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <div class="slider-number-block">
-                    <ul>
-                        <li><a href="#">1</a></li>
-                    </ul>
+                <div class="tweets-section">
+                    <div class="tweets-title dotted-spacer-separator">Latest tweets</div>
+                    <div class="tweets-content">
+                        <ul>
+                            <li><p><a href="#">@Lorem</a> ipsum dolor sit amet, consectetur adipisicing elit.
+                                Architecto, quibusdam repellendus sint.</p></li>
+                            <li><p><a href="#">@Lorem</a> ipsum dolor sit amet, consectetur adipisicing elit.
+                                Architecto, quibusdam repellendus sint.</p></li>
+                            <li><p><a href="#">@Lorem</a> ipsum dolor sit amet, consectetur adipisicing elit.
+                                Architecto, quibusdam repellendus sint.</p></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="col-footer-right">
+                <div class="newsletter-section">
+                    <div class="newsletter-title dotted-spacer-separator">Newsletter</div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-text">
+                            To subscribe to our newsletter, type in your e-mail address below and press "Enter" .
+                            <br>
+                            <strong> We don"t send spam. Ever!</strong>
+                        </div>
+                        <div class="newsletter-input">
+                            <i class="fa fa-envelope"></i><input type="text" placeholder="subscribe email">
+                        </div>
+                    </div>
+                </div>
+                <div class="aboutus-section">
+                    <div class="aboutus-title dotted-spacer-separator">About us</div>
+                    <div class="aboutus-content">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam consequatur dignissimos
+                            hic
+                        </p>
+                        <div class="social"></div>
+                        <div class="credit-card"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-    </section>
-</div>
+        <div class="footer-bottom">
+            <div class="copyright">© 2012 Theme "Pandora" by</div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

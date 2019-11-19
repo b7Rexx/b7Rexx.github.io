@@ -38,10 +38,156 @@ nav {
 }
 
 .slider-section {
+    position: relative;
     width: 90em;
     margin: auto;
+    padding-bottom: 12px;
 }
 
 .slider-number-block {
-    padding-bottom: 12px
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.welcome-section {
+    padding: 35px 0;
+}
+
+.welcome-image {
+    width: 450px;
+    padding: 0 25px;
+    float: left;
+}
+
+.welcome-image img {
+    display: block;
+    width: 100%;
+}
+
+.welcome-content {
+    float: right;
+    padding: 65px 20px 0 20px;
+    width: 440px;
+    text-align: center;
+}
+
+.featured-section, .special-section, .blog-section, .best-seller-section, .about-section {
+    padding-bottom: 40px;
+}
+
+.featured-head, .special-head, .blog-head, .best-seller-head, .about-head {
+    padding-bottom: 18px;
+}
+
+.featured-head h3, .special-head h3, .blog-head h3, .best-seller-head h3, .about-head h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+    float: left;
+    font-size: 1.5em;
+}
+
+.featured-view-more {
+    float: right;
+}
+
+.featured-list ul li {
+    float: left;
+    padding-left: 25px;
+}
+
+.featured-list ul li:first-child {
+    padding-left: 0;
+}
+
+.item-block, .special-block {
+    padding-top: 25px;
+}
+
+.special-list ul li {
+    float: left;
+    padding-left: 24px;
+}
+
+.special-list ul li:first-child {
+    padding-left: 0;
+}
+
+.col-1-left {
+    float: left;
+    width: 365px;
+}
+
+.col-1-right {
+    float: right;
+    width: 580px;
+}
+
+.blog {
+    width: 365px;
+}
+
+.best-seller-block {
+    float: left;
+    width: 295px;
+    padding-bottom: 50px;
+}
+
+.about-block {
+    float: right;
+    width: 250px;
+}
+
+.blog-list, .about-list {
+    padding-bottom: 50px;
+}
+
+.list-layers, .about-content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+
+.best-seller-list ul li {
+    float: left;
+    padding-left: 19px;
+    padding-bottom: 19px;
+}
+
+.best-seller-list ul li:first-child {
+    padding-left: 0;
+}
+
+.col-footer-left {
+    float: left;
+    width: 501px;
+}
+
+.col-footer-right {
+    float: right;
+    width: 444px;
+}
+
+.navigation-section {
+    float: left;
+    width: 136px;
+    padding-top: 50px;
+}
+
+.aboutus-section {
+    float: right;
+    width: 174px;
+    padding-top: 50px;
+    }
+
+.newsletter-section {
+    float: left;
+    width: 235px;
+    padding-top: 50px;
+}
+
+.tweets-section {
+    float: right;
+    width: 330px;
+    padding-top: 50px;
 }

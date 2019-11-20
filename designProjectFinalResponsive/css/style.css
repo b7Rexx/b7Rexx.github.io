@@ -157,7 +157,8 @@ a.icon-user {
     background: #eeeeee;
     width: inherit;
     display: none;
-    z-index: 10;}
+    z-index: 10;
+}
 
 .dropdown-list ul li {
     background-image: none;
@@ -190,6 +191,7 @@ a.icon-user {
     position: absolute;
     background: #eeeeee;
     display: none;
+    z-index: 10;
 }
 
 .nav-dropdown-list ul li a {
@@ -721,6 +723,7 @@ footer.dark-bg-wrapper {
 .nav-block {
     display: none;
 }
-.nav-mobile-container:hover .nav-block{
+
+.nav-mobile-container:hover .nav-block {
     display: block;
 }

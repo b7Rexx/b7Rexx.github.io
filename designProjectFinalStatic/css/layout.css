@@ -93,13 +93,8 @@ nav {
 
 .featured-list ul li {
     float: left;
-    /*padding-left: 25px;*/
-    padding-left: 19px;
+    padding: 0 9.375px;
 }
-
-/*.featured-list ul li:first-child {*/
-/*    padding-left: 0;*/
-/*}*/
 
 .item-block, .special-block {
     padding-top: 25px;
@@ -107,11 +102,7 @@ nav {
 
 .special-list ul li {
     float: left;
-    padding-left: 24px;
-}
-
-.special-list ul li:first-child {
-    padding-left: 0;
+    padding: 0 8px;
 }
 
 .col-1-left {
@@ -156,7 +147,7 @@ nav {
 }
 
 /*.best-seller-list ul li:first-child {*/
-    /*padding-left: 0;*/
+/*padding-left: 0;*/
 /*}*/
 
 .col-footer-left {
@@ -179,7 +170,7 @@ nav {
     float: right;
     width: 174px;
     padding-top: 50px;
-    }
+}
 
 .newsletter-section {
     float: left;

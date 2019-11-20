@@ -263,6 +263,10 @@ a.icon-user {
     display: none;
 }
 
+.slider-image-block ul li figure img {
+    width: 100%;
+}
+
 .slider-image-block ul li.active {
     display: block;
 }

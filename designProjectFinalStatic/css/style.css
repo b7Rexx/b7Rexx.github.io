@@ -385,9 +385,9 @@ span.sale-tag {
     font-size: 7.065em;
     font-weight: 200;
     color: white;
-    line-height: 0.480em;
-    display: block;
+    line-height: 1.106em;
     padding-top: 45px;
+    border-bottom: 1px dotted white;
 }
 
 .special-detail {
@@ -395,13 +395,25 @@ span.sale-tag {
     font-size: 1.05em;
     font-weight: 400;
     color: white;
-    line-height: 3.061em;
+    line-height: 0;
     display: block;
     padding-top: 32px;
 }
 
 .green-special {
     background-image: url("../images/green-bubble-bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.blue-special {
+    background-image: url("../images/blue-bubble-bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.orange-special {
+    background-image: url("../images/orange-bubble-bg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -481,7 +493,8 @@ span.sale-tag {
     background: white;
     height: 161px;
     width: 122px;
-    padding: 8px;
+    /*padding: 8px;*/
+    padding: 3px;
 }
 
 .best-seller-content figure {
@@ -497,6 +510,7 @@ span.sale-tag {
 
 .best-seller-price {
     text-align: center;
+    padding-top: 10px;
 }
 
 .best-seller-price span {

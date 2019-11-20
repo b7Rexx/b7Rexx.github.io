@@ -93,12 +93,13 @@ nav {
 
 .featured-list ul li {
     float: left;
-    padding-left: 25px;
+    /*padding-left: 25px;*/
+    padding-left: 19px;
 }
 
-.featured-list ul li:first-child {
-    padding-left: 0;
-}
+/*.featured-list ul li:first-child {*/
+/*    padding-left: 0;*/
+/*}*/
 
 .item-block, .special-block {
     padding-top: 25px;
@@ -154,9 +155,9 @@ nav {
     padding-bottom: 19px;
 }
 
-.best-seller-list ul li:first-child {
-    padding-left: 0;
-}
+/*.best-seller-list ul li:first-child {*/
+    /*padding-left: 0;*/
+/*}*/
 
 .col-footer-left {
     float: left;

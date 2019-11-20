@@ -95,12 +95,16 @@
         float: left;
         padding: 0;
     }
+
+    .slider-image-block ul li {
+        min-height: 150px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
     .wrapper {
         min-width: 90em;
-        overflow: scroll;
+        overflow: auto;
     }
 
     .container {
@@ -199,5 +203,7 @@
     .login-form-block label {
         display: inline-block;
     }
-
+    .slider-image-block ul li {
+        min-height: 450px;
+    }
 }

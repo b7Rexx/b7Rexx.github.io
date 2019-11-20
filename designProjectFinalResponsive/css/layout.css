@@ -52,6 +52,11 @@
     display: block;
 }
 
+.login-mobile-container:hover .login-hover {
+    color: #cc003e;
+    background-image: url("../images/arrow-up.png");
+}
+
 nav {
     padding: 20px 0;
 }

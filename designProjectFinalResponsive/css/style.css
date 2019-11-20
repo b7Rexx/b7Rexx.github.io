@@ -130,6 +130,10 @@ a.icon-user {
     margin-right: 40px;
 }
 
+.navbar ul li a:hover {
+    color: #cc003e;
+}
+
 .search-form {
     padding: 7px;
     background: white;
@@ -277,6 +281,11 @@ a.icon-user {
 
 .slider-image-block ul li {
     display: none;
+    min-height: 100px;
+    background: transparent;
+    background-image: url("../images/noimg.png");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .slider-image-block ul li figure img {

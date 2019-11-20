@@ -330,6 +330,14 @@ a.icon-user {
     height: 324px;
     width: 210px;
     padding: 8px;
+    box-shadow: 0 0 5px #8e8e8e;
+}
+
+.item-content:hover {
+    height: 332px;
+    width: 218px;
+    padding: 4px;
+    box-shadow: 0 0 5px #cc003e;
 }
 
 .item-content figure img {
@@ -495,7 +503,16 @@ span.sale-tag {
     width: 122px;
     /*padding: 8px;*/
     padding: 3px;
+    box-shadow: 0 0 5px #8e8e8e;
 }
+
+.best-seller-content:hover {
+    height: 165px;
+    width: 126px;
+    padding: 1px;
+    box-shadow: 0 0 5px #cc003e;
+}
+
 
 .best-seller-content figure {
     /*padding-bottom: 14px;*/
@@ -655,6 +672,9 @@ footer.dark-bg-wrapper {
     font-size: 0.6875em;
     padding: 40px 0;
     color: #909090;
+    background-image: url("../images/line-footer.png");
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .footer-bottom * {

@@ -157,7 +157,7 @@ a.icon-user {
     background: #eeeeee;
     width: inherit;
     display: none;
-}
+    z-index: 10;}
 
 .dropdown-list ul li {
     background-image: none;

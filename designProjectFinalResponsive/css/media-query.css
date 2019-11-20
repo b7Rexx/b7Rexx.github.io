@@ -40,6 +40,61 @@
         padding-bottom: 19px;
         width: auto;
     }
+
+    .header-top-right, .header-top-left {
+        width: auto;
+    }
+
+    .login-form-block {
+        display: block;
+        padding: 15px 0;
+    }
+
+    .login-form-block label {
+        display: none;
+    }
+
+    .login-hover {
+        display: none;
+    }
+
+    .login-form-block input {
+        margin-bottom: 0;
+    }
+
+    .form-input {
+        margin-bottom: 0;
+    }
+
+    .form-input input {
+        width: auto;
+    }
+
+    .login-form-block form {
+        display: inline-block;
+    }
+
+    .button-red {
+        display: inline-block;
+    }
+
+    .has-forgot-pass input {
+        width: 7.3em;
+        display: inline;
+    }
+
+    .nav-hover {
+        display: none;
+    }
+
+    .nav-block {
+        display: block;
+    }
+
+    .navbar ul li {
+        float: left;
+        padding: 0;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -124,9 +179,25 @@
 
     .dotted-spacer-separator {
         padding-left: 0;
+        padding-right: 0;
     }
+
     .blog-list, .about-content {
         padding-left: 0;
+    }
+
+    .header-top-right-list ul li {
+        padding: 0 15px;
+        margin-top: 0;
+    }
+
+    .login-form-block {
+        display: block;
+        padding: 15px 165px;
+    }
+
+    .login-form-block label {
+        display: inline-block;
     }
 
 }

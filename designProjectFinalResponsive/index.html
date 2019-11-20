@@ -50,61 +50,69 @@
         <div class="clearfix"></div>
     </div>
     <div class="header-bottom dotted-spacer-separator">
-        <div class="login-form-block">
-            <form action="#">
-                <label>Log-in: </label>
-                <div class="form-input">
-                    <input type="email" placeholder="E-mail address" name="email" value="">
-                </div>
-                <div class="form-input has-forgot-pass">
-                    <input type="password" placeholder="Password" name="password" value="">
-                    <a href="#">Forget?</a>
-                </div>
-                <input type="submit" value="Log-in" class="button-red">
-            </form>
-            <a href="#" class="button-red">Continue as guest</a>
+        <div class="login-mobile-container">
+            <div class="login-hover">Login</div>
+            <div class="login-form-block">
+                <form action="#">
+                    <label>Log-in: </label>
+                    <div class="form-input">
+                        <input type="email" placeholder="E-mail address" name="email" value="">
+                    </div>
+                    <div class="form-input has-forgot-pass">
+                        <input type="password" placeholder="Password" name="password" value="">
+                        <a href="#">Forget?</a>
+                    </div>
+                    <input type="submit" value="Log-in" class="button-red">
+                </form>
+                <a href="#" class="button-red">Continue as guest</a>
+            </div>
         </div>
     </div>
 </header>
 <nav class="container">
-    <div class="nav-left">
-        <div class="navbar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li>
-                    <div class="nav-dropdown">
-                        <a href="#" class="dropdown-head">Women</a>
-                        <div class="nav-dropdown-list">
-                            <ul>
-                                <li><a href="#">Women 1</a></li>
-                                <li><a href="#">Women 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="nav-dropdown">
-                        <a href="#" class="dropdown-head">Men</a>
-                        <div class="nav-dropdown-list">
-                            <ul>
-                                <li><a href="#">Men 1</a></li>
-                                <li><a href="#">Men 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact & info</a></li>
-                <li><a href="#">Features</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="nav-right">
-        <div class="search-form">
-            <figure>
-                <img src="images/search-icon.png" alt="search">
-            </figure>
-            <input type="text" placeholder="search here">
+    <div class="nav-mobile-container">
+        <div class="nav-hover"><img src="images/list.png" alt="nav hover"></div>
+        <div class="nav-block">
+            <div class="nav-left">
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <div class="nav-dropdown">
+                                <a href="#" class="dropdown-head">Women</a>
+                                <div class="nav-dropdown-list">
+                                    <ul>
+                                        <li><a href="#">Women 1</a></li>
+                                        <li><a href="#">Women 2</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nav-dropdown">
+                                <a href="#" class="dropdown-head">Men</a>
+                                <div class="nav-dropdown-list">
+                                    <ul>
+                                        <li><a href="#">Men 1</a></li>
+                                        <li><a href="#">Men 2</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact & info</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="search-form">
+                    <figure>
+                        <img src="images/search-icon.png" alt="search">
+                    </figure>
+                    <input type="text" placeholder="search here">
+                </div>
+            </div>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -218,145 +226,156 @@
             <div class="featured-list">
                 <ul>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <!--                                    <span class="sale-tag"></span>-->
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block1.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Striped colorfull dress </h4>
-                                        <span>$29.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <!--                                    <span class="sale-tag"></span>-->
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block1.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Striped colorfull dress </h4>
+                                            <span>$29.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <span class="sale-tag"></span>
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block2.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Elegant sweater with tie</h4>
-                                        <span>$59.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <span class="sale-tag"></span>
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block2.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Elegant sweater with tie</h4>
+                                            <span>$59.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <span class="sale-tag"></span>
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block1.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Striped colorfull dress </h4>
-                                        <span>$29.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <span class="sale-tag"></span>
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block1.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Striped colorfull dress </h4>
+                                            <span>$29.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <!--                                    <span class="sale-tag"></span>-->
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block2.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Elegant sweater with tie</h4>
-                                        <span>$59.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <!--                                    <span class="sale-tag"></span>-->
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block2.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Elegant sweater with tie</h4>
+                                            <span>$59.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <!--                </ul>-->
-                    <!--                <div class="clearfix"></div>-->
-                    <!--            </div>-->
-                    <!--            <div class="featured-list">-->
-                    <!--                <ul>-->
-                    <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <span class="sale-tag"></span>
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block1.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Striped colorfull dress </h4>
-                                        <span>$29.99</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <span class="sale-tag"></span>
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block2.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Elegant sweater with tie</h4>
-                                        <span>$59.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <span class="sale-tag"></span>
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block1.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Striped colorfull dress </h4>
+                                            <span>$29.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <!--                                    <span class="sale-tag"></span>-->
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block1.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Striped colorfull dress </h4>
-                                        <span>$29.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <span class="sale-tag"></span>
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block2.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Elegant sweater with tie</h4>
+                                            <span>$59.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="item-block">
-                            <div class="item-shadow-box">
-                                <!--  span sale tag -->
-                                <!--                                    <span class="sale-tag"></span>-->
-                                <div class="item-content">
-                                    <figure>
-                                        <img src="images/img-block2.png" alt="item image">
-                                    </figure>
-                                    <div class="item-price">
-                                        <h4>Elegant sweater with tie</h4>
-                                        <span>$59.99</span>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <!--                                    <span class="sale-tag"></span>-->
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block1.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Striped colorfull dress </h4>
+                                            <span>$29.99</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="item-block">
+                                <div class="item-shadow-box">
+                                    <!--  span sale tag -->
+                                    <!--                                    <span class="sale-tag"></span>-->
+                                    <div class="item-content">
+                                        <figure>
+                                            <img src="images/img-block2.png" alt="item image">
+                                        </figure>
+                                        <div class="item-price">
+                                            <h4>Elegant sweater with tie</h4>
+                                            <span>$59.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -482,72 +501,80 @@
                             <div class="best-seller-list">
                                 <ul>
                                     <li>
-                                        <div class="best-seller">
-                                            <div class="best-seller-shadow-box">
-                                                <!--  span sale tag -->
-                                                <span class="sale-tag"></span>
-                                                <div class="best-seller-content">
-                                                    <figure>
-                                                        <img src="images/img-block1.png" alt="best-seller image">
-                                                    </figure>
-                                                    <div class="best-seller-price">
-                                                        <span>$29.99</span>
+                                        <a href="#">
+                                            <div class="best-seller">
+                                                <div class="best-seller-shadow-box">
+                                                    <!--  span sale tag -->
+                                                    <span class="sale-tag"></span>
+                                                    <div class="best-seller-content">
+                                                        <figure>
+                                                            <img src="images/img-block1.png" alt="best-seller image">
+                                                        </figure>
+                                                        <div class="best-seller-price">
+                                                            <span>$29.99</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <div class="best-seller">
-                                            <div class="best-seller-shadow-box">
-                                                <!--  span sale tag -->
-                                                <!--                                                <span class="sale-tag"></span>-->
-                                                <div class="best-seller-content">
-                                                    <figure>
-                                                        <img src="images/img-block2.png" alt="best-seller image">
-                                                    </figure>
-                                                    <div class="best-seller-price">
-                                                        <span>$29.99</span>
+                                        <a href="#">
+                                            <div class="best-seller">
+                                                <div class="best-seller-shadow-box">
+                                                    <!--  span sale tag -->
+                                                    <!--                                                <span class="sale-tag"></span>-->
+                                                    <div class="best-seller-content">
+                                                        <figure>
+                                                            <img src="images/img-block2.png" alt="best-seller image">
+                                                        </figure>
+                                                        <div class="best-seller-price">
+                                                            <span>$29.99</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="best-seller-list">
                                 <ul>
                                     <li>
-                                        <div class="best-seller">
-                                            <div class="best-seller-shadow-box">
-                                                <!--  span sale tag -->
-                                                <!--                                                <span class="sale-tag"></span>-->
-                                                <div class="best-seller-content">
-                                                    <figure>
-                                                        <img src="images/img-block1.png" alt="best-seller image">
-                                                    </figure>
-                                                    <div class="best-seller-price">
-                                                        <span>$29.99</span>
+                                        <a href="#">
+                                            <div class="best-seller">
+                                                <div class="best-seller-shadow-box">
+                                                    <!--  span sale tag -->
+                                                    <!--                                                <span class="sale-tag"></span>-->
+                                                    <div class="best-seller-content">
+                                                        <figure>
+                                                            <img src="images/img-block1.png" alt="best-seller image">
+                                                        </figure>
+                                                        <div class="best-seller-price">
+                                                            <span>$29.99</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <div class="best-seller">
-                                            <div class="best-seller-shadow-box">
-                                                <!--  span sale tag -->
-                                                <span class="sale-tag"></span>
-                                                <div class="best-seller-content">
-                                                    <figure>
-                                                        <img src="images/img-block2.png" alt="best-seller image">
-                                                    </figure>
-                                                    <div class="best-seller-price">
-                                                        <span>$29.99</span>
+                                        <a href="#">
+                                            <div class="best-seller">
+                                                <div class="best-seller-shadow-box">
+                                                    <!--  span sale tag -->
+                                                    <span class="sale-tag"></span>
+                                                    <div class="best-seller-content">
+                                                        <figure>
+                                                            <img src="images/img-block2.png" alt="best-seller image">
+                                                        </figure>
+                                                        <div class="best-seller-price">
+                                                            <span>$29.99</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

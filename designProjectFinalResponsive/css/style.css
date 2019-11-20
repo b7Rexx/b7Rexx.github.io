@@ -19,7 +19,8 @@
     background-image: url("../images/dot-seperator.png");
     background-position: left;
     background-repeat: no-repeat;
-    padding: 0 15px;
+    padding: 0 8px;
+    margin-top: 15px;
 }
 
 .header-top-right-list ul li:last-child {
@@ -70,6 +71,7 @@ a.icon-user {
     background-position: bottom;
     background-repeat: repeat-x;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .form-input {
@@ -79,6 +81,7 @@ a.icon-user {
     display: inline-block;
     font-size: 0.75em;
     margin-right: 8px;
+    margin-bottom: 3px;
     border: 1px solid #d9d9d9;
 }
 
@@ -98,14 +101,8 @@ a.icon-user {
 }
 
 .login-form-block form {
-    display: inline-block;
+    display: block;
     margin-right: 10px;
-}
-
-.login-form-block label {
-    font-size: 0.75em;
-    font-weight: bold;
-    padding: 0 3px;
 }
 
 .button-red {
@@ -115,12 +112,16 @@ a.icon-user {
     text-decoration: none;
     color: white;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     font-size: 0.75em;
+    max-width: 40%;
+    text-align: center;
+    /*float: right;*/
 }
 
 .navbar ul li {
-    float: left;
+    float: none;
+    padding: 10px;
 }
 
 .navbar ul li a {
@@ -704,4 +705,22 @@ footer.dark-bg-wrapper {
     background-image: url("../images/dot-seperator.png");
     background-repeat: no-repeat;
     background-position: left;
+}
+
+.nav-hover {
+    display: block;
+    text-align: right;
+}
+
+.nav-hover img {
+    height: 20px;
+    width: 20px;
+    padding-right: 10px;
+}
+
+.nav-block {
+    display: none;
+}
+.nav-mobile-container:hover .nav-block{
+    display: block;
 }

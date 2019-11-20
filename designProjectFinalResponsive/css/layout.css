@@ -18,12 +18,38 @@
 }
 
 .header-top-right {
-    width: 100%;
+    width: auto;
     float: right;
 }
 
 .login-form-block {
-    padding: 15px 165px;
+    display: none;
+    padding: 15px 0;
+    /*text-align: center*/
+}
+
+.login-form-block input {
+    margin-bottom: 2px;
+}
+
+.login-form-block label {
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0 3px;
+    display: none;
+}
+
+.login-hover {
+    display: block;
+    margin-right: 20px;
+    padding: 10px;
+    background-image: url("../images/arrow-down.png");
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.login-mobile-container:hover .login-form-block {
+    display: block;
 }
 
 nav {
@@ -97,6 +123,10 @@ nav {
     float: left;
     /*padding: 0 9.375px;*/
     width: 100%;
+}
+
+.featured-list ul li > a, .best-seller-list ul li > a {
+    text-decoration: none;
 }
 
 .item-block, .special-block {

@@ -1,0 +1,132 @@
+@media only screen and (min-width: 600px) {
+    .col-footer-left {
+        padding-left: 10px;
+    }
+
+    .col-footer-right {
+        padding-left: 10px;
+    }
+
+    .navigation-section {
+        width: 27.1457%;
+        padding-left: 0;
+    }
+
+    .aboutus-section {
+        float: right;
+        width: 39.1891%;
+        padding-left: 0;
+    }
+
+    .newsletter-section {
+        width: 52.9279%;
+        padding-left: 0;
+    }
+
+    .tweets-section {
+        float: right;
+        width: 65.8682%;
+        padding-left: 0;
+    }
+
+    .featured-list ul li {
+        /*padding: 0 9.375px;*/
+        width: 50%;
+    }
+
+    .best-seller-list ul li {
+        float: left;
+        padding-left: 19px;
+        padding-bottom: 19px;
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .wrapper {
+        min-width: 90em;
+        overflow: scroll;
+    }
+
+    .container {
+        max-width: 61.25em;
+    }
+
+    .slider-section {
+        width: 90em;
+    }
+
+    .slider-text-content h1 {
+        display: block;
+    }
+
+
+    .slider-text-paragraph {
+        width: 35.625em;
+        padding: 18px 22px;
+    }
+
+    .slider-text-paragraph p {
+        display: inline;
+    }
+
+    .col-footer-left {
+        width: 51.1224%;
+        padding-left: 0;
+    }
+
+    .col-footer-right {
+        float: right;
+        width: 45.3061%;
+        padding-left: 0;
+    }
+
+    .col-1-left {
+        width: 37.2448%;
+    }
+
+    .col-1-right {
+        width: 59.1836%;
+    }
+
+    .best-seller-block {
+        width: 50.8620%;
+    }
+
+    .about-block {
+        width: 43.1034%;
+    }
+
+
+    .welcome-image {
+        /*width: 450px;*/
+        width: 45.9183%;
+        padding: 0 25px;
+        float: left;
+    }
+
+    .welcome-content {
+        float: right;
+        padding: 65px 20px 0 20px;
+        /*width: 440px;*/
+        width: 44.8979%;
+    }
+
+    .featured-list ul li {
+        padding: 0 9.375px;
+        width: auto;
+    }
+
+    .special-list ul li {
+        padding: 0 8px;
+        width: auto;
+    }
+
+    .dotted-spacer-separator {
+        padding-left: 0;
+    }
+    .blog-list, .about-content {
+        padding-left: 0;
+    }
+
+}

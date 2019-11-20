@@ -69,6 +69,7 @@ a.icon-user {
     background-image: url("../images/spacer-seperator.png");
     background-position: bottom;
     background-repeat: repeat-x;
+    padding-left: 10px;
 }
 
 .form-input {
@@ -204,7 +205,7 @@ a.icon-user {
 
 .slider-text-block {
     position: absolute;
-    top: 270px;
+    top: 54%;
 }
 
 .slider-text-content h1 {
@@ -214,21 +215,33 @@ a.icon-user {
     padding: 25px;
     background: #cd164f;
     color: white;
-    float: left;
     margin-bottom: 3px;
+    display: none;
 }
 
-.slider-text-content p {
+.slider-text-paragraph {
+    width: 100%;
+    background: #cd164f;
+    color: white;
+    padding: 5px 10px;
+}
+
+.slider-text-paragraph p {
     font-size: 0.75em;
     line-height: 1.667em;
     height: 2.417em;
-    width: 47.500em;
-    padding: 18px 22px;
-    background: #cd164f;
+    overflow: hidden;
+    display: none;
+}
+
+.slider-text-paragraph a {
+    font-weight: bold;
+    text-decoration: none;
     color: white;
 }
 
-.slider-text-content p a {
+.slider-text-content a {
+    font-size: 0.75em;
     font-weight: bold;
     text-decoration: none;
     color: white;
@@ -303,6 +316,7 @@ a.icon-user {
 
 .welcome-content p strong {
     font-size: 1.077em;
+    display: block;
 }
 
 .featured-head a {
@@ -324,9 +338,8 @@ a.icon-user {
 
 .item-shadow-box {
     position: relative;
-    /*height: 340px;*/
-    /*width: 226px;*/
-    /*padding: 4px;*/
+    width: 226px;
+    margin: auto;
 }
 
 .item-content {
@@ -385,6 +398,7 @@ span.sale-tag {
     height: 180px;
     width: 310px;
     text-align: center;
+    margin: auto;
 }
 
 .special-content a {
@@ -496,16 +510,14 @@ span.sale-tag {
 
 .best-seller-shadow-box {
     position: relative;
-    /*height: 340px;*/
-    /*width: 226px;*/
-    /*padding: 4px;*/
+    width: 128px;
+    margin: auto;
 }
 
 .best-seller-content {
     background: white;
     height: 161px;
     width: 122px;
-    /*padding: 8px;*/
     padding: 3px;
     box-shadow: 0 0 5px #8e8e8e;
 }
@@ -634,7 +646,8 @@ footer.dark-bg-wrapper {
 .newsletter-input {
     background: #e2e2e2;
     margin-top: 15px;
-    padding: 10px 10px 10px 40px;
+    padding: 10px 5px 10px 40px;
+    width: 80%;
     background-image: url("../images/mail-black-icon.png");
     background-repeat: no-repeat;
     background-position: 10px;
@@ -658,7 +671,7 @@ footer.dark-bg-wrapper {
 
 .social ul li {
     float: left;
-    padding-right: 5px;
+    padding-right: 2px;
 }
 
 .credit-card {
@@ -667,7 +680,7 @@ footer.dark-bg-wrapper {
 
 .credit-card ul li {
     float: left;
-    padding-right: 5px;
+    padding-right: 2px;
 }
 
 .footer-bottom {

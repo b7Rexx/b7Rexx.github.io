@@ -1,11 +1,10 @@
 .wrapper {
     width: 100%;
-    min-width: 90em;
     background-image: url("../images/square-pattern-bg.png");
 }
 
 .container {
-    width: 61.25em;
+    width: 100%;
     margin: auto;
 }
 
@@ -14,10 +13,12 @@
 }
 
 .header-top-left {
+    width: 100%;
     float: left;
 }
 
 .header-top-right {
+    width: 100%;
     float: right;
 }
 
@@ -39,7 +40,6 @@ nav {
 
 .slider-section {
     position: relative;
-    width: 90em;
     margin: auto;
     padding-bottom: 12px;
 }
@@ -51,13 +51,15 @@ nav {
 }
 
 .welcome-section {
+    width: 100%;
     padding: 35px 0;
 }
 
 .welcome-image {
-    width: 450px;
-    padding: 0 25px;
-    float: left;
+    width: 100%;
+    padding: 0;
+    max-width: 450px;
+    margin: auto;
 }
 
 .welcome-image img {
@@ -66,13 +68,13 @@ nav {
 }
 
 .welcome-content {
-    float: right;
-    padding: 65px 20px 0 20px;
-    width: 440px;
+    float: none;
+    padding: 65px 0 0 0;
+    width: 100%;
     text-align: center;
 }
 
-.featured-section, .special-section, .blog-section, .best-seller-section, .about-section {
+.featured-section, .special-section {
     padding-bottom: 40px;
 }
 
@@ -93,7 +95,8 @@ nav {
 
 .featured-list ul li {
     float: left;
-    padding: 0 9.375px;
+    /*padding: 0 9.375px;*/
+    width: 100%;
 }
 
 .item-block, .special-block {
@@ -102,36 +105,38 @@ nav {
 
 .special-list ul li {
     float: left;
-    padding: 0 8px;
+    /*padding: 0 8px;*/
+    width: 100%;
 }
 
 .col-1-left {
     float: left;
-    width: 365px;
+    width: 100%;
 }
 
 .col-1-right {
     float: right;
-    width: 580px;
+    width: 100%;
 }
 
 .blog {
-    width: 365px;
+    width: 100%;
 }
 
 .best-seller-block {
     float: left;
-    width: 295px;
+    width: 100%;
     padding-bottom: 50px;
 }
 
 .about-block {
     float: right;
-    width: 250px;
+    width: 100%;
 }
 
-.blog-list, .about-list {
+.blog-list, .about-content {
     padding-bottom: 50px;
+    padding-left: 10px;
 }
 
 .list-layers, .about-content {
@@ -142,8 +147,9 @@ nav {
 
 .best-seller-list ul li {
     float: left;
-    padding-left: 19px;
+    /*padding-left: 19px;*/
     padding-bottom: 19px;
+    width: 50%;
 }
 
 /*.best-seller-list ul li:first-child {*/
@@ -152,34 +158,40 @@ nav {
 
 .col-footer-left {
     float: left;
-    width: 501px;
+    width: 95%;
+    padding-left: 0;
 }
 
 .col-footer-right {
-    float: right;
-    width: 444px;
+    float: left;
+    width: 95%;
+    padding-left: 0;
 }
 
 .navigation-section {
     float: left;
-    width: 136px;
+    width: 95%;
     padding-top: 50px;
+    padding-left: 10px;
 }
 
 .aboutus-section {
-    float: right;
-    width: 174px;
+    float: left;
+    width: 95%;
     padding-top: 50px;
+    padding-left: 10px;
 }
 
 .newsletter-section {
     float: left;
-    width: 235px;
+    width: 95%;
     padding-top: 50px;
+    padding-left: 10px;
 }
 
 .tweets-section {
-    float: right;
-    width: 330px;
+    float: left;
+    width: 95%;
     padding-top: 50px;
+    padding-left: 10px;
 }

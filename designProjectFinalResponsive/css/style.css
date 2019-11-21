@@ -707,7 +707,11 @@ footer.dark-bg-wrapper {
 }
 
 .footer-bottom * {
-    display: inline
+    display: inline-block;
+}
+
+.footer-bottom figure img {
+    max-height: 25px;
 }
 
 .software-by {

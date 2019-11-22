@@ -17,3 +17,7 @@ ol, ul {
     clear: both;
     display: table;
 }
+
+input {
+    outline: none;
+}

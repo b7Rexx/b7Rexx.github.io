@@ -63,6 +63,7 @@ nav {
 
 .nav-left {
     float: left;
+    padding-left: 10px;
 }
 
 .nav-right {

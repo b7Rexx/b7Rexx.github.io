@@ -25,7 +25,7 @@ function objNormalize(obj1) {
             objNormalize(value);
             return value.id;
         });
-        saveNormal.children = test;
+        saveNormal.children = childrens;
     }
     outputNormalized.push(saveNormal);
 }

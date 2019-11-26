@@ -19,12 +19,12 @@ function sortBy(array, key) {
         if (value.hasOwnProperty(key))
             sortArray.push([index, value[key]]);
     });
-    sortArray.sort(function (a, b) {
-        a = a[1];
-        b = b[1];
-        return a < b ? -1 : (a > b ? 1 : 0);
+    sortArray.sort(function (first, second) {
+        first = first[1];
+        second = second[1];
+        return first < second ? -1 : (first > second ? 1 : 0);
     });
-    sortArray.forEach(function (value, index) {
+    sortArray.forEach(function (value) {
         newArray.push(array[value[0]]);
     });
     return newArray;

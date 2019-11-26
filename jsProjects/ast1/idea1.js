@@ -1,3 +1,4 @@
+var SLIDE_TIMER = 4000;
 var wrapper = document.getElementById('wrapper');
 var carousel = document.createElement('div');
 var imageBlock = document.createElement('div');
@@ -6,9 +7,9 @@ var rightArrow = document.createElement('span');
 var leftArrow = document.createElement('span');
 var imageDotul = document.createElement('ul');
 
-var imageArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 var imageInit = 0;
-var imageInterval = setInterval(imageChange, 4000);
+var setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
+var imageArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
 
 wrapper.appendChild(carousel);
 carousel.appendChild(imageBlock);
@@ -53,7 +54,6 @@ leftArrow.style.opacity = '0.7';
 leftArrow.innerHTML = '&#10094;';
 
 imageDotul.style.position = 'absolute';
-imageDotul.style.bottom = 0;
 imageDotul.style.left = '40%';
 imageDotul.style.bottom = '10px';
 
@@ -63,7 +63,7 @@ leftArrow.addEventListener('click', function () {
     else {
         imageInit = (imageArray.length - 1);
     }
-    imageByIndex(imageInit);
+    changeImageByIndex(imageInit);
     resetImageInterval();
 });
 
@@ -73,7 +73,7 @@ rightArrow.addEventListener('click', function () {
     else {
         imageInit = 0;
     }
-    imageByIndex(imageInit);
+    changeImageByIndex(imageInit);
     resetImageInterval();
 });
 
@@ -109,21 +109,21 @@ imageArray.forEach(function (value, index) {
 
     imageDotA.addEventListener('click', function () {
         imageInit = index;
-        imageByIndex(index);
+        changeImageByIndex(index);
         resetImageInterval();
     });
 });
 
-function imageChange() {
+function setImageIntervalFunc() {
     if (imageArray.length <= (imageInit + 1)) {
         imageInit = 0;
     } else {
         imageInit += 1;
     }
-    imageByIndex(imageInit);
+    changeImageByIndex(imageInit);
 }
 
-function imageByIndex(index) {
+function changeImageByIndex(index) {
     if (imageArray.hasOwnProperty(index))
         image.src = './images/' + imageArray[index];
 
@@ -132,6 +132,6 @@ function imageByIndex(index) {
 }
 
 function resetImageInterval() {
-    clearInterval(imageInterval);
-    imageInterval = setInterval(imageChange, 4000);
+    clearInterval(setImageInterval);
+    setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
 }

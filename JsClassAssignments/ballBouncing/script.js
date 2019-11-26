@@ -1,3 +1,6 @@
+var SPEED = 10;
+var BOX_HEIGHT = 400;
+var CIRCLE_DIAMETER = 50;
 var wrapper = document.getElementById('wrapper');
 var box = document.createElement('div');
 var circle = document.createElement('span');
@@ -8,25 +11,21 @@ var direction = true;
 wrapper.appendChild(box);
 box.appendChild(circle);
 
-box.style.height = '200px';
+box.style.height = BOX_HEIGHT + 'px';
 box.style.width = '200px';
 box.style.background = 'whitesmoke';
 box.style.position = 'relative';
 
-circle.style.height = '50px';
-circle.style.width = '50px';
+circle.style.height = CIRCLE_DIAMETER + 'px';
+circle.style.width = CIRCLE_DIAMETER + 'px';
 circle.style.background = 'blue';
 circle.style.borderRadius = '50%';
 circle.style.position = 'absolute';
 
 
-var circleInterval = setInterval(function () {
-
-    var boxHeight = parseInt((box.style.height).replace('px', ''));
-    var circleHeight = parseInt((circle.style.height).replace('px', ''));
-    // console.log(typeof (circlePosition));
+var setBounceInterval = setInterval(function () {
     if (direction) {
-        if ((boxHeight - circleHeight) >= circlePosition)
+        if ((BOX_HEIGHT - CIRCLE_DIAMETER) >= circlePosition)
             circlePosition += 1;
         else {
             circlePosition -= 1;
@@ -41,8 +40,8 @@ var circleInterval = setInterval(function () {
         }
     }
     circle.style.top = circlePosition + 'px';
-}, 10);
+}, SPEED);
 
 setTimeout(function () {
-    clearInterval(circleInterval);
-}, 60000);
+    clearInterval(setBounceInterval);
+}, 120000);

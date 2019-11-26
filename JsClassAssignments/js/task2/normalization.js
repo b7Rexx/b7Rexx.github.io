@@ -6,13 +6,17 @@ var input = {
         name: 'John',
         children: [
             {id: 2, name: 'Sally'},
-            {id: 3, name: 'Mark', children: [{id: 4, name: 'Harry'}]}
+            {id: 3, name: 'Mark', children: [{id: 4, name: 'Harry'}]},
+            {id: 7, name: 'Mark', children: [{id: 8, name: 'Harry'}]}
         ]
     },
     '5': {
         id: 5,
         name: 'Mike',
-        children: [{id: 6, name: 'Peter'}]
+        children: [
+            {id: 6, name: 'Peter'},
+            {id: 9, name: 'Peter'}
+            ]
     }
 };
 

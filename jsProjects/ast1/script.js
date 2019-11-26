@@ -68,12 +68,17 @@ Object.values(listArrayButtons).forEach(function (value, index) {
     });
 });
 
+/*
+set default image slider by SLIDE_TIMER
+ */
 function setImageIntervalFunc() {
-    if (carouselWrapperIndex >= imageArray.length)
-        carouselWrapperIndex = 0;
     wrapperSliderByImageIndex((carouselWrapperIndex + 1));
 }
 
+/*
+@param {int} imageIndex
+imageIndex from imageArray index
+ */
 function wrapperSliderByImageIndex(imageIndex) {
     var imageNewIndex = 0;
     if (imageIndex < 0) {
@@ -108,21 +113,29 @@ function wrapperSliderByImageIndex(imageIndex) {
         listArrayButtons[imageNewIndex].className += ' active';
 }
 
-
+/*
+@param {int} start
+@param {int} end
+start,end from imageArray index
+ */
 function slideImageAnimation(start, end) {
     animationWrapperStart = start * SLIDER_LENGTH;
     animationWrapperEnd = end * SLIDER_LENGTH;
     var smallShiftAnimate = 0;
+
+    //clear remains of interrupted animateInterval
     clearInterval(animateIntervalRight);
     clearInterval(animateIntervalLeft);
-    // carouselWrapper.style.left = '-' + animationWrapperStart + 'px';
+
     if (start < end) {
+
         smallShiftAnimate = animationWrapperStart;
+        //Animate Right
         animateIntervalRight = setInterval(function () {
             smallShiftAnimate += 10;
             carouselWrapper.style.left = '-' + smallShiftAnimate + 'px';
 
-            //complete current interval to reset default interval
+            //clear current interval to reset default interval on complete
             if (smallShiftAnimate >= animationWrapperEnd) {
                 clearInterval(animateIntervalRight);
                 setTimeout(function () {
@@ -136,7 +149,7 @@ function slideImageAnimation(start, end) {
             smallShiftAnimate -= 10;
             carouselWrapper.style.left = '-' + smallShiftAnimate + 'px';
 
-            //complete current interval to reset default interval
+            //clear current interval to reset default interval on complete
             if (smallShiftAnimate <= animationWrapperEnd) {
                 clearInterval(animateIntervalLeft);
                 setTimeout(function () {

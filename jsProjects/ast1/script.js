@@ -12,7 +12,7 @@ var imageDotListParent = document.createElement('ul');
 var carouselWrapperIndex = 0;
 var animateIntervalRight = '';
 var animateIntervalLeft = '';
-var imageArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg'];
+var imageArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 var setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
 
 wrapper.appendChild(carouselBlock);

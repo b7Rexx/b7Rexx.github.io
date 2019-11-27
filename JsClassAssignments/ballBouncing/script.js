@@ -24,24 +24,24 @@ circle.style.position = 'absolute';
 
 
 var setBounceInterval = setInterval(function () {
-    if (direction) {
-        if ((BOX_HEIGHT - CIRCLE_DIAMETER) >= circlePosition)
-            circlePosition += 1;
-        else {
-            circlePosition -= 1;
-            direction = false;
-        }
-    } else {
-        if (0 <= circlePosition)
-            circlePosition -= 1;
-        else {
-            circlePosition += 1;
-            direction = true;
-        }
+  if (direction) {
+    if ((BOX_HEIGHT - CIRCLE_DIAMETER) >= circlePosition)
+      circlePosition += 1;
+    else {
+      circlePosition -= 1;
+      direction = false;
     }
-    circle.style.top = circlePosition + 'px';
+  } else {
+    if (0 <= circlePosition)
+      circlePosition -= 1;
+    else {
+      circlePosition += 1;
+      direction = true;
+    }
+  }
+  circle.style.top = circlePosition + 'px';
 }, SPEED);
 
 setTimeout(function () {
-    clearInterval(setBounceInterval);
+  clearInterval(setBounceInterval);
 }, 120000);

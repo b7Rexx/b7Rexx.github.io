@@ -58,80 +58,80 @@ imageDotul.style.left = '40%';
 imageDotul.style.bottom = '10px';
 
 leftArrow.addEventListener('click', function () {
-    if (imageInit !== 0)
-        imageInit -= 1;
-    else {
-        imageInit = (imageArray.length - 1);
-    }
-    changeImageByIndex(imageInit);
-    resetImageInterval();
+  if (imageInit !== 0)
+    imageInit -= 1;
+  else {
+    imageInit = (imageArray.length - 1);
+  }
+  changeImageByIndex(imageInit);
+  resetImageInterval();
 });
 
 rightArrow.addEventListener('click', function () {
-    if (imageInit !== (imageArray.length - 1))
-        imageInit += 1;
-    else {
-        imageInit = 0;
-    }
-    changeImageByIndex(imageInit);
-    resetImageInterval();
+  if (imageInit !== (imageArray.length - 1))
+    imageInit += 1;
+  else {
+    imageInit = 0;
+  }
+  changeImageByIndex(imageInit);
+  resetImageInterval();
 });
 
 
 imageArray.forEach(function (value, index) {
-    var imageDotli = document.createElement('li');
-    var imageDotA = document.createElement('a');
+  var imageDotli = document.createElement('li');
+  var imageDotA = document.createElement('a');
 
-    imageDotli.style.float = 'left';
-    imageDotli.style.height = '10px';
-    imageDotli.style.width = '10px';
-    imageDotli.style.marginRight = '10px';
-    imageDotli.style.opacity = '0.7';
+  imageDotli.style.float = 'left';
+  imageDotli.style.height = '10px';
+  imageDotli.style.width = '10px';
+  imageDotli.style.marginRight = '10px';
+  imageDotli.style.opacity = '0.7';
 
-    imageDotA.style.height = '10px';
-    imageDotA.style.width = '10px';
-    imageDotA.style.display = 'block';
-    imageDotA.style.borderRadius = '50%';
-    imageDotA.style.border = '2px solid white';
+  imageDotA.style.height = '10px';
+  imageDotA.style.width = '10px';
+  imageDotA.style.display = 'block';
+  imageDotA.style.borderRadius = '50%';
+  imageDotA.style.border = '2px solid white';
+  imageDotA.style.background = 'grey';
+  imageDotA.style.cursor = 'pointer';
+  imageDotA.className += ' image-button';
+
+  imageDotul.appendChild(imageDotli);
+  imageDotli.appendChild(imageDotA);
+
+  imageDotA.addEventListener('mouseover', function () {
+    imageDotA.style.background = 'blue';
+  });
+  imageDotA.addEventListener('mouseout', function () {
     imageDotA.style.background = 'grey';
-    imageDotA.style.cursor = 'pointer';
-    imageDotA.className += ' image-button';
+  });
 
-    imageDotul.appendChild(imageDotli);
-    imageDotli.appendChild(imageDotA);
-
-    imageDotA.addEventListener('mouseover', function () {
-        imageDotA.style.background = 'blue';
-    });
-    imageDotA.addEventListener('mouseout', function () {
-        imageDotA.style.background = 'grey';
-    });
-
-    imageDotA.addEventListener('click', function () {
-        imageInit = index;
-        changeImageByIndex(index);
-        resetImageInterval();
-    });
+  imageDotA.addEventListener('click', function () {
+    imageInit = index;
+    changeImageByIndex(index);
+    resetImageInterval();
+  });
 });
 
 function setImageIntervalFunc() {
-    if (imageArray.length <= (imageInit + 1)) {
-        imageInit = 0;
-    } else {
-        imageInit += 1;
-    }
-    changeImageByIndex(imageInit);
+  if (imageArray.length <= (imageInit + 1)) {
+    imageInit = 0;
+  } else {
+    imageInit += 1;
+  }
+  changeImageByIndex(imageInit);
 }
 
 function changeImageByIndex(index) {
-    if (imageArray.hasOwnProperty(index))
-        image.src = './images/' + imageArray[index];
+  if (imageArray.hasOwnProperty(index))
+    image.src = './images/' + imageArray[index];
 
-    // var imageButtons = document.getElementsByClassName('image-button');
-    // imageButtons[index].style.background ='red';
+  // var imageButtons = document.getElementsByClassName('image-button');
+  // imageButtons[index].style.background ='red';
 }
 
 function resetImageInterval() {
-    clearInterval(setImageInterval);
-    setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
+  clearInterval(setImageInterval);
+  setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
 }

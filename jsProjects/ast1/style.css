@@ -51,13 +51,13 @@ ol, ul {
     opacity: 0.7;
 }
 
-.image-dot-list {
+#image-dot-list {
     position: absolute;
     bottom: 10px;
     left: 40%;
 }
 
-.image-dot-list li {
+#image-dot-list li {
     float: left;
     height: 10px;
     width: 10px;
@@ -65,7 +65,7 @@ ol, ul {
     opacity: 0.7;
 }
 
-.image-dot-list li a {
+#image-dot-list li a {
     height: 10px;
     width: 10px;
     display: block;
@@ -75,10 +75,10 @@ ol, ul {
     cursor: pointer;
 }
 
-.image-dot-list li a:hover {
+#image-dot-list li a:hover {
     background: blue;
 }
 
-.image-dot-list li.active a {
+#image-dot-list li.active a {
     background: red;
 }

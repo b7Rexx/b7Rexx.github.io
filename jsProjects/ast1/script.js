@@ -30,7 +30,7 @@ leftArrow.className += ' left-arrow-btn';
 leftArrow.innerHTML = '&#10094;';
 rightArrow.className += ' right-arrow-btn';
 rightArrow.innerHTML = '&#10095;';
-imageDotListParent.className += ' image-dot-list';
+imageDotListParent.id = 'image-dot-list';
 
 //accumulate images to carousel along with dot buttons
 imageArray.forEach(function (value, index) {
@@ -59,9 +59,8 @@ rightArrow.addEventListener('click', function () {
     wrapperSliderByImageIndex((carouselWrapperIndex + 1));
 });
 
-
-var listArray = document.getElementsByClassName('image-dot-list');
-var listArrayButtons = listArray[0].children || {};
+var listArray = document.getElementById('image-dot-list');
+var listArrayButtons = listArray.getElementsByTagName('li');
 Object.values(listArrayButtons).forEach(function (value, index) {
     value.addEventListener('click', function () {
         wrapperSliderByImageIndex(index);
@@ -103,8 +102,8 @@ function wrapperSliderByImageIndex(imageIndex) {
     }
     carouselWrapperIndex = imageNewIndex;
 
-    var listArray = document.getElementsByClassName('image-dot-list');
-    var listArrayButtons = listArray[0].children || {};
+    // var listArray = document.getElementsByClassName('image-dot-list');
+    // var listArrayButtons = listArray[0].children || {};
     Object.values(listArrayButtons).forEach(function (value) {
         value.classList.remove('active');
     });

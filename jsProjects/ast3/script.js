@@ -1,160 +1,262 @@
-var SLIDE_TIMER = 3000;
-var SLIDER_LENGTH = 500;
-var ANIMATION_SPEED = 15;
-
-var wrapper = document.getElementById('wrapper');
-var carouselBlock = document.createElement('div');
-var carouselWrapper = document.createElement('div');
-var rightArrow = document.createElement('span');
-var leftArrow = document.createElement('span');
-var imageDotListParent = document.createElement('ul');
-
-var carouselWrapperIndex = 0;
-var animateIntervalRight = '';
-var animateIntervalLeft = '';
-var imageArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
-var setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
-
-wrapper.appendChild(carouselBlock);
-carouselBlock.appendChild(carouselWrapper);
-carouselBlock.appendChild(leftArrow);
-carouselBlock.appendChild(rightArrow);
-carouselBlock.appendChild(imageDotListParent);
-
-carouselBlock.className += ' carousel-container';
-carouselBlock.style.height = SLIDER_LENGTH + 'px';
-carouselBlock.style.width = SLIDER_LENGTH + 'px';
-carouselWrapper.className += ' carousel-wrapper';
-carouselWrapper.style.height = SLIDER_LENGTH + 'px';
-leftArrow.className += ' left-arrow-btn';
-leftArrow.innerHTML = '&#10094;';
-rightArrow.className += ' right-arrow-btn';
-rightArrow.innerHTML = '&#10095;';
-imageDotListParent.id = 'image-dot-list';
-
-//accumulate images to carousel along with dot buttons
-imageArray.forEach(function (value, index) {
-  var image = document.createElement('img');
-  image.className += 'carousel-image';
-  image.style.width = SLIDER_LENGTH + 'px';
-  image.src = 'images/' + value;
-  image.alt = value;
-  carouselWrapper.appendChild(image);
-
-  var imageDotList = document.createElement('li');
-  var imageDotA = document.createElement('a');
-  if (index === 0)
-    imageDotList.className += 'active';
-
-  imageDotA.className += 'image-dot-button';
-  imageDotListParent.appendChild(imageDotList);
-  imageDotList.appendChild(imageDotA);
-});
-
-leftArrow.addEventListener('click', function () {
-  wrapperSliderByImageIndex((carouselWrapperIndex - 1));
-});
-
-rightArrow.addEventListener('click', function () {
-  wrapperSliderByImageIndex((carouselWrapperIndex + 1));
-});
-
-var listArray = document.getElementById('image-dot-list');
-var listArrayButtons = listArray.getElementsByTagName('li');
-Object.values(listArrayButtons).forEach(function (value, index) {
-  value.addEventListener('click', function () {
-    wrapperSliderByImageIndex(index);
-  });
-});
-
 /*
-set default image slider by SLIDE_TIMER
+@param {string} carouselId
+@param {int} length
+Name: CarouselContainer
+Class: carousel-container
  */
-function setImageIntervalFunc() {
-  wrapperSliderByImageIndex((carouselWrapperIndex + 1));
+function CarouselContainer(carouselId, length) {
+  this.length = length;
+  this.carouselId = carouselId;
+  /*
+  Initialize carousel container with input length
+   */
+  this.getInitContainer = function () {
+    var carouselContainer = document.getElementById(this.carouselId);
+    carouselContainer.style.width = this.length + 'px';
+    carouselContainer.style.height = this.length + 'px';
+    this.element = carouselContainer;
+    return carouselContainer;
+  };
+
+  /*
+  Left button in Container
+   */
+  this.getLeftArrow = function () {
+    var leftArrow = document.createElement('span');
+    leftArrow.classList.add('left-arrow-btn');
+    leftArrow.innerHTML = '&#10094;';
+    this.element.appendChild(leftArrow);
+    return leftArrow;
+  };
+
+  /*
+  Right button in Container
+   */
+
+  this.getRightArrow = function () {
+    var rightArrow = document.createElement('span');
+    rightArrow.classList.add('right-arrow-btn');
+    rightArrow.innerHTML = '&#10095;';
+    this.element.appendChild(rightArrow);
+    return rightArrow;
+  };
+
+  /*
+  Dot list in Container
+  */
+  this.getDotList = function () {
+    var dotList = document.createElement('ul');
+    dotList.classList.add('image-dot-list');
+    this.element.appendChild(dotList);
+    return dotList;
+  };
 }
 
 /*
-@param {int} imageIndex
-imageIndex from imageArray index
+@param {string} carouselId
+@param {int} px imageLength
+@param {int} ms sliderTimer
+@param {int} ms animationTime
+Name: Carousel
+Class: carousel-wrapper
  */
-function wrapperSliderByImageIndex(imageIndex) {
-  var imageNewIndex = 0;
-  if (imageIndex < 0) {
-    imageNewIndex = (imageArray.length - 1);
-    carouselWrapperPosition = imageNewIndex * SLIDER_LENGTH;
-    carouselWrapper.style.left = '-' + carouselWrapperPosition + 'px';
-    //reset slider interval
-    clearInterval(setImageInterval);
-    setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
-  } else if (imageIndex >= (imageArray.length)) {
-    imageNewIndex = 0;
-    carouselWrapperPosition = imageNewIndex * SLIDER_LENGTH;
-    carouselWrapper.style.left = '-' + carouselWrapperPosition + 'px';
-    //reset slider interval
-    clearInterval(setImageInterval);
-    setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
-  } else {
-    //clear slider interval
-    clearInterval(setImageInterval);
-    slideImageAnimation(carouselWrapperIndex, imageIndex);
-    imageNewIndex = imageIndex;
+function Carousel(carouselId, imageLength, sliderTimer, animationTime) {
+  /*
+  Carousel extends CarouselContainer
+  Call extended functions from CarouselContainer
+   */
+  CarouselContainer.call(this, carouselId, imageLength);
+  var carouselContainer = this.getInitContainer();
+  var leftArrow = this.getLeftArrow();
+  var rightArrow = this.getRightArrow();
+  var dotList = this.getDotList();
+
+  var that = this;
+  var animateIntervalLeft = 0;
+  var animateIntervalRight = 0;
+
+  this.animationSpeed = 50;
+  this.carouselWrapperIndex = 0;
+  this.imageLength = imageLength;
+  this.sliderTimer = sliderTimer;
+  this.animationTime = animationTime;
+  this.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+  this.element = carouselContainer.getElementsByClassName('carousel-wrapper')[0];
+
+  /*
+  initialize active class along with dot buttons
+   @return this
+   */
+  this.initImages = function () {
+    var getDotButtons = {};
+    var imageArray = getImages();
+    // define carousel wrapper height width
+    this.element.style.width = (this.imageLength * imageArray.length) + 'px';
+    this.element.style.height = this.imageLength + 'px';
+    // Calculate animation speed by animation time from params
+    this.animationSpeed = parseInt((this.animationTime * 10) / this.imageLength);
+    //arrow events
+    leftArrow.addEventListener('click', function () {
+      wrapperSliderByImageIndex((that.carouselWrapperIndex - 1))
+    });
+
+    rightArrow.addEventListener('click', function () {
+      wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+    });
+
+    getDotButtons = Object.values(imageArray).map(function (value, index) {
+      var dotButtonLi = document.createElement('li');
+      var dotButton = document.createElement('a');
+      value.style.width = that.imageLength + 'px';
+      value.style.height = that.imageLength + 'px';
+      if (index === 0)
+        dotButtonLi.classList.add('active');
+      dotButton.classList.add('image-dot-button');
+      dotList.appendChild(dotButtonLi);
+      dotButtonLi.appendChild(dotButton);
+      return dotButtonLi;
+      // return dotButton;
+    });
+
+    getDotButtons.forEach(function (value, index) {
+      value.addEventListener('click', function () {
+        getDotButtons.forEach(function (value) {
+          value.classList.remove('active');
+        });
+        wrapperSliderByImageIndex(index);
+        this.classList.add('active');
+      });
+    });
+    return this;
+  };
+
+  /*
+  Start Auto Slide Show after setting height width on carousel wrapper
+  @return this
+   */
+  this.startAutoSlideShow = function () {
+    that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+    return this;
+  };
+
+  /*
+@return {array} imageArray
+ */
+  function getImages() {
+    return that.element.getElementsByTagName('img');
   }
-  carouselWrapperIndex = imageNewIndex;
 
-  // var listArray = document.getElementsByClassName('image-dot-list');
-  // var listArrayButtons = listArray[0].children || {};
-  Object.values(listArrayButtons).forEach(function (value) {
-    value.classList.remove('active');
-  });
+  /*
+Auto carousel set interval function
+ */
+  function setImageIntervalFunc() {
+    wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+  }
 
-  if (listArrayButtons.hasOwnProperty(imageNewIndex))
-    listArrayButtons[imageNewIndex].className += ' active';
-}
+  /*
+  @params {int} imageIndex
+   */
+  function wrapperSliderByImageIndex(imageIndex) {
+    var imageNewIndex = 0;
+    var carouselWrapperPosition = 0;
+    var imageArrayLength = getImages().length;
 
-/*
+    //reset slider interval
+    clearInterval(that.startImageSlider);
+
+    if (imageIndex < 0) {
+      imageNewIndex = (imageArrayLength - 1);
+      carouselWrapperPosition = imageNewIndex * that.imageLength;
+      that.element.style.left = '-' + carouselWrapperPosition + 'px';
+      //reset slider interval
+      that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+    } else if (imageIndex >= (imageArrayLength)) {
+      imageNewIndex = 0;
+      carouselWrapperPosition = imageNewIndex * that.imageLength;
+      that.element.style.left = '-' + carouselWrapperPosition + 'px';
+      //reset slider interval
+      that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+    } else {
+      slideImageAnimation(that.carouselWrapperIndex, imageIndex);
+      imageNewIndex = imageIndex;
+    }
+    //update carousel image index, active state of dot buttons
+    that.carouselWrapperIndex = imageNewIndex;
+    Object.values(dotList.getElementsByTagName('li')).forEach(function (value, index) {
+      value.classList.remove('active');
+      if (index === imageNewIndex)
+        value.classList.add('active');
+    });
+  }
+
+  /*
 @param {int} start
 @param {int} end
 start,end from imageArray index
  */
-function slideImageAnimation(start, end) {
-  animationWrapperStart = start * SLIDER_LENGTH;
-  animationWrapperEnd = end * SLIDER_LENGTH;
-  var smallShiftAnimate = 0;
+  function slideImageAnimation(start, end) {
+    var animationWrapperStart = start * that.imageLength;
+    var animationWrapperEnd = end * that.imageLength;
+    var smallShiftAnimate = animationWrapperStart;
 
-  //clear remains of interrupted animateInterval
-  clearInterval(animateIntervalRight);
-  clearInterval(animateIntervalLeft);
+    //clear remains of interrupted animateInterval
+    clearInterval(animateIntervalRight);
+    clearInterval(animateIntervalLeft);
 
-  if (start < end) {
+    if (start < end) {
+      /*
+      Animate Right
+       */
+      animateIntervalRight = setInterval(function () {
+        smallShiftAnimate += 10;
+        that.element.style.left = '-' + smallShiftAnimate + 'px';
 
-    smallShiftAnimate = animationWrapperStart;
-    //Animate Right
-    animateIntervalRight = setInterval(function () {
-      smallShiftAnimate += 10;
-      carouselWrapper.style.left = '-' + smallShiftAnimate + 'px';
+        //clear current interval to reset default interval on complete
+        if (smallShiftAnimate >= animationWrapperEnd) {
+          clearInterval(animateIntervalRight);
+          setTimeout(function () {
+            that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+          }, 10);
+        }
+      }, that.animationSpeed);
+    } else {
+      /*
+      Animate Left
+       */
+      animateIntervalLeft = setInterval(function () {
+        smallShiftAnimate -= 10;
+        that.element.style.left = '-' + smallShiftAnimate + 'px';
 
-      //clear current interval to reset default interval on complete
-      if (smallShiftAnimate >= animationWrapperEnd) {
-        clearInterval(animateIntervalRight);
-        setTimeout(function () {
-          setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
-        }, 1000);
-      }
-    }, ANIMATION_SPEED);
-  } else {
-    smallShiftAnimate = animationWrapperStart;
-    animateIntervalLeft = setInterval(function () {
-      smallShiftAnimate -= 10;
-      carouselWrapper.style.left = '-' + smallShiftAnimate + 'px';
-
-      //clear current interval to reset default interval on complete
-      if (smallShiftAnimate <= animationWrapperEnd) {
-        clearInterval(animateIntervalLeft);
-        setTimeout(function () {
-          setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
-        }, 1000);
-      }
-    }, ANIMATION_SPEED);
+        //clear current interval to reset default interval on complete
+        if (smallShiftAnimate <= animationWrapperEnd) {
+          clearInterval(animateIntervalLeft);
+          setTimeout(function () {
+            that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+          }, 10);
+        }
+      }, that.animationSpeed);
+    }
   }
 }
+
+// window.addEventListener('resize', function () {
+//   console.log();
+// });
+
+
+/*
+@param {string} carouselId
+@param {int} px imageLength
+@param {int} ms sliderTimer
+@param {int} ms animationTime
+Name: Carousel
+Class: carousel-wrapper
+ */
+var firstCarousel = new Carousel('first-carousel', 400, 4000, 1000);
+firstCarousel.initImages().startAutoSlideShow();
+
+var secondCarousel = new Carousel('second-carousel', 400, 3000, 500);
+secondCarousel.initImages().startAutoSlideShow();
+
+var threeCarousel = new Carousel('three-carousel', 400, 2000, 250);
+threeCarousel.initImages().startAutoSlideShow();

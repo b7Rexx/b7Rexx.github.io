@@ -52,18 +52,27 @@ imageArray.forEach(function (value, index) {
 });
 
 leftArrow.addEventListener('click', function () {
-  wrapperSliderByImageIndex((carouselWrapperIndex - 1));
+  if (!this.classList.contains('disabled')) {
+    buttonDisableOnTransition(true);
+    wrapperSliderByImageIndex((carouselWrapperIndex - 1));
+  }
 });
 
 rightArrow.addEventListener('click', function () {
-  wrapperSliderByImageIndex((carouselWrapperIndex + 1));
+  if (!this.classList.contains('disabled')) {
+    buttonDisableOnTransition(true);
+    wrapperSliderByImageIndex((carouselWrapperIndex + 1));
+  }
 });
 
 var listArray = document.getElementById('image-dot-list');
 var listArrayButtons = listArray.getElementsByTagName('li');
 Object.values(listArrayButtons).forEach(function (value, index) {
   value.addEventListener('click', function () {
-    wrapperSliderByImageIndex(index);
+    if (!value.classList.contains('disabled')) {
+      buttonDisableOnTransition(true);
+      wrapperSliderByImageIndex(index);
+    }
   });
 });
 
@@ -86,6 +95,7 @@ function wrapperSliderByImageIndex(imageIndex) {
     carouselWrapper.style.left = '-' + carouselWrapperPosition + 'px';
     //reset slider interval
     clearInterval(setImageInterval);
+    buttonDisableOnTransition(false);
     setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
   } else if (imageIndex >= (imageArray.length)) {
     imageNewIndex = 0;
@@ -93,6 +103,7 @@ function wrapperSliderByImageIndex(imageIndex) {
     carouselWrapper.style.left = '-' + carouselWrapperPosition + 'px';
     //reset slider interval
     clearInterval(setImageInterval);
+    buttonDisableOnTransition(false);
     setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
   } else {
     //clear slider interval
@@ -118,16 +129,15 @@ function wrapperSliderByImageIndex(imageIndex) {
 start,end from imageArray index
  */
 function slideImageAnimation(start, end) {
+  var smallShiftAnimate = 0;
   animationWrapperStart = start * SLIDER_LENGTH;
   animationWrapperEnd = end * SLIDER_LENGTH;
-  var smallShiftAnimate = 0;
 
   //clear remains of interrupted animateInterval
   clearInterval(animateIntervalRight);
   clearInterval(animateIntervalLeft);
 
   if (start < end) {
-
     smallShiftAnimate = animationWrapperStart;
     //Animate Right
     animateIntervalRight = setInterval(function () {
@@ -136,6 +146,7 @@ function slideImageAnimation(start, end) {
 
       //clear current interval to reset default interval on complete
       if (smallShiftAnimate >= animationWrapperEnd) {
+        buttonDisableOnTransition(false);
         clearInterval(animateIntervalRight);
         setTimeout(function () {
           setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
@@ -150,11 +161,31 @@ function slideImageAnimation(start, end) {
 
       //clear current interval to reset default interval on complete
       if (smallShiftAnimate <= animationWrapperEnd) {
+        buttonDisableOnTransition(false);
         clearInterval(animateIntervalLeft);
         setTimeout(function () {
           setImageInterval = setInterval(setImageIntervalFunc, SLIDE_TIMER);
         }, 1000);
       }
     }, ANIMATION_SPEED);
+  }
+}
+
+/*
+enable disable button during animation
+ */
+function buttonDisableOnTransition(set) {
+  if (set) {
+    leftArrow.classList.add('disabled');
+    rightArrow.classList.add('disabled');
+    Object.values(listArrayButtons).forEach(function (value) {
+      value.classList.add('disabled');
+    });
+  } else {
+    leftArrow.classList.remove('disabled');
+    rightArrow.classList.remove('disabled');
+    Object.values(listArrayButtons).forEach(function (value) {
+      value.classList.remove('disabled');
+    });
   }
 }

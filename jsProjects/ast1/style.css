@@ -82,3 +82,13 @@ ol, ul {
 #image-dot-list li.active a {
   background: red;
 }
+
+#image-dot-list li.disabled a {
+  opacity: 0.4;
+  cursor:context-menu;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor:context-menu;
+}

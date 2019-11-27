@@ -59,10 +59,11 @@ function CarouselContainer(carouselId, length) {
 @param {int} px imageLength
 @param {int} ms sliderTimer
 @param {int} ms animationTime
+@param {int} ms holdTime
 Name: Carousel
 Class: carousel-wrapper
  */
-function Carousel(carouselId, imageLength, sliderTimer, animationTime) {
+function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime) {
   /*
   Carousel extends CarouselContainer
   Call extended functions from CarouselContainer
@@ -72,17 +73,31 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime) {
 
   var that = this;
   var dotList = {};
+  var leftArrow = false;
+  var rightArrow = false;
+  var getDotButtons = false;
   var dotListEnableStatus = false;
 
+  this.carouselId = carouselId;
   this.animationSpeed = 50;
   this.carouselWrapperIndex = 0;
-  this.imageLength = imageLength;
-  this.sliderTimer = sliderTimer;
-  this.animationTime = animationTime;
+  this.imageLength = imageLength || 400;
+  this.sliderTimer = sliderTimer || 3000;
+  this.animationTime = animationTime || 500;
+  this.holdTime = holdTime || 0;
   this.animateIntervalLeft = 0;
   this.animateIntervalRight = 0;
   this.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
   this.carousel = carouselContainer.getElementsByClassName('carousel-wrapper')[0];
+
+  /*
+  Initialize will all features
+   */
+  this.initAll = function () {
+    this.initImages();
+    this.enableArrowLeftRightSlide();
+    this.enableListDotButtons();
+  };
 
   /*
   initialize active class along with dot buttons
@@ -102,23 +117,29 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime) {
   @return this
    */
   this.enableArrowLeftRightSlide = function () {
-    var leftArrow = this.getLeftArrow();
-    var rightArrow = this.getRightArrow();
+    leftArrow = this.getLeftArrow();
+    rightArrow = this.getRightArrow();
     leftArrow.addEventListener('click', function () {
-      wrapperSliderByImageIndex((that.carouselWrapperIndex - 1))
+      if (!(this.classList.contains('disabled'))) {
+        buttonDisableOnTransition(true);
+        wrapperSliderByImageIndex((that.carouselWrapperIndex - 1))
+      }
     });
     rightArrow.addEventListener('click', function () {
-      wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+      if (!(this.classList.contains('disabled'))) {
+        buttonDisableOnTransition(true);
+        wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+      }
     });
     return this;
-  };
+  }
+  ;
 
   /*
   Enable list dot buttons
   @return this
    */
   this.enableListDotButtons = function () {
-    var getDotButtons = {};
     var imageArray = getImages();
     dotList = this.getDotList();
     dotListEnableStatus = true;
@@ -139,28 +160,40 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime) {
 
     getDotButtons.forEach(function (value, index) {
       value.addEventListener('click', function () {
-        getDotButtons.forEach(function (value) {
-          value.classList.remove('active');
-        });
-        wrapperSliderByImageIndex(index);
-        this.classList.add('active');
+        if (!(this.classList.contains('disabled'))) {
+          buttonDisableOnTransition(true);
+          getDotButtons.forEach(function (value) {
+            value.classList.remove('active');
+          });
+          wrapperSliderByImageIndex(index);
+          this.classList.add('active');
+        }
       });
     });
     return this;
   };
 
   /*
-@return {array} imageArray
- */
+  @return {array} imageArray
+  */
   function getImages() {
     return that.carousel.getElementsByTagName('img');
   }
 
   /*
-Auto carousel set interval function
- */
+  Auto carousel set interval function
+  with hold time condition
+  */
   function setImageIntervalFunc() {
-    wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+    if (that.holdTime > 0) {
+      clearInterval(that.startImageSlider);
+      setTimeout(function () {
+        that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+        wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+      }, that.holdTime);
+    } else {
+      wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
+    }
   }
 
   /*
@@ -179,12 +212,14 @@ Auto carousel set interval function
       carouselWrapperPosition = imageNewIndex * that.imageLength;
       that.carousel.style.left = '-' + carouselWrapperPosition + 'px';
       //reset slider interval
+      buttonDisableOnTransition(false);
       that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
     } else if (imageIndex >= (imageArrayLength)) {
       imageNewIndex = 0;
       carouselWrapperPosition = imageNewIndex * that.imageLength;
       that.carousel.style.left = '-' + carouselWrapperPosition + 'px';
       //reset slider interval
+      buttonDisableOnTransition(false);
       that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
     } else {
       slideImageAnimation(that.carouselWrapperIndex, imageIndex);
@@ -201,10 +236,10 @@ Auto carousel set interval function
   }
 
   /*
-@param {int} start
-@param {int} end
-start,end from imageArray index
- */
+  @param {int} start
+  @param {int} end
+  start,end from imageArray index
+  */
   function slideImageAnimation(start, end) {
     var animationWrapperStart = start * that.imageLength;
     var animationWrapperEnd = end * that.imageLength;
@@ -224,10 +259,11 @@ start,end from imageArray index
 
         //clear current interval to reset default interval on complete
         if (smallShiftAnimate >= animationWrapperEnd) {
+          buttonDisableOnTransition(false);
           clearInterval(that.animateIntervalRight);
           setTimeout(function () {
             that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
-          }, 500);
+          }, 200);
         }
       }, that.animationSpeed);
     } else {
@@ -240,12 +276,37 @@ start,end from imageArray index
 
         //clear current interval to reset default interval on complete
         if (smallShiftAnimate <= animationWrapperEnd) {
+          buttonDisableOnTransition(false);
           clearInterval(that.animateIntervalLeft);
           setTimeout(function () {
             that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
-          }, 500);
+          }, 200);
         }
       }, that.animationSpeed);
+    }
+  }
+
+  /*
+  Disable slide buttons on transition
+   @params {boolean} set  - true => add class disabled, false => remove class disabled
+   */
+  function buttonDisableOnTransition(set) {
+    if (set) {
+      if (leftArrow)
+        leftArrow.classList.add('disabled');
+      if (rightArrow)
+        rightArrow.classList.add('disabled');
+      Object.values(getDotButtons).forEach(function (value) {
+        value.classList.add('disabled');
+      });
+    } else {
+      if (leftArrow)
+        leftArrow.classList.remove('disabled');
+      if (rightArrow)
+        rightArrow.classList.remove('disabled');
+      Object.values(getDotButtons).forEach(function (value) {
+        value.classList.remove('disabled');
+      });
     }
   }
 }
@@ -255,14 +316,16 @@ start,end from imageArray index
 @param {int} px imageLength
 @param {int} ms sliderTimer
 @param {int} ms animationTime
+@param {int} ms holdTime
 Name: Carousel
-Class: carousel-wrapper
  */
-var firstCarousel = new Carousel('first-carousel', 400, 3000, 250);
-firstCarousel.initImages().enableArrowLeftRightSlide().enableListDotButtons();
+var firstCarousel = new Carousel('first-carousel', 400, 100, 250, 5000);
+firstCarousel.initAll();
 
 var secondCarousel = new Carousel('second-carousel', 400, 10000, 500);
-secondCarousel.initImages().enableArrowLeftRightSlide().enableListDotButtons();
+secondCarousel.initAll();
 
 var testCarousel = new Carousel('three-carousel', 300, 3000, 500);
+// featured divided into parts with method chaining
 testCarousel.initImages().enableArrowLeftRightSlide().enableListDotButtons();
+

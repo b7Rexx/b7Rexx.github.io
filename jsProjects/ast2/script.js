@@ -1,3 +1,9 @@
+/*
+@param {string} carouselId
+@param {int} length
+Name: CarouselContainer
+Class: carousel-container
+ */
 function CarouselContainer(carouselId, length) {
   this.length = length;
 
@@ -45,6 +51,15 @@ function CarouselContainer(carouselId, length) {
     return dotList;
   };
 }
+
+/*
+@param {string} carouselId
+@param {int} imageLength
+@param {int} sliderTimer
+@param {int} animationSpeed
+Name: Carousel
+Class: carousel-wrapper
+ */
 
 function Carousel(carouselId, imageLength, sliderTimer = 2000, animationSpeed = 20) {
   //Carousel extends CarouselContainer
@@ -211,12 +226,12 @@ start,end from imageArray index
 
 }
 
-var firstCarousel = new Carousel('first-carousel', 400);
+var firstCarousel = new Carousel('first-carousel', 500, 5000, 5);
 firstCarousel.initImages();
 firstCarousel.startAutoSlideShow();
-var secondCarousel = new Carousel('second-carousel', 300);
+var secondCarousel = new Carousel('second-carousel', 400, 4000, 10);
 secondCarousel.initImages();
 secondCarousel.startAutoSlideShow();
-var threeCarousel = new Carousel('three-carousel', 200);
+var threeCarousel = new Carousel('three-carousel', 300, 3000, 15);
 threeCarousel.initImages();
 threeCarousel.startAutoSlideShow();

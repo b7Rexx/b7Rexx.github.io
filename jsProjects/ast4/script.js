@@ -5,12 +5,9 @@ function Box(parentElement) {
   this.speed = 10;
   this.dx = 1;
   this.dy = 1;
-
-  //tan@ : 315 for 45 degree right down
-  this.direction = 315;
   this.width = 10;
   this.height = 10;
-  this.color = 'red';
+  this.color = 'cornflowerblue';
   this.element = undefined;
   this.smashStatus = false;
   this.boxInterval = undefined;
@@ -32,6 +29,29 @@ function Box(parentElement) {
     return this;
   };
 
+  /*
+
+   */
+  this.customDefineBox = function (defineObj) {
+    if (defineObj.height !== undefined)
+      this.height = defineObj.height;
+    if (defineObj.width !== undefined)
+      this.width = defineObj.width;
+    if (defineObj.posX !== undefined)
+      this.posX = defineObj.posX;
+    if (defineObj.posY !== undefined)
+      this.posY = defineObj.posY;
+    if (defineObj.color !== undefined)
+      this.color = defineObj.color;
+    if (defineObj.speed !== undefined)
+      this.speed = defineObj.speed;
+    this.element.style.top = this.posY + 'px';
+    this.element.style.left = this.posX + 'px';
+    this.element.style.width = this.width + 'px';
+    this.element.style.height = this.height + 'px';
+    this.element.style.background = this.color;
+    return this;
+  };
   /*
     change size of box
     @param {int} px height
@@ -68,9 +88,12 @@ function Box(parentElement) {
     var collisionStatus = false;
     boxArray.forEach(function (value) {
       if (that !== value) {
-        if (that.posX < value.posX + value.width && that.posX + that.width > value.posX
-          &&
-          that.posY < value.posY + value.height && that.posY + that.height > value.posY) {
+        if (
+          that.posX < value.posX + value.width
+          && that.posX + that.width > value.posX
+          && that.posY < value.posY + value.height
+          && that.posY + that.height > value.posY) {
+
           collisionStatus = true;
         }
       }
@@ -79,72 +102,59 @@ function Box(parentElement) {
   };
 
   /*
-  border Collision
- */
-  this.borderCollision = function (parentHeight, parentWidth) {
-    if (this.posX < 0) {
-      if (this.direction === 225) {
-        this.direction = 315;
-        this.dx = Math.abs(this.dx);
-        this.dy = Math.abs(this.dy);
-      } else {
-        this.dx = Math.abs(this.dx);
-        this.dy = -Math.abs(this.dy);
-        this.direction = 45;
-      }
-    } else if (this.posX > (parentWidth - this.width)) {
-      if (this.direction === 315) {
-        this.dx = -Math.abs(this.dx);
-        this.dy = Math.abs(this.dy);
-        this.direction = 225;
-      } else {
-        this.dx = -Math.abs(this.dx);
-        this.dy = -Math.abs(this.dy);
-        this.direction = 135;
-      }
-    }
-    if (this.posY < 0) {
-      if (this.direction === 45) {
-        this.dx = Math.abs(this.dx);
-        this.dy = Math.abs(this.dy);
-        this.direction = 315;
-      } else {
-        this.dx = -Math.abs(this.dx);
-        this.dy = Math.abs(this.dy);
-        this.direction = 225;
-      }
-    } else if (this.posY > (parentHeight - this.height)) {
-      if (this.direction === 225) {
-        this.dx = -Math.abs(this.dx);
-        this.dy = -Math.abs(this.dy);
-        this.direction = 135;
-      } else {
-        this.dx = Math.abs(this.dx);
-        this.dy = -Math.abs(this.dy);
-        this.direction = 45;
-      }
-    }
-  };
-
-  /*
     move boxes and change direction on collision
    */
   this.moveBox = function (boxArray, parentHeight, parentWidth, callbackSmashed) {
-    this.boxInterval = setInterval(function () {
+    that.boxInterval = setInterval(function () {
       if (that.smashStatus) {
         clearInterval(that.boxInterval);
         callbackSmashed(that);
       }
-      if (that.checkCollision(boxArray)) {
-        that.dx = (-1) * that.dx;
-        that.dy = (-1) * that.dy;
-      } else
-        that.borderCollision(parentHeight, parentWidth);
+      //Box Collision
+      boxArray.forEach(function (value) {
+        if (that !== value) {
+          if (
+            that.posX < value.posX + value.width
+            && that.posX + that.width > value.posX
+            && that.posY < value.posY + value.height
+            && that.posY + that.height > value.posY) {
+            /*
+              Change dx dy w.r.t. collision side
+           */
+            if (that.posX > value.posX) {
+              that.dx = Math.abs(that.dx);
+              value.dx = (-1) * Math.abs(value.dx);
+            } else {
+              that.dx = (-1) * Math.abs(that.dx);
+              value.dx = Math.abs(value.dx);
+            }
+
+            if (that.posY > value.posY) {
+              that.dy = Math.abs(that.dy);
+              value.dy = (-1) * Math.abs(value.dy);
+            } else {
+              that.dy = (-1) * Math.abs(that.dy);
+              value.dy = Math.abs(value.dy);
+            }
+          }
+        }
+      });
+
+      //Border Collision
+      if (that.posX < 0)
+        that.dx = Math.abs(that.dx);
+      else if (that.posX > (parentWidth - that.width))
+        that.dx = (-1) * Math.abs(that.dx);
+
+      if (that.posY < 0)
+        that.dy = Math.abs(that.dy);
+      else if (that.posY > (parentHeight - that.height))
+        that.dy = (-1) * Math.abs(that.dy);
 
       that.posX = that.dx + that.posX;
       that.posY = that.dy + that.posY;
-      that.element.style.left = (that.dx + that.posX) + 'px';
-      that.element.style.top = (that.dy + that.posY) + 'px';
+      that.element.style.left = that.posX + 'px';
+      that.element.style.top = that.posY + 'px';
     }, this.speed);
   };
 
@@ -157,20 +167,16 @@ function Box(parentElement) {
     this.element.style.backgroundImage = 'url("./ant.png")';
     this.element.style.backgroundSize = '100% 100%';
     this.element.style.backgroundRepeat = 'no-repeat';
-    this.element.addEventListener('click', function (ev) {
+    this.element.addEventListener('click', function () {
       that.element.style.backgroundImage = 'url("./ant-smash.png")';
-      setTimeout(function () {
-        that.element.style.opacity = 0.2;
-        that.smashStatus = true;
-      }, 250);
+      that.element.style.opacity = '0.2';
+      that.smashStatus = true;
     });
     return this;
   };
 }
 
 function ScoreBoard(gameElement) {
-  this.total = 0;
-  this.records = undefined;
   this.scoreElement = undefined;
 
   /*
@@ -196,9 +202,11 @@ function Game(gameElement, boxCount) {
   this.width = 400;
   this.height = 400;
   this.boxes = [];
+  this.defineBoxes = [];
   this.removedBoxes = [];
   this.boxCount = boxCount || 10;
   this.element = undefined;
+  this.origValues = undefined;
 
   /*
  initialize game block with default config
@@ -215,18 +223,7 @@ function Game(gameElement, boxCount) {
 
     startGame();
     moveBoxes();
-    return this;
-  };
-
-  /*
-  change size of box
-  @param {int} px height
-  @param {int} px width
-  @return this
- */
-  this.changeBlockSize = function (height, width) {
-    this.element.style.height = height + 'px';
-    this.element.style.width = width + 'px';
+    saveInitial();
     return this;
   };
 
@@ -254,6 +251,10 @@ function Game(gameElement, boxCount) {
       var xAxis = getIntegerMinMax(0, that.width - newBoxSize);
       var yAxis = getIntegerMinMax(0, that.height - newBoxSize);
       newBox.changePos(xAxis, yAxis);
+
+      if (that.defineBoxes[i] !== undefined) {
+        newBox.customDefineBox(that.defineBoxes[i]);
+      }
       //create unique position box by collision detection
       do {
         collisionStatus = newBox.checkCollision(that.boxes);
@@ -278,10 +279,20 @@ function Game(gameElement, boxCount) {
         that.removedBoxes.push(removedBox[0]);
         var antsScore = '';
         that.removedBoxes.forEach(function (value1, index) {
-          antsScore += '<br>ant ' + (index + 1) + '-  x: ' + value1.posX + ', y: ' + value.posY;
+          antsScore += '<br>ant-' + (index + 1) + ' killed at  x: ' + value1.posX + ', y: ' + value1.posY;
         });
         if (that.scoreElement)
-          that.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + that.boxes.length + ' ants alive' + antsScore;
+          that.scoreElement.innerHTML = '<h3>Ant Score</h3><hr><strong>' + that.boxes.length + '</strong> ants alive' + antsScore;
+        if (that.boxes.length === 0) {
+          var restartBtn = document.createElement('a');
+          restartBtn.innerHTML = 'Congratulation! ants smash complete<br>Click to restart';
+          restartBtn.classList.add('reset-btn');
+          that.element.append(restartBtn);
+          restartBtn.addEventListener('click', function (ev) {
+            //reset ant smasher
+            reset();
+          })
+        }
       });
     })
   }
@@ -292,12 +303,53 @@ function Game(gameElement, boxCount) {
   function getIntegerMinMax(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  /*
+   save initial values
+   */
+  function saveInitial() {
+    var origValues = {};
+    for (var prop in this) {
+      if (this.hasOwnProperty(prop) && prop != "origValues") {
+        origValues[prop] = this[prop];
+      }
+    }
+    that.origValues = origValues;
+  }
+
+  /*
+   restore initial values
+   */
+  function reset() {
+    for (var prop in that.origValues) {
+      this[prop] = that.origValues[prop];
+    }
+  }
 }
 
+var boxObject = [
+  {posX: 10, posY: 10, height: 15, width: 45, color: 'blue', speed: 25},
+  {posX: 10, posY: 10, color: 'green', speed: 1},
+  {posX: 10, posY: 10, color: 'black', speed: 100}
+];
+
 var app = document.getElementById('app-wrapper');
-// var boxCollision = new Game(app).init();
 var boxCollision = new Game(app, 10);
-boxCollision.height = 600;
-boxCollision.width = 600;
+// var boxCollision = new Game(app, 1000);
+boxCollision.defineBoxes = boxObject;
+// boxCollision.height = 2500;
+// boxCollision.width = 2500;
 boxCollision.init();
-boxCollision.antSmasher();
+
+var customAnts = [
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+  {posX: 10, posY: 10, height: 40, width: 40, speed: 15}
+];
+
+var antSmasherCustom = new Game(app, 5);
+antSmasherCustom.defineBoxes = customAnts;
+antSmasherCustom.init().antSmasher();

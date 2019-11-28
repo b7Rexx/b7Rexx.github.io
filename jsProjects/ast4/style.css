@@ -21,6 +21,8 @@ ol, ul {
 /*Style*/
 #app-wrapper > div {
   float: left;
+  margin-right: 10px;
+  border: 1px solid lightgrey;
 }
 
 span.ant {
@@ -34,9 +36,17 @@ span.ant-smash {
 
 .scoreboard {
   text-align: right;
-  width: 160px;
+  width: 200px;
   padding: 20px;
   min-height: 100px;
   background: whitesmoke;
   border-left: 1px solid gainsboro;
+}
+
+.reset-btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: green;
+  cursor: pointer;
 }

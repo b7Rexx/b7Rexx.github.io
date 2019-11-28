@@ -76,6 +76,7 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
   var rightArrow = false;
   var getDotButtons = false;
   var dotListEnableStatus = false;
+  var appWrapper = document.getElementById('app-wrapper');
 
   this.animationSpeed = 50;
   this.carouselWrapperIndex = 0;
@@ -95,7 +96,16 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
     this.initImages();
     this.enableArrowLeftRightSlide();
     this.enableListDotButtons();
+    this.enableResponsiveSlider();
+  };
+
+  /*
+  initialize active class along with dot buttons
+   @return this
+  */
+  this.enableResponsiveSlider = function () {
     responsiveLength();
+    return this;
   };
 
   /*
@@ -181,9 +191,9 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
   }
 
   function resizeWindow() {
-    var windowWidth = window.innerWidth;
-    if (that.originalWidth > windowWidth) {
-      that.imageLength = windowWidth;
+    var appWidth = (appWrapper.offsetWidth -1);
+    if (that.originalWidth > appWidth) {
+      that.imageLength = appWidth;
     } else {
       /*
         @media only screen and (min-width: 992px)
@@ -194,8 +204,8 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
         that.imageLength = that.originalWidth;
       }
     }
-    that.carouselContainer.style.width = that.imageLength + 'px';
-    that.carouselContainer.style.height = that.imageLength + 'px';
+    carouselContainer.style.width = that.imageLength + 'px';
+    carouselContainer.style.height = that.imageLength + 'px';
 
     that.carousel.style.width = (that.imageLength * getImages().length) + 'px';
     that.carousel.style.height = that.imageLength + 'px';

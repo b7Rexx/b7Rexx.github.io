@@ -57,13 +57,12 @@ function CarouselContainer(carouselId, length) {
 /*
 @param {string} carouselId
 @param {int} px imageLength
-@param {int} ms sliderTimer
-@param {int} ms animationTime
 @param {int} ms holdTime
+@param {int} ms animationTime
 Name: Carousel
 Class: carousel-wrapper
  */
-function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime) {
+function Carousel(carouselId, imageLength, holdTime, animationTime) {
   /*
   Carousel extends CarouselContainer
   Call extended functions from CarouselContainer
@@ -82,12 +81,11 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
   this.animationSpeed = 50;
   this.carouselWrapperIndex = 0;
   this.imageLength = imageLength || 400;
-  this.sliderTimer = sliderTimer || 3000;
   this.animationTime = animationTime || 500;
-  this.holdTime = holdTime || 0;
+  this.holdTime = holdTime || 3000;
   this.animateIntervalLeft = 0;
   this.animateIntervalRight = 0;
-  this.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+  this.startImageSlider = setInterval(setImageIntervalFunc, that.holdTime);
   this.carousel = carouselContainer.getElementsByClassName('carousel-wrapper')[0];
 
   /*
@@ -185,15 +183,7 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
   with hold time condition
   */
   function setImageIntervalFunc() {
-    if (that.holdTime > 0) {
-      clearInterval(that.startImageSlider);
-      setTimeout(function () {
-        that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
-        wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
-      }, that.holdTime);
-    } else {
-      wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
-    }
+    wrapperSliderByImageIndex((that.carouselWrapperIndex + 1))
   }
 
   /*
@@ -213,14 +203,14 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
       that.carousel.style.left = '-' + carouselWrapperPosition + 'px';
       //reset slider interval
       buttonDisableOnTransition(false);
-      that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+      that.startImageSlider = setInterval(setImageIntervalFunc, that.holdTime);
     } else if (imageIndex >= (imageArrayLength)) {
       imageNewIndex = 0;
       carouselWrapperPosition = imageNewIndex * that.imageLength;
       that.carousel.style.left = '-' + carouselWrapperPosition + 'px';
       //reset slider interval
       buttonDisableOnTransition(false);
-      that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+      that.startImageSlider = setInterval(setImageIntervalFunc, that.holdTime);
     } else {
       slideImageAnimation(that.carouselWrapperIndex, imageIndex);
       imageNewIndex = imageIndex;
@@ -262,7 +252,7 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
           buttonDisableOnTransition(false);
           clearInterval(that.animateIntervalRight);
           setTimeout(function () {
-            that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+            that.startImageSlider = setInterval(setImageIntervalFunc, that.holdTime);
           }, 200);
         }
       }, that.animationSpeed);
@@ -279,7 +269,7 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
           buttonDisableOnTransition(false);
           clearInterval(that.animateIntervalLeft);
           setTimeout(function () {
-            that.startImageSlider = setInterval(setImageIntervalFunc, that.sliderTimer);
+            that.startImageSlider = setInterval(setImageIntervalFunc, that.holdTime);
           }, 200);
         }
       }, that.animationSpeed);
@@ -314,12 +304,11 @@ function Carousel(carouselId, imageLength, sliderTimer, animationTime, holdTime)
 /*
 @param {string} carouselId
 @param {int} px imageLength
-@param {int} ms sliderTimer
-@param {int} ms animationTime
 @param {int} ms holdTime
+@param {int} ms animationTime
 Name: Carousel
  */
-var firstCarousel = new Carousel('first-carousel', 400, 100, 250, 5000);
+var firstCarousel = new Carousel('first-carousel', 400, 5000, 250);
 firstCarousel.initAll();
 
 var secondCarousel = new Carousel('second-carousel', 400, 10000, 500);

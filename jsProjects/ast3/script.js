@@ -174,15 +174,6 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
 
 
   function responsiveLength() {
-    var newLength = 768;
-    /*
-      @media only screen and (min-width: 768px)
-     */
-    if (that.imageLength > 768) {
-      that.imageLength = newLength;
-      that.carouselContainer.style.width = newLength + 'px';
-      that.carouselContainer.style.height = newLength + 'px';
-    }
     resizeWindow();
     window.addEventListener('resize', function () {
       resizeWindow();
@@ -194,7 +185,14 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
     if (that.originalWidth > windowWidth) {
       that.imageLength = windowWidth;
     } else {
-      that.imageLength = that.originalWidth;
+      /*
+        @media only screen and (min-width: 992px)
+       */
+      if (that.originalWidth > 992) {
+        that.imageLength = 992;
+      } else {
+        that.imageLength = that.originalWidth;
+      }
     }
     that.carouselContainer.style.width = that.imageLength + 'px';
     that.carouselContainer.style.height = that.imageLength + 'px';
@@ -207,7 +205,6 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
       value.style.height = that.imageLength + 'px';
       value.style.width = that.imageLength + 'px';
     })
-
   }
 
   /*
@@ -350,5 +347,5 @@ Class: carousel-wrapper
 // var firstCarousel = new Carousel('first-carousel', 400, 3000, 250);
 // firstCarousel.initAll();
 
-var secondCarousel = new Carousel('second-carousel', 800, 1000, 500);
+var secondCarousel = new Carousel('second-carousel', 1000, 1000, 500);
 secondCarousel.initAll();

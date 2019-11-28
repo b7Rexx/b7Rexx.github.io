@@ -1,0 +1,42 @@
+/*Reset CSS*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*Style*/
+#app-wrapper > div {
+  float: left;
+}
+
+span.ant {
+  background: transparent;
+  background-image: url("ant.png");
+}
+
+span.ant-smash {
+  background-image: url("ant-smash.png");
+}
+
+.scoreboard {
+  text-align: right;
+  width: 160px;
+  padding: 20px;
+  min-height: 100px;
+  background: whitesmoke;
+  border-left: 1px solid gainsboro;
+}

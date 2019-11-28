@@ -363,8 +363,8 @@ function Carousel(carouselId, imageLength, holdTime, animationTime) {
 Name: Carousel
 Class: carousel-wrapper
  */
-var firstCarousel = new Carousel('first-carousel', 400, 5000, 250);
+var firstCarousel = new Carousel('first-carousel', 400, 2000, 250);
 firstCarousel.initAll();
 
-var secondCarousel = new Carousel('second-carousel', 1000, 5000, 500);
+var secondCarousel = new Carousel('second-carousel', 1000, 3000, 500);
 secondCarousel.initAll();

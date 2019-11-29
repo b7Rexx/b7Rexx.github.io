@@ -128,7 +128,6 @@ function Box(parentElement) {
               that.dx = (-1) * Math.abs(that.dx);
               value.dx = Math.abs(value.dx);
             }
-
             if (that.posY > value.posY) {
               that.dy = Math.abs(that.dy);
               value.dy = (-1) * Math.abs(value.dy);
@@ -212,7 +211,7 @@ function Game(gameElement, boxCount) {
  initialize game block with default config
   @return this
   */
-  this.init = function () {
+  this.init = function (defineBoxes) {
     var gameBlock = document.createElement('div');
     gameBlock.style.position = 'relative';
     gameBlock.style.width = this.width + 'px';
@@ -220,7 +219,7 @@ function Game(gameElement, boxCount) {
     gameBlock.style.background = 'whitesmoke';
     gameElement.appendChild(gameBlock);
     this.element = gameBlock;
-
+    this.defineBoxes = defineBoxes || [];
     startGame();
     moveBoxes();
     saveInitial();
@@ -299,6 +298,9 @@ function Game(gameElement, boxCount) {
 
   /*
   random integer between min and max
+  @param {int} min
+  @param {int} max
+  @return {int} value between or equal min and max
    */
   function getIntegerMinMax(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -334,12 +336,11 @@ var boxObject = [
 ];
 
 var app = document.getElementById('app-wrapper');
-var boxCollision = new Game(app, 10);
+var boxCollision = new Game(app, 10).init(boxObject);
 // var boxCollision = new Game(app, 1000);
-boxCollision.defineBoxes = boxObject;
 // boxCollision.height = 2500;
 // boxCollision.width = 2500;
-boxCollision.init();
+// boxCollision.init();
 
 var customAnts = [
   {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
@@ -350,6 +351,4 @@ var customAnts = [
   {posX: 10, posY: 10, height: 40, width: 40, speed: 15}
 ];
 
-var antSmasherCustom = new Game(app, 5);
-antSmasherCustom.defineBoxes = customAnts;
-antSmasherCustom.init().antSmasher();
+var antSmasherCustom = new Game(app, 5).init(customAnts).antSmasher();

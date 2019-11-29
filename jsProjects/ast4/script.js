@@ -1,10 +1,13 @@
 function Box(parentElement) {
+  //Game extends IntegerHelper
+  IntegerHelper.call(this);
+
   var that = this;
   this.posX = 10;
   this.posY = 10;
   this.speed = 10;
-  this.dx = getIntegerMinMax(1, 2);
-  this.dy = getIntegerMinMax(1, 2);
+  this.dx = this.getIntegerMinMax(1, 2);
+  this.dy = this.getIntegerMinMax(1, 2);
   this.width = 10;
   this.height = 10;
   this.color = 'cornflowerblue';
@@ -173,17 +176,6 @@ function Box(parentElement) {
     });
     return this;
   };
-
-  /*
-random integer between min and max
-@param {int} min
-@param {int} max
-@return {int} value between or equal min and max
- */
-  function getIntegerMinMax(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
 }
 
 function ScoreBoard(gameElement) {
@@ -204,6 +196,8 @@ initialize scoreboard with default config
 function Game(gameElement, boxCount) {
   //Game extends ScoreBoard
   ScoreBoard.call(this, gameElement);
+  //Game extends IntegerHelper
+  IntegerHelper.call(this);
 
   var that = this;
   var MIN_BOX_SIZE = 10;
@@ -245,12 +239,12 @@ function Game(gameElement, boxCount) {
   this.startGameAddBoxes = function () {
     for (var i = 0; i < that.boxCount; i++) {
       var newBox = new Box(that.element).init();
-      var newBoxSize = getIntegerMinMax(MIN_BOX_SIZE, MAX_BOX_SIZE);
+      var newBoxSize = this.getIntegerMinMax(MIN_BOX_SIZE, MAX_BOX_SIZE);
       newBox.changeBoxSize(newBoxSize, newBoxSize);
-      // newBox.speed = getIntegerMinMax(10,20);
+      // newBox.speed = this.getIntegerMinMax(10,20);
       var collisionStatus = true;
-      var xAxis = getIntegerMinMax(0, that.width - newBoxSize);
-      var yAxis = getIntegerMinMax(0, that.height - newBoxSize);
+      var xAxis = this.getIntegerMinMax(0, that.width - newBoxSize);
+      var yAxis = this.getIntegerMinMax(0, that.height - newBoxSize);
       newBox.changePos(xAxis, yAxis);
 
       if (that.defineBoxes[i] !== undefined) {
@@ -260,8 +254,8 @@ function Game(gameElement, boxCount) {
       do {
         collisionStatus = newBox.checkCollision(that.boxes);
         if (collisionStatus) {
-          xAxis = getIntegerMinMax(0, that.width - newBoxSize);
-          yAxis = getIntegerMinMax(0, that.height - newBoxSize);
+          xAxis = this.getIntegerMinMax(0, that.width - newBoxSize);
+          yAxis = this.getIntegerMinMax(0, that.height - newBoxSize);
           newBox.changePos(xAxis, yAxis);
         } else {
           that.boxes.push(newBox);
@@ -287,17 +281,6 @@ function Game(gameElement, boxCount) {
       });
     })
   };
-
-  /*
-  random integer between min and max
-  @param {int} min
-  @param {int} max
-  @return {int} value between or equal min and max
-   */
-  function getIntegerMinMax(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
 }
 
 function AntSmasher(appElement, defineAnts, ants) {
@@ -351,8 +334,20 @@ function AntSmasher(appElement, defineAnts, ants) {
     that.antSmashInstance.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + that.antBoxes.length + ' ants alive<br>';
 
   }
-
 }
+
+function IntegerHelper() {
+  /*
+random integer between min and max
+@param {int} min
+@param {int} max
+@return {int} value between or equal min and max
+ */
+  this.getIntegerMinMax = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+}
+
 
 var app = document.getElementById('app-wrapper');
 if (app) {
@@ -376,7 +371,7 @@ if (app) {
 }
 
 var appStress = document.getElementById('app-wrapper-stress');
-if (appStress){
+if (appStress) {
   var appStressCollision = new Game(appStress, 1000);
   appStressCollision.height = 2000;
   appStressCollision.width = 2000;

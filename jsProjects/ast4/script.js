@@ -17,12 +17,12 @@ if (app) {
   boxCollision.init(boxObject);
 
   var customAnts = [
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 10},
     {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-    {posX: 10, posY: 10, height: 40, width: 40, speed: 15}
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 20},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 25},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 30},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 35}
   ];
 
   new AntSmasher(app, customAnts, 5).initialize();

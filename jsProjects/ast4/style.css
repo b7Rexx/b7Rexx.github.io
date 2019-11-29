@@ -23,6 +23,7 @@ ol, ul {
   float: left;
   margin-right: 10px;
   border: 1px solid lightgrey;
+  cursor:grab;
 }
 
 span.ant {

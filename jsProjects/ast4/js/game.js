@@ -52,15 +52,21 @@ function Game(gameElement, boxCount) {
       var yAxis = this.getIntegerMinMax(0, that.height - newBoxSize);
       newBox.changePos(xAxis, yAxis);
 
+      var newBoxSizeX = newBoxSize;
+      var newBoxSizeY = newBoxSize;
       if (that.defineBoxes[i] !== undefined) {
         newBox.customDefineBox(that.defineBoxes[i]);
+        if (that.defineBoxes[i].width)
+          newBoxSizeX = that.defineBoxes[i].width;
+        if (that.defineBoxes[i].height)
+          newBoxSizeY = that.defineBoxes[i].height;
       }
       //create unique position box by collision detection
       do {
         collisionStatus = newBox.checkCollision(that.boxes);
         if (collisionStatus) {
-          xAxis = this.getIntegerMinMax(0, that.width - newBoxSize);
-          yAxis = this.getIntegerMinMax(0, that.height - newBoxSize);
+          xAxis = this.getIntegerMinMax(0, that.width - newBoxSizeX);
+          yAxis = this.getIntegerMinMax(0, that.height - newBoxSizeY);
           newBox.changePos(xAxis, yAxis);
         } else {
           that.boxes.push(newBox);

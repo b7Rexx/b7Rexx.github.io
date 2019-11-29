@@ -315,7 +315,7 @@ function AntSmasher(appElement, defineAnts, ants) {
   function gameInterval() {
     that.antSmashInterval = setInterval(function () {
       if (that.antBoxes.length === 0) {
-        restartBtn.innerHTML = 'Congratulation! ants smash complete<br>Click to restart';
+        restartBtn.innerHTML = 'Congratulation! ants smash complete<br>Click to reset ants';
         restartBtn.classList.add('reset-btn');
         that.antSmashInstance.element.append(restartBtn);
         clearInterval(that.antSmashInterval);
@@ -330,7 +330,7 @@ function AntSmasher(appElement, defineAnts, ants) {
       value.changeBoxToAnt();
     });
     that.antSmashInstance.moveBoxes();
-    that.antSmashInstance.initAntScore();
+    // that.antSmashInstance.initAntScore();
     that.antSmashInstance.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + that.antBoxes.length + ' ants alive<br>';
 
   }

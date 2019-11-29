@@ -3,8 +3,8 @@ function Box(parentElement) {
   this.posX = 10;
   this.posY = 10;
   this.speed = 10;
-  this.dx = 1;
-  this.dy = 1;
+  this.dx = getIntegerMinMax(1, 2);
+  this.dy = getIntegerMinMax(1, 2);
   this.width = 10;
   this.height = 10;
   this.color = 'cornflowerblue';
@@ -173,6 +173,17 @@ function Box(parentElement) {
     });
     return this;
   };
+
+  /*
+random integer between min and max
+@param {int} min
+@param {int} max
+@return {int} value between or equal min and max
+ */
+  function getIntegerMinMax(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 }
 
 function ScoreBoard(gameElement) {
@@ -205,7 +216,6 @@ function Game(gameElement, boxCount) {
   this.removedBoxes = [];
   this.boxCount = boxCount || 10;
   this.element = undefined;
-  this.origValues = undefined;
 
   /*
  initialize game block with default config
@@ -220,27 +230,19 @@ function Game(gameElement, boxCount) {
     gameElement.appendChild(gameBlock);
     this.element = gameBlock;
     this.defineBoxes = defineBoxes || [];
-    startGame();
-    moveBoxes();
-    saveInitial();
+    this.startGameAddBoxes();
+    this.moveBoxes();
     return this;
   };
 
-  /*
-  initialize block collision as ant smasher
-   */
-  this.antSmasher = function () {
-    this.initAntScore();
-    this.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + this.boxes.length + ' ants alive<br>';
-    this.boxes.forEach(function (value) {
-      value.changeBoxToAnt();
-    });
+  this.getBoxes = function () {
+    return this.boxes;
   };
 
   /*
   Start by creating non collided boxes
    */
-  function startGame() {
+  this.startGameAddBoxes = function () {
     for (var i = 0; i < that.boxCount; i++) {
       var newBox = new Box(that.element).init();
       var newBoxSize = getIntegerMinMax(MIN_BOX_SIZE, MAX_BOX_SIZE);
@@ -266,12 +268,12 @@ function Game(gameElement, boxCount) {
         }
       } while (collisionStatus);
     }
-  }
+  };
 
   /*
   Move all boxes in random order
  */
-  function moveBoxes() {
+  this.moveBoxes = function () {
     that.boxes.forEach(function (value) {
       value.moveBox(that.boxes, that.height, that.width, function (smashed) {
         var removedBox = that.boxes.splice(that.boxes.indexOf(smashed), 1);
@@ -282,19 +284,9 @@ function Game(gameElement, boxCount) {
         });
         if (that.scoreElement)
           that.scoreElement.innerHTML = '<h3>Ant Score</h3><hr><strong>' + that.boxes.length + '</strong> ants alive' + antsScore;
-        if (that.boxes.length === 0) {
-          var restartBtn = document.createElement('a');
-          restartBtn.innerHTML = 'Congratulation! ants smash complete<br>Click to restart';
-          restartBtn.classList.add('reset-btn');
-          that.element.append(restartBtn);
-          restartBtn.addEventListener('click', function (ev) {
-            //reset ant smasher
-            reset();
-          })
-        }
       });
     })
-  }
+  };
 
   /*
   random integer between min and max
@@ -306,49 +298,87 @@ function Game(gameElement, boxCount) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  /*
-   save initial values
-   */
-  function saveInitial() {
-    var origValues = {};
-    for (var prop in this) {
-      if (this.hasOwnProperty(prop) && prop != "origValues") {
-        origValues[prop] = this[prop];
-      }
-    }
-    that.origValues = origValues;
-  }
-
-  /*
-   restore initial values
-   */
-  function reset() {
-    for (var prop in that.origValues) {
-      this[prop] = that.origValues[prop];
-    }
-  }
 }
 
-var boxObject = [
-  {posX: 10, posY: 10, height: 15, width: 45, color: 'blue', speed: 25},
-  {posX: 10, posY: 10, color: 'green', speed: 1},
-  {posX: 10, posY: 10, color: 'black', speed: 100}
-];
+function AntSmasher(appElement, defineAnts, ants) {
+  var that = this;
+  var restartBtn = undefined;
+  this.antBoxes = [];
+  this.antcount = ants || 5;
+  this.defineAnts = defineAnts || [];
+  this.antSmashInterval = undefined;
+  this.antSmashInstance = null;
+  this.appElement = appElement;
+
+  this.initialize = function () {
+    that.antSmashInstance = new Game(this.appElement, this.antcount);
+    that.antSmashInstance.init(this.defineAnts);
+    that.antBoxes = that.antSmashInstance.getBoxes();
+    that.antBoxes.forEach(function (value) {
+      value.changeBoxToAnt();
+    });
+    that.antSmashInstance.initAntScore();
+    that.antSmashInstance.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + that.antBoxes.length + ' ants alive<br>';
+    restartBtn = document.createElement('a');
+    gameInterval();
+    restartBtn.addEventListener('click', function () {
+      //reset ant smasher
+      that.antSmashInstance.element.removeChild(restartBtn);
+      resetGame();
+      gameInterval()
+    });
+  };
+
+  function gameInterval() {
+    that.antSmashInterval = setInterval(function () {
+      if (that.antBoxes.length === 0) {
+        restartBtn.innerHTML = 'Congratulation! ants smash complete<br>Click to restart';
+        restartBtn.classList.add('reset-btn');
+        that.antSmashInstance.element.append(restartBtn);
+        clearInterval(that.antSmashInterval);
+      }
+    }, 100);
+  }
+
+  function resetGame() {
+    that.antSmashInstance.startGameAddBoxes();
+    that.antBoxes = that.antSmashInstance.getBoxes();
+    that.antBoxes.forEach(function (value) {
+      value.changeBoxToAnt();
+    });
+    that.antSmashInstance.moveBoxes();
+    that.antSmashInstance.initAntScore();
+    that.antSmashInstance.scoreElement.innerHTML = '<h3>Ant Score</h3><hr>' + that.antBoxes.length + ' ants alive<br>';
+
+  }
+
+}
 
 var app = document.getElementById('app-wrapper');
-var boxCollision = new Game(app, 10).init(boxObject);
-// var boxCollision = new Game(app, 1000);
-// boxCollision.height = 2500;
-// boxCollision.width = 2500;
-// boxCollision.init();
+if (app) {
+  var boxObject = [
+    {posX: 10, posY: 10, height: 15, width: 45, color: 'blue', speed: 25},
+    {posX: 10, posY: 10, color: 'green', speed: 1},
+    {posX: 10, posY: 10, color: 'black', speed: 100}
+  ];
+  var boxCollision = new Game(app, 10).init(boxObject);
 
-var customAnts = [
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
-  {posX: 10, posY: 10, height: 40, width: 40, speed: 15}
-];
+  var customAnts = [
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15},
+    {posX: 10, posY: 10, height: 40, width: 40, speed: 15}
+  ];
 
-var antSmasherCustom = new Game(app, 5).init(customAnts).antSmasher();
+  new AntSmasher(app, customAnts, 5).initialize();
+}
+
+var appStress = document.getElementById('app-wrapper-stress');
+if (appStress){
+  var appStressCollision = new Game(appStress, 1000);
+  appStressCollision.height = 2000;
+  appStressCollision.width = 2000;
+  appStressCollision.init();
+}

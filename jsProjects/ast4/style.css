@@ -50,3 +50,12 @@ span.ant-smash {
   color: green;
   cursor: pointer;
 }
+
+.btn {
+  padding: 10px 50px;
+  background: lightyellow;
+}
+
+.btn:hover {
+  background: yellowgreen;
+}

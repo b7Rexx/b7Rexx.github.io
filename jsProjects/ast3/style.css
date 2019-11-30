@@ -19,91 +19,44 @@ ol, ul {
 }
 
 /*Style*/
-
-.carousel-container {
+#app-wrapper > div {
   float: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-wrapper {
-  position: absolute;
-  /*white-space: nowrap;*/
-}
-
-.carousel-image,
-.carousel-wrapper img {
-  height: 100%;
-  display: block;
-  line-height: 0;
-  font-size: 0;
-  float: left;
-}
-
-.left-arrow-btn {
-  position: absolute;
-  left: 0;
-  top: 40%;
-  z-index: 10;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.right-arrow-btn {
-  position: absolute;
-  right: 0;
-  top: 40%;
-  z-index: 10;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.image-dot-list {
-  position: absolute;
-  bottom: 10px;
-  left: 40%;
-}
-
-.image-dot-list li {
-  float: left;
-  height: 10px;
-  width: 10px;
   margin-right: 10px;
-  opacity: 0.7;
+  border: 1px solid lightgrey;
+  cursor:grab;
 }
 
-.image-dot-list li a {
-  height: 10px;
-  width: 10px;
+span.ant {
+  background: transparent;
+  background-image: url("ant.png");
+}
+
+span.ant-smash {
+  background-image: url("ant-smash.png");
+}
+
+.scoreboard {
+  text-align: right;
+  width: 200px;
+  padding: 20px;
+  min-height: 100px;
+  background: whitesmoke;
+  border-left: 1px solid gainsboro;
+}
+
+.reset-btn {
   display: block;
-  border-radius: 50%;
-  border: 2px solid white;
-  background: grey;
+  text-align: center;
+  padding: 10px;
+  color: green;
   cursor: pointer;
 }
 
-.image-dot-list li a:hover {
-  background: blue;
+.btn {
+  padding: 10px 50px;
+  background: lightyellow;
 }
 
-.image-dot-list li.active a {
-  background: red;
-}
-
-.image-dot-list li.disabled a {
-  opacity: 0.4;
-  cursor: context-menu;
-}
-
-.image-dot-list li.disabled a:hover {
-  background: grey;
-}
-
-.disabled {
-  opacity: 0.4;
-  cursor: context-menu;
+.btn:hover {
+  background: yellowgreen;
 }

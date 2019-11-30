@@ -1,6 +1,6 @@
 function Scoreboard(parentElement) {
   var thatScoreboard = this;
-  var scoreList=undefined;
+  var scoreList = undefined;
   this.scoreHeight = 400;
   this.scoreWidth = 200;
 
@@ -35,10 +35,10 @@ function Scoreboard(parentElement) {
     this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
   };
   this.addScore = function () {
-    scoreList.innerHTML='';
+    scoreList.innerHTML = '';
     this.scoreListArray.forEach(function (value, index) {
       var scoreListAppend = document.createElement('li');
-      scoreListAppend.innerHTML = 'Score ' + (index + 1) + ' : ' + value;
+      scoreListAppend.innerHTML = (index + 1) + '| Level ' + value.type + '|Score : ' + value.score;
       scoreList.appendChild(scoreListAppend);
     });
   }

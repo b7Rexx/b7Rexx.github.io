@@ -1,8 +1,10 @@
 function CarTraffic(appElement) {
   //CarTraffic extends Scoreboard
   Scoreboard.call(this, appElement);
-  //level up speed timeout
+  //level up speed control
   var LEVEL_UP_TIMER = 5000; //ms
+  var GAME_LOOP_PX = 10; //px
+  var LEVELS = 25; //ms
 
   var that = this;
   var moveLane = 0;
@@ -15,11 +17,14 @@ function CarTraffic(appElement) {
   var gameLevelTimeout = undefined;
   var crashImage = undefined;
 
+  //LEVEL {enum} 1,2,3
+  this.obstacleType = 3;
+
   this.gameStatus = 'start';
   this.blockHeight = 600;
   this.blockWidth = 300;
   this.speedLevelCount = 1;
-  this.intervalSpeedLevel = 20;
+  this.intervalSpeedLevel = LEVELS;
   this.appElement = appElement;
   this.obstacleArray = [];
   this.clearObstacleArray = [];
@@ -58,7 +63,7 @@ function CarTraffic(appElement) {
     //reset game values
     this.gameStatus = 'start';
     this.speedLevelCount = 1;
-    this.intervalSpeedLevel = 20;
+    this.intervalSpeedLevel = LEVELS;
     this.obstacleArray = [];
     this.clearObstacleArray = [];
     this.currentScoreValue = 0;
@@ -86,16 +91,14 @@ function CarTraffic(appElement) {
     levelCount.classList.add('level-count');
     levelCount.style.width = this.blockWidth + 'px';
     levelCount.style.top = parseInt(this.blockHeight / 2) + 'px';
-    levelCount.innerHTML = 'LEVEL ' + this.speedLevelCount;
+    levelCount.innerHTML = 'SPEED ' + this.speedLevelCount;
     this.carTraffic.appendChild(levelCount);
 
     clearInterval(gameInterval);
     buttonStart.addEventListener('click', function () {
       buttonStart.remove();
       startGame();
-      setTimeout(function () {
-        levelCount.innerHTML = '';
-      }, 1000);
+      levelCountTimeout();
     });
     document.addEventListener('keydown', upKeyStartGame);
     document.removeEventListener('keydown', carSwitchLaneFunc);
@@ -115,9 +118,7 @@ function CarTraffic(appElement) {
     if (ev.which === 38) {
       buttonStart.remove();
       startGame();
-      setTimeout(function () {
-        levelCount.innerHTML = '';
-      }, 1000);
+      levelCountTimeout();
     }
   }
 
@@ -147,22 +148,39 @@ function CarTraffic(appElement) {
     if (that.intervalSpeedLevel > 0) {
       gameInterval = setInterval(function () {
         initNewLane.lane.style.top = initNewLane.positionLane + moveLane + 'px';
-        moveLane += 5;
+        moveLane += GAME_LOOP_PX;
         if (moveLane > that.blockHeight)
           moveLane = 0;
 
         /*
         Calculate lane move distance to create new Obstacle
          */
-        totalMoveLane += 5;
+        totalMoveLane += GAME_LOOP_PX;
         if (totalMoveLane % 300 === 0) {
-          var newObstacle = new Obstacle(that.carTraffic);
-          newObstacle.init();
-          that.obstacleArray.push(newObstacle);
+
+          var obstacleTypeCount = that.obstacleType;
+          if (obstacleTypeCount === 3) {
+            obstacleTypeCount = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+          }
+          if (obstacleTypeCount === 1) {
+            var newObstacle = new Obstacle(that.carTraffic);
+            newObstacle.init();
+            that.obstacleArray.push(newObstacle);
+          } else {
+            var chooseLane = [1, 2, 3];
+            var randomOpenLane = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+            chooseLane.splice(chooseLane.indexOf(randomOpenLane), 1);
+            var newObstacle1 = new Obstacle(that.carTraffic);
+            newObstacle1.init(chooseLane[0]);
+            that.obstacleArray.push(newObstacle1);
+            var newObstacle2 = new Obstacle(that.carTraffic);
+            newObstacle2.init(chooseLane[1]);
+            that.obstacleArray.push(newObstacle2);
+          }
         }
         that.obstacleArray.forEach(function (value, index) {
-          value.totalHeightTravel -= 5;
-          value.topPosition += 5;
+          value.totalHeightTravel -= GAME_LOOP_PX;
+          value.topPosition += GAME_LOOP_PX;
           value.obstacle.style.top = value.topPosition + 'px';
           if (value.totalHeightTravel < 0) {
             var removedObstacle = that.obstacleArray.splice(index, 1);
@@ -192,10 +210,8 @@ function CarTraffic(appElement) {
       gameLevelTimeout = setTimeout(function () {
         that.intervalSpeedLevel -= 1;
         that.speedLevelCount += 1;
-        levelCount.innerHTML = 'LEVEL ' + that.speedLevelCount;
-        setTimeout(function () {
-          levelCount.innerHTML = '';
-        }, 1000);
+        levelCount.innerHTML = 'SPEED ' + that.speedLevelCount;
+        levelCountTimeout();
         callback();
       }, LEVEL_UP_TIMER);
     } else {
@@ -221,16 +237,17 @@ function CarTraffic(appElement) {
           break;
       }
       crashImage.style.left = positionLeft + 'px';
-      crashImage.style.top = pos;
-      // crashImage.style.bottom = '60px';
+      // crashImage.style.top = pos;
+      crashImage.style.bottom = '10px';
       crashImage.style.display = 'block';
     }
-    that.scoreListArray.push(that.clearObstacleArray.length);
+    that.scoreListArray.push({type: that.obstacleType, score: that.clearObstacleArray.length});
     that.addScore();
     document.removeEventListener('keydown', carSwitchLaneFunc);
-    setTimeout(function () {
+    var crashImageTimeout = setTimeout(function () {
       that.newGame();
       crashImage.style.display = 'none';
+      clearTimeout(crashImageTimeout);
     }, 2000);
   }
 
@@ -238,5 +255,12 @@ function CarTraffic(appElement) {
     crashImage = document.createElement('div');
     crashImage.classList.add('crash-image');
     that.carTraffic.appendChild(crashImage);
+  }
+
+  function levelCountTimeout() {
+    var levelCountTimeout = setTimeout(function () {
+      levelCount.innerHTML = '';
+      clearTimeout(levelCountTimeout);
+    }, 1000);
   }
 }

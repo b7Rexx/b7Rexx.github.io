@@ -16,10 +16,6 @@ function Lane(parentElement) {
     this.parentElement.appendChild(this.lane);
   };
 
-  this.singleObstacle = function () {
-
-  };
-
   /*
   set obstacle position by parent block width
  */

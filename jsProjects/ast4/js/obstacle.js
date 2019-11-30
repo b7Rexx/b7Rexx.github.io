@@ -7,7 +7,7 @@ function Obstacle(parentElement) {
   this.obstaclePosition = 'center';
   this.parentElement = parentElement;
 
-  this.init = function () {
+  this.init = function (laneChoose) {
     this.obstacle = document.createElement('div');
     this.totalHeightTravel = parseInt(that.parentElement.style.height.replace('px', '')) + 100;
     this.obstacle.style.top = this.topPosition + 'px';
@@ -16,8 +16,9 @@ function Obstacle(parentElement) {
     this.obstacle.classList.add('obstacle');
     this.parentElement.appendChild(this.obstacle);
 
-
-    var randomPos = getIntegerMinMax(1, 3);
+    var randomPos = laneChoose;
+    if (laneChoose === undefined)
+      randomPos = getIntegerMinMax(1, 3);
     if (randomPos === 1)
       this.positionLeft();
     else if (randomPos === 2)

@@ -4,7 +4,7 @@ function CarTraffic(appElement) {
   //level up speed control
   var LEVELS = 24; //ms
   var GAME_LOOP_PX = 12; //px
-  var LEVEL_UP_TIMER = 10000; //ms
+  var LEVEL_UP_TIMER = 15000; //ms
   var OBSTACLE_DIFFERENCE = 360; //ms
 
   var that = this;
@@ -201,12 +201,8 @@ function CarTraffic(appElement) {
 
     //bullet on space
     if (ev.which === 32) {
-      // if (currentBullet !== null) {
-      //   initNewCar.bullet.remove();
-      //   currentBullet = null;
-      //   initNewCar.bullet = null;
-      // }
-      if (currentBullet === null) {
+      if (currentBullet === null && initNewCar.bullet === null) {
+        moveBullet = 0;
         initNewCar.newBullet(initNewCar.carPosition);
         currentBullet = initNewCar.bullet;
         that.carTraffic.appendChild(currentBullet);
@@ -255,12 +251,16 @@ function CarTraffic(appElement) {
         /*
         bullet
          */
-        if (currentBullet !== null) {
-          moveBullet += GAME_LOOP_PX;
-          initNewCar.bulletPosition += GAME_LOOP_PX;
-          currentBullet.style.bottom = initNewCar.bulletPosition + 'px';
+        if (initNewCar.bullet !== null) {
+          if (currentBullet === null) {
+            initNewCar.bulletPosition -= GAME_LOOP_PX;
+            moveBullet -= GAME_LOOP_PX;
+          } else {
+            initNewCar.bulletPosition += GAME_LOOP_PX;
+            moveBullet += GAME_LOOP_PX;
+          }
+          initNewCar.bullet.style.bottom = initNewCar.bulletPosition + 'px';
           if (moveBullet > (that.blockHeight + 60)) {
-            moveBullet = 0;
             initNewCar.bullet.remove();
             currentBullet = null;
             initNewCar.bullet = null;
@@ -291,14 +291,14 @@ function CarTraffic(appElement) {
                 value.obstacle.remove();
                 that.currentScoreValue += 1;
                 that.currentScore();
-                moveBullet = 0;
+
                 currentBullet = null;
                 initNewCar.bullet.style.backgroundImage = 'url("images/explode.png")';
                 var clearExplosion = setTimeout(function () {
                   initNewCar.bullet.remove();
                   initNewCar.bullet = null;
                   clearTimeout(clearExplosion);
-                }, 100);
+                }, 1000);
               }
             }
           }

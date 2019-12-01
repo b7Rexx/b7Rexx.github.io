@@ -5,13 +5,15 @@ function CarTraffic(appElement) {
   var LEVELS = 24; //ms
   var GAME_LOOP_PX = 12; //px
   var LEVEL_UP_TIMER = 10000; //ms
-  var OBSTACLE_DIFFERENCE = 400; //ms
+  var OBSTACLE_DIFFERENCE = 360; //ms
 
   var that = this;
   var moveLane = 0;
+  var totalMoveLane = 0;
+  var moveBullet = 0;
+  var currentBullet = null;
   var buttonStart = undefined;
   var crashImage = undefined;
-  var totalMoveLane = 0;
   var levelCount = undefined;
   var initNewCar = undefined;
   var initNewLane = undefined;
@@ -199,7 +201,16 @@ function CarTraffic(appElement) {
 
     //bullet on space
     if (ev.which === 32) {
-console.log(ev);
+      // if (currentBullet !== null) {
+      //   initNewCar.bullet.remove();
+      //   currentBullet = null;
+      //   initNewCar.bullet = null;
+      // }
+      if (currentBullet === null) {
+        initNewCar.newBullet(initNewCar.carPosition);
+        currentBullet = initNewCar.bullet;
+        that.carTraffic.appendChild(currentBullet);
+      }
     }
   }
 
@@ -214,7 +225,6 @@ console.log(ev);
         moveLane += GAME_LOOP_PX;
         if (moveLane > that.blockHeight)
           moveLane = 0;
-
         /*
         Calculate lane move distance to create new Obstacle
          */
@@ -241,6 +251,21 @@ console.log(ev);
             that.obstacleArray.push(newObstacle2);
           }
         }
+
+        /*
+        bullet
+         */
+        if (currentBullet !== null) {
+          moveBullet += GAME_LOOP_PX;
+          initNewCar.bulletPosition += GAME_LOOP_PX;
+          currentBullet.style.bottom = initNewCar.bulletPosition + 'px';
+          if (moveBullet > (that.blockHeight + 60)) {
+            moveBullet = 0;
+            initNewCar.bullet.remove();
+            currentBullet = null;
+            initNewCar.bullet = null;
+          }
+        }
         that.obstacleArray.forEach(function (value, index) {
           value.totalHeightTravel -= GAME_LOOP_PX;
           value.topPosition += GAME_LOOP_PX;
@@ -248,7 +273,7 @@ console.log(ev);
           if (value.totalHeightTravel < 0) {
             var removedObstacle = that.obstacleArray.splice(index, 1);
             that.clearObstacleArray.push(removedObstacle[0]);
-            value.obstacle.style.display = 'none';
+            value.obstacle.remove();
             that.currentScoreValue += 1;
             that.currentScore();
           }
@@ -256,6 +281,25 @@ console.log(ev);
             //  collision detected
             if (initNewCar.carPosition === value.obstaclePosition) {
               carCrashed(value.obstacle.style.top, value.obstaclePosition);
+            }
+          }
+          if (currentBullet !== null) {
+            if (((that.blockHeight - value.topPosition) <= (initNewCar.bulletPosition + 150) && (that.blockHeight - value.topPosition) >= (initNewCar.bulletPosition))) {
+              if (initNewCar.bulletLane === value.obstaclePosition) {
+                var removedObstacleByBullet = that.obstacleArray.splice(index, 1);
+                that.clearObstacleArray.push(removedObstacleByBullet[0]);
+                value.obstacle.remove();
+                that.currentScoreValue += 1;
+                that.currentScore();
+                moveBullet = 0;
+                currentBullet = null;
+                initNewCar.bullet.style.backgroundImage = 'url("images/explode.png")';
+                var clearExplosion = setTimeout(function () {
+                  initNewCar.bullet.remove();
+                  initNewCar.bullet = null;
+                  clearTimeout(clearExplosion);
+                }, 100);
+              }
             }
           }
         });
@@ -279,6 +323,8 @@ console.log(ev);
       }, LEVEL_UP_TIMER);
     } else {
       clearTimeout(gameLevelTimeout);
+      levelCount.innerHTML = 'GGWP<br>Try other obstacle Levels';
+      levelCountTimeout();
     }
   }
 
@@ -313,6 +359,7 @@ after collision
     that.addScore();
     document.removeEventListener('keydown', carSwitchLaneFunc);
     var crashImageTimeout = setTimeout(function () {
+      initNewCar.car.style.display = 'none';
       that.newGame();
       crashImage.style.display = 'none';
       clearTimeout(crashImageTimeout);
@@ -335,6 +382,7 @@ after collision
     var levelCountTimeout = setTimeout(function () {
       levelCount.innerHTML = '';
       clearTimeout(levelCountTimeout);
-    }, 1000);
+    }, 2000);
   }
+
 }

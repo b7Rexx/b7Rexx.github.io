@@ -2,6 +2,9 @@ function Car(parentElement) {
   var that = this;
   this.car = undefined;
   this.carPosition = 'center';
+  this.bullet = null;
+  this.bulletLane = null;
+  this.bulletPosition = null;
   this.parentElement = parentElement;
 
   this.init = function () {
@@ -13,21 +16,33 @@ function Car(parentElement) {
     // this.positionRight();
   };
 
+  this.newBullet = function () {
+    this.bullet = document.createElement('div');
+    this.bullet.classList.add('bullet');
+    this.bulletPosition = 60;
+    this.bulletLane = this.carPosition;
+    this.bullet.style.backgroundImage='url("images/bullet.png")';
+    this.bullet.style.left = setCarPosition() + 'px';
+    this.bullet.style.bottom = this.bulletPosition + 'px';
+  };
+
+
   this.positionLeft = function () {
     this.carPosition = 'left';
-    setCarPosition();
+    that.car.style.left = setCarPosition() + 'px';
   };
   this.positionCenter = function () {
     this.carPosition = 'center';
-    setCarPosition();
+    that.car.style.left = setCarPosition() + 'px';
   };
   this.positionRight = function () {
     this.carPosition = 'right';
-    setCarPosition();
+    that.car.style.left = setCarPosition() + 'px';
   };
 
   /*
   set player position by parent block width
+@return {int} position of car from left
    */
   function setCarPosition() {
     var totalWidth = parseInt(that.parentElement.style.width.replace('px', ''));
@@ -43,6 +58,6 @@ function Car(parentElement) {
         pos = (totalWidth - 50) / 2;
         break;
     }
-    that.car.style.left = pos + 'px';
+    return pos;
   }
 }

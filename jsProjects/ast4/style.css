@@ -42,23 +42,24 @@ ol, ul {
   background: whitesmoke;
   border: 1px solid gainsboro;
   text-align: right;
+  overflow: auto;
 }
 
 .scoreboard h2 {
   text-align: left;
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 .scoreboard h3 {
   border-bottom: 1px solid gainsboro;
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 .scoreboard ul li {
   font-size: 20px;
   line-height: 24px;
-  padding:0 10px;
-  }
+  padding: 0 10px;
+}
 
 .lane {
   position: absolute;
@@ -77,6 +78,11 @@ ol, ul {
   cursor: pointer;
 }
 
+.start-button:hover {
+  background: white;
+  color: lightseagreen;
+}
+
 .level-count {
   z-index: 10;
   position: relative;
@@ -84,11 +90,6 @@ ol, ul {
   color: white;
   display: block;
   text-align: center;
-}
-
-.start-button:hover {
-  background: white;
-  color: lightseagreen;
 }
 
 .car {
@@ -120,4 +121,24 @@ ol, ul {
   border: 0;
   z-index: 20;
   display: none;
+}
+
+ul.button-obstacle-choose {
+  z-index: 10;
+  position: relative;
+}
+
+ul.button-obstacle-choose li {
+  font-size: 25px;
+  background: lightseagreen;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+ul.button-obstacle-choose li:hover {
+  background: white;
+  color: lightseagreen;
 }

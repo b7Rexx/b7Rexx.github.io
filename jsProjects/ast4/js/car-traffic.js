@@ -2,23 +2,25 @@ function CarTraffic(appElement) {
   //CarTraffic extends Scoreboard
   Scoreboard.call(this, appElement);
   //level up speed control
-  var LEVEL_UP_TIMER = 5000; //ms
+  var LEVELS = 20; //ms
   var GAME_LOOP_PX = 10; //px
-  var LEVELS = 25; //ms
+  var LEVEL_UP_TIMER = 10000; //ms
+  var OBSTACLE_DIFFERENCE = 400; //ms
 
   var that = this;
   var moveLane = 0;
   var buttonStart = undefined;
+  var crashImage = undefined;
   var totalMoveLane = 0;
   var levelCount = undefined;
   var initNewCar = undefined;
   var initNewLane = undefined;
   var gameInterval = undefined;
   var gameLevelTimeout = undefined;
-  var crashImage = undefined;
+  var buttonObstacleChoose = undefined;
 
   //LEVEL {enum} 1,2,3
-  this.obstacleType = 3;
+  this.obstacleType = 1;
 
   this.gameStatus = 'start';
   this.blockHeight = 600;
@@ -54,7 +56,6 @@ function CarTraffic(appElement) {
   };
 
   this.setScoreboard = function () {
-    this.scoreWidth = 200;
     this.scoreHeight = this.blockHeight;
     this.newScoreboard(this.carTraffic);
   };
@@ -98,9 +99,8 @@ function CarTraffic(appElement) {
     buttonStart.addEventListener('click', function () {
       buttonStart.remove();
       startGame();
-      levelCountTimeout();
     });
-    document.addEventListener('keydown', upKeyStartGame);
+    document.addEventListener('keydown', spaceKeyStartGame);
     document.removeEventListener('keydown', carSwitchLaneFunc);
   };
 
@@ -108,18 +108,73 @@ function CarTraffic(appElement) {
   start/reset game
    */
   function startGame() {
-    document.addEventListener('keydown', upKeyStartGame);
-    startGameInterval();
-    document.addEventListener('keydown', carSwitchLaneFunc);
-    document.removeEventListener('keydown', upKeyStartGame);
+    document.removeEventListener('keydown', spaceKeyStartGame);
+    document.addEventListener('keydown', spaceKeyChooseObstacle);
+
+    buttonStart.remove();
+    buttonObstacleChoose = document.createElement('ul');
+    buttonObstacleChoose.classList.add('button-obstacle-choose');
+    buttonObstacleChoose.style.width = that.blockWidth + 'px';
+    buttonObstacleChoose.style.top = parseInt(that.blockHeight / 2) + 'px';
+
+    var buttonObstacleChoose1 = document.createElement('li');
+    buttonObstacleChoose1.innerHTML = 'Single Obstacle';
+    that.carTraffic.appendChild(buttonObstacleChoose);
+    buttonObstacleChoose.appendChild(buttonObstacleChoose1);
+
+    var buttonObstacleChoose2 = document.createElement('li');
+    buttonObstacleChoose2.innerHTML = 'Double Obstacle';
+    buttonObstacleChoose.appendChild(buttonObstacleChoose2);
+
+    var buttonObstacleChoose3 = document.createElement('li');
+    buttonObstacleChoose3.innerHTML = 'Random Obstacle';
+    buttonObstacleChoose.appendChild(buttonObstacleChoose3);
+
+    currentObstacleSelection();
+    buttonObstacleChoose1.addEventListener('click', function () {
+      buttonObstacleChoose.remove();
+      that.obstacleType = 1;
+      chooseObstacleLevel();
+    });
+    buttonObstacleChoose2.addEventListener('click', function () {
+      buttonObstacleChoose.remove();
+      that.obstacleType = 2;
+      chooseObstacleLevel();
+    });
+    buttonObstacleChoose3.addEventListener('click', function () {
+      buttonObstacleChoose.remove();
+      that.obstacleType = 3;
+      chooseObstacleLevel();
+    });
+
   }
 
-  function upKeyStartGame(ev) {
-    if (ev.which === 38) {
+  function chooseObstacleLevel() {
+    document.removeEventListener('keydown', spaceKeyChooseObstacle);
+    startGameInterval();
+    levelCountTimeout();
+    document.addEventListener('keydown', carSwitchLaneFunc);
+  }
+
+  function spaceKeyStartGame(ev) {
+    if (ev.which === 32) {
       buttonStart.remove();
       startGame();
-      levelCountTimeout();
     }
+  }
+
+  function spaceKeyChooseObstacle(ev) {
+    if (ev.which === 32) {
+      buttonObstacleChoose.remove();
+      chooseObstacleLevel();
+    }
+  }
+
+  function currentObstacleSelection() {
+    Object.values(buttonObstacleChoose.getElementsByTagName('li')).forEach(function (value, index) {
+      if (index === (that.obstacleType - 1))
+        value.style.background = 'black';
+    });
   }
 
   /*
@@ -156,7 +211,7 @@ function CarTraffic(appElement) {
         Calculate lane move distance to create new Obstacle
          */
         totalMoveLane += GAME_LOOP_PX;
-        if (totalMoveLane % 300 === 0) {
+        if (totalMoveLane % OBSTACLE_DIFFERENCE === 0) {
 
           var obstacleTypeCount = that.obstacleType;
           if (obstacleTypeCount === 3) {
@@ -248,7 +303,7 @@ function CarTraffic(appElement) {
       that.newGame();
       crashImage.style.display = 'none';
       clearTimeout(crashImageTimeout);
-    }, 2000);
+    }, 1500);
   }
 
   function loadCrashImage() {

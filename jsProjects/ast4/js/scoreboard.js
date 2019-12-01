@@ -1,8 +1,7 @@
 function Scoreboard(parentElement) {
-  var thatScoreboard = this;
   var scoreList = undefined;
   this.scoreHeight = 400;
-  this.scoreWidth = 200;
+  this.scoreWidth = 250;
 
   this.currentScoreValue = 0;
   this.currentScoreAppend = [];
@@ -41,5 +40,7 @@ function Scoreboard(parentElement) {
       scoreListAppend.innerHTML = (index + 1) + '| Level ' + value.type + '|Score : ' + value.score;
       scoreList.appendChild(scoreListAppend);
     });
+    this.currentScoreValue = 0;
+    this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
   }
 }

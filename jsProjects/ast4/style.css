@@ -23,7 +23,7 @@ ol, ul {
 20px[ 3 X 100px lane ] 20px [ 160px scoreboard]
 */
 
-#app-wrapper {
+.div-margin{
   height: auto;
   margin: 20px;
 }
@@ -142,3 +142,4 @@ ul.button-obstacle-choose li:hover {
   background: white;
   color: lightseagreen;
 }
+

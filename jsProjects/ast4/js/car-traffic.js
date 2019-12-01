@@ -2,8 +2,8 @@ function CarTraffic(appElement) {
   //CarTraffic extends Scoreboard
   Scoreboard.call(this, appElement);
   //level up speed control
-  var LEVELS = 20; //ms
-  var GAME_LOOP_PX = 10; //px
+  var LEVELS = 24; //ms
+  var GAME_LOOP_PX = 12; //px
   var LEVEL_UP_TIMER = 10000; //ms
   var OBSTACLE_DIFFERENCE = 400; //ms
 
@@ -170,6 +170,9 @@ function CarTraffic(appElement) {
     }
   }
 
+  /*
+  Obstacle choose option after start
+   */
   function currentObstacleSelection() {
     Object.values(buttonObstacleChoose.getElementsByTagName('li')).forEach(function (value, index) {
       if (index === (that.obstacleType - 1))
@@ -192,6 +195,11 @@ function CarTraffic(appElement) {
         initNewCar.positionRight();
       else if (initNewCar.carPosition === 'left')
         initNewCar.positionCenter();
+    }
+
+    //bullet on space
+    if (ev.which === 32) {
+console.log(ev);
     }
   }
 
@@ -274,6 +282,11 @@ function CarTraffic(appElement) {
     }
   }
 
+  /*
+after collision
+@param {int} pos
+@param {enum} lane - left,right,center
+   */
   function carCrashed(pos, lane) {
     clearInterval(gameInterval);
     clearTimeout(gameLevelTimeout);
@@ -306,12 +319,18 @@ function CarTraffic(appElement) {
     }, 1500);
   }
 
+  /*
+  load crash image on collision
+   */
   function loadCrashImage() {
     crashImage = document.createElement('div');
     crashImage.classList.add('crash-image');
     that.carTraffic.appendChild(crashImage);
   }
 
+  /*
+  hide speed counter
+   */
   function levelCountTimeout() {
     var levelCountTimeout = setTimeout(function () {
       levelCount.innerHTML = '';

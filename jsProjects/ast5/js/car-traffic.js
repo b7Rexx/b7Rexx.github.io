@@ -45,6 +45,8 @@ function CarTraffic(appElement) {
   //Two player bullet, score
   this.playerOneBullet = undefined;
   this.playerOneScore = undefined;
+  this.playerTwoBullet = undefined;
+  this.playerTwoScore = undefined;
 
   this.init = function () {
     this.carTraffic.classList.add('car-traffic-block');
@@ -94,6 +96,8 @@ function CarTraffic(appElement) {
     this.newScoreboard(this.carTraffic);
     this.playerOneBullet = this.initBulletCharge();
     this.playerOneScore = this.initPlayerScore();
+    // this.playerTwoBullet = this.initBulletCharge();
+    // this.playerTwoScore = this.initPlayerScore();
   };
 
   this.newGame = function () {

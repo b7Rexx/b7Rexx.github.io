@@ -1,0 +1,175 @@
+/*Reset CSS*/
+* {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*Style*/
+.row {
+  overflow: auto;
+  width: 1500px;
+}
+
+.left-col {
+  float: left;
+}
+
+.right-col {
+  float: right;
+}
+
+/*
+20px[ 3 X 100px lane ] 20px [ 160px scoreboard]
+*/
+.div-margin {
+  height: auto;
+  margin: 20px;
+}
+
+.car-traffic-block {
+  float: left;
+  position: relative;
+  background: whitesmoke;
+  margin-right: 20px;
+  border: 1px solid gainsboro;
+  overflow: hidden;
+}
+
+.scoreboard {
+  float: left;
+  background: whitesmoke;
+  border: 1px solid gainsboro;
+  text-align: right;
+  overflow: auto;
+}
+
+.scoreboard h2 {
+  text-align: left;
+  padding: 0 10px;
+}
+
+.scoreboard h3 {
+  border-bottom: 1px solid gainsboro;
+  padding: 0 10px;
+}
+
+.scoreboard ul li {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0 10px;
+}
+
+.lane {
+  position: absolute;
+  background-image: url("images/road.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.start-button {
+  z-index: 10;
+  position: relative;
+  font-size: 25px;
+  background: lightseagreen;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background: white;
+  color: lightseagreen;
+}
+
+.level-count {
+  z-index: 10;
+  position: relative;
+  font-size: 25px;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.car {
+  position: absolute;
+  bottom: 10px;
+  background-image: url("images/car-1.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100px;
+  width: 50px;
+  z-index: 20;
+}
+
+.obstacle {
+  position: absolute;
+  background-image: url("images/obs-1.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100px;
+  width: 50px;
+}
+
+.crash-image {
+  position: absolute;
+  background-image: url("images/crash.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 50px;
+  height: 100px;
+  border: 0;
+  z-index: 30;
+  display: none;
+}
+
+ul.button-obstacle-choose {
+  z-index: 10;
+  position: relative;
+}
+
+ul.button-obstacle-choose li {
+  font-size: 25px;
+  background: lightseagreen;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+ul.button-obstacle-choose li:hover {
+  background: white;
+  color: lightseagreen;
+}
+
+.bullet {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 50px;
+  width: 50px;
+  z-index: 10;
+}
+
+.bullet-charge {
+  padding-right: 60px;
+  font-size: 16px;
+  background-image: url("images/bullet-right.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left;
+}

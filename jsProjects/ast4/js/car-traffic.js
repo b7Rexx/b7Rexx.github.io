@@ -20,9 +20,15 @@ function CarTraffic(appElement) {
   var gameInterval = undefined;
   var gameLevelTimeout = undefined;
   var buttonObstacleChoose = undefined;
+  var guideLines = undefined;
 
   //LEVEL {enum} 1,2,3
   this.obstacleType = 1;
+
+  //Game Key Setup
+  this.leftKey = 'ArrowLeft';
+  this.rightKey = 'ArrowRight';
+  this.startKey = 'ArrowUp';
 
   this.gameStatus = 'start';
   this.blockHeight = 600;
@@ -39,9 +45,17 @@ function CarTraffic(appElement) {
     this.carTraffic.style.height = this.blockHeight + 'px';
     this.carTraffic.style.width = this.blockWidth + 'px';
     this.appElement.appendChild(this.carTraffic);
+
     this.newGame();
     this.setScoreboard();
     loadCrashImage();
+    guideLines = document.createElement('div');
+    guideLines.classList.add('div-margin');
+    guideLines.innerHTML =
+      this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
+      + this.startKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+
+    this.appElement.appendChild(guideLines);
     return this;
   };
 
@@ -54,6 +68,17 @@ function CarTraffic(appElement) {
       this.blockWidth = 300;
     this.carTraffic.style.height = this.blockHeight + 'px';
     this.carTraffic.style.width = this.blockWidth + 'px';
+    return this;
+  };
+
+  this.changeGameKeys = function (left, right, start) {
+    this.leftKey = left;
+    this.rightKey = right;
+    this.startKey = start;
+    guideLines.innerHTML =
+      this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
+      + this.startKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+
     return this;
   };
 
@@ -159,26 +184,26 @@ function CarTraffic(appElement) {
   }
 
   function spaceKeyStartGame(ev) {
-    if (ev.which === 32) {
+    if (ev.key === that.startKey) {
       buttonStart.remove();
       startGame();
     }
   }
 
   function spaceKeyChooseObstacle(ev) {
-    if (ev.which === 38) {
+    if (ev.key === that.leftKey) {
       if (that.obstacleType === 2)
         that.obstacleType = 1;
       else if (that.obstacleType === 3)
         that.obstacleType = 2;
-    } else if (ev.which === 40) {
+    } else if (ev.key === that.rightKey) {
       if (that.obstacleType === 2)
         that.obstacleType = 3;
       else if (that.obstacleType === 1)
         that.obstacleType = 2;
     }
     currentObstacleSelection();
-    if (ev.which === 32) {
+    if (ev.key === that.startKey) {
       buttonObstacleChoose.remove();
       chooseObstacleLevel();
     }
@@ -200,12 +225,12 @@ function CarTraffic(appElement) {
   @input {event} keydown event
    */
   function carSwitchLaneFunc(ev) {
-    if (ev.which === 37) {
+    if (ev.key === that.leftKey) {
       if (initNewCar.carPosition === 'center')
         initNewCar.positionLeft();
       else if (initNewCar.carPosition === 'right')
         initNewCar.positionCenter();
-    } else if (ev.which === 39) {
+    } else if (ev.key === that.rightKey) {
       if (initNewCar.carPosition === 'center')
         initNewCar.positionRight();
       else if (initNewCar.carPosition === 'left')
@@ -213,7 +238,7 @@ function CarTraffic(appElement) {
     }
 
     //bullet on space
-    if (ev.which === 32) {
+    if (ev.key === that.startKey) {
       if (currentBullet === null && initNewCar.bullet === null) {
         moveBullet = 0;
         initNewCar.newBullet(initNewCar.carPosition);

@@ -19,10 +19,22 @@ ol, ul {
 }
 
 /*Style*/
+.row {
+  overflow: auto;
+  width: 1500px;
+}
+
+.left-col {
+  float: left;
+}
+
+.right-col {
+  float: right;
+}
+
 /*
 20px[ 3 X 100px lane ] 20px [ 160px scoreboard]
 */
-
 .div-margin {
   height: auto;
   margin: 20px;

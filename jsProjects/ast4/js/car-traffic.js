@@ -166,6 +166,18 @@ function CarTraffic(appElement) {
   }
 
   function spaceKeyChooseObstacle(ev) {
+    if (ev.which === 38) {
+      if (that.obstacleType === 2)
+        that.obstacleType = 1;
+      else if (that.obstacleType === 3)
+        that.obstacleType = 2;
+    } else if (ev.which === 40) {
+      if (that.obstacleType === 2)
+        that.obstacleType = 3;
+      else if (that.obstacleType === 1)
+        that.obstacleType = 2;
+    }
+    currentObstacleSelection();
     if (ev.which === 32) {
       buttonObstacleChoose.remove();
       chooseObstacleLevel();
@@ -177,6 +189,7 @@ function CarTraffic(appElement) {
    */
   function currentObstacleSelection() {
     Object.values(buttonObstacleChoose.getElementsByTagName('li')).forEach(function (value, index) {
+      value.style.background = 'lightseagreen';
       if (index === (that.obstacleType - 1))
         value.style.background = 'black';
     });
@@ -360,9 +373,10 @@ after collision
     document.removeEventListener('keydown', carSwitchLaneFunc);
     var crashImageTimeout = setTimeout(function () {
       currentBullet = null;
-      initNewCar.bullet.remove();
-      initNewCar.bullet = null;
-
+      if (initNewCar.bullet !== null) {
+        initNewCar.bullet.remove();
+        initNewCar.bullet = null;
+      }
       initNewCar.car.style.display = 'none';
       that.newGame();
       crashImage.style.display = 'none';

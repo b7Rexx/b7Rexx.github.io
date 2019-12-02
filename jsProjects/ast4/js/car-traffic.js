@@ -359,6 +359,10 @@ after collision
     that.addScore();
     document.removeEventListener('keydown', carSwitchLaneFunc);
     var crashImageTimeout = setTimeout(function () {
+      currentBullet = null;
+      initNewCar.bullet.remove();
+      initNewCar.bullet = null;
+
       initNewCar.car.style.display = 'none';
       that.newGame();
       crashImage.style.display = 'none';

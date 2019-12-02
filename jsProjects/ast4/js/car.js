@@ -21,7 +21,7 @@ function Car(parentElement) {
     this.bullet.classList.add('bullet');
     this.bulletPosition = 60;
     this.bulletLane = this.carPosition;
-    this.bullet.style.backgroundImage='url("images/bullet.png")';
+    this.bullet.style.backgroundImage = 'url("images/bullet.png")';
     this.bullet.style.left = setCarPosition() + 'px';
     this.bullet.style.bottom = this.bulletPosition + 'px';
   };

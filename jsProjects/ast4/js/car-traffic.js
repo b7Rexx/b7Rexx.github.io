@@ -6,6 +6,7 @@ function CarTraffic(appElement) {
   var GAME_LOOP_PX = 12; //px
   var LEVEL_UP_TIMER = 15000; //ms
   var OBSTACLE_DIFFERENCE = 360; //ms
+  var BULLET_CHARGE_TIME = 2000; //ms
 
   var that = this;
   var moveLane = 0;
@@ -29,6 +30,7 @@ function CarTraffic(appElement) {
   this.leftKey = 'ArrowLeft';
   this.rightKey = 'ArrowRight';
   this.startKey = 'ArrowUp';
+  this.bulletKey = 'ArrowDown';
 
   this.gameStatus = 'start';
   this.blockHeight = 600;
@@ -39,6 +41,12 @@ function CarTraffic(appElement) {
   this.obstacleArray = [];
   this.clearObstacleArray = [];
   this.carTraffic = document.createElement('div');
+
+  //Two player bullet, score
+  this.playerOneBullet = undefined;
+  this.playerOneScore = undefined;
+  this.playerTwoBullet = undefined;
+  this.playerTwoScore = undefined;
 
   this.init = function () {
     this.carTraffic.classList.add('car-traffic-block');
@@ -53,7 +61,7 @@ function CarTraffic(appElement) {
     guideLines.classList.add('div-margin');
     guideLines.innerHTML =
       this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
-      + this.startKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+      + this.bulletKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
 
     this.appElement.appendChild(guideLines);
     return this;
@@ -71,13 +79,14 @@ function CarTraffic(appElement) {
     return this;
   };
 
-  this.changeGameKeys = function (left, right, start) {
+  this.changeGameKeys = function (left, right, start, bullet) {
     this.leftKey = left;
     this.rightKey = right;
     this.startKey = start;
+    this.bulletKey = bullet;
     guideLines.innerHTML =
       this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
-      + this.startKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+      + this.bulletKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
 
     return this;
   };
@@ -85,6 +94,10 @@ function CarTraffic(appElement) {
   this.setScoreboard = function () {
     this.scoreHeight = this.blockHeight;
     this.newScoreboard(this.carTraffic);
+    this.playerOneBullet = this.initBulletCharge();
+    this.playerOneScore = this.initPlayerScore();
+    // this.playerTwoBullet = this.initBulletCharge();
+    // this.playerTwoScore = this.initPlayerScore();
   };
 
   this.newGame = function () {
@@ -238,12 +251,13 @@ function CarTraffic(appElement) {
     }
 
     //bullet on space
-    if (ev.key === that.startKey) {
+    if (ev.key === that.bulletKey) {
       if (currentBullet === null && initNewCar.bullet === null) {
         moveBullet = 0;
         initNewCar.newBullet(initNewCar.carPosition);
         currentBullet = initNewCar.bullet;
         that.carTraffic.appendChild(currentBullet);
+        that.playerOneBullet.style.opacity = 0;
       }
     }
   }
@@ -302,6 +316,7 @@ function CarTraffic(appElement) {
             initNewCar.bullet.remove();
             currentBullet = null;
             initNewCar.bullet = null;
+            that.playerOneBullet.style.opacity = 1;
           }
         }
         that.obstacleArray.forEach(function (value, index) {
@@ -313,7 +328,7 @@ function CarTraffic(appElement) {
             that.clearObstacleArray.push(removedObstacle[0]);
             value.obstacle.remove();
             that.currentScoreValue += 1;
-            that.currentScore();
+            that.currentScore(that.playerOneScore);
           }
           if ((value.totalHeightTravel <= 210 && value.totalHeightTravel >= 30)) {
             //  collision detected
@@ -328,15 +343,18 @@ function CarTraffic(appElement) {
                 that.clearObstacleArray.push(removedObstacleByBullet[0]);
                 value.obstacle.remove();
                 that.currentScoreValue += 1;
-                that.currentScore();
+                that.currentScore(that.playerOneScore);
 
                 currentBullet = null;
+                that.playerOneBullet.style.opacity = 0.2;
+
                 initNewCar.bullet.style.backgroundImage = 'url("images/explode.png")';
                 var clearExplosion = setTimeout(function () {
                   initNewCar.bullet.remove();
                   initNewCar.bullet = null;
                   clearTimeout(clearExplosion);
-                }, 1000);
+                  that.playerOneBullet.style.opacity = 1;
+                }, BULLET_CHARGE_TIME);
               }
             }
           }
@@ -389,18 +407,18 @@ after collision
           break;
       }
       crashImage.style.left = positionLeft + 'px';
-      // crashImage.style.top = pos;
       crashImage.style.bottom = '10px';
       crashImage.style.display = 'block';
     }
     that.scoreListArray.push({type: that.obstacleType, score: that.clearObstacleArray.length});
-    that.addScore();
+    that.addScore(that.playerOneScore);
     document.removeEventListener('keydown', carSwitchLaneFunc);
     var crashImageTimeout = setTimeout(function () {
       currentBullet = null;
       if (initNewCar.bullet !== null) {
         initNewCar.bullet.remove();
         initNewCar.bullet = null;
+        that.playerOneBullet.style.opacity = 1;
       }
       initNewCar.car.style.display = 'none';
       that.newGame();
@@ -425,7 +443,7 @@ after collision
     var levelCountTimeout = setTimeout(function () {
       levelCount.innerHTML = '';
       clearTimeout(levelCountTimeout);
-    }, 2000);
+    }, 1000);
   }
 
 }

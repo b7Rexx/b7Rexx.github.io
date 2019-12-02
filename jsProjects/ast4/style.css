@@ -164,3 +164,12 @@ ul.button-obstacle-choose li:hover {
   width: 50px;
   z-index: 10;
 }
+
+.bullet-charge {
+  padding-right: 60px;
+  font-size: 16px;
+  background-image: url("images/bullet-right.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left;
+}

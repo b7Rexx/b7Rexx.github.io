@@ -1,5 +1,7 @@
 function Scoreboard(parentElement) {
   var scoreList = undefined;
+  var scoreValue = undefined;
+  var bulletSpan = undefined;
   this.scoreHeight = 400;
   this.scoreWidth = 250;
 
@@ -19,28 +21,37 @@ function Scoreboard(parentElement) {
     var heading = document.createElement('h2');
     heading.innerHTML = 'Scoreboard';
     this.scoreboard.appendChild(heading);
-
     this.currentScoreAppend = document.createElement('h3');
-    this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
-    this.scoreboard.appendChild(this.currentScoreAppend);
-
     scoreList = document.createElement('ul');
+    this.scoreboard.appendChild(this.currentScoreAppend);
     this.scoreboard.appendChild(scoreList);
-
     return this;
   };
 
-  this.currentScore = function () {
-    this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
+  this.initPlayerScore = function () {
+    scoreValue = document.createElement('span');
+    this.currentScore(scoreValue);
+    this.currentScoreAppend.appendChild(scoreValue);
+    return scoreValue;
   };
-  this.addScore = function () {
-    // scoreList.innerHTML = '';
-    // this.scoreListArray.forEach(function (value, index) {
-      var scoreListAppend = document.createElement('li');
-      scoreListAppend.innerHTML = (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length-1].type + '|Score : ' + this.scoreListArray[this.scoreListArray.length-1].score;
-      scoreList.appendChild(scoreListAppend);
-    // });
+
+  this.initBulletCharge = function () {
+    bulletSpan = document.createElement('span');
+    bulletSpan.classList.add('bullet-charge');
+    bulletSpan.innerHTML = ' ';
+    this.currentScoreAppend.appendChild(bulletSpan);
+    return bulletSpan;
+  };
+
+  this.currentScore = function (scoreSpan) {
+    scoreSpan.innerHTML = 'Player Score  : ' + this.currentScoreValue;
+  };
+
+  this.addScore = function (scoreSpan) {
+    var scoreListAppend = document.createElement('li');
+    scoreListAppend.innerHTML = (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type + '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+    scoreList.appendChild(scoreListAppend);
     this.currentScoreValue = 0;
-    this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
-  }
+    this.currentScore(scoreSpan);
+  };
 }

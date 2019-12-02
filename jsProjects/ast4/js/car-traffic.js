@@ -409,18 +409,7 @@ after collision
     that.scoreListArray.push({type: that.obstacleType, score: that.clearObstacleArray.length});
     that.addScore(that.playerOneScore);
     document.removeEventListener('keydown', carSwitchLaneFunc);
-    var crashImageTimeout = setTimeout(function () {
-      currentBullet = null;
-      if (initNewCar.bullet !== null) {
-        initNewCar.bullet.remove();
-        initNewCar.bullet = null;
-        that.playerOneBullet.style.opacity = 1;
-      }
-      initNewCar.car.style.display = 'none';
-      that.newGame();
-      crashImage.style.display = 'none';
-      clearTimeout(crashImageTimeout);
-    }, 1500);
+    document.addEventListener('keydown', restartGame);
   }
 
   /*
@@ -440,6 +429,24 @@ after collision
       levelCount.innerHTML = '';
       clearTimeout(levelCountTimeout);
     }, 1000);
+  }
+
+  /*
+ restart on start key press
+  */
+  function restartGame(ev) {
+    if (ev.key === that.startKey) {
+      currentBullet = null;
+      if (initNewCar.bullet !== null) {
+        initNewCar.bullet.remove();
+        initNewCar.bullet = null;
+        that.playerOneBullet.style.opacity = 1;
+      }
+      initNewCar.car.style.display = 'none';
+      that.newGame();
+      crashImage.style.display = 'none';
+      document.removeEventListener('keydown', restartGame);
+    }
   }
 
 }

@@ -152,8 +152,7 @@ ul.button-obstacle-choose li {
 }
 
 ul.button-obstacle-choose li:hover {
-  background: white;
-  color: lightseagreen;
+  color: black;
 }
 
 .bullet {

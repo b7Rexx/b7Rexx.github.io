@@ -7,13 +7,18 @@ function Car(parentElement) {
   this.bulletPosition = null;
   this.parentElement = parentElement;
 
-  this.init = function () {
+  this.init = function (pos, player) {
+    var playerCar = player || 1;
     this.car = document.createElement('div');
     this.car.classList.add('car');
+    this.car.style.backgroundImage = 'url("images/car-' + playerCar + '.png")';
     this.parentElement.appendChild(this.car);
-    // this.positionLeft();
-    this.positionCenter();
-    // this.positionRight();
+    if (pos === 'left')
+      this.positionLeft();
+    else if (pos === 'right')
+      this.positionRight();
+    else
+      this.positionCenter();
   };
 
   this.newBullet = function () {

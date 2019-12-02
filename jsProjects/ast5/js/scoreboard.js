@@ -28,9 +28,9 @@ function Scoreboard(parentElement) {
     return this;
   };
 
-  this.initPlayerScore = function () {
+  this.initPlayerScore = function (player) {
     scoreValue = document.createElement('span');
-    this.currentScore(scoreValue);
+    this.currentScore(scoreValue, player);
     this.currentScoreAppend.appendChild(scoreValue);
     return scoreValue;
   };
@@ -43,15 +43,27 @@ function Scoreboard(parentElement) {
     return bulletSpan;
   };
 
-  this.currentScore = function (scoreSpan) {
-    scoreSpan.innerHTML = 'Player Score  : ' + this.currentScoreValue;
+  this.currentScore = function (scoreSpan, player) {
+    scoreSpan.innerHTML = player + ' Score  : ' + this.currentScoreValue;
   };
 
-  this.addScore = function (scoreSpan) {
+  this.addScore = function (scoreSpan, player, playerStat, status) {
     var scoreListAppend = document.createElement('li');
-    scoreListAppend.innerHTML = (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type + '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+
+    if (playerStat === 1) {
+      scoreListAppend.innerHTML =
+        '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
+        '<br>' + status + ' ' + player + ' |Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+    } else if (playerStat === 2) {
+      scoreListAppend.innerHTML =
+        status + ' ' + player + ' |Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score + '<hr>';
+    } else {
+      scoreListAppend.innerHTML =
+        '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
+        '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+    }
     scoreList.appendChild(scoreListAppend);
     this.currentScoreValue = 0;
-    this.currentScore(scoreSpan);
+    this.currentScore(scoreSpan, player);
   };
 }

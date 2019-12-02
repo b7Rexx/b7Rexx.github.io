@@ -49,7 +49,9 @@ function Scoreboard(parentElement) {
 
   this.addScore = function (scoreSpan) {
     var scoreListAppend = document.createElement('li');
-    scoreListAppend.innerHTML = (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type + '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+    scoreListAppend.innerHTML =
+      (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type
+      + '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
     scoreList.appendChild(scoreListAppend);
     this.currentScoreValue = 0;
     this.currentScore(scoreSpan);

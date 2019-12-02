@@ -5,7 +5,7 @@ function CarTraffic(appElement) {
   var LEVELS = 24; //ms
   var GAME_LOOP_PX = 12; //px
   var LEVEL_UP_TIMER = 15000; //ms
-  var OBSTACLE_DIFFERENCE = 360; //ms
+  var OBSTACLE_DIFFERENCE = 360; // GAME_LOOP_PX (12) * 30 px
   var BULLET_CHARGE_TIME = 2000; //ms
 
   var that = this;
@@ -59,7 +59,7 @@ function CarTraffic(appElement) {
     guideLines.classList.add('div-margin');
     guideLines.innerHTML =
       this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
-      + this.bulletKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+      + this.bulletKey + ' to shoot bullets | careful bullets charges ' + (BULLET_CHARGE_TIME / 1000) + ' sec if it collides';
 
     this.appElement.appendChild(guideLines);
     return this;
@@ -84,7 +84,7 @@ function CarTraffic(appElement) {
     this.bulletKey = bullet;
     guideLines.innerHTML =
       this.startKey + ' to start | switch lanes using ' + this.leftKey + ', ' + this.rightKey + '<br>'
-      + this.bulletKey + ' to shoot bullets | careful bullets charges 1 sec if it collides';
+      + this.bulletKey + ' to shoot bullets | careful bullets charges ' + (BULLET_CHARGE_TIME / 1000) + ' sec if it collides';
 
     return this;
   };
@@ -364,7 +364,7 @@ function CarTraffic(appElement) {
   timeout for intervalSpeedLevel update
    */
   function speedUpgrade(callback) {
-    //Speed increase every
+    //Speed increase on LEVEL_UP_TIMER
     if (that.intervalSpeedLevel > 0) {
       gameLevelTimeout = setTimeout(function () {
         that.intervalSpeedLevel -= 1;

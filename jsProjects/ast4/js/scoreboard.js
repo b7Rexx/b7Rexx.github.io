@@ -34,12 +34,12 @@ function Scoreboard(parentElement) {
     this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
   };
   this.addScore = function () {
-    scoreList.innerHTML = '';
-    this.scoreListArray.forEach(function (value, index) {
+    // scoreList.innerHTML = '';
+    // this.scoreListArray.forEach(function (value, index) {
       var scoreListAppend = document.createElement('li');
-      scoreListAppend.innerHTML = (index + 1) + '| Level ' + value.type + '|Score : ' + value.score;
+      scoreListAppend.innerHTML = (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length-1].type + '|Score : ' + this.scoreListArray[this.scoreListArray.length-1].score;
       scoreList.appendChild(scoreListAppend);
-    });
+    // });
     this.currentScoreValue = 0;
     this.currentScoreAppend.innerHTML = 'Current Score  : ' + this.currentScoreValue;
   }

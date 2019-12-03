@@ -1,0 +1,79 @@
+.row {
+width:1440px;
+overflow: auto;
+}
+
+.left-col {
+  float: left;
+}
+
+.right-col {
+  float: right;
+}
+
+.app-wrapper {
+  position: relative;
+  background: #0099cc;
+  background-image: url("../images/cloud-bg.png");
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-align: center;
+}
+
+.pipe-block {
+  position: absolute;
+}
+
+.pipe-bottom, .pipe-top {
+  position: absolute;
+  width: 50px;
+  height: 500px;
+}
+
+.pipe-top {
+  background-image: url("../images/pipe-green-down.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.pipe-bottom {
+  background-image: url("../images/pipe-green-up.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.parent-score {
+  text-align: left;
+  position: absolute;
+  width: 95%;
+  z-index: 20;
+  background-image: url("../images/star.png");
+  background-size: auto 110%;
+  background-repeat: no-repeat;
+  margin: 10px;
+  padding: 10px;
+}
+
+.high-score {
+  display: inline;
+}
+
+.high-score img {
+  background: transparent;
+}
+
+.current-score {
+  float: right;
+}
+
+.game-over {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.splash-img {
+  margin-top: 50px;
+}

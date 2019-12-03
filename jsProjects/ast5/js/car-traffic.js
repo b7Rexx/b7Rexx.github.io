@@ -2,10 +2,10 @@ function CarTraffic(appElement) {
   //CarTraffic extends Scoreboard
   Scoreboard.call(this, appElement);
   //level up speed control
-  var LEVELS = 24; //ms
-  var GAME_LOOP_PX = 12; //px
+  var LEVELS = 30; //ms
+  var GAME_LOOP_PX = 15; //px
   var LEVEL_UP_TIMER = 15000; //ms
-  var OBSTACLE_DIFFERENCE = 360; //ms
+  var OBSTACLE_DIFFERENCE = 375; //ms
   var BULLET_CHARGE_TIME = 2000; //ms
   var PLAYER_NAME_ONE = 'Player 1';
   var PLAYER_NAME_TWO = 'Player 2';

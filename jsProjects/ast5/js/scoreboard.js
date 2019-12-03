@@ -58,18 +58,18 @@ function Scoreboard(parentElement) {
       scoreListAppend.innerHTML =
         '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
         '<br>' + status + ' ' + player + ' |Score : ' + this.currentScoreValue;
+      this.currentScoreValue = 0;
     } else if (numberPlayer === 2) {
       scoreListAppend.innerHTML =
-        status + ' ' + player + ' |Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score + '<hr>';
+        status + ' ' + player + ' |Score : ' + this.currentScoreValueTwo + '<hr>';
+      this.currentScoreValueTwo = 0;
     } else {
       scoreListAppend.innerHTML =
         '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
-        '|Score : ' + this.currentScoreValueTwo;
+        '|Score : ' + this.currentScoreValue;
     }
-    console.log(this.scoreListArray[this.scoreListArray.length - 1].score);
+
     scoreList.appendChild(scoreListAppend);
-    this.currentScoreValue = 0;
-    this.currentScoreValueTwo = 0;
     this.currentScore(scoreSpan, player, numberPlayer);
   };
 }

@@ -6,6 +6,7 @@ function Scoreboard(parentElement) {
   this.scoreWidth = 250;
 
   this.currentScoreValue = 0;
+  this.currentScoreValueTwo = 0;
   this.currentScoreAppend = [];
   this.scoreListArray = [];
   this.scoreboard = undefined;
@@ -28,9 +29,9 @@ function Scoreboard(parentElement) {
     return this;
   };
 
-  this.initPlayerScore = function (player) {
+  this.initPlayerScore = function (player, numberPlayer) {
     scoreValue = document.createElement('span');
-    this.currentScore(scoreValue, player);
+    this.currentScore(scoreValue, player, numberPlayer);
     this.currentScoreAppend.appendChild(scoreValue);
     return scoreValue;
   };
@@ -43,27 +44,32 @@ function Scoreboard(parentElement) {
     return bulletSpan;
   };
 
-  this.currentScore = function (scoreSpan, player) {
-    scoreSpan.innerHTML = player + ' Score  : ' + this.currentScoreValue;
+  this.currentScore = function (scoreSpan, player, status) {
+    if (status === 2)
+      scoreSpan.innerHTML = player + ' Score  : ' + this.currentScoreValueTwo;
+    else
+      scoreSpan.innerHTML = player + ' Score  : ' + this.currentScoreValue;
   };
 
-  this.addScore = function (scoreSpan, player, playerStat, status) {
+  this.addScore = function (scoreSpan, player, numberPlayer, status) {
     var scoreListAppend = document.createElement('li');
 
-    if (playerStat === 1) {
+    if (numberPlayer === 1) {
       scoreListAppend.innerHTML =
         '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
-        '<br>' + status + ' ' + player + ' |Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
-    } else if (playerStat === 2) {
+        '<br>' + status + ' ' + player + ' |Score : ' + this.currentScoreValue;
+    } else if (numberPlayer === 2) {
       scoreListAppend.innerHTML =
         status + ' ' + player + ' |Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score + '<hr>';
     } else {
       scoreListAppend.innerHTML =
         '#' + (this.scoreListArray.length) + '| Level ' + this.scoreListArray[this.scoreListArray.length - 1].type +
-        '|Score : ' + this.scoreListArray[this.scoreListArray.length - 1].score;
+        '|Score : ' + this.currentScoreValueTwo;
     }
+    console.log(this.scoreListArray[this.scoreListArray.length - 1].score);
     scoreList.appendChild(scoreListAppend);
     this.currentScoreValue = 0;
-    this.currentScore(scoreSpan, player);
+    this.currentScoreValueTwo = 0;
+    this.currentScore(scoreSpan, player, numberPlayer);
   };
 }

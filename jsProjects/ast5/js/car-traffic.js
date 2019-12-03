@@ -119,19 +119,21 @@ function CarTraffic(appElement) {
     this.scoreHeight = this.blockHeight;
     this.newScoreboard(this.carTraffic);
     this.playerOneBullet = this.initBulletCharge();
-    this.playerOneScore = this.initPlayerScore(PLAYER_NAME_ONE);
+    this.playerOneScore = this.initPlayerScore(PLAYER_NAME_ONE,1);
     this.playerTwoBullet = this.initBulletCharge();
-    this.playerTwoScore = this.initPlayerScore(PLAYER_NAME_TWO);
+    this.playerTwoScore = this.initPlayerScore(PLAYER_NAME_TWO,2);
   };
 
   this.newGame = function () {
     //reset game values
     this.gameStatus = 'start';
+    this.gameStatusTwo = 'start';
     this.speedLevelCount = 1;
     this.intervalSpeedLevel = LEVELS;
     this.obstacleArray = [];
     this.clearObstacleArray = [];
     this.currentScoreValue = 0;
+    this.currentScoreValueTwo = 0;
     this.startButton();
 
     initNewLane = new Lane(this.carTraffic);
@@ -417,8 +419,9 @@ function CarTraffic(appElement) {
             that.clearObstacleArray.push(removedObstacle[0]);
             value.obstacle.remove();
             that.currentScoreValue += 1;
-            that.currentScore(that.playerOneScore, PLAYER_NAME_ONE);
-            that.currentScore(that.playerTwoScore, PLAYER_NAME_TWO);
+            that.currentScoreValueTwo += 1;
+            that.currentScore(that.playerOneScore, PLAYER_NAME_ONE,1);
+            that.currentScore(that.playerTwoScore, PLAYER_NAME_TWO,2);
           }
           if ((value.totalHeightTravel <= 210 && value.totalHeightTravel >= 30)) {
             //  collision detected
@@ -436,7 +439,7 @@ function CarTraffic(appElement) {
                 that.clearObstacleArray.push(removedObstacleByBullet[0]);
                 value.obstacle.remove();
                 that.currentScoreValue += 1;
-                that.currentScore(that.playerOneScore, PLAYER_NAME_TWO);
+                that.currentScore(that.playerOneScore, PLAYER_NAME_ONE,1);
 
                 currentBullet = null;
                 that.playerOneBullet.style.opacity = 0.2;
@@ -457,8 +460,8 @@ function CarTraffic(appElement) {
                 var removedObstacleByBulletTwo = that.obstacleArray.splice(index, 1);
                 that.clearObstacleArray.push(removedObstacleByBulletTwo[0]);
                 value.obstacle.remove();
-                that.currentScoreValue += 1;
-                that.currentScore(that.playerTwoScore, PLAYER_NAME_ONE);
+                that.currentScoreValueTwo += 1;
+                that.currentScore(that.playerTwoScore, PLAYER_NAME_TWO,2);
 
                 currentBulletTwo = null;
                 that.playerTwoBullet.style.opacity = 0.2;

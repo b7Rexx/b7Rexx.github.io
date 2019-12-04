@@ -101,7 +101,8 @@ class Game {
       that._obstacles.forEach(function (value, index) {
         value.xPosition = value.xPosition - 1;
 
-        if (value.xPosition <= 234 && value.xPosition >= 200) {
+        if (value.xPosition <= 234 && value.xPosition >= 150) {
+          console.log(value.xPosition);
           if (!(value.topPipePos < that._bird.topPosition && value.bottomPipePos > (that._bird.topPosition + 24))) {
             that.gameOver();
           }

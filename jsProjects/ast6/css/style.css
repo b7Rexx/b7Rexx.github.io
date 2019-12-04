@@ -5,12 +5,12 @@ overflow: auto;
 
 .left-col {
   float: left;
-padding: 10px;
+/*padding: 10px;*/
 }
 
 .right-col {
-  float: left;
-  padding: 10px;
+  float: right;
+  /*padding: 10px;*/
 }
 
 .app-wrapper {

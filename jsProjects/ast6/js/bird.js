@@ -18,6 +18,7 @@ class Bird {
     this._element.classList.add('bird');
     this._element.height = 24;
     this._element.width = 34;
+    this._element.style.zIndex = 20;
     this._element.style.position = 'absolute';
     this._element.style.top = this.topPosition + 'px';
     this._element.style.left = '200px';

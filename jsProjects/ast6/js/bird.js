@@ -50,18 +50,30 @@ class Bird {
   moveWings() {
     // var that = this;
     // var birdSprite = new Image();
-    // birdSprite.src = 'images/' + this._color + '-bird-sprite_34x24_anim.png';
+    // birdSprite.src = 'images/' + this._color + '-bird-sprite_34x24_animate.png';
     //
     // this._canvasSprite.changeImage(birdSprite);
     // this._canvasSprite.resetLoopCount();
     // birdSpriteLoop();
+    //
+    // // birdSpriteLoop();
     //
     // function birdSpriteLoop() {
     //   window.requestAnimationFrame(birdSpriteLoop);
     //   that._canvasSprite.update();
     //   that._canvasSprite.render();
     // }
-
+    // function birdSpriteLoop1() {
+    //   var birdSprite1 = new Image();
+    //   birdSprite1.src = 'images/' + this._color + '-bird-sprite_34x24.png';
+    //
+    //   that._canvasSprite.changeImage(birdSprite1);
+    //   that._canvasSprite.resetLoopCount();
+    //   window.requestAnimationFrame(birdSpriteLoop1);
+    //   that._canvasSprite.update();
+    //   that._canvasSprite.render();
+    // }
+    //
     this._canvasSprite.resetLoopCount();
   }
 

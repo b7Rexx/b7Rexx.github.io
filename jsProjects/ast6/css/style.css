@@ -1,14 +1,16 @@
 .row {
-width:1440px;
+/*width:1440px;*/
 overflow: auto;
 }
 
 .left-col {
   float: left;
+padding: 10px;
 }
 
 .right-col {
-  float: right;
+  float: left;
+  padding: 10px;
 }
 
 .app-wrapper {

@@ -7,7 +7,7 @@ class Game {
   constructor(parentElement, scoreboard, playKey) {
     this._bird = undefined;
     this._appHeight = 500;
-    this._appWidth = 700;
+    this._appWidth = 500;
     this._gameInterval = undefined;
     this._timeoutFly = undefined;
     this._gravity = 1;

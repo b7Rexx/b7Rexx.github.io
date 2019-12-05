@@ -12,8 +12,16 @@ downloadBtn.addEventListener('click', function () {
 });
 
 function parseDOM(parent, arrayReturn) {
-  var textAbleDom = parent;
+  var textAbleDom = parent.cloneNode(true);
   arrayReturn.tagName = parent.tagName;
+
+  if (textAbleDom.children.length > 0) {
+    Object.values(textAbleDom.children).forEach(function (value) {
+      value.remove();
+    });
+  }
+  arrayReturn.innerText =(textAbleDom.textContent.trim());
+
   arrayReturn.attributes = [];
   for (let i = 0; i < parent.attributes.length; i++) {
     arrayReturn.attributes[i] = {name: parent.attributes[i].name, value: parent.attributes[i].value};
@@ -25,13 +33,6 @@ function parseDOM(parent, arrayReturn) {
       parseDOM(parent.children[i], arrayReturn.children[i]);
     }
   }
-  if (textAbleDom.children.length > 0) {
-    Object.values(textAbleDom.children).forEach(function (value) {
-      value.remove();
-    });
-  }
-  console.log(textAbleDom);
-  arrayReturn.innerText = textAbleDom.innerText;
 }
 
 // Function to download data to a file

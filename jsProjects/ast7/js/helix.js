@@ -36,7 +36,7 @@ class Helix {
       }
       that._canvasBlock.clearRect(0, 0, that._element.width, that._element.height);
       that.generateCircles();
-    }, 130);
+    }, 100);
   }
 
   generateCircles() {
@@ -44,6 +44,7 @@ class Helix {
       for (let j = 0; j < (CIRCLE_COLUMN_COUNT); j++) {
         var angle = 2 * Math.PI * (j / CIRCLE_COLUMN_COUNT);
 
+        //radius
         var diff = (i - j) + this._frameInterval;
         if (diff <= 0)
           diff = diff + CIRCLE_COLUMN_COUNT;
@@ -51,11 +52,22 @@ class Helix {
           diff = diff - CIRCLE_COLUMN_COUNT;
 
         var radius = RADIUS;
-        var radiusReverse = RADIUS;
         if (diff < 10) {
           radius = diff * (RADIUS / (CIRCLE_COLUMN_COUNT + 1));
-          radiusReverse = (CIRCLE_COLUMN_COUNT - diff) * (RADIUS / (CIRCLE_COLUMN_COUNT + 1));
         }
+
+        //Reverse radius
+        var diff1 = (i - j) + this._frameInterval;
+        if (diff1 <= 0)
+          diff1 = diff1 + CIRCLE_COLUMN_COUNT;
+        if (diff1 > CIRCLE_COLUMN_COUNT)
+          diff1 = diff1 - CIRCLE_COLUMN_COUNT;
+
+        var radiusReverse = RADIUS;
+        if (diff1 < 10) {
+          radiusReverse = diff1 * (RADIUS / (CIRCLE_COLUMN_COUNT + 1));
+        }
+
         // else if (diff > 0) {
         //   radius = 0;
         //   radiusReverse = 0;
@@ -63,13 +75,13 @@ class Helix {
 
         this.drawCircle(
           (j * 2 * RADIUS) + RADIUS,
-          (RADIUS * Math.sin(angle)) + (i * 2 * RADIUS) + RADIUS,
+          (RADIUS * Math.sin(angle)) + (i * 2 * RADIUS) + RADIUS+diff,
           radius,
           '#F1948A'
         );
         this.drawCircle(
           (j * 2 * RADIUS) + RADIUS,
-          (RADIUS * Math.cos(angle)) + (i * 2 * RADIUS) + RADIUS,
+          (RADIUS * Math.cos(angle)) + (i * 2 * RADIUS) + RADIUS-diff1,
           radiusReverse,
           '#F1948A'
         );

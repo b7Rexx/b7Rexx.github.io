@@ -42,7 +42,7 @@ class Helix {
   generateCircles() {
     for (let i = 0; i < (CIRCLE_ROW_COUNT); i++) {
       for (let j = 0; j < (CIRCLE_COLUMN_COUNT); j++) {
-        var angle = 2 * Math.PI * (j / CIRCLE_COLUMN_COUNT);
+        var angle = 2*2 * Math.PI * (j / CIRCLE_COLUMN_COUNT);
 
         //radius
         var diff = (j - i) + this._frameInterval;

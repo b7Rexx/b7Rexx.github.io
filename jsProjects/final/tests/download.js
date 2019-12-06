@@ -8,7 +8,8 @@ downloadBtn.addEventListener('click', function () {
 
   downloadContent = parseDOM(doc  , array);
   var json = JSON.stringify(array);
-  download(json, 'test', 'txt');
+  download(json, 'test.html','txt');
+  download(json, 'test.css','txt');
 });
 
 function parseDOM(parent, arrayReturn) {

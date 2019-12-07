@@ -1,0 +1,49 @@
+.b7-container-fluid {
+  width: 100%;
+}
+
+.b7-container {
+  max-width: 992px;
+  width: 100%;
+  margin: auto;
+}
+
+div[class^="b7-layout"] {
+  width: 100%;
+}
+
+div[class^="b7-layout"]:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+div[class^="b7-col"] {
+  float: left;
+  min-height: 10px;
+  background: green;
+}
+
+.b7-col-1 {
+  width: 16.66%;
+}
+
+.b7-col-2 {
+  width: 33.33%;
+}
+
+.b7-col-3 {
+  width: 50%;
+}
+
+.b7-col-4 {
+  width: 66.66%;
+}
+
+.b7-col-5 {
+  width: 83.33%;
+}
+
+.b7-col-6 {
+  width: 100%;
+}

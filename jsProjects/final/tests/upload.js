@@ -5,6 +5,7 @@ if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 }
 xmlhttp.open("GET", "file.txt", false);
 xmlhttp.send();
+
 xmlDoc = xmlhttp.responseText;
 var downloadedHtml = JSON.parse(xmlDoc);
 

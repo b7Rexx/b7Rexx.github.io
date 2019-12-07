@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Blank Page",
+    "image": "assets/templates/blank.png",
+    "date": 1575693962065,
+    "data": ""
+  },
+  {
+    "name": "All in one | container layouts",
+    "image": "assets/templates/template1.png",
+    "date": 1575693962065,
+    "data": "api/templates/template-1.json"
+  },
+  {
+    "name": "All in one | fluid container layouts",
+    "image": "assets/templates/template1.png",
+    "date": 1575693962065,
+    "data": "api/templates/template-2.json"
+  }
+]

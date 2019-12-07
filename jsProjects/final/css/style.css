@@ -1,0 +1,118 @@
+/*
+whitesmoke
+#2874A6
+white
+*/
+
+#app-wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: whitesmoke;
+}
+
+.header {
+  height: 25px;
+  padding: 5px 20px;
+  background: #2874A6;
+}
+
+.navbar li a {
+  float: left;
+  margin-right: 20px;
+  padding: 2px 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+
+.navbar li a.active {
+  font-weight: bold;
+}
+
+.navbar li a:hover {
+  font-weight: bold;
+  /*box-shadow: 0 0 5px whitesmoke;*/
+}
+
+.splash-body {
+  text-align: center;
+  color: #2874A6;
+  padding-top: 100px;
+}
+
+.splash-body h1, .splash-body h3 {
+  margin-bottom: 20px;
+}
+
+.splash-button {
+  cursor: pointer;
+  background: #2874A6;
+  color: white;
+  padding: 10px 20px;
+  margin: 50px;
+}
+
+.splash-button:hover {
+  background: white;
+  color: #2874A6;
+}
+
+.template-block {
+  float: left;
+  height: 240px;
+  width: 30%;
+  padding: 1%;
+}
+
+.template-content {
+  height: 240px;
+  width: 360px;
+  margin: auto;
+  position: relative;
+  color: #2874A6;
+  box-shadow: 0 0 5px #2874A6;
+}
+
+.template-name {
+  position: absolute;
+  padding: 10px;
+  z-index: 10;
+}
+
+.template-image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.template-preview, .template-edit {
+  position: absolute;
+  bottom: 30px;
+  background: whitesmoke;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 5px #2874A6;
+}
+
+.template-preview {
+  left: 30px;
+}
+
+.template-edit {
+  right: 30px;
+}
+
+.template-content:hover .template-preview, .template-content:hover .template-edit {
+  display: block;
+}
+
+.template-content:hover .template-image {
+  opacity: 0.1;
+}
+
+.template-preview:hover, .template-edit:hover {
+  background: #2874A6;
+  color: white;
+}

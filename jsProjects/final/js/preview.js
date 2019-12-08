@@ -23,10 +23,10 @@ class Preview {
     this.previewWrapper = FileHelper.parseTemplate(previewData);
     this.parentElement.appendChild(this.previewWrapper);
 
-    if (this.intended === 'template')
-      this.downloadBtn.style.display = 'none';
-    else
-      this.downloadBtn.style.display = 'block';
+    // if (this.intended === 'template')
+    //   this.downloadBtn.style.display = 'none';
+    // else
+    //   this.downloadBtn.style.display = 'block';
 
   }
 

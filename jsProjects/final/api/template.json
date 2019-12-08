@@ -3,7 +3,7 @@
     "name": "Blank Page",
     "image": "assets/templates/blank.png",
     "date": 1575693962065,
-    "data": ""
+    "data": "api/templates/blank.json"
   },
   {
     "name": "All in one | container layouts",

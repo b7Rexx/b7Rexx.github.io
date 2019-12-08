@@ -36,15 +36,15 @@ class Header {
     return [
       {name: this.appName, value: 'splash'},
       {name: 'Templates', value: 'template'},
+      {name: 'Editing', value: 'edit'},
       {name: 'Preview', value: 'preview'},
-      {name: 'Editing', value: 'edit'}
     ];
   }
 
   set setStatus(value) {
     let that = this;
     this.status = value;
-    if (this.status !== 'splash')
+    if (this.status !== 'splash' && this.status !== 'preview')
       this.header.style.display = 'block';
     else
       this.header.style.display = 'none';

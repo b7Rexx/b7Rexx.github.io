@@ -34,11 +34,12 @@ class Template {
     this.previewTemplate = document.createElement('a');
     this.previewTemplate.classList.add('template-preview');
     this.previewTemplate.innerHTML = 'preview';
-    this.previewClickEvent(this.previewTemplate);
+    this.previewClickEvent();
 
     this.editTemplate = document.createElement('a');
     this.editTemplate.classList.add('template-edit');
     this.editTemplate.innerHTML = 'edit';
+    this.editClickEvent();
 
     this.templateContent.appendChild(this.nameTemplate);
     this.templateContent.appendChild(this.imageTemplate);
@@ -47,12 +48,22 @@ class Template {
     this.template.appendChild(this.templateContent);
   }
 
-  previewClickEvent(previewTemplate) {
+  previewClickEvent() {
     let that = this;
-    previewTemplate.onclick = function () {
+    this.previewTemplate.onclick = function () {
       FileHelper.getFileContent(that.data, 'get', function (val) {
         StoreHelper.setTemplateStorage(val);
         document.dispatchEvent(customEventPreviewTemplate);
+      });
+    };
+  }
+
+  editClickEvent() {
+    let that = this;
+    this.editTemplate.onclick = function () {
+      FileHelper.getFileContent(that.data, 'get', function (val) {
+        StoreHelper.setTemplateStorage(val);
+        document.dispatchEvent(customEventEditTemplate);
       });
     };
   }

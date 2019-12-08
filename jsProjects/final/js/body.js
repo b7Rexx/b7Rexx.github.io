@@ -11,7 +11,7 @@ class Body {
     this.previewContent = undefined;
     this.template = undefined;
     this.templateList = [];
-    this.app = undefined;
+    this.previewIntended = 'template';
 
     this.init();
   }
@@ -40,7 +40,7 @@ class Body {
         break;
       case 'preview':
         this.preview.style.display = 'block';
-        this.previewContent.updateContent();
+        this.previewContent.updateContent(this.previewIntended);
         break;
       case 'edit':
         this.edit.style.display = 'block';

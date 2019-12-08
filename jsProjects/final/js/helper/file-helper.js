@@ -1,4 +1,9 @@
 class FileHelper {
+  /*
+  @param {string} file - file url
+  @param {string} method - get,post
+  @param {function} callbackResponse - asynchronous call back on file load
+   */
   static getFileContent(file, method, callbackResponse) {
     let fileName = file || 'nofile';
     let xmlhttp = undefined;
@@ -22,7 +27,11 @@ class FileHelper {
     };
   }
 
+  /*
+  @param {array} templateData - preview template object
+   */
   static parseTemplate(templateData) {
+    let cssCounter = 1;
     let wrapper = document.createElement('div');
     wrapper.setAttribute('id', 'preview-wrapper');
     if (Array.isArray(templateData) && templateData.length) {
@@ -37,7 +46,10 @@ class FileHelper {
     function parseHtmlFromJson(downloadedHtml, parentElem) {
       var domTag = document.createElement(downloadedHtml.tagName);
       Object.values(downloadedHtml.attributes).forEach(function (value) {
-        domTag.setAttribute(value.name, value.value);
+        if (value.name === 'data-css')
+          domTag.setAttribute(value.name, cssCounter++);
+        else
+          domTag.setAttribute(value.name, value.value);
       });
       Object.values(downloadedHtml.children).forEach(function (value) {
         parseHtmlFromJson(value, domTag);
@@ -50,5 +62,10 @@ class FileHelper {
     }
   }
 
+  /*
+  @param {array} webContent - edited web content for download
+   */
+  static downloadWebContent(webContent) {
 
+  }
 }

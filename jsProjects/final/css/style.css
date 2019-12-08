@@ -5,8 +5,10 @@ white
 */
 
 #app-wrapper {
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 700px;
+  min-width: 992px;
+  /*height: 100vh;*/
+  /*width: 100vw;*/
   background: whitesmoke;
 }
 
@@ -113,6 +115,34 @@ white
 }
 
 .template-preview:hover, .template-edit:hover {
+  background: #2874A6;
+  color: white;
+}
+
+.download-preview, .back-preview, .edit-preview {
+  position: absolute;
+  margin: 20px;
+  height: 30px;
+  width: 40px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #2874A6;
+  cursor: pointer;
+  background: white;
+  color: #2874A6;
+}
+
+.edit-preview {
+  left: 50px;
+}
+
+.download-preview {
+  left: 100px;
+}
+
+.download-preview:hover, .back-preview:hover, .edit-preview:hover {
   background: #2874A6;
   color: white;
 }

@@ -52,7 +52,10 @@ class Template {
     let that = this;
     this.previewTemplate.onclick = function () {
       FileHelper.getFileContent(that.data, 'get', function (val) {
+        //Set template view object for edit
         StoreHelper.setTemplateStorage(val);
+        //Set download object
+        StoreHelper.setDownloadStorage(val);
         document.dispatchEvent(customEventPreviewTemplate);
       });
     };

@@ -39,6 +39,8 @@ class Header {
       {name: 'Templates', value: 'template'},
       {name: 'Editing', value: 'edit'},
       {name: 'Preview', value: 'preview'},
+      {name: 'Save', value: 'save'},
+      {name: 'Download', value: 'download'},
     ];
   }
 
@@ -46,8 +48,8 @@ class Header {
     let navImage = '';
     switch (navValue) {
       // case 'splash':
-        // navImage = '<img src="assets/img/b7-logo_50.png">';
-        // break;
+      // navImage = '<img src="assets/img/b7-logo_50.png">';
+      // break;
       case 'template':
         navImage = '<i class="fa fa-list-alt"></i>';
         break;
@@ -56,6 +58,9 @@ class Header {
         break;
       case 'preview':
         navImage = '<i class="fa fa-eye"></i>';
+        break;
+      case 'download':
+        navImage = '<i class="fa fa-download"></i>';
         break;
       case 'save':
         navImage = '<i class="fa fa-save"></i>';
@@ -69,7 +74,29 @@ class Header {
   set setStatus(value) {
     let that = this;
     this.status = value;
-    if (this.status !== 'splash' && this.status !== 'preview')
+    that.navItems.forEach(function (value1) {
+      let attrStatus = value1.getAttribute('data-value');
+      if (attrStatus === 'save' || attrStatus === 'download')
+        value1.style.display = 'none';
+      if (attrStatus === 'preview') {
+        value1.style.display = 'block';
+      }
+
+      if (that.status === 'preview') {
+        if (attrStatus === 'download') {
+          value1.style.display = 'block';
+        }
+        if (attrStatus === 'preview') {
+          value1.style.display = 'none';
+        }
+      }
+      if (that.status === 'edit') {
+        if (attrStatus === 'save' || attrStatus === 'download') {
+          value1.style.display = 'block';
+        }
+      }
+    });
+    if (this.status !== 'splash')
       this.header.style.display = 'block';
     else
       this.header.style.display = 'none';

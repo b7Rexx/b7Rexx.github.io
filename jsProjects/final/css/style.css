@@ -14,12 +14,18 @@ white
 .header {
   position: absolute;
   height: 100vh;
+  top: 70px;
   width: 70px;
+  z-index: 50;
+  opacity: 0.7;
+}
+
+.header:hover {
+  opacity: 1;
 }
 
 .body {
   position: relative;
-  margin-left: 70px;
 }
 
 .splash-body, .edit-body, .preview-body, .template-body {

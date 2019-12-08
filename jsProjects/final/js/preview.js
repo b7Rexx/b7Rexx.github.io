@@ -14,7 +14,7 @@ class Preview {
     this.previewWrapper = document.createElement('div');
     this.previewWrapper.setAttribute('id', 'preview-wrapper');
     this.parentElement.appendChild(this.previewWrapper);
-    this.previewEvents();
+    // this.previewEvents();
   }
 
   updateContent() {

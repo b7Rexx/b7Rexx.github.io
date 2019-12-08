@@ -60,4 +60,19 @@ class StoreHelper {
     return JSON.parse(localStorage.getItem('edit-backup-b7-web-builder'));
   }
 
+  /*
+@param {object} webData
+ */
+  static setDownloadStorage(webData) {
+    let webString = JSON.stringify(webData);
+    localStorage.setItem('download-b7-web-builder', webString);
+  }
+
+  /*
+  @return localStorage object
+   */
+  static getDownloadStorage() {
+    return JSON.parse(localStorage.getItem('download-b7-web-builder'));
+  }
+
 }

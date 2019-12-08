@@ -23,7 +23,8 @@ class Header {
       let navItemLink = document.createElement('a');
       navItem.appendChild(navItemLink);
       that.navbar.appendChild(navItem);
-      navItemLink.innerText = value.name;
+      navItemLink.innerHTML = that.setNavImage(value.value);
+
       navItemLink.setAttribute('data-value', value.value);
       that.navItems.push(navItemLink);
     });
@@ -34,11 +35,35 @@ class Header {
 
   getNavList() {
     return [
-      {name: this.appName, value: 'splash'},
+      // {name: this.appName, value: 'splash'},
       {name: 'Templates', value: 'template'},
       {name: 'Editing', value: 'edit'},
       {name: 'Preview', value: 'preview'},
     ];
+  }
+
+  setNavImage(navValue) {
+    let navImage = '';
+    switch (navValue) {
+      // case 'splash':
+        // navImage = '<img src="assets/img/b7-logo_50.png">';
+        // break;
+      case 'template':
+        navImage = '<i class="fa fa-list-alt"></i>';
+        break;
+      case 'edit':
+        navImage = '<i class="fa fa-edit"></i>';
+        break;
+      case 'preview':
+        navImage = '<i class="fa fa-eye"></i>';
+        break;
+      case 'save':
+        navImage = '<i class="fa fa-save"></i>';
+        break;
+      default:
+        break;
+    }
+    return navImage;
   }
 
   set setStatus(value) {

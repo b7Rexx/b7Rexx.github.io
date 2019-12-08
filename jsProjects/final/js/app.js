@@ -3,7 +3,7 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    this.page = 'preview';
+    this.page = 'template';
     this.init();
   }
 

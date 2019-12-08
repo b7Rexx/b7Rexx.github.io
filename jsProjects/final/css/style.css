@@ -1,31 +1,45 @@
 /*
 whitesmoke
 #2874A6
+#f15a22
 white
 */
 
 #app-wrapper {
-  min-height: 700px;
-  min-width: 992px;
-  /*height: 100vh;*/
-  /*width: 100vw;*/
+  min-height: 100vh;
+  width: 100%;
   background: whitesmoke;
 }
 
 .header {
-  height: 25px;
-  padding: 5px 20px;
-  background: #2874A6;
+  position: absolute;
+  height: 100vh;
+  width: 70px;
+}
+
+.body {
+  position: relative;
+  margin-left: 70px;
+}
+
+.splash-body, .edit-body, .preview-body, .template-body {
+  transition: all 2s ease;
 }
 
 .navbar li a {
-  float: left;
-  margin-right: 20px;
-  padding: 2px 5px;
+  margin: 20px;
+  height: 30px;
+  width: 40px;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #2874A6;
   cursor: pointer;
-  text-decoration: none;
+  background: white;
+  color: #2874A6;
   display: block;
-  color: white;
+  text-decoration: none;
 }
 
 .navbar li a.active {
@@ -33,7 +47,8 @@ white
 }
 
 .navbar li a:hover {
-  font-weight: bold;
+  color: white;
+  background: #2874A6;
   /*box-shadow: 0 0 5px whitesmoke;*/
 }
 
@@ -60,6 +75,16 @@ white
   color: #2874A6;
 }
 
+.template-heading, .edit-heading {
+  padding-left: 20px;
+  color: #2874A6;
+  background: linear-gradient(to right, whitesmoke, #2874A6);
+}
+
+.template-heading img, .edit-heading img {
+  padding-right: 20px;
+}
+
 .template-block {
   float: left;
   height: 240px;
@@ -79,6 +104,7 @@ white
 .template-name {
   position: absolute;
   padding: 10px;
+  color: #f15a22;
   z-index: 10;
 }
 
@@ -135,11 +161,11 @@ white
 }
 
 .edit-preview {
-  left: 50px;
+  top: 60px;
 }
 
 .download-preview {
-  left: 100px;
+  top: 120px;
 }
 
 .download-preview:hover, .back-preview:hover, .edit-preview:hover {

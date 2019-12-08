@@ -55,6 +55,7 @@ class Body {
     let splash = document.createElement('div');
     splash.classList.add('splash-body');
     splash.innerHTML =
+      `<img src="assets/img/b7-logo.png" alt="">` +
       `<h1>${this.appName}</h1>` +
       `<h3>${this.appSlogan}</h3>`;
     let templateButton = document.createElement('a');
@@ -82,6 +83,11 @@ class Body {
   getEdit() {
     let edit = document.createElement('div');
     edit.classList.add('edit-body');
+    let heading = document.createElement('h2');
+    heading.classList.add('edit-heading');
+    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">`  + 'Edit';
+    edit.appendChild(heading);
+
     this.body.appendChild(edit);
     return edit;
   }
@@ -91,6 +97,10 @@ class Body {
     let template = document.createElement('div');
     template.classList.add('template-body');
     template.classList.add('clearfix');
+    let heading = document.createElement('h2');
+    heading.classList.add('template-heading');
+    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">`  + 'Templates';
+    template.appendChild(heading);
     this.body.appendChild(template);
     let apiTemplate = [];
     FileHelper.getFileContent('api/template.json', 'get', function (val) {

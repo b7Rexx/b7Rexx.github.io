@@ -11,8 +11,8 @@ class Body {
     this.edit = undefined;
     this.preview = undefined;
     this.previewContent = undefined;
-    this.editToolbar = undefined;
     this.editSidebar = undefined;
+    this.editTopbar = undefined;
     this.editEditor = undefined;
     this.template = undefined;
     this.templateList = [];
@@ -49,6 +49,7 @@ class Body {
         break;
       case 'edit':
         this.edit.style.display = 'block';
+        this.editEditor.updateEditorContent();
         break;
       default:
         this.template.style.display = 'block';
@@ -93,9 +94,9 @@ class Body {
     heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Edit';
     edit.appendChild(heading);
 
-    this.editSidebar = new Sidebar(edit);
-    this.editToolbar = new Toolbar(edit);
+    this.editTopbar = new Topbar(edit);
     this.editEditor = new Editor(edit);
+    this.editSidebar = new Sidebar(edit);
     this.body.appendChild(edit);
     return edit;
   }

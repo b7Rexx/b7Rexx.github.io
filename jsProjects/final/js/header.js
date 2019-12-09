@@ -76,6 +76,7 @@ class Header {
     this.status = value;
     that.navItems.forEach(function (value1) {
       let attrStatus = value1.getAttribute('data-value');
+      value1.style.display = 'block';
       if (attrStatus === 'save' || attrStatus === 'download')
         value1.style.display = 'none';
       if (attrStatus === 'preview') {
@@ -93,6 +94,9 @@ class Header {
       if (that.status === 'edit') {
         if (attrStatus === 'save' || attrStatus === 'download') {
           value1.style.display = 'block';
+        }
+        if (attrStatus === 'edit') {
+          value1.style.display = 'none';
         }
       }
     });

@@ -183,4 +183,38 @@ class FileHelper {
         domTag.innerText = downloadedHtml.innerText;
     }
   }
+
+
+  /*
+  @param {array} editorData - preview template object
+   */
+  static parseEditorStorage(editorData, parentElement) {
+    let cssCounter = 1;
+    if (Array.isArray(editorData) && editorData.length) {
+      for (let editorDataKey in editorData) {
+        if (editorData.hasOwnProperty(editorDataKey)) {
+          parseHtmlFromJson(editorData[editorDataKey], parentElement);
+        }
+      }
+    }
+
+    function parseHtmlFromJson(downloadedHtml, parentElem) {
+      var domTag = document.createElement(downloadedHtml.tagName);
+      Object.values(downloadedHtml.attributes).forEach(function (value) {
+        if (value.name === 'data-css')
+          domTag.setAttribute(value.name, cssCounter++);
+        else
+          domTag.setAttribute(value.name, value.value);
+      });
+      Object.values(downloadedHtml.children).forEach(function (value) {
+        parseHtmlFromJson(value, domTag);
+      });
+      if (downloadedHtml.innerText !== '')
+      // console.log(downloadedHtml.innerText);
+        domTag.innerText = downloadedHtml.innerText;
+
+      parentElem.appendChild(domTag);
+    }
+  }
+
 }

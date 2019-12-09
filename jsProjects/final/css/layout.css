@@ -20,8 +20,6 @@ div[class^="b7-layout"]:after {
 
 div[class^="b7-col"] {
   float: left;
-  min-height: 10px;
-  background: green;
 }
 
 .b7-col-1 {

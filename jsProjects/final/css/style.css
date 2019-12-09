@@ -1,4 +1,28 @@
 /*
+editor remove css at download
+ */
+.b7-container-fluid {
+background: #2874A6;
+  /*border: 1px dashed #2874A6;*/
+}
+
+.b7-container {
+  background: #2874A6;
+  /*border: 1px dashed #2874A6;*/
+}
+
+div[class^="b7-layout"] {
+  background: #f15a22;
+  /*border: 1px solid #f15a22;*/
+}
+
+div[class^="b7-col"] {
+  min-height: 50px;
+  background: whitesmoke;
+}
+
+
+/*
 whitesmoke
 #2874A6
 #f15a22
@@ -186,51 +210,126 @@ white
   color: white;
 }
 
-.edit-editor, .edit-sidebar, .edit-toolbar {
+.edit-editor, .edit-topbar {
   width: 100%;
   background: whitesmoke;
 }
 
-.edit-sidebar {
-  height: 100px;
-}
-
-.edit-toolbar {
-  height: 100px;
-}
-
-.edit-editor {
-
+.edit-topbar {
+  height: 80px;
 }
 
 .btn-div {
   margin-left: 70px;
-  width: 150px;
+  width: 120px;
   background: white;
   float: left;
 }
 
 .list-div {
   background: white;
-  width: 80%;
+  width: 84%;
   height: 100%;
   float: left;
   overflow-x: auto;
+  background: linear-gradient(to right, #2874A6, whitesmoke);
+}
+
+.list-layout-div:after, .list-component-div:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.list-layout-div, .list-component-div {
+  transition: all 0.3s ease-out;
 }
 
 .list-div img {
-  padding: 20px;
+  padding: 10px;
   display: block;
   float: left;
   height: 60px;
   width: 99px;
-  border-left: 1px solid whitesmoke ;
+  border-right: 1px solid whitesmoke;
 }
 
 .layout-btn, .component-btn {
   display: block;
-  width: 120px;
+  width: 100px;
   height: 20px;
-  padding: 15px;
+  padding: 10px;
+  font-weight: bold;
   text-align: center;
+  background: white;
+  color: #f15a22;
+  cursor: pointer;
+}
+
+.layout-btn:hover, .component-btn:hover {
+  color: #2874A6;
+}
+
+.layout-btn.active, .component-btn.active {
+  background: #2874A6;
+  color: white;
+}
+
+.hide {
+  opacity: 0;
+  display: none;
+}
+
+.display-hide {
+  display: none;
+}
+
+.editor-block {
+  margin-left: 70px;
+  margin-top: 20px;
+  float: left;
+  overflow: auto;
+ }
+
+.editor-margin {
+  width: 1100px;
+  margin: auto;
+  background: white;
+  /*border: 3px solid gainsboro;*/
+  /*border-bottom: 1px solid grey;*/
+  overflow: auto;
+}
+
+.container-btn, .container-fluid-btn {
+  width: 40%;
+  display: inline-block;
+  text-align: center;
+  background: #2874A6;
+  color: white;
+  height: 20px;
+  padding: 10px 0;
+  cursor: pointer;
+  margin: 0 5%;
+}
+
+.container-btn:hover, .container-fluid-btn:hover {
+  background: white;
+  color: #f15a22;
+}
+
+
+.edit-sidebar {
+  float: right;
+}
+
+.tool-block {
+  padding: 10px;
+  display: block;
+  height: 80px;
+  width: 180px;
+  background: wheat;
+}
+
+.tool-block input {
+  max-width: 180px;
 }

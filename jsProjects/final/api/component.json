@@ -1,64 +1,87 @@
-{
-  "tagName": "DIV",
-  "innerText": "",
-  "attributes": [
-    {
-      "name": "id",
-      "value": "app-wrapper"
-    }
-  ],
-  "children": [
-    {
+[
+  {
+    "name": "b7-layout-one",
+    "image": "assets/layouts/b7-layout-one.png",
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
         {
           "name": "class",
-          "value": "test1"
+          "value": "b7-layout-one"
         },
         {
-          "name": "id",
-          "value": "asd"
-        },
-        {
-          "name": "datafld",
-          "value": "zxc"
-        },
-        {
-          "name": "style",
-          "value": "width: 100px"
+          "name": "data-css",
+          "value": 1
         }
       ],
       "children": [
         {
           "tagName": "DIV",
-          "innerText": "asd",
+          "innerText": "",
           "attributes": [
             {
               "name": "class",
-              "value": "test2"
+              "value": "b7-col-6"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "name": "b7-layout-two",
+    "image": "assets/layouts/b7-layout-two.png",
+    "layout": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-two"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-3"
+            },
+            {
+              "name": "data-css",
+              "value": 1
             }
           ],
           "children": []
         },
         {
           "tagName": "DIV",
-          "innerText": "zxc",
+          "innerText": "",
           "attributes": [
             {
               "name": "class",
-              "value": "test2"
+              "value": "b7-col-3"
+            },
+            {
+              "name": "data-css",
+              "value": 1
             }
           ],
           "children": []
         }
       ]
-    },
-    {
-      "tagName": "H1",
-      "innerText": "qiowueoiqwueoiquweiou",
-      "attributes": [],
-      "children": []
     }
-  ]
-}
+  }
+]

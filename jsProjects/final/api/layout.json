@@ -1,447 +1,447 @@
 [
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-one",
-      "image": "assets/layouts/b7-layout-one.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-one"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-6"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-one",
+    "image": "assets/layouts/b7-layout-one.png",
+    "layout": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-one"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-6"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-two",
-      "image": "assets/layouts/b7-layout-two.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-two"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-3"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-3"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-two",
+    "image": "assets/layouts/b7-layout-two.png",
+    "layout": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-two"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-3"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-3"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-three",
-      "image": "assets/layouts/b7-layout-three.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-three"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-4"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-2"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-three",
+    "image": "assets/layouts/b7-layout-three.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-three"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-4"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-2"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-four",
-      "image": "assets/layouts/b7-layout-four.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-four"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-2"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-4"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-four",
+    "image": "assets/layouts/b7-layout-four.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-four"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-2"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-4"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-five",
-      "image": "assets/layouts/b7-layout-five.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-five"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-2"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-2"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-2"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-five",
+    "image": "assets/layouts/b7-layout-five.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-five"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-2"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-2"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-2"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-six",
-      "image": "assets/layouts/b7-layout-six.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-six"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-4"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-six",
+    "image": "assets/layouts/b7-layout-six.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-six"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-4"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-seven",
-      "image": "assets/layouts/b7-layout-seven.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-seven"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-4"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-seven",
+    "image": "assets/layouts/b7-layout-seven.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-seven"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-4"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   },
   {
-    "tagName": "DIV",
-    "innerText": "",
-    "info": {
-      "name": "b7-layout-eight",
-      "image": "assets/layouts/b7-layout-eight.png"
-    },
-    "attributes": [
-      {
-        "name": "class",
-        "value": "b7-layout-eight"
-      },
-      {
-        "name": "data-css",
-        "value": 1
-      }
-    ],
-    "children": [
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-4"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      },
-      {
-        "tagName": "DIV",
-        "innerText": "",
-        "attributes": [
-          {
-            "name": "class",
-            "value": "b7-col-1"
-          },
-          {
-            "name": "data-css",
-            "value": 1
-          }
-        ],
-        "children": []
-      }
-    ]
+    "name": "b7-layout-eight",
+    "image": "assets/layouts/b7-layout-eight.png",
+    "data": {
+      "tagName": "DIV",
+      "innerText": "",
+      "attributes": [
+        {
+          "name": "class",
+          "value": "b7-layout-eight"
+        },
+        {
+          "name": "data-css",
+          "value": 1
+        }
+      ],
+      "children": [
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-4"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        },
+        {
+          "tagName": "DIV",
+          "innerText": "",
+          "attributes": [
+            {
+              "name": "class",
+              "value": "b7-col-1"
+            },
+            {
+              "name": "data-css",
+              "value": 1
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
   }
 ]

@@ -3,7 +3,9 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    this.page = 'splash';
+    // this.page = 'splash';
+    this.page = 'edit';
+    // this.page = 'template';
     this.init();
   }
 

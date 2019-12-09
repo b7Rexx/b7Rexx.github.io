@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="viewport" content="width=device-width,  initial-scale=1.0">
   <title>b7WebBuilder</title>
   <link rel="icon" href="assets/img/b7-logo_50.png" type="image/icon">
   <link rel="stylesheet" href="css/reset.css">
@@ -18,15 +18,20 @@
 <script src="js/helper/file-helper.js"></script>
 <script src="js/helper/store-helper.js"></script>
 <script src="js/helper/event-helper.js"></script>
+<script src="js/helper/viewport-helper.js"></script>
 <!--modules-->
 <script src="js/modules/template.js"></script>
+<script src="js/modules/toolbar.js"></script>
+<script src="js/modules/sidebar.js"></script>
+<script src="js/modules/editor.js"></script>
+<script src="js/modules/tool.js"></script>
 <!--scripts-->
 <script src="js/header.js"></script>
 <script src="js/body.js"></script>
 <script src="js/preview.js"></script>
 <script src="js/app.js"></script>
 <script>
-  var appWrapper = document.getElementById('app-wrapper');
+  let appWrapper = document.getElementById('app-wrapper');
   new App(appWrapper);
 </script>
 </body>

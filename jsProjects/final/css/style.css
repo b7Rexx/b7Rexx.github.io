@@ -6,14 +6,15 @@ white
 */
 
 #app-wrapper {
+  /*min-height: 100vh;*/
   min-height: 100vh;
+  min-width: 1200px;
   width: 100%;
   background: whitesmoke;
 }
 
 .header {
   position: absolute;
-  height: 100vh;
   top: 70px;
   width: 70px;
   z-index: 50;
@@ -84,6 +85,7 @@ white
 .template-heading, .edit-heading {
   padding-left: 20px;
   color: #2874A6;
+  height: 60px;
   background: linear-gradient(to right, whitesmoke, #2874A6);
 }
 
@@ -91,11 +93,16 @@ white
   padding-right: 20px;
 }
 
+.template-list {
+  margin-left: 70px;
+  overflow-y: auto;
+}
+
 .template-block {
   float: left;
   height: 240px;
-  width: 30%;
-  padding: 1%;
+  /*width: 30%;*/
+  padding: 5px;
 }
 
 .template-content {
@@ -177,4 +184,53 @@ white
 .download-preview:hover, .back-preview:hover, .edit-preview:hover {
   background: #2874A6;
   color: white;
+}
+
+.edit-editor, .edit-sidebar, .edit-toolbar {
+  width: 100%;
+  background: whitesmoke;
+}
+
+.edit-sidebar {
+  height: 100px;
+}
+
+.edit-toolbar {
+  height: 100px;
+}
+
+.edit-editor {
+
+}
+
+.btn-div {
+  margin-left: 70px;
+  width: 150px;
+  background: white;
+  float: left;
+}
+
+.list-div {
+  background: white;
+  width: 80%;
+  height: 100%;
+  float: left;
+  overflow-x: auto;
+}
+
+.list-div img {
+  padding: 20px;
+  display: block;
+  float: left;
+  height: 60px;
+  width: 99px;
+  border-left: 1px solid whitesmoke ;
+}
+
+.layout-btn, .component-btn {
+  display: block;
+  width: 120px;
+  height: 20px;
+  padding: 15px;
+  text-align: center;
 }

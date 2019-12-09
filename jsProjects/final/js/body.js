@@ -3,15 +3,20 @@ class Body {
     this.parentElement = parentElement;
     this.appName = appName || 'Web Builder';
     this.appSlogan = appSlogan || 'Build your website';
+    this.previewIntended = 'template';
+
     this.nav = page;
     this.body = undefined;
     this.splash = undefined;
     this.edit = undefined;
     this.preview = undefined;
     this.previewContent = undefined;
+    this.editToolbar = undefined;
+    this.editSidebar = undefined;
+    this.editEditor = undefined;
     this.template = undefined;
     this.templateList = [];
-    this.previewIntended = 'template';
+
 
     this.init();
   }
@@ -85,9 +90,12 @@ class Body {
     edit.classList.add('edit-body');
     let heading = document.createElement('h2');
     heading.classList.add('edit-heading');
-    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">`  + 'Edit';
+    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Edit';
     edit.appendChild(heading);
 
+    this.editSidebar = new Sidebar(edit);
+    this.editToolbar = new Toolbar(edit);
+    this.editEditor = new Editor(edit);
     this.body.appendChild(edit);
     return edit;
   }
@@ -99,8 +107,15 @@ class Body {
     template.classList.add('clearfix');
     let heading = document.createElement('h2');
     heading.classList.add('template-heading');
-    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">`  + 'Templates';
+    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Templates';
     template.appendChild(heading);
+    let templateList = document.createElement('div');
+    templateList.classList.add('template-list');
+
+    //viewport height
+    templateList.style.height = (ViewportHelper.height() - 60) + 'px';
+
+    template.appendChild(templateList);
     this.body.appendChild(template);
     let apiTemplate = [];
     FileHelper.getFileContent('api/template.json', 'get', function (val) {
@@ -112,7 +127,7 @@ class Body {
         let date = value.date || Date.now();
         let templateObj = new Template(name, image, data, date);
         that.templateList.push(templateObj);
-        template.appendChild(templateObj.getTemplateBlock());
+        templateList.appendChild(templateObj.getTemplateBlock());
       });
     });
     return template;
@@ -121,4 +136,6 @@ class Body {
   getTemplateList() {
     return this.templateList;
   }
+
+
 }

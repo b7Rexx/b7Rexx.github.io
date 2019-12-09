@@ -188,15 +188,17 @@ class FileHelper {
   /*
   @param {array} editorData - preview template object
    */
-  static parseEditorStorage(editorData, parentElement) {
+  static parseEditorStorage(editorData) {
     let cssCounter = 1;
+    let wrapper = document.createElement('div');
     if (Array.isArray(editorData) && editorData.length) {
       for (let editorDataKey in editorData) {
         if (editorData.hasOwnProperty(editorDataKey)) {
-          parseHtmlFromJson(editorData[editorDataKey], parentElement);
+          parseHtmlFromJson(editorData[editorDataKey], wrapper);
         }
       }
     }
+    return wrapper.innerHTML;
 
     function parseHtmlFromJson(downloadedHtml, parentElem) {
       var domTag = document.createElement(downloadedHtml.tagName);

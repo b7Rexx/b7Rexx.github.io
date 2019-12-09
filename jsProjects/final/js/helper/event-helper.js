@@ -1,8 +1,12 @@
-/*
-preview template on click - asynchronous file load
- */
-var customEventPreviewTemplate = new Event('preview-template');
-/*
-edit template on click - asynchronous file load
- */
-var customEventEditTemplate = new Event('edit-template');
+class EventHelper {
+  static customEvent(event) {
+    return new Event(event);
+  }
+
+  static customEventparseHtml(event, htmlJson) {
+    let parseJson = [];
+    parseJson.push(htmlJson);
+    let parsedData = FileHelper.parseEditorStorage(parseJson);
+    return new CustomEvent(event, {"detail": parsedData});
+  }
+}

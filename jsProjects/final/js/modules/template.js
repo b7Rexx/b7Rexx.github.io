@@ -56,7 +56,10 @@ class Template {
         StoreHelper.setTemplateStorage(val);
         //Set download object
         StoreHelper.setDownloadStorage(val);
-        document.dispatchEvent(customEventPreviewTemplate);
+        /*
+ preview template on click - asynchronous file load
+  */
+        document.dispatchEvent(EventHelper.customEvent('custom-event-preview-template'));
       });
     };
   }
@@ -66,7 +69,10 @@ class Template {
     this.editTemplate.onclick = function () {
       FileHelper.getFileContent(that.data, 'get', function (val) {
         StoreHelper.setTemplateStorage(val);
-        document.dispatchEvent(customEventEditTemplate);
+        /*
+        edit template on click - asynchronous file load
+         */
+        document.dispatchEvent(EventHelper.customEvent('custom-event-edit-template'));
       });
     };
   }

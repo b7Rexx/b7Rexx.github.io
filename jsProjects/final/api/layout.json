@@ -87,7 +87,7 @@
   {
     "name": "b7-layout-three",
     "image": "assets/layouts/b7-layout-three.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
@@ -137,7 +137,7 @@
   {
     "name": "b7-layout-four",
     "image": "assets/layouts/b7-layout-four.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
@@ -187,7 +187,7 @@
   {
     "name": "b7-layout-five",
     "image": "assets/layouts/b7-layout-five.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
@@ -252,7 +252,7 @@
   {
     "name": "b7-layout-six",
     "image": "assets/layouts/b7-layout-six.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
@@ -317,7 +317,7 @@
   {
     "name": "b7-layout-seven",
     "image": "assets/layouts/b7-layout-seven.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [
@@ -382,7 +382,7 @@
   {
     "name": "b7-layout-eight",
     "image": "assets/layouts/b7-layout-eight.png",
-    "data": {
+    "layout": {
       "tagName": "DIV",
       "innerText": "",
       "attributes": [

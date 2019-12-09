@@ -40,11 +40,11 @@ class App {
         that.setPage = value.getAttribute('data-value');
       };
     });
-    document.addEventListener('preview-template', function () {
+    document.addEventListener('custom-event-preview-template', function () {
       that.setPage = 'preview';
       that.body.previewIntended = 'template';
     });
-    document.addEventListener('edit-template', function () {
+    document.addEventListener('custom-event-edit-template', function () {
       //backup edit page and load preview to edit
       let backup = StoreHelper.getEditStorage();
       StoreHelper.setEditBackupStorage(backup);

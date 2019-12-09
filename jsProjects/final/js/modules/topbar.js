@@ -57,6 +57,10 @@ class Topbar {
           that.layouts.push(val);
           let newLayout = document.createElement('img');
           newLayout.src = val.image;
+          newLayout.onclick = function () {
+            document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-layout-click', val.layout));
+          };
+
           that.listLayoutBlock.appendChild(newLayout);
           layoutCount++;
           that.listLayoutBlock.style.width = (120 * layoutCount) + 'px';

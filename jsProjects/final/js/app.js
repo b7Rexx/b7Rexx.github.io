@@ -23,7 +23,10 @@ class App {
     Object.values(this.header.navItems).forEach(function (value1) {
       let pageAttr = value1.getAttribute('data-value');
       if (pageAttr === 'save') {
-
+        value1.onclick = function () {
+          let editStorage = StoreHelper.getEditStorage();
+          StoreHelper.setDownloadStorage(editStorage);
+        };
       } else if (pageAttr === 'download') {
         value1.onclick = function () {
           let webContent = StoreHelper.getDownloadStorage();

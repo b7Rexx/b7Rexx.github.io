@@ -2,34 +2,30 @@
 editor remove css at download
  */
 .b7-container-fluid {
-  background-image: url("../assets/img/container.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   min-height: 50px;
+  margin: 10px 0;
 }
 
 .b7-container {
-  background-image: url("../assets/img/container.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
   min-height: 50px;
+  margin: 10px 0;
 }
 
 div[class^="b7-layout"] {
-  background-image: url("../assets/img/container.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   min-height: 50px;
 }
 
 div[class^="b7-col"] {
-  background-image: url("../assets/img/container.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   min-height: 50px;
 }
 
+.b7-container-fluid, .b7-container
+  /*[data-temp="edit"] {*/
+{
+  -webkit-box-shadow: 0 0 10px 5px #2874A6;
+  -moz-box-shadow: 0 0 10px 5px #2874A6;
+  box-shadow: 0 0 10px 5px #2874A6;
+}
 
 /*
 whitesmoke
@@ -313,15 +309,15 @@ white
 }
 
 .container-btn, .container-fluid-btn {
-  width: 40%;
+  width: 20%;
   display: inline-block;
   text-align: center;
   background: #2874A6;
   color: white;
   height: 20px;
-  padding: 10px 0;
+  padding: 5px 0;
   cursor: pointer;
-  margin: 5px 5% 0 5%;
+  margin: 0 15% 5px 15%;
 }
 
 .container-btn:hover, .container-fluid-btn:hover {

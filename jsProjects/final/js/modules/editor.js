@@ -28,10 +28,10 @@ class Editor extends EditorEvent {
     this.editorContent.classList.add('editor-content');
 
     this.setHeightWidthByViewPort();
+    this.contentWrapper();
     this.editorMargin.appendChild(this.editorContent);
     this.editorBlock.appendChild(this.editorMargin);
     this.editor.appendChild(this.editorBlock);
-    this.contentWrapper();
   }
 
   contentWrapper() {
@@ -46,6 +46,7 @@ class Editor extends EditorEvent {
       appendContainer.classList.add('b7-container');
       appendWrapper.appendChild(appendContainer);
       that.editorContent.appendChild(appendWrapper);
+      that.saveEditStorage();
     };
 
     this.containerFluidBtn = document.createElement('div');
@@ -58,12 +59,12 @@ class Editor extends EditorEvent {
       appendContainer.classList.add('b7-container-fluid');
       appendWrapper.appendChild(appendContainer);
       that.editorContent.appendChild(appendWrapper);
+      that.saveEditStorage();
     };
 
-    this.editorMargin.appendChild(this.containerBtn);
-    this.editorMargin.appendChild(this.containerFluidBtn);
+    this.editorBlock.appendChild(this.containerBtn);
+    this.editorBlock.appendChild(this.containerFluidBtn);
   }
-
 
   updateEditorContent() {
     let editStorage = StoreHelper.getEditStorage();
@@ -83,5 +84,41 @@ class Editor extends EditorEvent {
       that.editorBlock.style.width = (ViewportHelper.width() - 200 - 140) + 'px';
       that.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
     });
+  }
+
+  saveEditStorage() {
+    let saveArray = [];
+    let saveObject = {};
+    parseDOM(this.editorContent, saveObject);
+    saveArray.push(saveObject);
+    StoreHelper.setEditStorage(saveArray);
+
+    /*
+    @param {array} parent
+    @return {array} arrayReturn
+     */
+    function parseDOM(parent, arrayReturn) {
+      var textAbleDom = parent.cloneNode(true);
+      arrayReturn.tagName = parent.tagName;
+
+      if (textAbleDom.children.length > 0) {
+        Object.values(textAbleDom.children).forEach(function (value) {
+          value.remove();
+        });
+      }
+      arrayReturn.innerText = (textAbleDom.textContent.trim());
+
+      arrayReturn.attributes = [];
+      for (let i = 0; i < parent.attributes.length; i++) {
+        arrayReturn.attributes[i] = {name: parent.attributes[i].name, value: parent.attributes[i].value};
+      }
+      arrayReturn.children = [];
+      if (parent.children.length > 0) {
+        for (let i = 0; i < parent.children.length; i++) {
+          arrayReturn.children[i] = {};
+          parseDOM(parent.children[i], arrayReturn.children[i]);
+        }
+      }
+    }
   }
 }

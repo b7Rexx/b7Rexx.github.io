@@ -218,5 +218,4 @@ class FileHelper {
       parentElem.appendChild(domTag);
     }
   }
-
 }

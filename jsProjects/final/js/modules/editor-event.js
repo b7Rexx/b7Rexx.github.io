@@ -2,6 +2,11 @@ class EditorEvent {
   constructor() {
     this.dropContent = undefined;
     this.dropType = undefined;
+    this.wrapperEditElement = undefined;
+    this.containerEditElement = undefined;
+    this.colEditElement = undefined;
+    this.componentEditElement = undefined;
+
     this.layoutEvent();
     this.componentEvent();
   }

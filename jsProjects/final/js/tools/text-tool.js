@@ -1,0 +1,3 @@
+class TextTool extends Tool{
+
+}

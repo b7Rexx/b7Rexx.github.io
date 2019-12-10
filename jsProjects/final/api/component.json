@@ -5,7 +5,7 @@
     "type": "text",
     "component": {
       "tagName": "DIV",
-      "innerText": "",
+      "innerText": "Text",
       "attributes": [
         {
           "name": "class",
@@ -44,6 +44,10 @@
             {
               "name": "class",
               "value": "b7-image"
+            },
+            {
+              "name": "src",
+              "value": "assets/img/no-image.png"
             },
             {
               "name": "data-css",

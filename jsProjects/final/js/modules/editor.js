@@ -75,7 +75,8 @@ class Editor extends EditorEvent {
 
   setHeightWidthByViewPort() {
     let that = this;
-    this.editorBlock.style.width = (ViewportHelper.width() - 200 - 140) + 'px';
+    this.editorBlock.style.minWidth = '900px';
+    this.editorBlock.style.maxWidth = (ViewportHelper.width() - 200 - 140) + 'px';
 
     this.editorContent.style.marginTop = '5px';
     this.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
@@ -186,7 +187,30 @@ class Editor extends EditorEvent {
           that.parentElement.style.cursor = 'default';
         }
 
-        console.log(event);
+
+        /*
+        styling tools trigger
+         */
+
+        that.wrapperEditElement = undefined;
+        that.containerEditElement = undefined;
+        that.colEditElement = undefined;
+        that.componentEditElement = undefined;
+        Object.values(event.path).forEach(function (value) {
+          if (value.className !== undefined) {
+            if (value.className.startsWith('b7-wrapper'))
+              that.wrapperEditElement = value;
+            if (value.className.startsWith('b7-container'))
+              that.containerEditElement = value;
+            if (value.className.startsWith('b7-col'))
+              that.colEditElement = value;
+            if (value.className.startsWith('b7-component'))
+              that.componentEditElement = value;
+          }
+
+          // console.log(value.className);
+          // value.className
+        })
       };
   }
 }

@@ -72,14 +72,18 @@ class Topbar {
         value.forEach(function (val) {
           that.components.push(val);
           let newComponent = document.createElement('img');
-          newComponent.src = val.image;
+          newComponent.src = 'assets/img/white.png';
+          newComponent.onclick = function () {
+            document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-component-click', val.component));
+          };
+
           that.listComponentBlock.appendChild(newComponent);
           componentCount++;
           that.listComponentBlock.style.width = (120 * componentCount) + 'px';
         });
     });
-    this.setActive = 'layout';
-    // this.setActive = 'component';
+    // this.setActive = 'layout';
+    this.setActive = 'component';
     this.btnDiv.appendChild(this.layoutBtn);
     this.btnDiv.appendChild(this.componentBtn);
     this.topbar.appendChild(this.btnDiv);

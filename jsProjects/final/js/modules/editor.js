@@ -87,10 +87,11 @@ class Editor extends EditorEvent {
   }
 
   saveEditStorage() {
-    let saveArray = [];
     let saveObject = {};
     parseDOM(this.editorContent, saveObject);
-    saveArray.push(saveObject);
+    let saveArray = Object.values(saveObject.children).map(function (val) {
+      return val;
+    });
     StoreHelper.setEditStorage(saveArray);
 
     /*
@@ -137,39 +138,45 @@ class Editor extends EditorEvent {
       function (event) {
 
         // console.log('click pathing ', event.path);
-        // console.log(that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
+        console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
         if (that.dropType === 'layout') {
           if (event.path.hasOwnProperty(0)) {
             let eventClickDom = event.path[0];
             if (eventClickDom.className !== undefined) {
               if (eventClickDom.className.startsWith('b7-container')) {
-                console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
                 eventClickDom.innerHTML += that.dropContent;
                 clearDrag = true;
               }
-              if (eventClickDom.className.startsWith('b7-col')) {
-                console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
-                eventClickDom.innerHTML += that.dropContent;
+              let pathArray = Object.values(event.path).map(function (value) {
+                return value.className;
+              });
+              let pathString = JSON.stringify(pathArray);
+              if (pathString.indexOf('b7-layout') === pathString.lastIndexOf('b7-layout')) {
+                if (eventClickDom.className.startsWith('b7-col')) {
+                  console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
+                  eventClickDom.innerHTML += that.dropContent;
+                  clearDrag = true;
+                }
+              } else {
                 clearDrag = true;
               }
             }
           }
         }
 
-        // event.path.forEach(function (value) {
-        //   /*
-        //   layout drop on container
-        //    */
-        //   if (that.dropType === 'layout') {
-        //     if (value.className !== undefined) {
-        //       if (value.className.startsWith('b7-container')) {
-        //         value.innerHTML += that.dropContent;
-        //         clearDrag = true;
-        //       }
-        //     }
-        //   }
-        // });
+        if (that.dropType === 'component') {
+          if (event.path.hasOwnProperty(0)) {
+            let eventClickDom = event.path[0];
+            if (eventClickDom.className !== undefined) {
+              if (eventClickDom.className.startsWith('b7-col')) {
+                eventClickDom.innerHTML += that.dropContent;
+                clearDrag = true;
+              }
+            }
+          }
+
+        }
 
         if (clearDrag) {
           //clear/remove drag
@@ -178,6 +185,8 @@ class Editor extends EditorEvent {
           that.saveEditStorage();
           that.parentElement.style.cursor = 'default';
         }
+
+        console.log(event);
       };
   }
 }

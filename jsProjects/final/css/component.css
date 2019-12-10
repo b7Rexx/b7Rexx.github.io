@@ -1,0 +1,29 @@
+/*
+editor remove css at download
+ */
+.b7-container-fluid, .b7-container {
+  min-height: 50px;
+  margin: 15px auto;
+  -webkit-box-shadow: 0 0 5px 1px #2874A6;
+  -moz-box-shadow: 0 0 5px 1px #2874A6;
+  box-shadow: 0 0 5px 1px #2874A6;
+
+}
+
+.b7-container-fluid:last-child, .b7-container:last-child {
+  padding-bottom: 20px;
+}
+
+div[class^="b7-col"] {
+  margin: 10px 0;
+  min-height: 50px;
+  -webkit-box-shadow: 0 0 4px 0 #f15a22;
+  -moz-box-shadow: 0 0 4px 0 #f15a22;
+  box-shadow: 0 0 4px 0 #f15a22;
+}
+
+div[data-temp="container"] {
+  -webkit-box-shadow: 0 0 10px 5px #2874A6;
+  -moz-box-shadow: 0 0 10px 5px #2874A6;
+  box-shadow: 0 0 10px 5px #2874A6;
+}

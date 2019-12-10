@@ -137,6 +137,4 @@ class Body {
   getTemplateList() {
     return this.templateList;
   }
-
-
 }

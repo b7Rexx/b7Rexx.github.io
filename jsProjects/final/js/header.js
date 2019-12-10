@@ -41,6 +41,7 @@ class Header {
       {name: 'Preview', value: 'preview'},
       {name: 'Save', value: 'save'},
       {name: 'Download', value: 'download'},
+      {name: 'Back', value: 'back'},
     ];
   }
 
@@ -64,6 +65,9 @@ class Header {
         break;
       case 'save':
         navImage = '<i class="fa fa-save"></i>';
+        break;
+     case 'back':
+        navImage = '<i class="fa fa-angle-left"></i>';
         break;
       default:
         break;

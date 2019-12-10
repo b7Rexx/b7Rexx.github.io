@@ -15,6 +15,7 @@ class Editor extends EditorEvent {
     this.editor.classList.add('edit-editor');
     this.parentElement.appendChild(this.editor);
     this.setEmptyEditor();
+    this.editorContentEvent();
   }
 
   setEmptyEditor() {
@@ -46,7 +47,6 @@ class Editor extends EditorEvent {
       appendContainer.classList.add('b7-container');
       appendWrapper.appendChild(appendContainer);
       that.editorContent.appendChild(appendWrapper);
-      that.saveEditStorage();
     };
 
     this.containerFluidBtn = document.createElement('div');
@@ -59,7 +59,6 @@ class Editor extends EditorEvent {
       appendContainer.classList.add('b7-container-fluid');
       appendWrapper.appendChild(appendContainer);
       that.editorContent.appendChild(appendWrapper);
-      that.saveEditStorage();
     };
 
     this.editorBlock.appendChild(this.containerBtn);
@@ -69,7 +68,8 @@ class Editor extends EditorEvent {
   updateEditorContent() {
     let editStorage = StoreHelper.getEditStorage();
     this.editorContent.innerHTML = '';
-    this.editorContent.innerHTML = FileHelper.parseEditorStorage(editStorage);
+    let newEditContent = FileHelper.parseEditorStorage(editStorage);
+    this.editorContent.innerHTML = newEditContent;
   }
 
 
@@ -120,5 +120,64 @@ class Editor extends EditorEvent {
         }
       }
     }
+  }
+
+  editorContentEvent() {
+    let that = this;
+    let clearDrag = false;
+    document.onkeydown = function (event) {
+      if (event.key === 'Escape') {
+        let clearDrag = true;
+        that.dropType = undefined;
+        that.dropContent = undefined;
+        that.parentElement.style.cursor = 'default';
+      }
+    };
+    this.editorContent.onclick =
+      function (event) {
+
+        // console.log('click pathing ', event.path);
+        // console.log(that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
+
+        if (that.dropType === 'layout') {
+          if (event.path.hasOwnProperty(0)) {
+            let eventClickDom = event.path[0];
+            if (eventClickDom.className !== undefined) {
+              if (eventClickDom.className.startsWith('b7-container')) {
+                console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
+                eventClickDom.innerHTML += that.dropContent;
+                clearDrag = true;
+              }
+              if (eventClickDom.className.startsWith('b7-col')) {
+                console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
+                eventClickDom.innerHTML += that.dropContent;
+                clearDrag = true;
+              }
+            }
+          }
+        }
+
+        // event.path.forEach(function (value) {
+        //   /*
+        //   layout drop on container
+        //    */
+        //   if (that.dropType === 'layout') {
+        //     if (value.className !== undefined) {
+        //       if (value.className.startsWith('b7-container')) {
+        //         value.innerHTML += that.dropContent;
+        //         clearDrag = true;
+        //       }
+        //     }
+        //   }
+        // });
+
+        if (clearDrag) {
+          //clear/remove drag
+          that.dropType = undefined;
+          that.dropContent = undefined;
+          that.saveEditStorage();
+          that.parentElement.style.cursor = 'default';
+        }
+      };
   }
 }

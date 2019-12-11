@@ -27,6 +27,8 @@ class App {
       switch (pageAttr) {
         case 'save':
           value1.onclick = function () {
+            that.body.editEditor.saveEditStorage();
+
             let editStorage = StoreHelper.getEditStorage();
             StoreHelper.setDownloadStorage(editStorage);
 

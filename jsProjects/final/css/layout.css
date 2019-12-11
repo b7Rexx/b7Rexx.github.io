@@ -22,6 +22,12 @@ div[class^="b7-col"] {
   float: left;
 }
 
+div[class^="b7-col"]:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .b7-col-1 {
   width: 16.66%;
 }

@@ -9,4 +9,16 @@ class EventHelper {
     let parsedData = FileHelper.parseEditorStorage(parseJson);
     return new CustomEvent(event, {"detail": parsedData});
   }
+
+  static customEventStyleTool(event, wrapperObj, containerObj, colObj, componentObj) {
+
+    return new CustomEvent(event, {
+      "detail": {
+        "wrapper": wrapperObj,
+        "container": containerObj,
+        "col": colObj,
+        "component": componentObj
+      }
+    });
+  }
 }

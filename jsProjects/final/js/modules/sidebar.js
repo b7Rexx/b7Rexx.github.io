@@ -6,7 +6,25 @@ class Sidebar {
     this.styleLayout = undefined;
     this.styleComponent = undefined;
     this.sidebarToolBlock = undefined;
+
+    /*
+    style element variables
+     */
+    this.wrapperEditElement = undefined;
+    this.containerEditElement = undefined;
+    this.colEditElement = undefined;
+    this.componentEditElement = undefined;
+    this.toolType = undefined;
+    this.toolStatus = undefined;
+
+    /*
+    tool variables
+     */
+    this.textTool = undefined;
+
     this.init();
+    this.initTools();
+    this.changeToolElement();
   }
 
   init() {
@@ -59,5 +77,39 @@ class Sidebar {
       this.styleLayout.classList.add('active');
     else
       this.styleComponent.classList.add('active');
+  }
+
+  initTools() {
+    this.textTool = new TextTool(this.sidebarToolBlock);
+  }
+
+  changeToolElement() {
+    let that = this;
+    document.addEventListener('custom-event-style-tool', function (event) {
+      that.wrapperEditElement = event.detail.wrapper;
+      that.containerEditElement = event.detail.container;
+      that.colEditElement = event.detail.col;
+      that.componentEditElement = event.detail.component;
+      if (that.componentEditElement !== undefined) {
+        that.toolStatus = 'component';
+        that.toolType = that.componentEditElement.className;
+      } else if (that.containerEditElement !== undefined)
+        that.toolStatus = 'container';
+      else
+        that.toolStatus = undefined;
+
+      that.updateSidebarTools();
+    });
+  }
+
+  updateSidebarTools() {
+    switch (this.toolType) {
+      case 'b7-component-text':
+        this.textTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement, this.componentEditElement);
+        break;
+      default:
+        break;
+
+    }
   }
 }

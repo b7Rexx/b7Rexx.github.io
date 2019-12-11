@@ -207,10 +207,15 @@ class Editor extends EditorEvent {
             if (value.className.startsWith('b7-component'))
               that.componentEditElement = value;
           }
+        });
 
-          // console.log(value.className);
-          // value.className
-        })
+        document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+          that.wrapperEditElement,
+          that.containerEditElement,
+          that.colEditElement,
+          that.componentEditElement
+        ));
+
       };
   }
 }

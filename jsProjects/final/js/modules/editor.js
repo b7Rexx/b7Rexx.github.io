@@ -173,6 +173,20 @@ class Editor extends EditorEvent {
               if (eventClickDom.className.startsWith('b7-col')) {
                 eventClickDom.innerHTML += that.dropContent;
                 clearDrag = true;
+                //auto select code here
+                //  ...
+              } else {
+                Object.values(event.path).forEach(function (value) {
+                  if (value.className !== undefined)
+                    if (value.className.startsWith('b7-col')) {
+                      value.innerHTML += that.dropContent;
+                      clearDrag = true;
+                      console.log(clearDrag);
+                      //auto select code here
+                      //  ...
+                    }
+
+                });
               }
             }
           }

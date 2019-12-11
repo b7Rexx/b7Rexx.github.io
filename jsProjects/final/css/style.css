@@ -4,9 +4,9 @@ editor remove css at download
 .b7-container-fluid, .b7-container {
   min-height: 50px;
   margin: 15px auto;
-  -webkit-box-shadow: 0 0 5px 0 #2874A6;
-  -moz-box-shadow: 0 0 5px 0 #2874A6;
-  box-shadow: 0 0 5px 0 #2874A6;
+  -webkit-box-shadow: 0 0 2px 0 #2874A6;
+  -moz-box-shadow: 0 0 2px 0 #2874A6;
+  box-shadow: 0 0 2px 0 #2874A6;
 
 }
 
@@ -14,19 +14,26 @@ editor remove css at download
   padding-bottom: 20px;
 }
 
-div[class^="b7-col"] {
-  margin: 10px 0;
+div[class^="b7-layout"] {
+  /*margin: 10px 0;*/
   min-height: 50px;
-  -webkit-box-shadow: 0 0 4px 0 #f15a22;
-  -moz-box-shadow: 0 0 4px 0 #f15a22;
-  box-shadow: 0 0 4px 0 #f15a22;
+  -webkit-box-shadow: 0 0 2px 0 #2874A6;
+  -moz-box-shadow: 0 0 2px 0 #2874A6;
+  box-shadow: 0 0 2px 0 #2874A6;
 }
 
-div[class^="b7-component"] {
+div[class^="b7-col"] {
   min-height: 50px;
-  -webkit-box-shadow: 0 0 4px 0 #f15a22;
-  -moz-box-shadow: 0 0 4px 0 #f15a22;
-  box-shadow: 0 0 4px 0 #f15a22;
+  -webkit-box-shadow: 0 0 2px 0 #f15a22;
+  -moz-box-shadow: 0 0 2px 0 #f15a22;
+  box-shadow: 0 0 2px 0 #f15a22;
+}
+
+div[class^="b7-component"]:hover {
+  min-height: 20px;
+  -webkit-box-shadow: 0 0 2px 0 #f15a22;
+  -moz-box-shadow: 0 0 2px 0 #f15a22;
+  box-shadow: 0 0 2px 0 #f15a22;
 }
 
 .b7-container-fluid:hover, .b7-container:hover {
@@ -36,7 +43,6 @@ div[class^="b7-component"] {
 }
 
 div[class^="b7-col"]:hover {
-  margin: 10px 0;
   min-height: 50px;
   -webkit-box-shadow: 0 0 10px 2px #f15a22;
   -moz-box-shadow: 0 0 10px 2px #f15a22;
@@ -234,12 +240,12 @@ white
 }
 
 .edit-topbar {
-  height: 80px;
+  height: 60px;
 }
 
 .btn-div {
   margin-left: 70px;
-  width: 120px;
+  width: 100px;
   background: whitesmoke;
   float: left;
 }
@@ -264,26 +270,25 @@ white
 }
 
 .list-div img {
-  padding: 10px;
+  padding: 5px;
   display: block;
   float: left;
-  height: 60px;
-  width: 99px;
+  height: 50px;
+  width: 79px;
   border-right: 1px solid whitesmoke;
   cursor: grab;
 }
 
 .layout-btn, .component-btn {
   display: block;
-  width: 100px;
+  width: 90px;
   height: 20px;
-  padding: 10px;
-  font-weight: bold;
+  padding: 5px;
   text-align: center;
   background: white;
   color: #f15a22;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .layout-btn:hover, .component-btn:hover {
@@ -294,8 +299,8 @@ white
   background: #2874A6;
   color: white;
   border-radius: 0;
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .hide {
@@ -347,7 +352,7 @@ white
 
 .edit-sidebar {
   float: right;
-  background: white;
+  background: #2874A6;
   width: 220px;
   padding: 10px;
   box-shadow: 0 0 2px 0 #f15a22;
@@ -356,22 +361,23 @@ white
 .style-heading {
   text-align: center;
   color: #f15a22;
+  font-weight: bold;
 }
 
 .style-layout-btn, .style-component-btn {
   width: 49%;
   text-align: center;
-  color: #2874A6;
+  color: white;
+  border: 1px solid white;
   display: inline-block;
   cursor: pointer;
-  border-top: 1px solid #2874A6;
-  border-left: 1px solid #2874A6;
-  border-right: 1px solid #2874A6;
+  padding: 5px 0;
 }
 
 .style-layout-btn.active, .style-component-btn.active {
   background: #2874A6;
-  color: white;
+  font-weight: bold;
+  border-bottom: 0;
 }
 
 .style-layout-btn:hover, .style-component-btn:hover {
@@ -380,16 +386,18 @@ white
 
 .sidebar-tool-block {
   background: #2874A6;
-  min-height: 300px;
+  min-height: 200px;
   width: 100%;
+  padding: 5px 0;
+}
+
+.text-style {
+  margin-bottom: 10px;
 }
 
 .text-style-block {
   color: white;
-}
-
-.align-block-text {
-  margin: 5px;
+  line-height: 16px;
 }
 
 .align-button-text {
@@ -399,8 +407,35 @@ white
 
 .align-button-text button {
   width: 30px;
+  margin: 1px;
 }
 
-.align-button-text button.active{
+.align-button-text button.active {
   border: 1px inset lightgrey;
+}
+
+.textcontent-block-text {
+  width: 100%;
+}
+
+.lineheight-block-text input,
+.fontsize-block-text input,
+.fontcolor-block-text input,
+.backgroundcolor-block-text input {
+  float: right;
+  width: 50px;
+}
+
+.padding-block-text input {
+  float: right;
+  width: 140px;
+}
+.border-block-text input[type="text"] {
+  /*float: right;*/
+  width: 140px;
+  margin-bottom: 5px;
+}
+
+.border-block-text input {
+  margin-left: 20px;
 }

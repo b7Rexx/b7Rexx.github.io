@@ -3,6 +3,7 @@ class Sidebar {
     this.parentElement = parentElement;
     this.sidebar = undefined;
     this.activeBtn = 'layout';
+
     this.styleLayout = undefined;
     this.styleComponent = undefined;
     this.sidebarToolBlock = undefined;
@@ -28,6 +29,7 @@ class Sidebar {
   }
 
   init() {
+    let that = this;
     this.sidebar = document.createElement('div');
     this.sidebar.classList.add('edit-sidebar');
     this.sidebar.classList.add('clearfix');
@@ -40,10 +42,18 @@ class Sidebar {
     this.styleLayout = document.createElement('a');
     this.styleLayout.innerHTML = 'Layout';
     this.styleLayout.classList.add('style-layout-btn');
+    this.styleLayout.onclick = function () {
+      that.setActiveBtn = 'layout';
+      that.updateSidebarTools();
+    };
 
     this.styleComponent = document.createElement('a');
     this.styleComponent.innerHTML = 'Component';
     this.styleComponent.classList.add('style-component-btn');
+    this.styleComponent.onclick = function () {
+      that.setActiveBtn = 'component';
+      that.updateSidebarTools();
+    };
 
     this.sidebarToolBlock = document.createElement('div');
     this.sidebarToolBlock.classList.add('sidebar-tool-block');
@@ -62,7 +72,7 @@ class Sidebar {
     let that = this;
 
     this.sidebar.style.height = (ViewportHelper.height() - 200) + 'px';
-    this.sidebarToolBlock.style.height = (ViewportHelper.height() - 240) + 'px';
+    this.sidebarToolBlock.style.height = (ViewportHelper.height() - 280) + 'px';
     window.addEventListener("resize", function () {
       that.sidebar.style.height = (ViewportHelper.height() - 200) + 'px';
       that.sidebarToolBlock.style.height = (ViewportHelper.height() - 240) + 'px';
@@ -81,6 +91,9 @@ class Sidebar {
 
   initTools() {
     this.textTool = new TextTool(this.sidebarToolBlock);
+
+
+    this.updateSidebarTools();
   }
 
   changeToolElement() {
@@ -92,24 +105,37 @@ class Sidebar {
       that.componentEditElement = event.detail.component;
       if (that.componentEditElement !== undefined) {
         that.toolStatus = 'component';
+        that.setActiveBtn = 'component';
         that.toolType = that.componentEditElement.className;
-      } else if (that.containerEditElement !== undefined)
+      } else if (that.containerEditElement !== undefined) {
         that.toolStatus = 'container';
-      else
+        that.setActiveBtn = 'layout';
+        that.toolType = undefined;
+      } else {
         that.toolStatus = undefined;
-
+        that.toolType = undefined;
+      }
       that.updateSidebarTools();
     });
   }
 
   updateSidebarTools() {
-    switch (this.toolType) {
-      case 'b7-component-text':
-        this.textTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement, this.componentEditElement);
-        break;
-      default:
-        break;
-
+    //display none all
+    this.textTool.textTool.style.display = 'none';
+    if (this.activeBtn === 'layout') {
+      if (this.toolStatus !== undefined) {
+        //    display block
+      }
+    } else {
+      //    display block
+      switch (this.toolType) {
+        case 'b7-component-text':
+          this.textTool.textTool.style.display = 'block';
+          this.textTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement, this.componentEditElement);
+          break;
+        default:
+          break;
+      }
     }
   }
 }

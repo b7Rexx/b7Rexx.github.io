@@ -72,7 +72,8 @@ class Topbar {
         value.forEach(function (val) {
           that.components.push(val);
           let newComponent = document.createElement('img');
-          newComponent.src = 'assets/img/white.png';
+          // newComponent.src = 'assets/img/white.png';
+          newComponent.src = val.image;
           newComponent.onclick = function () {
             document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-component-click', val.component));
           };

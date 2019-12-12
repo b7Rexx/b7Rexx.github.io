@@ -20,12 +20,15 @@ class TextTool extends Tool {
     this.partialBorderBlock = undefined;
     this.positionBlock = undefined;
     this.opacityBlock = undefined;
+    this.textHeightBlock = undefined;
+    this.textWidthBlock = undefined;
 
     this.init();
   }
 
   init() {
     this.textTool = document.createElement('div');
+    this.textTool.classList.add('sidebar-style-block');
     this.textTool.classList.add('text-style-block');
     this.parentElement.appendChild(this.textTool);
     // this.textContent();
@@ -40,6 +43,7 @@ class TextTool extends Tool {
     this.backgroundColorTool();
     this.opacityTool();
 
+    this.textBlockSize();
     this.borderTool();
     this.positionTool();
   }
@@ -72,6 +76,8 @@ class TextTool extends Tool {
     this.backgroundColorBlock.children[1].value = this.componentProps.background;
     this.opacityBlock.children[1].value = this.componentProps.opacity;
     this.paddingBlock.children[1].value = this.componentProps.padding;
+    this.textHeightBlock.children[1].value = this.componentProps.height;
+    this.textWidthBlock.children[1].value = this.componentProps.width;
 
     /*
     border update
@@ -471,6 +477,33 @@ class TextTool extends Tool {
         }
       }
     });
+
+  }
+
+
+  textBlockSize() {
+    let that = this;
+    this.textHeightBlock = document.createElement('div');
+    this.textHeightBlock.classList.add('text-style');
+    this.textHeightBlock.classList.add('textheight-block-text');
+    this.textHeightBlock.innerHTML =
+      '<span>Height</span>' +
+      '<input type="text">';
+    this.textTool.appendChild(this.textHeightBlock);
+    this.textHeightBlock.children[1].onchange = function () {
+      that.componentEditElement.style.height = this.value;
+    };
+
+    this.textWidthBlock = document.createElement('div');
+    this.textWidthBlock.classList.add('text-style');
+    this.textWidthBlock.classList.add('textwidth-block-text');
+    this.textWidthBlock.innerHTML =
+      '<span>Width</span>' +
+      '<input type="text">';
+    this.textTool.appendChild(this.textWidthBlock);
+    this.textWidthBlock.children[1].onchange = function () {
+      that.componentEditElement.style.width = this.value;
+    };
 
   }
 }

@@ -46,6 +46,8 @@ class Tool {
     if (elem !== undefined) {
       return {
         text: elem.innerHTML,
+        src: elem.src,
+        alt: elem.alt,
         height: elem.style.height || 'auto',
         width: elem.style.width || 'auto',
         textAlign: elem.style.textAlign || 'left',
@@ -74,7 +76,6 @@ class Tool {
     }
     return undefined;
   }
-
 
   rgbToHex(rgb) {
     let hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];

@@ -29,6 +29,7 @@ class LayoutTool extends Tool {
 
   init() {
     this.layoutTool = document.createElement('div');
+    this.layoutTool.classList.add('sidebar-style-block');
     this.layoutTool.classList.add('layout-style-block');
     this.parentElement.appendChild(this.layoutTool);
 

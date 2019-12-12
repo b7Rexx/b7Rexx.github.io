@@ -396,8 +396,7 @@ white
   margin-bottom: 10px;
 }
 
-.layout-style-block,
-.text-style-block {
+.sidebar-style-block {
   color: white;
   line-height: 16px;
 }
@@ -424,7 +423,9 @@ white
 .fontsize-block-text input,
 .fontcolor-block-text input,
 .backgroundcolor-block-text input,
-.textspacing-block-text input {
+.textspacing-block-text input ,
+.textwidth-block-text input ,
+.textheight-block-text input {
   float: right;
   width: 50px;
 }
@@ -452,19 +453,31 @@ white
 
 .saved-edit {
   background: white !important;
-  color: green!important;
+  color: green !important;
 }
 
 .saved-edit:hover {
   background: green !important;
-  color: white!important;
+  color: white !important;
 }
+
 .unsaved-edit {
   background: white !important;
-  color: #ffeb3b!important;
+  color: #ffeb3b !important;
 }
 
 .unsaved-edit:hover {
   background: #ffeb3b !important;
-  color: white!important;
+  color: white !important;
+}
+
+.imageheight-block-text input,
+.imagewidth-block-text input{
+  float: right;
+  width: 50px;
+}
+
+.imagesrc-block-text input,
+.imagealt-block-text input{
+  width: 100%;
 }

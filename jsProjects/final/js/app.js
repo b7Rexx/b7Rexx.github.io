@@ -52,11 +52,13 @@ class App {
         case'back':
           value1.onclick = function () {
             that.setPage = that.pageIntendedFrom;
+            that.body.previewIntended = that.page;
           };
           break;
         default:
           value1.onclick = function () {
             that.setPage = pageAttr;
+            that.body.previewIntended = that.page;
           };
           break;
       }

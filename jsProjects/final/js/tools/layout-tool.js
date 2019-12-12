@@ -21,7 +21,8 @@ class LayoutTool extends Tool {
     this.containerPaddingBlock = undefined;
     this.colBackgroundColorBlock = undefined;
     this.colHeightBlock = undefined;
-
+    this.containerPositionBlock = undefined;
+    this.positionValueBlock = undefined;
 
     this.init();
   }
@@ -48,7 +49,7 @@ class LayoutTool extends Tool {
     this.layoutContainerTool.append('Container');
     this.containerBackgroundColorTool();
     this.containerPaddingTool();
-    this.containerPositionTool();
+    // this.containerPositionTool();
     this.layoutContainerTool.appendChild(hrLine2);
 
     this.layoutColumnTool.append('Column');
@@ -74,23 +75,24 @@ class LayoutTool extends Tool {
     let that = this;
     if (this.wrapperProps !== undefined) {
       this.backgroundColorBlock.children[1].value = this.wrapperProps.background;
-      this.layoutWrapperTool.style.display='block';
-    }else{
-      this.layoutWrapperTool.style.display='none';
+      this.layoutWrapperTool.style.display = 'block';
+    } else {
+      this.layoutWrapperTool.style.display = 'none';
     }
     if (this.containerProps !== undefined) {
       this.containerBackgroundColorBlock.children[1].value = this.containerProps.background;
       this.containerPaddingBlock.children[1].value = this.containerProps.padding;
-      this.layoutContainerTool.style.display='block';
-    }else{
-      this.layoutContainerTool.style.display='none';
+
+      this.layoutContainerTool.style.display = 'block';
+    } else {
+      this.layoutContainerTool.style.display = 'none';
     }
     if (this.colProps !== undefined) {
       this.colBackgroundColorBlock.children[1].value = this.colProps.background;
       this.colHeightBlock.children[1].value = this.colProps.height;
-      this.layoutColumnTool.style.display='block';
-    }else{
-      this.layoutColumnTool.style.display='none';
+      this.layoutColumnTool.style.display = 'block';
+    } else {
+      this.layoutColumnTool.style.display = 'none';
     }
   }
 
@@ -139,7 +141,72 @@ class LayoutTool extends Tool {
   }
 
   containerPositionTool() {
+    let that = this;
+    this.containerPositionBlock = document.createElement('div');
+    this.containerPositionBlock.classList.add('text-style');
+    this.containerPositionBlock.classList.add('position-block-text');
+    this.containerPositionBlock.innerHTML =
+      '<input type="checkbox" id="container-position">' +
+      '<label for="container-position"> Position Absolute  </label>';
 
+    this.positionValueBlock = document.createElement('div');
+    this.positionValueBlock.classList.add('position-value-text');
+
+    this.layoutContainerTool.appendChild(this.containerPositionBlock);
+    this.containerPositionBlock.appendChild(this.positionValueBlock);
+
+    this.positionValueBlock.innerHTML =
+      '<span>Top </span> <input type="text" data-position="top" id="top-position-container"><br>' +
+      '<span>Right </span> <input type="text" data-position="right" id="right-position-container"><br>' +
+      '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-container"><br>' +
+      '<span>Left </span> <input type="text" data-position="left" id="left-position-container"><br>' +
+      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-container"><br>';
+    this.positionValueBlock.style.display = 'none';
+
+    if (that.containerEditElement !== undefined) {
+      if (this.checked) {
+        that.containerEditElement.style.position = 'absolute';
+        that.positionValueBlock.style.display = 'block';
+      } else {
+        that.containerEditElement.style.position = 'static';
+        that.positionValueBlock.style.display = 'none';
+      }
+    }
+
+    this.containerPositionBlock.children[0].onchange = function () {
+      if (this.checked) {
+        that.containerEditElement.style.position = 'absolute';
+        that.positionValueBlock.style.display = 'block';
+      } else {
+        that.containerEditElement.style.position = 'static';
+        that.positionValueBlock.style.display = 'none';
+      }
+    };
+
+    let positions = this.positionValueBlock.querySelectorAll('input[type="text"]');
+    Object.values(positions).forEach(function (value) {
+      value.onchange = function () {
+        switch (value.getAttribute('data-position')) {
+          case 'top':
+            that.containerEditElement.style.top = this.value;
+            break;
+          case 'right':
+            that.containerEditElement.style.right = this.value;
+            break;
+          case 'bottom':
+            that.containerEditElement.style.bottom = this.value;
+            break;
+          case 'left':
+            that.containerEditElement.style.left = this.value;
+            break;
+          case 'zIndex':
+            that.containerEditElement.style.zIndex = this.value;
+            break;
+          default:
+            break;
+        }
+      }
+    });
   }
 
 

@@ -5,7 +5,7 @@ class Preview {
     this.downloadBtn = undefined;
     this.templateBtn = undefined;
     this.editBtn = undefined;
-    this.intended = 'template';
+    this.intended = 'edit';
 
     this.init();
   }
@@ -17,17 +17,18 @@ class Preview {
     // this.previewEvents();
   }
 
-  updateContent() {
+  updateContent(intended) {
+    this.intended = intended;
     this.previewWrapper.remove();
-    let previewData = StoreHelper.getTemplateStorage();
-    this.previewWrapper = FileHelper.parseTemplate(previewData);
-    this.parentElement.appendChild(this.previewWrapper);
-
-    // if (this.intended === 'template')
-    //   this.downloadBtn.style.display = 'none';
-    // else
-    //   this.downloadBtn.style.display = 'block';
-
+    if (this.intended ==='template') {
+      let previewData = StoreHelper.getTemplateStorage();
+      this.previewWrapper = FileHelper.parseTemplate(previewData);
+      this.parentElement.appendChild(this.previewWrapper);
+    }else{
+      let previewData = StoreHelper.getEditStorage();
+      this.previewWrapper = FileHelper.parseTemplate(previewData);
+      this.parentElement.appendChild(this.previewWrapper);
+    }
   }
 
   previewEvents() {

@@ -30,6 +30,7 @@ class TextTool extends Tool {
     this.parentElement.appendChild(this.textTool);
     // this.textContent();
     this.textSizeTool();
+    this.textStyleTool();
     this.lineHeightTool();
     this.textSpacingTool();
     this.alignTool();
@@ -113,6 +114,38 @@ class TextTool extends Tool {
     document.getElementById('bottom-position-text').value = this.componentProps.bottom;
     document.getElementById('left-position-text').value = this.componentProps.left;
     document.getElementById('z-position-text').value = this.componentProps.zIndex;
+
+    /*
+    font style
+     */
+
+    Object.values(this.fontStyleBlock.children[1].children).forEach(function (val) {
+          switch (val.getAttribute('data-style')) {
+            case 'bold':
+              if (that.componentProps.fontWeight === 'bold'){
+                val.classList.add('active');
+              }else{
+                val.classList.remove('active');
+              }
+              break;
+            case 'italic':
+              if (that.componentProps.fontStyle === 'italic'){
+                val.classList.add('active');
+              }else{
+                val.classList.remove('active');
+              }
+              break;
+            case 'underlined':
+              if (that.componentProps.textDecoration === 'underline'){
+                val.classList.add('active');
+              }else{
+                val.classList.remove('active');
+              }
+              break;
+            default:
+              break;
+          }
+            });
   }
 
   textContent() {
@@ -149,6 +182,58 @@ class TextTool extends Tool {
             val1.classList.remove('active');
           });
           val.classList.add('active');
+        }
+      }
+    });
+  }
+
+  textStyleTool() {
+    let that = this;
+    this.fontStyleBlock = document.createElement('div');
+    this.fontStyleBlock.classList.add('text-style');
+    this.fontStyleBlock.classList.add('fontstyle-block-text');
+    this.fontStyleBlock.innerHTML =
+      '<span>Font Style</span>' +
+      '<div class="fontstyle-button-text">' +
+      '<button data-style="bold"><i class="fa fa-bold"></i></button>' +
+      '<button data-style="italic"><i class="fa fa-italic"></i></button>' +
+      '<button data-style="underlined"><i class="fa fa-underline"></i></button>' +
+      '</div>';
+    this.textTool.appendChild(this.fontStyleBlock);
+    Object.values(this.fontStyleBlock.children[1].children).forEach(function (val) {
+      val.onclick = function () {
+        if (that.componentEditElement !== undefined) {
+          switch (val.getAttribute('data-style')) {
+            case 'bold':
+              if (val.classList.contains('active')){
+                that.componentEditElement.style.fontWeight = 'normal';
+                val.classList.remove('active');
+              }else{
+                that.componentEditElement.style.fontWeight = 'bold';
+                val.classList.add('active');
+              }
+              break;
+            case 'italic':
+              if (val.classList.contains('active')){
+                that.componentEditElement.style.fontStyle = 'normal';
+                val.classList.remove('active');
+              }else{
+                that.componentEditElement.style.fontStyle = 'italic';
+                val.classList.add('active');
+              }
+              break;
+            case 'underlined':
+              if (val.classList.contains('active')){
+                that.componentEditElement.style.textDecoration = 'none';
+                val.classList.remove('active');
+              }else{
+                that.componentEditElement.style.textDecoration = 'underline';
+                val.classList.add('active');
+              }
+              break;
+            default:
+              break;
+          }
         }
       }
     });
@@ -342,12 +427,14 @@ class TextTool extends Tool {
       '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text"><br>';
     this.positionValueBlock.style.display = 'none';
 
-    if (this.checked) {
-      that.positionValueBlock.style.position = 'absolute';
-      that.positionValueBlock.style.display = 'block';
-    } else {
-      that.positionValueBlock.style.position = 'static';
-      that.positionValueBlock.style.display = 'none';
+    if (that.componentEditElement !== undefined) {
+      if (this.checked) {
+        that.componentEditElement.style.position = 'absolute';
+        that.positionValueBlock.style.display = 'block';
+      } else {
+        that.componentEditElement.style.position = 'static';
+        that.positionValueBlock.style.display = 'none';
+      }
     }
 
     this.positionBlock.children[0].onchange = function () {

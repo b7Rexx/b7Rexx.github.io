@@ -75,8 +75,11 @@ class FileHelper {
     let componentCss = this.getFileContentSync('css/component.css', 'GET');
     let downloadCss = resetCss + '\n' + layoutCss + '\n' + componentCss + '\n' + parsedHtmlCss.css;
 
+
+    let downloadJson = JSON.stringify(webContent);
     download(downloadHtml, 'b7WebBuilder.html', 'txt');
     download(downloadCss, 'custom.css', 'txt');
+    download(downloadJson, 'progress.json', 'txt');
 
     // Function to download data to a file
     function download(data, filename, type) {
@@ -158,10 +161,9 @@ class FileHelper {
       domTag.setAttribute('data-css', cssCounter);
       Object.values(downloadedHtml.attributes).forEach(function (value) {
 
-        if (value.name === 'data-css'){
-        //clear data-css
-        }
-        else if (value.name === 'style') {
+        if (value.name === 'data-css') {
+          //clear data-css
+        } else if (value.name === 'style') {
           cssValue = value.value;
         } else {
           domTag.setAttribute(value.name, value.value);

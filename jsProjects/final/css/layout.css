@@ -1,3 +1,7 @@
+div[class^="b7-wrapper"] {
+  position: relative;
+}
+
 .b7-container-fluid {
   width: 100%;
 }

@@ -402,18 +402,18 @@ white
   line-height: 16px;
 }
 
-.align-button-text {
+.fontstyle-button-text, .align-button-text {
   width: auto;
   float: right;
 }
 
-.align-button-text button {
+.fontstyle-button-text button ,.align-button-text button {
   width: 30px;
   margin: 1px;
 }
 
-.align-button-text button.active {
-  border: 1px inset lightgrey;
+.fontstyle-button-text button.active,.align-button-text button.active {
+  border: 2px inset lightgrey;
 }
 
 .textcontent-block-text {

@@ -17,6 +17,13 @@ class Tool {
         height: elem.style.height || 'auto',
         width: elem.style.width || 'auto',
         padding: elem.style.padding || 0,
+        position: elem.style.position || 'static',
+        top: elem.style.top,
+        right: elem.style.right,
+        bottom: elem.style.bottom,
+        left: elem.style.left,
+        zIndex: elem.style.zIndex,
+        opacity: elem.style.opacity || 1,
         background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
       };
     }
@@ -60,6 +67,9 @@ class Tool {
         left: elem.style.left,
         zIndex: elem.style.zIndex,
         opacity: elem.style.opacity || 1,
+        fontWeight: elem.style.fontWeight || 'normal',
+        fontStyle: elem.style.fontStyle || 'normal',
+        textDecoration: elem.style.textDecoration || 'none',
       };
     }
     return undefined;

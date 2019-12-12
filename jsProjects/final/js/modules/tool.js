@@ -4,7 +4,7 @@ class Tool {
       return {
         height: elem.style.height,
         width: elem.style.width,
-        background: elem.style.background,
+        backgroundColor: elem.style.backgroundColor||'#ffffff',
       };
     }
     return undefined;
@@ -41,7 +41,8 @@ class Tool {
         background: elem.style.background,
         textAlign: elem.style.textAlign || 'left',
         lineHeight: elem.style.lineHeight || 1,
-        fontSize: elem.style.fontSize || 16,
+        letterSpacing: elem.style.letterSpacing || '0px',
+        fontSize: elem.style.fontSize || '16px',
         color: elem.style.color || '#000000',
         backgroundColor: elem.style.backgroundColor || '#ffffff',
         padding: elem.style.padding || '0px 0px 0px 0px',
@@ -50,6 +51,13 @@ class Tool {
         borderRight: elem.style.borderRight || 'none',
         borderBottom: elem.style.borderBottom || 'none',
         borderLeft: elem.style.borderLeft || 'none',
+        position: elem.style.position || 'static',
+        top: elem.style.top,
+        right: elem.style.right,
+        bottom: elem.style.bottom,
+        left: elem.style.left,
+        zIndex: elem.style.zIndex,
+        opacity: elem.style.opacity || 1,
       };
     }
     return undefined;

@@ -21,6 +21,7 @@ class Sidebar {
     /*
     tool variables
      */
+    this.layoutTool = undefined;
     this.textTool = undefined;
 
     this.init();
@@ -90,6 +91,7 @@ class Sidebar {
   }
 
   initTools() {
+    this.layoutTool = new LayoutTool(this.sidebarToolBlock);
     this.textTool = new TextTool(this.sidebarToolBlock);
 
 
@@ -121,9 +123,12 @@ class Sidebar {
 
   updateSidebarTools() {
     //display none all
+    this.layoutTool.layoutTool.style.display = 'none';
     this.textTool.textTool.style.display = 'none';
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
+        this.layoutTool.layoutTool.style.display = 'block';
+        this.layoutTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement);
         //    display block
       }
     } else {
@@ -131,7 +136,7 @@ class Sidebar {
       switch (this.toolType) {
         case 'b7-component-text':
           this.textTool.textTool.style.display = 'block';
-          this.textTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement, this.componentEditElement);
+          this.textTool.updateStyleTools(this.componentEditElement);
           break;
         default:
           break;

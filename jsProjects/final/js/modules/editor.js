@@ -6,6 +6,7 @@ class Editor extends EditorEvent {
     this.editorBlock = undefined;
     this.editorMargin = undefined;
     this.editorContent = undefined;
+    this.contentEditableText = undefined;
 
     this.init();
   }
@@ -88,6 +89,11 @@ class Editor extends EditorEvent {
   }
 
   saveEditStorage() {
+    if (this.contentEditableText !== undefined) {
+      this.contentEditableText.onclick = null;
+      this.contentEditableText.removeAttribute('contenteditable');
+    }
+
     let saveObject = {};
     parseDOM(this.editorContent, saveObject);
     let saveArray = Object.values(saveObject.children).map(function (val) {
@@ -133,10 +139,20 @@ class Editor extends EditorEvent {
         that.dropType = undefined;
         that.dropContent = undefined;
         that.parentElement.style.cursor = 'default';
+        if (that.contentEditableText !== undefined) {
+          that.contentEditableText.onclick = null;
+          that.contentEditableText.removeAttribute('contenteditable');
+        }
       }
     };
+
     this.editorContent.onclick =
       function (event) {
+
+        if (that.contentEditableText !== undefined) {
+          that.contentEditableText.onclick = null;
+          that.contentEditableText.removeAttribute('contenteditable');
+        }
 
         // console.log('click pathing ', event.path);
         console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
@@ -231,5 +247,25 @@ class Editor extends EditorEvent {
         ));
 
       };
+
+    // this.editorContent.oncontextmenu = function (event) {
+    this.editorContent.ondblclick = function (event) {
+      // console.log(event);
+      // event.preventDefault();
+      if (event.path.hasOwnProperty(0)) {
+        let eventClickDom = event.path[0];
+        if (eventClickDom.className !== undefined) {
+          if (eventClickDom.className.startsWith('b7-component-text')) {
+            that.contentEditableText = eventClickDom;
+            that.contentEditableText.onclick = function (eventPrevent) {
+              eventPrevent.stopPropagation();
+            };
+
+            eventClickDom.setAttribute('contenteditable', 'true');
+          }
+        }
+      }
+    };
+
   }
 }

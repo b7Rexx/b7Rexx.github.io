@@ -356,6 +356,7 @@ white
   width: 220px;
   padding: 10px;
   box-shadow: 0 0 2px 0 #f15a22;
+  overflow-y: auto;
 }
 
 .style-heading {
@@ -395,6 +396,7 @@ white
   margin-bottom: 10px;
 }
 
+.layout-style-block,
 .text-style-block {
   color: white;
   line-height: 16px;
@@ -421,21 +423,29 @@ white
 .lineheight-block-text input,
 .fontsize-block-text input,
 .fontcolor-block-text input,
-.backgroundcolor-block-text input {
+.backgroundcolor-block-text input,
+.textspacing-block-text input {
   float: right;
   width: 50px;
 }
 
-.padding-block-text input {
+.padding-block-text input,
+.opacity-block-text input {
   float: right;
   width: 140px;
 }
-.border-block-text input[type="text"] {
-  /*float: right;*/
-  width: 140px;
-  margin-bottom: 5px;
+
+.border-block-text input[type="radio"] {
+  margin-left: 20px;
 }
 
-.border-block-text input {
-  margin-left: 20px;
+.border-block-text input[type="text"],
+.position-value-text input[type="text"] {
+  /*float: right;*/
+  width: 120px;
+  margin-left: 10px;
+}
+
+.border-block-text span, .position-value-text span {
+  margin-bottom: 15px;
 }

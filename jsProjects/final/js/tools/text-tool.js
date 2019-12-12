@@ -3,10 +3,13 @@ class TextTool extends Tool {
     super();
     this.parentElement = parentElement;
     this.textTool = undefined;
+    this.componentProps = undefined;
+    this.componentEditElement = undefined;
 
     this.textContentBlock = undefined;
     this.alignBlock = undefined;
     this.lineHeightBlock = undefined;
+    this.textSpacingBlock = undefined;
     this.fontSizeBlock = undefined;
     this.fontColorBlock = undefined;
     this.backgroundColorBlock = undefined;
@@ -16,16 +19,7 @@ class TextTool extends Tool {
     this.fullBorderBlock = undefined;
     this.partialBorderBlock = undefined;
     this.positionBlock = undefined;
-
-    this.wrapperEditElement = undefined;
-    this.containerEditElement = undefined;
-    this.colEditElement = undefined;
-    this.componentEditElement = undefined;
-
-    this.wrapperProps = undefined;
-    this.containerProps = undefined;
-    this.colProps = undefined;
-    this.componentProps = undefined;
+    this.opacityBlock = undefined;
 
     this.init();
   }
@@ -34,29 +28,27 @@ class TextTool extends Tool {
     this.textTool = document.createElement('div');
     this.textTool.classList.add('text-style-block');
     this.parentElement.appendChild(this.textTool);
-    this.textContent();
+    // this.textContent();
     this.textSizeTool();
-    this.textColorTool();
-    this.alignTool();
     this.lineHeightTool();
-    this.backgroundColorTool();
+    this.textSpacingTool();
+    this.alignTool();
     this.paddingTool();
+
+    this.textColorTool();
+    this.backgroundColorTool();
+    this.opacityTool();
+
     this.borderTool();
     this.positionTool();
   }
 
-  updateStyleTools(wrapper, container, col, component) {
-    this.wrapperEditElement = wrapper;
-    this.containerEditElement = container;
-    this.colEditElement = col;
+  updateStyleTools(component) {
     this.componentEditElement = component;
     this.getStyleProperty();
   }
 
   getStyleProperty() {
-    this.wrapperProps = super.getWrapperProperty(this.wrapperEditElement);
-    this.containerProps = super.getContainerProperty(this.containerEditElement);
-    this.colProps = super.getColProperty(this.colEditElement);
     this.componentProps = super.getComponentProperty(this.componentEditElement);
     this.updateChanges();
   }
@@ -71,13 +63,20 @@ class TextTool extends Tool {
       }
     });
 
-    this.textContentBlock.innerHTML = this.componentProps.text;
+    // this.textContentBlock.innerHTML = this.componentProps.text;
     this.lineHeightBlock.children[1].value = this.componentProps.lineHeight;
+    this.textSpacingBlock.children[1].value = this.componentProps.letterSpacing;
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
     this.fontColorBlock.children[1].value = this.componentProps.color;
     this.backgroundColorBlock.children[1].value = this.componentProps.backgroundColor;
+    this.opacityBlock.children[1].value = this.componentProps.opacity;
     this.paddingBlock.children[1].value = this.componentProps.padding;
 
+    /*
+    border update
+     */
+    this.fullBorderBlock.style.display = 'none';
+    this.partialBorderBlock.style.display = 'none';
     document.getElementById('full-border-text-value').value = this.componentProps.border;
     document.getElementById('top-border-text').value = this.componentProps.borderTop;
     document.getElementById('right-border-text').value = this.componentProps.borderRight;
@@ -86,11 +85,34 @@ class TextTool extends Tool {
     if (this.componentProps.border !== 'none') {
       document.getElementById('full-border-text').checked = true;
       document.getElementById('partial-border-text').checked = false;
-    } else if (this.componentProps.borderTop !== 'none' || this.componentProps.borderRight !== 'none'
-      || this.componentProps.borderBottom !== 'none' || this.componentProps.borderLeft !== 'none') {
-      document.getElementById('full-border-text').checked = false;
-      document.getElementById('partial-border-text').checked = true;
+      this.fullBorderBlock.style.display = 'block';
+    } else {
+      if (this.componentProps.borderTop === 'none' && this.componentProps.borderRight === 'none'
+        && this.componentProps.borderBottom === 'none' && this.componentProps.borderLeft === 'none') {
+        document.getElementById('full-border-text').checked = false;
+        document.getElementById('partial-border-text').checked = false;
+      } else {
+        document.getElementById('full-border-text').checked = false;
+        document.getElementById('partial-border-text').checked = true;
+        this.partialBorderBlock.style.display = 'block';
+      }
     }
+
+    /*
+    position update
+     */
+    this.positionValueBlock.style.display = 'none';
+    if (this.componentProps.position === 'absolute') {
+      this.positionBlock.children[0].checked = true;
+      this.positionValueBlock.style.display = 'block';
+    } else
+      this.positionBlock.children[0].checked = false;
+
+    document.getElementById('top-position-text').value = this.componentProps.top;
+    document.getElementById('right-position-text').value = this.componentProps.right;
+    document.getElementById('bottom-position-text').value = this.componentProps.bottom;
+    document.getElementById('left-position-text').value = this.componentProps.left;
+    document.getElementById('z-position-text').value = this.componentProps.zIndex;
   }
 
   textContent() {
@@ -146,6 +168,20 @@ class TextTool extends Tool {
     };
   }
 
+  textSpacingTool() {
+    let that = this;
+    this.textSpacingBlock = document.createElement('div');
+    this.textSpacingBlock.classList.add('text-style');
+    this.textSpacingBlock.classList.add('textspacing-block-text');
+    this.textSpacingBlock.innerHTML =
+      '<span>Letter Spacing</span>' +
+      '<input type="text">';
+    this.textTool.appendChild(this.textSpacingBlock);
+    this.textSpacingBlock.children[1].onchange = function () {
+      that.componentEditElement.style.letterSpacing = this.value;
+    };
+  }
+
   textSizeTool() {
     let that = this;
     this.fontSizeBlock = document.createElement('div');
@@ -153,10 +189,10 @@ class TextTool extends Tool {
     this.fontSizeBlock.classList.add('fontsize-block-text');
     this.fontSizeBlock.innerHTML =
       '<span>Font size </span>' +
-      '<input type="number">';
+      '<input type="text">';
     this.textTool.appendChild(this.fontSizeBlock);
     this.fontSizeBlock.children[1].onchange = function () {
-      that.componentEditElement.style.lineHeight = this.value;
+      that.componentEditElement.style.fontSize = this.value;
     };
   }
 
@@ -185,6 +221,20 @@ class TextTool extends Tool {
     this.textTool.appendChild(this.backgroundColorBlock);
     this.backgroundColorBlock.children[1].onchange = function () {
       that.componentEditElement.style.backgroundColor = this.value;
+    };
+  }
+
+  opacityTool() {
+    let that = this;
+    this.opacityBlock = document.createElement('div');
+    this.opacityBlock.classList.add('text-style');
+    this.opacityBlock.classList.add('opacity-block-text');
+    this.opacityBlock.innerHTML =
+      '<span>Opacity</span>' +
+      '<input type="range" min="0" max="1" step="0.1">';
+    this.textTool.appendChild(this.opacityBlock);
+    this.opacityBlock.children[1].onchange = function () {
+      that.componentEditElement.style.opacity = this.value;
     };
   }
 
@@ -219,17 +269,16 @@ class TextTool extends Tool {
 
     this.partialBorderBlock = document.createElement('div');
     this.partialBorderBlock.innerHTML =
-      '<span>Top </span> <input type="text" id="top-border-text">' +
-      '<span>Right </span> <input type="text" id="right-border-text">' +
-      '<span>Bottom </span> <input type="text" id="bottom-border-text">' +
-      '<span>Left </span> <input type="text" id="left-border-text">';
+      '<span>Top </span> <input type="text" data-border="top" id="top-border-text"><br>' +
+      '<span>Right </span> <input type="text" data-border="right" id="right-border-text"><br>' +
+      '<span>Bottom </span> <input type="text" data-border="bottom" id="bottom-border-text"><br>' +
+      '<span>Left </span> <input type="text" data-border="left" id="left-border-text"><br>';
     this.partialBorderBlock.style.display = 'none';
 
     this.textTool.appendChild(this.borderBlock);
     this.borderBlock.appendChild(this.fullBorderBlock);
     this.borderBlock.appendChild(this.partialBorderBlock);
 
-    // this.borderBlock.
     this.broderOptions = this.borderBlock.querySelectorAll('input[type="radio"]');
     Object.values(this.broderOptions).forEach(function (value) {
       value.onclick = function (event) {
@@ -241,7 +290,33 @@ class TextTool extends Tool {
           that.partialBorderBlock.style.display = 'block';
         }
       };
-    })
+    });
+
+    this.fullBorderBlock.children[1].onchange = function () {
+      that.componentEditElement.style.border = this.value;
+    };
+
+    let partialBorders = this.partialBorderBlock.querySelectorAll('input[type="text"]');
+    Object.values(partialBorders).forEach(function (value) {
+      value.onchange = function () {
+        switch (value.getAttribute('data-border')) {
+          case 'top':
+            that.componentEditElement.style.borderTop = this.value;
+            break;
+          case 'right':
+            that.componentEditElement.style.borderRight = this.value;
+            break;
+          case 'bottom':
+            that.componentEditElement.style.borderBottom = this.value;
+            break;
+          case 'left':
+            that.componentEditElement.style.borderLeft = this.value;
+            break;
+          default:
+            break;
+        }
+      }
+    });
   }
 
   positionTool() {
@@ -251,21 +326,64 @@ class TextTool extends Tool {
     this.positionBlock.classList.add('position-block-text');
     this.positionBlock.innerHTML =
       '<input type="checkbox" id="text-position">' +
-      '<label for="text-position"> Absolute Position </label>';
+      '<label for="text-position"> Position Absolute  </label>';
 
     this.positionValueBlock = document.createElement('div');
     this.positionValueBlock.classList.add('position-value-text');
-    this.topPosition = document.createElement('input');
-    this.rightPosition = document.createElement('input');
-    this.bottomPosition = document.createElement('input');
-    this.leftPosition = document.createElement('input');
-
-    this.positionValueBlock.appendChild(this.topPosition);
-    this.positionValueBlock.appendChild(this.rightPosition);
-    this.positionValueBlock.appendChild(this.bottomPosition);
-    this.positionValueBlock.appendChild(this.leftPosition);
 
     this.textTool.appendChild(this.positionBlock);
     this.positionBlock.appendChild(this.positionValueBlock);
+
+    this.positionValueBlock.innerHTML =
+      '<span>Top </span> <input type="text" data-position="top" id="top-position-text"><br>' +
+      '<span>Right </span> <input type="text" data-position="right" id="right-position-text"><br>' +
+      '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-text"><br>' +
+      '<span>Left </span> <input type="text" data-position="left" id="left-position-text"><br>' +
+      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text"><br>';
+    this.positionValueBlock.style.display = 'none';
+
+    if (this.checked) {
+      that.positionValueBlock.style.position = 'absolute';
+      that.positionValueBlock.style.display = 'block';
+    } else {
+      that.positionValueBlock.style.position = 'static';
+      that.positionValueBlock.style.display = 'none';
+    }
+
+    this.positionBlock.children[0].onchange = function () {
+      if (this.checked) {
+        that.componentEditElement.style.position = 'absolute';
+        that.positionValueBlock.style.display = 'block';
+      } else {
+        that.componentEditElement.style.position = 'static';
+        that.positionValueBlock.style.display = 'none';
+      }
+    };
+
+    let positions = this.positionValueBlock.querySelectorAll('input[type="text"]');
+    Object.values(positions).forEach(function (value) {
+      value.onchange = function () {
+        switch (value.getAttribute('data-position')) {
+          case 'top':
+            that.componentEditElement.style.top = this.value;
+            break;
+          case 'right':
+            that.componentEditElement.style.right = this.value;
+            break;
+          case 'bottom':
+            that.componentEditElement.style.bottom = this.value;
+            break;
+          case 'left':
+            that.componentEditElement.style.left = this.value;
+            break;
+          case 'zIndex':
+            that.componentEditElement.style.zIndex = this.value;
+            break;
+          default:
+            break;
+        }
+      }
+    });
+
   }
 }

@@ -155,10 +155,12 @@ class FileHelper {
       let cssClass = '';
       let cssValue = undefined;
       let domTag = document.createElement(downloadedHtml.tagName);
+      domTag.setAttribute('data-css', cssCounter);
       Object.values(downloadedHtml.attributes).forEach(function (value) {
 
-        if (value.name === 'data-css')
-          domTag.setAttribute(value.name, cssCounter);
+        if (value.name === 'data-css'){
+        //clear data-css
+        }
         else if (value.name === 'style') {
           cssValue = value.value;
         } else {

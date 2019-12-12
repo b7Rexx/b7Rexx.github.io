@@ -68,7 +68,7 @@ class TextTool extends Tool {
     this.textSpacingBlock.children[1].value = this.componentProps.letterSpacing;
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
     this.fontColorBlock.children[1].value = this.componentProps.color;
-    this.backgroundColorBlock.children[1].value = this.componentProps.backgroundColor;
+    this.backgroundColorBlock.children[1].value = this.componentProps.background;
     this.opacityBlock.children[1].value = this.componentProps.opacity;
     this.paddingBlock.children[1].value = this.componentProps.padding;
 
@@ -220,7 +220,7 @@ class TextTool extends Tool {
       '<input type="color">';
     this.textTool.appendChild(this.backgroundColorBlock);
     this.backgroundColorBlock.children[1].onchange = function () {
-      that.componentEditElement.style.backgroundColor = this.value;
+      that.componentEditElement.style.background = this.value;
     };
   }
 

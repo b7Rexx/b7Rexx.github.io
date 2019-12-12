@@ -20,8 +20,10 @@ div[class^="b7-layout"]:after {
 
 div[class^="b7-col"] {
   position: relative;
+  height: auto;
   float: left;
   word-break: break-all;
+  overflow: auto;
 }
 
 div[class^="b7-col"]:after {

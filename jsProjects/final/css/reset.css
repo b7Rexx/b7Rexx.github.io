@@ -21,3 +21,8 @@ input {
   clear: both;
   display: table;
 }
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

@@ -3,8 +3,8 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    // this.page = 'splash';
-    this.page = 'edit';
+    this.page = 'splash';
+    // this.page = 'edit';
     // this.page = 'template';
     this.pageIntendedFrom = 'splash';
     this.editSaveState = true;
@@ -14,13 +14,13 @@ class App {
   init() {
     this.header = new Header(this.page, this.parentElement, 'b7WebBuilder');
     this.body = new Body(this.page, this.parentElement, 'b7WebBuilder');
-    this.changePage();
+    this.changePageEvents();
   }
 
   /*
   route actions - trigger events
    */
-  changePage() {
+  changePageEvents() {
     var that = this;
     Object.values(this.header.navItems).forEach(function (value1) {
 
@@ -58,8 +58,21 @@ class App {
     });
     Object.values(document.getElementsByClassName('splash-button')).forEach(function (value) {
       value.onclick = function () {
-        that.setPage = value.getAttribute('data-value');
+        let page = value.getAttribute('data-value');
+        if (page === 'progress') {
+          //  upload previous progress
+          let getUploadFile = document.getElementById('upload-progress');
+          // console.log(getUploadFile);
+          getUploadFile.click();
+
+        } else
+          that.setPage = page;
+
       };
+    });
+    document.addEventListener('custom-event-progress-edit', function () {
+      that.setPage = 'edit';
+      that.body.previewIntended = 'splash';
     });
     document.addEventListener('custom-event-preview-template', function () {
       that.setPage = 'preview';

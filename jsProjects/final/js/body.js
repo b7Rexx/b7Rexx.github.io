@@ -69,6 +69,42 @@ class Body {
     templateButton.innerHTML = 'Check Templates';
     templateButton.setAttribute('data-value', 'template');
     splash.appendChild(templateButton);
+
+    let progessButton = document.createElement('a');
+    progessButton.classList.add('splash-button');
+    progessButton.innerHTML = 'Upload Progress';
+    progessButton.setAttribute('data-value', 'progress');
+    splash.appendChild(progessButton);
+
+    let progessInput = document.createElement('input');
+    progessInput.setAttribute('id', 'upload-progress');
+    progessInput.setAttribute('type', 'file');
+    progessInput.style.visibility = 'hidden';
+    splash.appendChild(progessInput);
+
+    progessInput.onchange = function () {
+      let progessInputFile = this.files[0];
+      if (progessInputFile.type.match('application/json.*')) {
+        let reader = new FileReader();
+
+
+        // Closure to capture the file information.
+        reader.onload = (function () {
+          return function (e) {
+            let result = atob(e.target.result.split('base64,')[1]);
+            StoreHelper.setEditBackupStorage(StoreHelper.getEditStorage());
+            StoreHelper.setEditStorage(JSON.parse(result));
+            document.dispatchEvent(EventHelper.customEvent('custom-event-progress-edit'));
+          };
+        })(progessInputFile);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(progessInputFile);
+      } else {
+        alert('Invalid file!');
+      }
+    };
+
     let editButton = document.createElement('a');
     editButton.classList.add('splash-button');
     editButton.innerHTML = 'Continue Editing';

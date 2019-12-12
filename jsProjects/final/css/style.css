@@ -130,6 +130,11 @@ white
   color: #2874A6;
 }
 
+#upload-progress{
+  width: 0;
+  height: 0;
+}
+
 .template-heading, .edit-heading {
   padding-left: 20px;
   color: #2874A6;

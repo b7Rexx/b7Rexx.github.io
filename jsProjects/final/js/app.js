@@ -7,6 +7,7 @@ class App {
     this.page = 'edit';
     // this.page = 'template';
     this.pageIntendedFrom = 'splash';
+    this.editSaveState = true;
     this.init();
   }
 
@@ -31,16 +32,8 @@ class App {
 
             let editStorage = StoreHelper.getEditStorage();
             StoreHelper.setDownloadStorage(editStorage);
-
-            value1.childNodes[0].classList.remove('fa-save');
-
-            setTimeout(function () {
-              value1.childNodes[0].classList.add('fa-check');
-              setTimeout(function () {
-                value1.childNodes[0].classList.remove('fa-check');
-                value1.childNodes[0].classList.add('fa-save');
-              }, 1000);
-            }, 500);
+            value1.classList.remove('unsaved-edit');
+            value1.classList.add('saved-edit');
           };
           break;
         case'download':
@@ -79,6 +72,14 @@ class App {
       let template = StoreHelper.getTemplateStorage();
       StoreHelper.setEditStorage(template);
       that.setPage = 'edit';
+    });
+    document.addEventListener('custom-event-unsaved-state', function () {
+      Object.values(that.header.navItems).forEach(function (value1) {
+        if (value1.getAttribute('data-value') === 'save') {
+          value1.classList.add('unsaved-edit');
+          value1.classList.remove('saved-edit');
+        }
+      });
     });
   }
 

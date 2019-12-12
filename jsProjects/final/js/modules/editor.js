@@ -154,6 +154,8 @@ class Editor extends EditorEvent {
           that.contentEditableText.removeAttribute('contenteditable');
         }
 
+        //save state change
+        document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
         // console.log('click pathing ', event.path);
         console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
@@ -250,8 +252,9 @@ class Editor extends EditorEvent {
 
     // this.editorContent.oncontextmenu = function (event) {
     this.editorContent.ondblclick = function (event) {
-      // console.log(event);
-      // event.preventDefault();
+      //save state change
+      document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
+
       if (event.path.hasOwnProperty(0)) {
         let eventClickDom = event.path[0];
         if (eventClickDom.className !== undefined) {
@@ -266,6 +269,5 @@ class Editor extends EditorEvent {
         }
       }
     };
-
   }
 }

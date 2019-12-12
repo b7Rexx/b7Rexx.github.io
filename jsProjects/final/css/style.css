@@ -407,12 +407,12 @@ white
   float: right;
 }
 
-.fontstyle-button-text button ,.align-button-text button {
+.fontstyle-button-text button, .align-button-text button {
   width: 30px;
   margin: 1px;
 }
 
-.fontstyle-button-text button.active,.align-button-text button.active {
+.fontstyle-button-text button.active, .align-button-text button.active {
   border: 2px inset lightgrey;
 }
 
@@ -448,4 +448,23 @@ white
 
 .border-block-text span, .position-value-text span {
   margin-bottom: 15px;
+}
+
+.saved-edit {
+  background: white !important;
+  color: green!important;
+}
+
+.saved-edit:hover {
+  background: green !important;
+  color: white!important;
+}
+.unsaved-edit {
+  background: white !important;
+  color: #ffeb3b!important;
+}
+
+.unsaved-edit:hover {
+  background: #ffeb3b !important;
+  color: white!important;
 }

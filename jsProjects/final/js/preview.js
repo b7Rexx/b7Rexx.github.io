@@ -20,15 +20,23 @@ class Preview {
   updateContent(intended) {
     this.intended = intended;
     this.previewWrapper.remove();
-    if (this.intended ==='template') {
+    if (this.intended === 'template') {
       let previewData = StoreHelper.getTemplateStorage();
       this.previewWrapper = FileHelper.parseTemplate(previewData);
       this.parentElement.appendChild(this.previewWrapper);
-    }else{
+    } else {
       let previewData = StoreHelper.getEditStorage();
       this.previewWrapper = FileHelper.parseTemplate(previewData);
       this.parentElement.appendChild(this.previewWrapper);
     }
+
+    let wrappers = document.getElementsByClassName('b7-wrapper');
+    Object.values(wrappers).forEach(function (value) {
+      let newPosition = value.getAttribute('temp-position');
+      if (newPosition !== undefined && newPosition !== null) {
+        value.style.position = newPosition;
+      }
+    });
   }
 
   previewEvents() {

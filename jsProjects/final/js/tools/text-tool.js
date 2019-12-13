@@ -445,16 +445,6 @@ class TextTool extends Tool {
       '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text"><br>';
     this.positionValueBlock.style.display = 'none';
 
-    if (that.componentEditElement !== undefined) {
-      if (this.checked) {
-        that.componentEditElement.style.position = 'absolute';
-        that.positionValueBlock.style.display = 'block';
-      } else {
-        that.componentEditElement.style.position = 'static';
-        that.positionValueBlock.style.display = 'none';
-      }
-    }
-
     this.positionBlock.children[0].onchange = function () {
       if (this.checked) {
         that.componentEditElement.style.position = 'absolute';
@@ -487,7 +477,28 @@ class TextTool extends Tool {
           default:
             break;
         }
-      }
+      } ;
+      value.onkeyup = function () {
+        switch (value.getAttribute('data-position')) {
+          case 'top':
+            that.componentEditElement.style.top = this.value;
+            break;
+          case 'right':
+            that.componentEditElement.style.right = this.value;
+            break;
+          case 'bottom':
+            that.componentEditElement.style.bottom = this.value;
+            break;
+          case 'left':
+            that.componentEditElement.style.left = this.value;
+            break;
+          case 'zIndex':
+            that.componentEditElement.style.zIndex = this.value;
+            break;
+          default:
+            break;
+        }
+      };
     });
 
   }

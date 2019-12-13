@@ -25,9 +25,11 @@ class LayoutTool extends Tool {
     this.colHeightBlock = undefined;
     this.containerPositionBlock = undefined;
     this.positionValueBlock = undefined;
+    this.wrapperPositionBlock = undefined;
+
     this.moveWrapperUp = undefined;
     this.moveWrapperDown = undefined;
- this.moveRowUp = undefined;
+    this.moveRowUp = undefined;
     this.moveRowDown = undefined;
 
     this.init();
@@ -53,6 +55,9 @@ class LayoutTool extends Tool {
     this.layoutWrapperTool.append('WRAPPER');
     this.moveWrapperTool();
     this.backgroundColorTool();
+    this.wrapperSize();
+    this.wrapperOverflow();
+    this.wrapperPositionTool();
     this.layoutWrapperTool.appendChild(hrLine1);
 
     this.layoutContainerTool.append('CONTAINER');
@@ -61,7 +66,7 @@ class LayoutTool extends Tool {
     // this.containerPositionTool();
     this.layoutContainerTool.appendChild(hrLine2);
 
-    this.layoutContainerTool.append('ROW');
+    this.layoutColumnTool.append('ROW');
     this.moveRowTool();
 
     this.layoutColumnTool.append('COLUMN');
@@ -179,6 +184,26 @@ class LayoutTool extends Tool {
         }
       });
     }
+
+
+    this.positionValueBlock.style.display = 'none';
+    if (this.wrapperProps.position === 'absolute') {
+      this.wrapperPositionBlock.children[0].checked = true;
+      this.positionValueBlock.style.display = 'block';
+    } else
+      this.wrapperPositionBlock.children[0].checked = false;
+
+    document.getElementById('top-position-wrapper').value = this.wrapperProps.top;
+    document.getElementById('right-position-wrapper').value = this.wrapperProps.right;
+    document.getElementById('bottom-position-wrapper').value = this.wrapperProps.bottom;
+    document.getElementById('left-position-wrapper').value = this.wrapperProps.left;
+    document.getElementById('z-position-wrapper').value = this.wrapperProps.zIndex;
+
+
+    this.wrapperHeightBlock.children[1].value = this.wrapperProps.height;
+    this.wrapperWidthBlock.children[1].value = this.wrapperProps.width;
+    this.wrapperOverflowBlock.children[1].value = this.wrapperProps.overflow;
+
   }
 
 
@@ -222,7 +247,9 @@ class LayoutTool extends Tool {
     this.containerPaddingBlock.children[1].onchange = function () {
       that.containerEditElement.style.padding = this.value;
     };
-
+    this.containerPaddingBlock.children[1].onkeyup = function () {
+      that.containerEditElement.style.padding = this.value;
+    };
   }
 
   containerPositionTool() {
@@ -363,6 +390,7 @@ class LayoutTool extends Tool {
       }
     });
   }
+
   moveRowTool() {
     let that = this;
     this.moveRowBlock = document.createElement('div');
@@ -403,4 +431,136 @@ class LayoutTool extends Tool {
       }
     });
   }
+
+  wrapperPositionTool() {
+    let that = this;
+    this.wrapperPositionBlock = document.createElement('div');
+    this.wrapperPositionBlock.classList.add('text-style');
+    this.wrapperPositionBlock.classList.add('position-block-text');
+    this.wrapperPositionBlock.innerHTML =
+      '<input type="checkbox" id="wrapper-position">' +
+      '<label for="wrapper-position"> Position Fixed  </label>';
+
+    this.positionValueBlock = document.createElement('div');
+    this.positionValueBlock.classList.add('position-value-text');
+
+    this.layoutWrapperTool.appendChild(this.wrapperPositionBlock);
+    this.wrapperPositionBlock.appendChild(this.positionValueBlock);
+
+    this.positionValueBlock.innerHTML =
+      '<span>Top </span> <input type="text" data-position="top" id="top-position-wrapper"><br>' +
+      '<span>Right </span> <input type="text" data-position="right" id="right-position-wrapper"><br>' +
+      '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-wrapper"><br>' +
+      '<span>Left </span> <input type="text" data-position="left" id="left-position-wrapper"><br>' +
+      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-wrapper"><br>';
+    this.positionValueBlock.style.display = 'none';
+
+    this.wrapperPositionBlock.children[0].onchange = function () {
+      if (this.checked) {
+        that.wrapperEditElement.style.position = 'absolute';
+        that.wrapperEditElement.setAttribute('temp-position', 'fixed');
+        that.positionValueBlock.style.display = 'block';
+      } else {
+        that.wrapperEditElement.style.position = 'static';
+        that.wrapperEditElement.removeAttribute('temp-position');
+        that.positionValueBlock.style.display = 'none';
+      }
+    };
+
+    let positions = this.positionValueBlock.querySelectorAll('input[type="text"]');
+    Object.values(positions).forEach(function (value) {
+      value.onchange = function () {
+        switch (value.getAttribute('data-position')) {
+          case 'top':
+            that.wrapperEditElement.style.top = this.value;
+            break;
+          case 'right':
+            that.wrapperEditElement.style.right = this.value;
+            break;
+          case 'bottom':
+            that.wrapperEditElement.style.bottom = this.value;
+            break;
+          case 'left':
+            that.wrapperEditElement.style.left = this.value;
+            break;
+          case 'zIndex':
+            that.wrapperEditElement.style.zIndex = this.value;
+            break;
+          default:
+            break;
+        }
+      };
+      value.onkeyup = function () {
+        switch (value.getAttribute('data-position')) {
+          case 'top':
+            that.wrapperEditElement.style.top = this.value;
+            break;
+          case 'right':
+            that.wrapperEditElement.style.right = this.value;
+            break;
+          case 'bottom':
+            that.wrapperEditElement.style.bottom = this.value;
+            break;
+          case 'left':
+            that.wrapperEditElement.style.left = this.value;
+            break;
+          case 'zIndex':
+            that.wrapperEditElement.style.zIndex = this.value;
+            break;
+          default:
+            break;
+        }
+      };
+    });
+  }
+
+  wrapperSize() {
+    let that = this;
+    this.wrapperHeightBlock = document.createElement('div');
+    this.wrapperHeightBlock.classList.add('text-style');
+    this.wrapperHeightBlock.classList.add('imageheight-block-text');
+    this.wrapperHeightBlock.innerHTML =
+      '<span>Height</span>' +
+      '<input type="text">';
+    this.layoutWrapperTool.appendChild(this.wrapperHeightBlock);
+    this.wrapperHeightBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.height = this.value;
+    };
+ this.wrapperHeightBlock.children[1].onkeyup = function () {
+      that.wrapperEditElement.style.height = this.value;
+    };
+
+    this.wrapperWidthBlock = document.createElement('div');
+    this.wrapperWidthBlock.classList.add('text-style');
+    this.wrapperWidthBlock.classList.add('imagewidth-block-text');
+    this.wrapperWidthBlock.innerHTML =
+      '<span>Width</span>' +
+      '<input type="text">';
+    this.layoutWrapperTool.appendChild(this.wrapperWidthBlock);
+    this.wrapperWidthBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.width = this.value;
+    };
+   this.wrapperWidthBlock.children[1].onkeyup = function () {
+      that.wrapperEditElement.style.width = this.value;
+    };
+  }
+
+  wrapperOverflow() {
+    let that = this;
+    this.wrapperOverflowBlock = document.createElement('div');
+    this.wrapperOverflowBlock.classList.add('text-style');
+    this.wrapperOverflowBlock.classList.add('imageheight-block-text');
+    this.wrapperOverflowBlock.innerHTML =
+      '<span>Overflow</span>' +
+      '<input type="text">';
+    this.layoutWrapperTool.appendChild(this.wrapperOverflowBlock);
+    this.wrapperOverflowBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.overflow = this.value;
+    };
+ this.wrapperOverflowBlock.children[1].onkeyup = function () {
+      that.wrapperEditElement.style.overflow = this.value;
+    };
+
+    }
+
 }

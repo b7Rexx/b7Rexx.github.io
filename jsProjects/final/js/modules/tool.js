@@ -6,6 +6,13 @@ class Tool {
         width: elem.style.width || 'auto',
         padding: elem.style.padding || 0,
         background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
+        position: elem.style.position || 'static',
+        top: elem.style.top,
+        right: elem.style.right,
+        bottom: elem.style.bottom,
+        left: elem.style.left,
+        zIndex: elem.style.zIndex,
+        overflow: elem.style.overflow,
       };
     }
     return undefined;

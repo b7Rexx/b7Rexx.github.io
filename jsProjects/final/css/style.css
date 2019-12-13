@@ -3,7 +3,7 @@ editor remove css at download
  */
 .b7-container-fluid, .b7-container {
   min-height: 50px;
-  margin: 15px auto;
+  margin-bottom: 20px;
   -webkit-box-shadow: 0 0 2px 0 #2874A6;
   -moz-box-shadow: 0 0 2px 0 #2874A6;
   box-shadow: 0 0 2px 0 #2874A6;
@@ -334,6 +334,11 @@ white
 
 .editor-margin {
   overflow: auto;
+}
+
+.editor-content {
+  position: relative;
+  height: auto;
 }
 
 .container-btn, .container-fluid-btn {

@@ -75,12 +75,12 @@ class FileHelper {
     let layoutCss = this.getFileContentSync('css/layout.css', 'GET');
     let componentCss = this.getFileContentSync('css/component.css', 'GET');
     let downloadCss = resetCss + '\n' + layoutCss + '\n' + componentCss + '\n' + parsedHtmlCss.css;
-
+    let downloadJs = this.getFileContentSync('js/custom.js', 'GET');
 
     let downloadJson = JSON.stringify(webContent);
     download(downloadHtml, 'b7WebBuilder.html', 'txt');
     download(downloadCss, 'custom.css', 'txt');
-    download(downloadCss, 'custom.js', 'txt');
+    download(downloadJs, 'custom.js', 'txt');
     download(downloadJson, 'progress.json', 'txt');
 
     // Function to download data to a file

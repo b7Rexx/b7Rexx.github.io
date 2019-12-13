@@ -26,6 +26,7 @@ class Header {
       navItemLink.innerHTML = that.setNavImage(value.value);
 
       navItemLink.setAttribute('data-value', value.value);
+      navItemLink.setAttribute('title', value.value);
       that.navItems.push(navItemLink);
     });
     this.header.appendChild(this.navbar);

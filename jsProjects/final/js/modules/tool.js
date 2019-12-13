@@ -72,6 +72,7 @@ class Tool {
         fontWeight: elem.style.fontWeight || 'normal',
         fontStyle: elem.style.fontStyle || 'normal',
         textDecoration: elem.style.textDecoration || 'none',
+        listStyle: elem.style.listStyle || 'none',
       };
     }
     return undefined;

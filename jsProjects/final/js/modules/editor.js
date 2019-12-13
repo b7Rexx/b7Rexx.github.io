@@ -270,6 +270,14 @@ class Editor extends EditorEvent {
 
             eventClickDom.setAttribute('contenteditable', 'true');
           }
+          if (eventClickDom.className.startsWith('b7-item')) {
+            that.contentEditableText = eventClickDom;
+            that.contentEditableText.onclick = function (eventPrevent) {
+              eventPrevent.stopPropagation();
+            };
+
+            eventClickDom.setAttribute('contenteditable', 'true');
+          }
         }
       }
     };

@@ -9,6 +9,10 @@
   display: table;
 }
 
-.horizontal-list ul li {
+.b7-component-list[list-style="horizontal-list"] ul li {
   float: left;
+}
+
+.b7-list {
+  padding-left: 20px;
 }

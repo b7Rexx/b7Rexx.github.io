@@ -50,12 +50,12 @@ class LayoutTool extends Tool {
     let hrLine2 = document.createElement('hr');
     let hrLine3 = document.createElement('hr');
 
-    this.layoutWrapperTool.append('Wrapper');
+    this.layoutWrapperTool.append('WRAPPER');
     this.moveWrapperTool();
     this.backgroundColorTool();
     this.layoutWrapperTool.appendChild(hrLine1);
 
-    this.layoutContainerTool.append('Container');
+    this.layoutContainerTool.append('CONTAINER');
     this.containerBackgroundColorTool();
     this.containerPaddingTool();
     // this.containerPositionTool();

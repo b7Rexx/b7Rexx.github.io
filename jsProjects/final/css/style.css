@@ -130,7 +130,7 @@ white
   color: #2874A6;
 }
 
-#upload-progress{
+#upload-progress {
   width: 0;
   height: 0;
 }
@@ -406,12 +406,12 @@ white
   line-height: 16px;
 }
 
-.fontstyle-button-text, .align-button-text,.move-button-row {
+.fontstyle-button-text, .align-button-text, .move-button-row {
   width: auto;
   float: right;
 }
 
-.fontstyle-button-text button, .align-button-text button ,.move-button-row button{
+.fontstyle-button-text button, .align-button-text button, .move-button-row button {
   width: 30px;
   margin: 1px;
 }
@@ -428,8 +428,8 @@ white
 .fontsize-block-text input,
 .fontcolor-block-text input,
 .backgroundcolor-block-text input,
-.textspacing-block-text input ,
-.textwidth-block-text input ,
+.textspacing-block-text input,
+.textwidth-block-text input,
 .textheight-block-text input {
   float: right;
   width: 50px;
@@ -477,12 +477,30 @@ white
 }
 
 .imageheight-block-text input,
-.imagewidth-block-text input{
+.imagewidth-block-text input {
   float: right;
   width: 50px;
 }
 
 .imagesrc-block-text input,
-.imagealt-block-text input{
+.imagealt-block-text input {
   width: 100%;
+}
+
+.list-style-tool input {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.accumulate-style-list input {
+  margin-right: 5px;
+}
+
+.accumulate-style-list button {
+  padding: 1px 2px;
+}
+
+.accumulate-style-list > button {
+  width: 60%;
+  text-align: center;
 }

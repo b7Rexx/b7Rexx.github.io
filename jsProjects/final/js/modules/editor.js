@@ -226,6 +226,7 @@ class Editor extends EditorEvent {
 
         that.wrapperEditElement = undefined;
         that.containerEditElement = undefined;
+        that.rowEditElement = undefined;
         that.colEditElement = undefined;
         that.componentEditElement = undefined;
         Object.values(event.path).forEach(function (value) {
@@ -234,6 +235,8 @@ class Editor extends EditorEvent {
               that.wrapperEditElement = value;
             if (value.className.startsWith('b7-container'))
               that.containerEditElement = value;
+            if (value.className.startsWith('b7-layout'))
+              that.rowEditElement = value;
             if (value.className.startsWith('b7-col'))
               that.colEditElement = value;
             if (value.className.startsWith('b7-component'))
@@ -244,6 +247,7 @@ class Editor extends EditorEvent {
         document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
           that.wrapperEditElement,
           that.containerEditElement,
+          that.rowEditElement,
           that.colEditElement,
           that.componentEditElement
         ));

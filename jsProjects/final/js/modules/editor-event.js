@@ -8,6 +8,7 @@ class EditorEvent {
      */
     this.wrapperEditElement = undefined;
     this.containerEditElement = undefined;
+    this.rowEditElement = undefined;
     this.colEditElement = undefined;
     this.componentEditElement = undefined;
 

@@ -13,6 +13,7 @@ class Sidebar {
      */
     this.wrapperEditElement = undefined;
     this.containerEditElement = undefined;
+    this.rowEditElement = undefined;
     this.colEditElement = undefined;
     this.componentEditElement = undefined;
     this.toolType = undefined;
@@ -107,6 +108,7 @@ class Sidebar {
     document.addEventListener('custom-event-style-tool', function (event) {
       that.wrapperEditElement = event.detail.wrapper;
       that.containerEditElement = event.detail.container;
+      that.rowEditElement = event.detail.row;
       that.colEditElement = event.detail.col;
       that.componentEditElement = event.detail.component;
       if (that.componentEditElement !== undefined) {
@@ -134,7 +136,7 @@ class Sidebar {
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';
-        this.layoutTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.colEditElement);
+        this.layoutTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.rowEditElement, this.colEditElement);
         //    display block
       }
     } else {

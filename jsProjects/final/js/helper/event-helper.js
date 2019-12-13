@@ -10,12 +10,12 @@ class EventHelper {
     return new CustomEvent(event, {"detail": parsedData});
   }
 
-  static customEventStyleTool(event, wrapperObj, containerObj, colObj, componentObj) {
-
+  static customEventStyleTool(event, wrapperObj, containerObj, rowObj,colObj, componentObj) {
     return new CustomEvent(event, {
       "detail": {
         "wrapper": wrapperObj,
         "container": containerObj,
+        "row": rowObj,
         "col": colObj,
         "component": componentObj
       }

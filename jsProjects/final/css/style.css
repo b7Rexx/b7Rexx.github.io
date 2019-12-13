@@ -406,12 +406,12 @@ white
   line-height: 16px;
 }
 
-.fontstyle-button-text, .align-button-text {
+.fontstyle-button-text, .align-button-text,.move-button-row {
   width: auto;
   float: right;
 }
 
-.fontstyle-button-text button, .align-button-text button {
+.fontstyle-button-text button, .align-button-text button ,.move-button-row button{
   width: 30px;
   margin: 1px;
 }

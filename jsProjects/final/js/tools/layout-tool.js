@@ -6,6 +6,7 @@ class LayoutTool extends Tool {
 
     this.wrapperEditElement = undefined;
     this.containerEditElement = undefined;
+    this.rowEditElement = undefined;
     this.colEditElement = undefined;
 
     this.layoutWrapperTool = undefined;
@@ -14,6 +15,7 @@ class LayoutTool extends Tool {
 
     this.wrapperProps = undefined;
     this.containerProps = undefined;
+    this.rowProps = undefined;
     this.colProps = undefined;
 
     this.backgroundColorBlock = undefined;
@@ -23,6 +25,10 @@ class LayoutTool extends Tool {
     this.colHeightBlock = undefined;
     this.containerPositionBlock = undefined;
     this.positionValueBlock = undefined;
+    this.moveWrapperUp = undefined;
+    this.moveWrapperDown = undefined;
+ this.moveRowUp = undefined;
+    this.moveRowDown = undefined;
 
     this.init();
   }
@@ -42,8 +48,10 @@ class LayoutTool extends Tool {
 
     let hrLine1 = document.createElement('hr');
     let hrLine2 = document.createElement('hr');
+    let hrLine3 = document.createElement('hr');
 
     this.layoutWrapperTool.append('Wrapper');
+    this.moveWrapperTool();
     this.backgroundColorTool();
     this.layoutWrapperTool.appendChild(hrLine1);
 
@@ -53,14 +61,18 @@ class LayoutTool extends Tool {
     // this.containerPositionTool();
     this.layoutContainerTool.appendChild(hrLine2);
 
-    this.layoutColumnTool.append('Column');
+    this.layoutContainerTool.append('ROW');
+    this.moveRowTool();
+
+    this.layoutColumnTool.append('COLUMN');
     this.columnBackgroundColorTool();
     this.columnHeightTool();
   }
 
-  updateStyleTools(wrapper, container, col) {
+  updateStyleTools(wrapper, container, row, col) {
     this.wrapperEditElement = wrapper;
     this.containerEditElement = container;
+    this.rowEditElement = row;
     this.colEditElement = col;
     this.getStyleProperty();
   }
@@ -94,6 +106,78 @@ class LayoutTool extends Tool {
       this.layoutColumnTool.style.display = 'block';
     } else {
       this.layoutColumnTool.style.display = 'none';
+    }
+
+    if (this.wrapperEditElement !== undefined) {
+      let rowIndex = DomHelper.getIndexOfElement(this.wrapperEditElement);
+      let childrenLength = this.wrapperEditElement.parentNode.childNodes.length;
+      this.moveWrapperUp = undefined;
+      this.moveWrapperDown = undefined;
+      if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+        this.moveWrapperUp = this.wrapperEditElement.parentNode.childNodes[rowIndex - 1];
+      if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+        this.moveWrapperDown = this.wrapperEditElement.parentNode.childNodes[rowIndex + 2];
+      if (rowIndex === 0) {
+        this.moveWrapperUp = undefined;
+      }
+      if (rowIndex === (childrenLength - 1)) {
+        this.moveWrapperDown = undefined;
+      }
+      if (rowIndex === (childrenLength - 2)) {
+        this.moveWrapperDown = 'last';
+      }
+
+      Object.values(this.moveWrapperBlock.children[1].children).forEach(function (val) {
+        val.style.pointerEvents = 'none';
+        switch (val.getAttribute('data-move')) {
+          case 'top':
+            if (that.moveWrapperUp !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+          case 'bottom':
+            if (that.moveWrapperDown !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+        }
+      });
+    }
+
+    if (this.rowEditElement !== undefined) {
+      let rowIndex = DomHelper.getIndexOfElement(this.rowEditElement);
+      let childrenLength = this.rowEditElement.parentNode.childNodes.length;
+      this.moveRowUp = undefined;
+      this.moveRowDown = undefined;
+      if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+        this.moveRowUp = this.rowEditElement.parentNode.childNodes[rowIndex - 1];
+      if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+        this.moveRowDown = this.rowEditElement.parentNode.childNodes[rowIndex + 2];
+      if (rowIndex === 0) {
+        this.moveRowUp = undefined;
+      }
+      if (rowIndex === (childrenLength - 1)) {
+        this.moveRowDown = undefined;
+      }
+      if (rowIndex === (childrenLength - 2)) {
+        this.moveRowDown = 'last';
+      }
+
+      Object.values(this.moveRowBlock.children[1].children).forEach(function (val) {
+        val.style.pointerEvents = 'none';
+        switch (val.getAttribute('data-move')) {
+          case 'top':
+            if (that.moveRowUp !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+          case 'bottom':
+            if (that.moveRowDown !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+        }
+      });
     }
   }
 
@@ -237,5 +321,86 @@ class LayoutTool extends Tool {
     this.colHeightBlock.children[1].onchange = function () {
       that.colEditElement.style.height = this.value;
     };
+  }
+
+  moveWrapperTool() {
+    let that = this;
+    this.moveWrapperBlock = document.createElement('div');
+    this.moveWrapperBlock.classList.add('text-style');
+    this.moveWrapperBlock.classList.add('moverow-block-layout');
+    this.moveWrapperBlock.innerHTML =
+      '<span>Move</span>' +
+      '<div class="move-button-row">' +
+      '<button data-move="top"><i class="fa fa-angle-up"></i></button>' +
+      '<button data-move="bottom"><i class="fa fa-angle-down"></i></button>' +
+      '</div>';
+    this.layoutWrapperTool.appendChild(this.moveWrapperBlock);
+
+    Object.values(this.moveWrapperBlock.children[1].children).forEach(function (val) {
+      val.onclick = function () {
+        if (that.wrapperEditElement !== undefined) {
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveWrapperUp !== undefined) {
+                that.wrapperEditElement.parentNode.insertBefore(that.wrapperEditElement, that.moveWrapperUp);
+                that.updateChanges();
+              }
+              break;
+            case 'bottom':
+              if (that.moveWrapperDown === 'last') {
+                that.wrapperEditElement.parentNode.appendChild(that.wrapperEditElement);
+                that.updateChanges();
+              } else {
+                if (that.moveWrapperDown !== undefined) {
+                  that.wrapperEditElement.parentNode.insertBefore(that.wrapperEditElement, that.moveWrapperDown);
+                  that.updateChanges();
+                }
+              }
+              break;
+          }
+
+        }
+      }
+    });
+  }
+  moveRowTool() {
+    let that = this;
+    this.moveRowBlock = document.createElement('div');
+    this.moveRowBlock.classList.add('text-style');
+    this.moveRowBlock.classList.add('moverow-block-layout');
+    this.moveRowBlock.innerHTML =
+      '<span>Move</span>' +
+      '<div class="move-button-row">' +
+      '<button data-move="top"><i class="fa fa-angle-up"></i></button>' +
+      '<button data-move="bottom"><i class="fa fa-angle-down"></i></button>' +
+      '</div>';
+    this.layoutColumnTool.appendChild(this.moveRowBlock);
+
+    Object.values(this.moveRowBlock.children[1].children).forEach(function (val) {
+      val.onclick = function () {
+        if (that.rowEditElement !== undefined) {
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveRowUp !== undefined) {
+                that.rowEditElement.parentNode.insertBefore(that.rowEditElement, that.moveRowUp);
+                that.updateChanges();
+              }
+              break;
+            case 'bottom':
+              if (that.moveRowDown === 'last') {
+                that.rowEditElement.parentNode.appendChild(that.rowEditElement);
+                that.updateChanges();
+              } else {
+                if (that.moveRowDown !== undefined) {
+                  that.rowEditElement.parentNode.insertBefore(that.rowEditElement, that.moveRowDown);
+                  that.updateChanges();
+                }
+              }
+              break;
+          }
+
+        }
+      }
+    });
   }
 }

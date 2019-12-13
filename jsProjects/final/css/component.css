@@ -2,3 +2,13 @@
   height: 100%;
   width: 100%;
 }
+
+.b7-list:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.horizontal-list ul li {
+  float: left;
+}

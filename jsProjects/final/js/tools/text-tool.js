@@ -126,32 +126,32 @@ class TextTool extends Tool {
      */
 
     Object.values(this.fontStyleBlock.children[1].children).forEach(function (val) {
-          switch (val.getAttribute('data-style')) {
-            case 'bold':
-              if (that.componentProps.fontWeight === 'bold'){
-                val.classList.add('active');
-              }else{
-                val.classList.remove('active');
-              }
-              break;
-            case 'italic':
-              if (that.componentProps.fontStyle === 'italic'){
-                val.classList.add('active');
-              }else{
-                val.classList.remove('active');
-              }
-              break;
-            case 'underlined':
-              if (that.componentProps.textDecoration === 'underline'){
-                val.classList.add('active');
-              }else{
-                val.classList.remove('active');
-              }
-              break;
-            default:
-              break;
+      switch (val.getAttribute('data-style')) {
+        case 'bold':
+          if (that.componentProps.fontWeight === 'bold') {
+            val.classList.add('active');
+          } else {
+            val.classList.remove('active');
           }
-            });
+          break;
+        case 'italic':
+          if (that.componentProps.fontStyle === 'italic') {
+            val.classList.add('active');
+          } else {
+            val.classList.remove('active');
+          }
+          break;
+        case 'underlined':
+          if (that.componentProps.textDecoration === 'underline') {
+            val.classList.add('active');
+          } else {
+            val.classList.remove('active');
+          }
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   textContent() {
@@ -211,28 +211,28 @@ class TextTool extends Tool {
         if (that.componentEditElement !== undefined) {
           switch (val.getAttribute('data-style')) {
             case 'bold':
-              if (val.classList.contains('active')){
+              if (val.classList.contains('active')) {
                 that.componentEditElement.style.fontWeight = 'normal';
                 val.classList.remove('active');
-              }else{
+              } else {
                 that.componentEditElement.style.fontWeight = 'bold';
                 val.classList.add('active');
               }
               break;
             case 'italic':
-              if (val.classList.contains('active')){
+              if (val.classList.contains('active')) {
                 that.componentEditElement.style.fontStyle = 'normal';
                 val.classList.remove('active');
-              }else{
+              } else {
                 that.componentEditElement.style.fontStyle = 'italic';
                 val.classList.add('active');
               }
               break;
             case 'underlined':
-              if (val.classList.contains('active')){
+              if (val.classList.contains('active')) {
                 that.componentEditElement.style.textDecoration = 'none';
                 val.classList.remove('active');
-              }else{
+              } else {
                 that.componentEditElement.style.textDecoration = 'underline';
                 val.classList.add('active');
               }
@@ -257,6 +257,9 @@ class TextTool extends Tool {
     this.lineHeightBlock.children[1].onchange = function () {
       that.componentEditElement.style.lineHeight = this.value;
     };
+    this.lineHeightBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.lineHeight = this.value;
+    };
   }
 
   textSpacingTool() {
@@ -271,6 +274,9 @@ class TextTool extends Tool {
     this.textSpacingBlock.children[1].onchange = function () {
       that.componentEditElement.style.letterSpacing = this.value;
     };
+    this.textSpacingBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.letterSpacing = this.value;
+    };
   }
 
   textSizeTool() {
@@ -283,6 +289,9 @@ class TextTool extends Tool {
       '<input type="text">';
     this.textTool.appendChild(this.fontSizeBlock);
     this.fontSizeBlock.children[1].onchange = function () {
+      that.componentEditElement.style.fontSize = this.value;
+    };
+    this.fontSizeBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.fontSize = this.value;
     };
   }
@@ -339,6 +348,9 @@ class TextTool extends Tool {
       '<input type="text">';
     this.textTool.appendChild(this.paddingBlock);
     this.paddingBlock.children[1].onchange = function () {
+      that.componentEditElement.style.padding = this.value;
+    };
+    this.paddingBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.padding = this.value;
     };
   }
@@ -493,6 +505,9 @@ class TextTool extends Tool {
     this.textHeightBlock.children[1].onchange = function () {
       that.componentEditElement.style.height = this.value;
     };
+    this.textHeightBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.height = this.value;
+    };
 
     this.textWidthBlock = document.createElement('div');
     this.textWidthBlock.classList.add('text-style');
@@ -502,6 +517,9 @@ class TextTool extends Tool {
       '<input type="text">';
     this.textTool.appendChild(this.textWidthBlock);
     this.textWidthBlock.children[1].onchange = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+    this.textWidthBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.width = this.value;
     };
 

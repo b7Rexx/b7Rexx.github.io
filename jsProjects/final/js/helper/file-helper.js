@@ -68,6 +68,7 @@ class FileHelper {
       "</head>" +
       "<body>" +
       parsedHtmlCss.html.outerHTML +
+      "<script src=\"custom.js\"></script>" +
       "</body>" +
       "</html>";
     let resetCss = this.getFileContentSync('css/reset.css', 'GET');
@@ -79,6 +80,7 @@ class FileHelper {
     let downloadJson = JSON.stringify(webContent);
     download(downloadHtml, 'b7WebBuilder.html', 'txt');
     download(downloadCss, 'custom.css', 'txt');
+    download(downloadCss, 'custom.js', 'txt');
     download(downloadJson, 'progress.json', 'txt');
 
     // Function to download data to a file

@@ -77,13 +77,13 @@ class Editor extends EditorEvent {
   setHeightWidthByViewPort() {
     let that = this;
     this.editorBlock.style.minWidth = '900px';
-    this.editorBlock.style.maxWidth = (ViewportHelper.width() - 280 - 70) + 'px';
+    this.editorBlock.style.maxWidth = (ViewportHelper.width() - 280 - 120) + 'px';
 
     this.editorContent.style.marginTop = '5px';
     this.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
 
     window.addEventListener("resize", function () {
-      that.editorBlock.style.width = (ViewportHelper.width() - 280 - 70) + 'px';
+      that.editorBlock.style.width = (ViewportHelper.width() - 280 - 120) + 'px';
       that.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
     });
   }
@@ -133,16 +133,17 @@ class Editor extends EditorEvent {
   editorContentEvent() {
     let that = this;
     let clearDrag = false;
+
     document.onkeydown = function (event) {
       if (event.key === 'Escape') {
-        let clearDrag = true;
-        that.dropType = undefined;
-        that.dropContent = undefined;
-        that.parentElement.style.cursor = 'default';
-        if (that.contentEditableText !== undefined) {
-          that.contentEditableText.onclick = null;
-          that.contentEditableText.removeAttribute('contenteditable');
-        }
+        clearDrag = true;
+        that.clearStylingTools();
+      }
+    };
+    document.onclick = function (event) {
+      if (event.target.id === 'app-wrapper') {
+        clearDrag = true;
+        that.clearStylingTools();
       }
     };
 
@@ -281,5 +282,30 @@ class Editor extends EditorEvent {
         }
       }
     };
+  }
+
+  clearStylingTools() {
+    this.dropType = undefined;
+    this.dropContent = undefined;
+    this.parentElement.style.cursor = 'default';
+    if (this.contentEditableText !== undefined) {
+      this.contentEditableText.onclick = null;
+      this.contentEditableText.removeAttribute('contenteditable');
+    }
+
+    this.wrapperEditElement = undefined;
+    this.containerEditElement = undefined;
+    this.rowEditElement = undefined;
+    this.colEditElement = undefined;
+    this.componentEditElement = undefined;
+
+    document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+      this.wrapperEditElement,
+      this.containerEditElement,
+      this.rowEditElement,
+      this.colEditElement,
+      this.componentEditElement
+    ));
+
   }
 }

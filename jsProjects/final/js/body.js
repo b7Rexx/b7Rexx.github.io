@@ -125,6 +125,8 @@ class Body {
   getEdit() {
     let edit = document.createElement('div');
     edit.classList.add('edit-body');
+    edit.setAttribute('id', 'edit-editor');
+
     let heading = document.createElement('h2');
     heading.classList.add('edit-heading');
     heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Edit';

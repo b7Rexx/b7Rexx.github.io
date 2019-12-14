@@ -279,6 +279,14 @@ class Editor extends EditorEvent {
 
             eventClickDom.setAttribute('contenteditable', 'true');
           }
+          if (eventClickDom.tagName === 'TH' || eventClickDom.tagName === 'TD') {
+            that.contentEditableText = eventClickDom;
+            that.contentEditableText.onclick = function (eventPrevent) {
+              eventPrevent.stopPropagation();
+            };
+
+            eventClickDom.setAttribute('contenteditable', 'true');
+          }
         }
       }
     };

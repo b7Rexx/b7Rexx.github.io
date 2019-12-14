@@ -161,7 +161,48 @@
               "value": 1
             }
           ],
-          "children": []
+          "children": [
+            {
+              "tagName": "thead",
+              "innerText": "",
+              "attributes": [],
+              "children": [
+                {
+                  "tagName": "tr",
+                  "innerText": "",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "tagName": "th",
+                      "innerText": "Table head",
+                      "attributes": [],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tagName": "tbody",
+              "innerText": "",
+              "attributes": [],
+              "children": [
+                {
+                  "tagName": "tr",
+                  "innerText": "",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "tagName": "td",
+                      "innerText": "Table data",
+                      "attributes": [],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -208,7 +249,7 @@
     "type": "iframe",
     "component": {
       "tagName": "DIV",
-      "innerText": "",
+      "innerText": "iframe here",
       "attributes": [
         {
           "name": "class",

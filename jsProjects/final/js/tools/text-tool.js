@@ -164,7 +164,7 @@ class TextTool extends Tool {
     this.textContentBlock.classList.add('textcontent-block-text');
     this.textTool.appendChild(this.textContentBlock);
     this.textContentBlock.oninput = function (event) {
-      that.textContentBlock.innerHTML = event.target.value;
+      that.componentEditElement.innerHTML = event.target.value;
       // console.log(that.textContentBlock.innerHTML,event.target.value);
     };
   }

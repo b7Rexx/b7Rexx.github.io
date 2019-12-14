@@ -27,6 +27,8 @@ class Sidebar {
     this.textTool = undefined;
     this.imageTool = undefined;
     this.listTool = undefined;
+    this.tableTool = undefined;
+    this.iframeTool = undefined;
 
     this.init();
     this.initTools();
@@ -100,6 +102,8 @@ class Sidebar {
     this.textTool = new TextTool(this.sidebarToolBlock);
     this.imageTool = new ImageTool(this.sidebarToolBlock);
     this.listTool = new ListTool(this.sidebarToolBlock);
+    this.tableTool = new TableTool(this.sidebarToolBlock);
+    this.iframeTool = new IframeTool(this.sidebarToolBlock);
 
 
     this.updateSidebarTools();
@@ -136,6 +140,8 @@ class Sidebar {
     this.textTool.textTool.style.display = 'none';
     this.imageTool.imageTool.style.display = 'none';
     this.listTool.listTool.style.display = 'none';
+    this.tableTool.tableTool.style.display = 'none';
+    this.iframeTool.iframeTool.style.display = 'none';
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';
@@ -156,6 +162,14 @@ class Sidebar {
         case 'b7-component-list':
           this.listTool.listTool.style.display = 'block';
           this.listTool.updateStyleTools(this.componentEditElement);
+          break;
+        case 'b7-component-table':
+          this.tableTool.tableTool.style.display = 'block';
+          this.tableTool.updateStyleTools(this.componentEditElement);
+          break;
+        case 'b7-component-iframe':
+          this.iframeTool.iframeTool.style.display = 'block';
+          this.iframeTool.updateStyleTools(this.componentEditElement);
           break;
         default:
           this.exampleTool.exampleTool.style.display = 'block';

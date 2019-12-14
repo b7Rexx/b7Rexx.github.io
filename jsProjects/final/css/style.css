@@ -523,3 +523,13 @@ white
   width: 80%;
   text-align: center;
 }
+
+.b7-table tr {
+  min-height: 20px;
+  background: whitesmoke;
+}
+
+.b7-component-iframe{
+  min-height: 20px;
+  background: #ececec;
+}

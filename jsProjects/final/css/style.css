@@ -363,7 +363,8 @@ white
 .edit-sidebar {
   float: right;
   background: #2874A6;
-  width: 220px;
+  /*width: 220px;*/
+  width: 260px;
   padding: 10px;
   box-shadow: 0 0 2px 0 #f15a22;
   overflow-y: auto;
@@ -503,9 +504,15 @@ white
 
 .accumulate-style-list button {
   padding: 1px 2px;
+  float: right;
 }
 
 .accumulate-style-list > button {
-  width: 60%;
+  width: 90%;
   text-align: center;
+}
+
+.list-item-div {
+  border: 1px solid grey;
+  margin-bottom: 5px;
 }

@@ -11,8 +11,9 @@
 
 .b7-component-list[list-style="horizontal-list"] ul li {
   float: left;
+  margin-left: 20px;
 }
 
 .b7-list {
-  padding-left: 20px;
+  margin-left: 20px;
 }

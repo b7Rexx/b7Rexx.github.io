@@ -50,6 +50,10 @@
               "value": "assets/img/no-image.png"
             },
             {
+              "name": "alt",
+              "value": "image"
+            },
+            {
               "name": "data-css",
               "value": 1
             }

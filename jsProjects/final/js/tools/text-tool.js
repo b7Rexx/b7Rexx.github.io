@@ -7,6 +7,7 @@ class TextTool extends Tool {
     this.componentEditElement = undefined;
 
     this.textContentBlock = undefined;
+    this.linkDiv = undefined;
     this.alignBlock = undefined;
     this.lineHeightBlock = undefined;
     this.textSpacingBlock = undefined;
@@ -31,7 +32,7 @@ class TextTool extends Tool {
     this.textTool.classList.add('sidebar-style-block');
     this.textTool.classList.add('text-style-block');
     this.parentElement.appendChild(this.textTool);
-    // this.textContent();
+    this.setLink();
     this.textSizeTool();
     this.textStyleTool();
     this.lineHeightTool();
@@ -69,6 +70,7 @@ class TextTool extends Tool {
     });
 
     // this.textContentBlock.innerHTML = this.componentProps.text;
+    this.linkDiv.children[1].value = that.componentEditElement.getAttribute('data-href');
     this.lineHeightBlock.children[1].value = this.componentProps.lineHeight;
     this.textSpacingBlock.children[1].value = this.componentProps.letterSpacing;
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
@@ -164,6 +166,22 @@ class TextTool extends Tool {
       that.textContentBlock.innerHTML = event.target.value;
       // console.log(that.textContentBlock.innerHTML,event.target.value);
     };
+  }
+
+  setLink() {
+    let that = this;
+    this.linkDiv = document.createElement('div');
+    this.linkDiv.classList.add('text-style');
+
+    let linkSpan = document.createElement('span');
+    linkSpan.innerHTML = '<br>set link: ';
+    let linkInput = document.createElement('input');
+    linkInput.onkeyup = function () {
+      that.componentEditElement.setAttribute('data-href', this.value);
+    };
+    this.linkDiv.appendChild(linkSpan);
+    this.linkDiv.appendChild(linkInput);
+    this.textTool.appendChild(this.linkDiv);
   }
 
   alignTool() {
@@ -477,7 +495,7 @@ class TextTool extends Tool {
           default:
             break;
         }
-      } ;
+      };
       value.onkeyup = function () {
         switch (value.getAttribute('data-position')) {
           case 'top':

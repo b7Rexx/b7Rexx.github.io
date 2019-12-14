@@ -12,6 +12,7 @@ class ImageTool extends Tool {
     this.imageAltBlock = undefined;
     this.imageHeightBlock = undefined;
     this.imageWidthBlock = undefined;
+    this.linkDiv = undefined;
     this.init();
   }
 
@@ -23,6 +24,7 @@ class ImageTool extends Tool {
 
     this.imageUrl();
     this.imageSize();
+    this.setLink();
   }
 
   updateStyleTools(component) {
@@ -45,6 +47,23 @@ class ImageTool extends Tool {
     this.imageAltBlock.children[1].value = this.childComponentProps.alt;
     this.imageHeightBlock.children[1].value = this.componentProps.height;
     this.imageWidthBlock.children[1].value = this.componentProps.width;
+    this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
+  }
+
+  setLink() {
+    let that = this;
+    this.linkDiv = document.createElement('div');
+    this.linkDiv.classList.add('text-style');
+
+    let linkSpan = document.createElement('span');
+    linkSpan.innerHTML = '<br>set link: ';
+    let linkInput = document.createElement('input');
+    linkInput.onkeyup = function () {
+      that.componentEditElement.setAttribute('data-href', this.value);
+    };
+    this.linkDiv.appendChild(linkSpan);
+    this.linkDiv.appendChild(linkInput);
+    this.imageTool.appendChild(this.linkDiv);
   }
 
   imageUrl() {
@@ -84,6 +103,9 @@ class ImageTool extends Tool {
     this.imageHeightBlock.children[1].onchange = function () {
       that.componentEditElement.style.height = this.value;
     };
+    this.imageHeightBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.height = this.value;
+    };
 
     this.imageWidthBlock = document.createElement('div');
     this.imageWidthBlock.classList.add('text-style');
@@ -93,6 +115,9 @@ class ImageTool extends Tool {
       '<input type="text">';
     this.imageTool.appendChild(this.imageWidthBlock);
     this.imageWidthBlock.children[1].onchange = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+    this.imageWidthBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.width = this.value;
     };
   }

@@ -63,8 +63,10 @@ class ListTool extends Tool {
     //  accumulate list
     if (this.componentEditElement !== undefined) {
       this.accumulateListBlock.innerHTML = '';
-      Object.values(this.componentEditElement.children[0].children).forEach(function (item) {
+      Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
         let itemDiv = document.createElement('div');
+        itemDiv.classList.add('list-item-div');
+        itemDiv.append((index + 1) + ') ');
         let itemInput = document.createElement('input');
         itemInput.value = item.innerText;
 
@@ -82,9 +84,19 @@ class ListTool extends Tool {
           itemDiv.remove();
         };
 
+        let linkSpan = document.createElement('span');
+        linkSpan.innerHTML = '<br>set link:';
+        let linkInput = document.createElement('input');
+        linkInput.value = item.getAttribute('data-href');
+        linkInput.onkeyup = function () {
+          item.setAttribute('data-href', this.value);
+        };
+
         that.accumulateListBlock.appendChild(itemDiv);
         itemDiv.appendChild(itemInput);
         itemDiv.appendChild(itemRemove);
+        itemDiv.appendChild(linkSpan);
+        itemDiv.appendChild(linkInput);
       });
 
       let addItem = document.createElement('button');

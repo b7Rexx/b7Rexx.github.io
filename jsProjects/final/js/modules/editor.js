@@ -77,13 +77,13 @@ class Editor extends EditorEvent {
   setHeightWidthByViewPort() {
     let that = this;
     this.editorBlock.style.minWidth = '900px';
-    this.editorBlock.style.maxWidth = (ViewportHelper.width() - 200 - 140) + 'px';
+    this.editorBlock.style.maxWidth = (ViewportHelper.width() - 280 - 70) + 'px';
 
     this.editorContent.style.marginTop = '5px';
     this.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
 
     window.addEventListener("resize", function () {
-      that.editorBlock.style.width = (ViewportHelper.width() - 200 - 140) + 'px';
+      that.editorBlock.style.width = (ViewportHelper.width() - 280 - 70) + 'px';
       that.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
     });
   }

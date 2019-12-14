@@ -25,6 +25,7 @@ class ImageTool extends Tool {
     this.imageUrl();
     this.imageSize();
     this.setLink();
+    this.removeAll();
   }
 
   updateStyleTools(component) {
@@ -121,4 +122,16 @@ class ImageTool extends Tool {
       that.componentEditElement.style.width = this.value;
     };
   }
+
+  removeAll() {
+    let that = this;
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-comp');
+    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove image';
+    removeBtn.onclick = function () {
+      that.componentEditElement.remove();
+    };
+    this.imageTool.appendChild(removeBtn);
+  }
+
 }

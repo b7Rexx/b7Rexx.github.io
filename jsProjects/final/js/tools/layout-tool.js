@@ -64,6 +64,7 @@ class LayoutTool extends Tool {
     this.containerBackgroundColorTool();
     this.containerPaddingTool();
     // this.containerPositionTool();
+    this.removeContainer();
     this.layoutContainerTool.appendChild(hrLine2);
 
     this.layoutColumnTool.append('ROW');
@@ -72,6 +73,7 @@ class LayoutTool extends Tool {
     this.layoutColumnTool.append('COLUMN');
     this.columnBackgroundColorTool();
     this.columnHeightTool();
+    this.removeRow();
   }
 
   updateStyleTools(wrapper, container, row, col) {
@@ -526,7 +528,7 @@ class LayoutTool extends Tool {
     this.wrapperHeightBlock.children[1].onchange = function () {
       that.wrapperEditElement.style.height = this.value;
     };
- this.wrapperHeightBlock.children[1].onkeyup = function () {
+    this.wrapperHeightBlock.children[1].onkeyup = function () {
       that.wrapperEditElement.style.height = this.value;
     };
 
@@ -540,7 +542,7 @@ class LayoutTool extends Tool {
     this.wrapperWidthBlock.children[1].onchange = function () {
       that.wrapperEditElement.style.width = this.value;
     };
-   this.wrapperWidthBlock.children[1].onkeyup = function () {
+    this.wrapperWidthBlock.children[1].onkeyup = function () {
       that.wrapperEditElement.style.width = this.value;
     };
   }
@@ -557,10 +559,33 @@ class LayoutTool extends Tool {
     this.wrapperOverflowBlock.children[1].onchange = function () {
       that.wrapperEditElement.style.overflow = this.value;
     };
- this.wrapperOverflowBlock.children[1].onkeyup = function () {
+    this.wrapperOverflowBlock.children[1].onkeyup = function () {
       that.wrapperEditElement.style.overflow = this.value;
     };
 
-    }
+  }
+
+
+  removeContainer() {
+    let that = this;
+    let removeBtnWrapper = document.createElement('button');
+    removeBtnWrapper.classList.add('remove-comp');
+    removeBtnWrapper.innerHTML = '<i class="fa fa-times"></i> remove container';
+    removeBtnWrapper.onclick = function () {
+      that.wrapperEditElement.remove();
+    };
+    this.layoutContainerTool.appendChild(removeBtnWrapper);
+  }
+
+  removeRow() {
+    let that = this;
+    let removeBtnRow = document.createElement('button');
+    removeBtnRow.classList.add('remove-comp');
+    removeBtnRow.innerHTML = '<i class="fa fa-times"></i> remove row';
+    removeBtnRow.onclick = function () {
+      that.rowEditElement.remove();
+    };
+    this.layoutColumnTool.appendChild(removeBtnRow);
+  }
 
 }

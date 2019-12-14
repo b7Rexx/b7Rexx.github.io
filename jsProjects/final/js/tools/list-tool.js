@@ -33,6 +33,7 @@ class ListTool extends Tool {
     this.listTool.appendChild(hrLine1);
     this.listTool.append('List Items');
     this.accumulateList();
+    this.removeAll();
   }
 
   updateStyleTools(component) {
@@ -210,4 +211,16 @@ class ListTool extends Tool {
     };
     this.listTool.appendChild(this.listBulletTypeBlock);
   }
+
+  removeAll() {
+    let that = this;
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-comp');
+    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove list';
+    removeBtn.onclick = function () {
+      that.componentEditElement.remove();
+    };
+    this.listTool.appendChild(removeBtn);
+  }
+
 }

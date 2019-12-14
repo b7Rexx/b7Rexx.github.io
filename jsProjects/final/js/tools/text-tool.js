@@ -47,6 +47,7 @@ class TextTool extends Tool {
     this.textBlockSize();
     this.borderTool();
     this.positionTool();
+    this.removeAll();
   }
 
   updateStyleTools(component) {
@@ -551,6 +552,16 @@ class TextTool extends Tool {
     this.textWidthBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.width = this.value;
     };
+  }
 
+  removeAll() {
+    let that = this;
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-comp');
+    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove text';
+    removeBtn.onclick = function () {
+      that.componentEditElement.remove();
+    };
+    this.textTool.appendChild(removeBtn);
   }
 }

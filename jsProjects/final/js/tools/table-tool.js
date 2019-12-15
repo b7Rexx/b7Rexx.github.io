@@ -14,8 +14,12 @@ class TableTool extends Tool {
     this.tableTool.classList.add('sidebar-style-block');
     this.tableTool.classList.add('image-style-block');
     this.parentElement.appendChild(this.tableTool);
+    let hrline1 = document.createElement('hr');
 
     this.tableSize();
+    this.tableTool.appendChild(hrline1);
+    this.imageSize();
+    this.paddingTool();
     this.removeAll();
   }
 
@@ -32,6 +36,9 @@ class TableTool extends Tool {
   updateChanges() {
     this.rowBlock.children[1].value = this.componentEditElement.children[0].tBodies[0].rows.length;
     this.columnBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells.length;
+    this.paddingBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells[0].style.padding || 0;
+    this.tableHeightBlock.children[1].value = this.componentProps.height;
+    this.tableWidthBlock.children[1].value = this.componentProps.width;
   }
 
   tableSize() {
@@ -101,6 +108,68 @@ class TableTool extends Tool {
 
     };
   }
+
+  imageSize() {
+    let that = this;
+    this.tableHeightBlock = document.createElement('div');
+    this.tableHeightBlock.classList.add('text-style');
+    this.tableHeightBlock.classList.add('imageheight-block-text');
+    this.tableHeightBlock.innerHTML =
+      '<span>Height</span>' +
+      '<input type="text">';
+    this.tableTool.appendChild(this.tableHeightBlock);
+    this.tableHeightBlock.children[1].onchange = function () {
+      that.componentEditElement.style.height = this.value;
+    };
+    this.tableHeightBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.height = this.value;
+    };
+
+    this.tableWidthBlock = document.createElement('div');
+    this.tableWidthBlock.classList.add('text-style');
+    this.tableWidthBlock.classList.add('imagewidth-block-text');
+    this.tableWidthBlock.innerHTML =
+      '<span>Width</span>' +
+      '<input type="text">';
+    this.tableTool.appendChild(this.tableWidthBlock);
+    this.tableWidthBlock.children[1].onchange = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+    this.tableWidthBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+  }
+
+  paddingTool() {
+    let that = this;
+    this.paddingBlock = document.createElement('div');
+    this.paddingBlock.classList.add('text-style');
+    this.paddingBlock.classList.add('padding-block-text');
+    this.paddingBlock.innerHTML =
+      '<span>Padding </span>' +
+      '<input type="text">';
+    this.tableTool.appendChild(this.paddingBlock);
+    this.paddingBlock.children[1].onchange = function (event) {
+
+      let rowCount = that.componentEditElement.children[0].rows.length;
+      let colCount = that.componentEditElement.children[0].rows[0].cells.length;
+      for (let i = 0; i < rowCount; i++) {
+        for (let j = 0; j < colCount; j++) {
+          that.componentEditElement.children[0].rows[i].cells[j].style.padding = event.target.value;
+        }
+      }
+    };
+    this.paddingBlock.children[1].onkeyup = function (event) {
+      let rowCount = that.componentEditElement.children[0].rows.length;
+      let colCount = that.componentEditElement.children[0].rows[0].cells.length;
+      for (let i = 0; i < rowCount; i++) {
+        for (let j = 0; j < colCount; j++) {
+          that.componentEditElement.children[0].rows[i].cells[j].style.padding = event.target.value;
+        }
+      }
+    };
+  }
+
 
   removeAll() {
     let that = this;

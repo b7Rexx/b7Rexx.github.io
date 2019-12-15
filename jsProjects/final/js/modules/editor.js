@@ -200,11 +200,9 @@ class Editor extends EditorEvent {
                     if (value.className.startsWith('b7-col')) {
                       value.innerHTML += that.dropContent;
                       clearDrag = true;
-                      console.log(clearDrag);
                       //auto select code here
                       //  ...
                     }
-
                 });
               }
             }

@@ -17,3 +17,8 @@
 .b7-list {
   margin-left: 20px;
 }
+
+
+.b7-component-table{
+  overflow: auto;
+}

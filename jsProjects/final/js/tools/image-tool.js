@@ -12,6 +12,7 @@ class ImageTool extends Tool {
     this.imageAltBlock = undefined;
     this.imageHeightBlock = undefined;
     this.imageWidthBlock = undefined;
+    this.uploadImageBlock = undefined;
     this.linkDiv = undefined;
     this.init();
   }
@@ -22,6 +23,7 @@ class ImageTool extends Tool {
     this.imageTool.classList.add('image-style-block');
     this.parentElement.appendChild(this.imageTool);
 
+    this.uploadImage();
     this.imageUrl();
     this.imageSize();
     this.setLink();
@@ -49,6 +51,29 @@ class ImageTool extends Tool {
     this.imageHeightBlock.children[1].value = this.componentProps.height;
     this.imageWidthBlock.children[1].value = this.componentProps.width;
     this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
+  }
+
+  uploadImage() {
+    let that = this;
+    this.uploadImageBlock = document.createElement('div');
+    this.uploadImageBlock.classList.add('text-style');
+
+    let linkSpan = document.createElement('span');
+    linkSpan.innerHTML = 'Upload Image: ';
+    let linkInput = document.createElement('input');
+    linkInput.setAttribute('type', 'file');
+    linkInput.onchange = function () {
+      if (this.files.hasOwnProperty(0)) {
+        let reader = new FileReader();
+        reader.onload = function () {
+          that.componentEditImage.src = reader.result;
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    };
+    this.uploadImageBlock.appendChild(linkSpan);
+    this.uploadImageBlock.appendChild(linkInput);
+    this.imageTool.appendChild(this.uploadImageBlock);
   }
 
   setLink() {

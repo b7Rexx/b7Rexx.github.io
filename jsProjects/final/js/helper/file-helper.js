@@ -170,14 +170,18 @@ class FileHelper {
         } else {
           domTag.setAttribute(value.name, value.value);
           if (value.name === 'class') {
-            cssClass = (value.value.split(' '))[0] || 'noclass';
+            cssClass = (value.value.split(' '))[0] || '';
           }
         }
       });
 
       parentElem.appendChild(domTag);
       if (cssValue !== '' && cssValue !== undefined && cssValue !== null) {
-        cssDoc += `.${cssClass}[data-css="${cssCounter}"] { ${cssValue} }`;
+        if (cssClass.trim() == '') {
+          cssDoc += `${downloadedHtml.tagName.toLowerCase()}[data-css="${cssCounter}"] { ${cssValue} }`;
+        } else {
+          cssDoc += `.${cssClass}[data-css="${cssCounter}"] { ${cssValue} }`;
+        }
       }
       cssCounter++;
 

@@ -2,17 +2,17 @@ class Tool {
   getWrapperProperty(elem) {
     if (elem !== undefined) {
       return {
-        height: elem.style.height || 'auto',
-        width: elem.style.width || 'auto',
-        padding: elem.style.padding || 0,
-        background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
-        position: elem.style.position || 'static',
-        top: elem.style.top,
-        right: elem.style.right,
-        bottom: elem.style.bottom,
-        left: elem.style.left,
-        zIndex: elem.style.zIndex,
-        overflow: elem.style.overflow,
+        height: Tool.getComputed(elem, 'height ') || 'auto',
+        width: Tool.getComputed(elem, 'width ') || 'auto',
+        padding: Tool.getComputed(elem, 'padding ') || 0,
+        background: elem.style.background ? this.rgbToHex(elem.style.background) : '#ffffff',
+        position: Tool.getComputed(elem, 'position ') || 'static',
+        top: Tool.getComputed(elem, 'top'),
+        right: Tool.getComputed(elem, 'right'),
+        bottom: Tool.getComputed(elem, 'bottom'),
+        left: Tool.getComputed(elem, 'left'),
+        zIndex: Tool.getComputed(elem, 'zIndex'),
+        overflow: Tool.getComputed(elem, 'overflow'),
       };
     }
     return undefined;
@@ -21,17 +21,17 @@ class Tool {
   getContainerProperty(elem) {
     if (elem !== undefined) {
       return {
-        height: elem.style.height || 'auto',
-        width: elem.style.width || 'auto',
-        padding: elem.style.padding || 0,
-        position: elem.style.position || 'static',
-        top: elem.style.top,
-        right: elem.style.right,
-        bottom: elem.style.bottom,
-        left: elem.style.left,
-        zIndex: elem.style.zIndex,
-        opacity: elem.style.opacity || 1,
-        background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
+        height: Tool.getComputed(elem, 'height ') || 'auto',
+        width: Tool.getComputed(elem, 'width ') || 'auto',
+        padding: Tool.getComputed(elem, 'padding ') || 0,
+        position: Tool.getComputed(elem, 'position ') || 'static',
+        top: Tool.getComputed(elem, 'top'),
+        right: Tool.getComputed(elem, 'right'),
+        bottom: Tool.getComputed(elem, 'bottom'),
+        left: Tool.getComputed(elem, 'left'),
+        zIndex: Tool.getComputed(elem, 'zIndex'),
+        opacity: Tool.getComputed(elem, 'opacity ') || 1,
+        background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
       };
     }
     return undefined;
@@ -40,10 +40,10 @@ class Tool {
   getColProperty(elem) {
     if (elem !== undefined) {
       return {
-        height: elem.style.height || 'auto',
-        width: elem.style.width || 'auto',
-        padding: elem.style.padding || 0,
-        background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
+        height: Tool.getComputed(elem, 'height ') || 'auto',
+        width: Tool.getComputed(elem, 'width ') || 'auto',
+        padding: Tool.getComputed(elem, 'padding ') || 0,
+        background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
       };
     }
     return undefined;
@@ -55,31 +55,31 @@ class Tool {
         text: elem.innerHTML,
         src: elem.src,
         alt: elem.alt,
-        height: elem.style.height || 'auto',
-        width: elem.style.width || 'auto',
-        textAlign: elem.style.textAlign || 'left',
-        lineHeight: elem.style.lineHeight || 1,
-        letterSpacing: elem.style.letterSpacing || '0px',
-        fontSize: elem.style.fontSize || '16px',
-        color: (elem.style.color)? this.rgbToHex(elem.style.color): '#000000',
-        background: (elem.style.background)? this.rgbToHex(elem.style.background): '#ffffff',
-        padding: elem.style.padding || '0px 0px 0px 0px',
-        border: elem.style.border || 'none',
-        borderTop: elem.style.borderTop || 'none',
-        borderRight: elem.style.borderRight || 'none',
-        borderBottom: elem.style.borderBottom || 'none',
-        borderLeft: elem.style.borderLeft || 'none',
-        position: elem.style.position || 'static',
-        top: elem.style.top,
-        right: elem.style.right,
-        bottom: elem.style.bottom,
-        left: elem.style.left,
-        zIndex: elem.style.zIndex,
-        opacity: elem.style.opacity || 1,
-        fontWeight: elem.style.fontWeight || 'normal',
-        fontStyle: elem.style.fontStyle || 'normal',
-        textDecoration: elem.style.textDecoration || 'none',
-        listStyle: elem.style.listStyle || 'none',
+        height: Tool.getComputed(elem, 'height') || 'auto',
+        width: Tool.getComputed(elem, 'width') || 'auto',
+        textAlign: Tool.getComputed(elem, 'textAlign') || 'left',
+        lineHeight: Tool.getComputed(elem, 'lineHeight') || 1,
+        letterSpacing: Tool.getComputed(elem, 'letterSpacing') || '0px',
+        fontSize: Tool.getComputed(elem, 'fontSize') || '16px',
+        color: (elem.style.color) ? this.rgbToHex(elem.style.color) : '#000000',
+        background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
+        padding: Tool.getComputed(elem, 'padding ') || '0px 0px 0px 0px',
+        border: Tool.getComputed(elem, 'border ') || 'none',
+        borderTop: Tool.getComputed(elem, 'borderTop ') || 'none',
+        borderRight: Tool.getComputed(elem, 'borderRight ') || 'none',
+        borderBottom: Tool.getComputed(elem, 'borderBottom ') || 'none',
+        borderLeft: Tool.getComputed(elem, 'borderLeft ') || 'none',
+        position: Tool.getComputed(elem, 'position ') || 'static',
+        top: Tool.getComputed(elem, 'top'),
+        right: Tool.getComputed(elem, 'right'),
+        bottom: Tool.getComputed(elem, 'bottom'),
+        left: Tool.getComputed(elem, 'left'),
+        zIndex: Tool.getComputed(elem, 'zIndex'),
+        opacity: Tool.getComputed(elem, 'opacity ') || 1,
+        fontWeight: Tool.getComputed(elem, 'fontWeight ') || 'normal',
+        fontStyle: Tool.getComputed(elem, 'fontStyle ') || 'normal',
+        textDecoration: Tool.getComputed(elem, 'textDecoration ') || 'none',
+        listStyle: Tool.getComputed(elem, 'listStyle ') || 'none',
       };
     }
     return undefined;
@@ -95,5 +95,16 @@ class Tool {
     function hex(x) {
       return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
     }
+  }
+
+  /*
+  @param {object} elem
+  @param {string} propertyName
+  @return property value
+
+  getComputed if inline is empty
+   */
+  static getComputed(elem, propertyName) {
+    return elem.style.getPropertyValue(propertyName) || window.getComputedStyle(elem).getPropertyValue(propertyName);
   }
 }

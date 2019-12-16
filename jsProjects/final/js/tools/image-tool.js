@@ -22,6 +22,7 @@ class ImageTool extends Tool {
     this.imageTool.classList.add('sidebar-style-block');
     this.imageTool.classList.add('image-style-block');
     this.parentElement.appendChild(this.imageTool);
+    this.moveComponentTool();
 
     this.uploadImage();
     this.imageUrl();
@@ -51,6 +52,43 @@ class ImageTool extends Tool {
     this.imageHeightBlock.children[1].value = this.componentProps.height;
     this.imageWidthBlock.children[1].value = this.componentProps.width;
     this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
+
+    //move component
+    if (this.componentEditElement !== undefined) {
+      let rowIndex = DomHelper.getIndexOfElement(this.componentEditElement);
+      let childrenLength = this.componentEditElement.parentNode.childNodes.length;
+      this.moveComponentUp = undefined;
+      this.moveComponentDown = undefined;
+      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+        this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
+      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+        this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
+      if (rowIndex === 0) {
+        this.moveComponentUp = undefined;
+      }
+      if (rowIndex === (childrenLength - 1)) {
+        this.moveComponentDown = undefined;
+      }
+      if (rowIndex === (childrenLength - 2)) {
+        this.moveComponentDown = 'last';
+      }
+
+      Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+        val.style.pointerEvents = 'none';
+        switch (val.getAttribute('data-move')) {
+          case 'top':
+            if (that.moveComponentUp !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+          case 'bottom':
+            if (that.moveComponentDown !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+        }
+      });
+    }
   }
 
   uploadImage() {
@@ -146,6 +184,47 @@ class ImageTool extends Tool {
     this.imageWidthBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.width = this.value;
     };
+  }
+
+  moveComponentTool() {
+    let that = this;
+    this.moveComponentBlock = document.createElement('div');
+    this.moveComponentBlock.classList.add('text-style');
+    this.moveComponentBlock.classList.add('moverow-block-layout');
+    this.moveComponentBlock.innerHTML =
+      '<span>Move</span>' +
+      '<div class="move-button-row">' +
+      '<button data-move="top"><i class="fa fa-angle-up"></i></button>' +
+      '<button data-move="bottom"><i class="fa fa-angle-down"></i></button>' +
+      '</div>';
+    this.imageTool.appendChild(this.moveComponentBlock);
+
+    Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+      val.onclick = function () {
+        if (that.componentEditElement !== undefined) {
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveComponentUp !== undefined) {
+                that.componentEditElement.parentNode.insertBefore(that.componentEditElement, that.moveComponentUp);
+                that.updateChanges();
+              }
+              break;
+            case 'bottom':
+              if (that.moveComponentDown === 'last') {
+                that.componentEditElement.parentNode.appendChild(that.componentEditElement);
+                that.updateChanges();
+              } else {
+                if (that.moveComponentDown !== undefined) {
+                  that.componentEditElement.parentNode.insertBefore(that.componentEditElement, that.moveComponentDown);
+                  that.updateChanges();
+                }
+              }
+              break;
+          }
+
+        }
+      }
+    });
   }
 
   removeAll() {

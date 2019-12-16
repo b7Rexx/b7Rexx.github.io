@@ -15,7 +15,7 @@ class TableTool extends Tool {
     this.tableTool.classList.add('image-style-block');
     this.parentElement.appendChild(this.tableTool);
     let hrline1 = document.createElement('hr');
-
+    this.moveComponentTool();
     this.tableSize();
     this.tableTool.appendChild(hrline1);
     this.imageSize();
@@ -34,11 +34,50 @@ class TableTool extends Tool {
   }
 
   updateChanges() {
+    let that = this;
     this.rowBlock.children[1].value = this.componentEditElement.children[0].tBodies[0].rows.length;
     this.columnBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells.length;
     this.paddingBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells[0].style.padding || 0;
     this.tableHeightBlock.children[1].value = this.componentProps.height;
     this.tableWidthBlock.children[1].value = this.componentProps.width;
+
+
+    //move component
+    if (this.componentEditElement !== undefined) {
+      let rowIndex = DomHelper.getIndexOfElement(this.componentEditElement);
+      let childrenLength = this.componentEditElement.parentNode.childNodes.length;
+      this.moveComponentUp = undefined;
+      this.moveComponentDown = undefined;
+      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+        this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
+      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+        this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
+      if (rowIndex === 0) {
+        this.moveComponentUp = undefined;
+      }
+      if (rowIndex === (childrenLength - 1)) {
+        this.moveComponentDown = undefined;
+      }
+      if (rowIndex === (childrenLength - 2)) {
+        this.moveComponentDown = 'last';
+      }
+
+      Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+        val.style.pointerEvents = 'none';
+        switch (val.getAttribute('data-move')) {
+          case 'top':
+            if (that.moveComponentUp !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+          case 'bottom':
+            if (that.moveComponentDown !== undefined) {
+              val.style.pointerEvents = 'auto';
+            }
+            break;
+        }
+      });
+    }
   }
 
   tableSize() {
@@ -56,6 +95,7 @@ class TableTool extends Tool {
     this.rowBlock.children[1].onchange = function () {
       let currentRow = that.componentEditElement.children[0].tBodies[0].rows.length;
       let currentColumn = that.componentEditElement.children[0].rows[0].cells.length;
+      let paddingValue = that.componentEditElement.children[0].rows[0].cells[0].style.padding;
 
       let diff = Math.abs(this.value - currentRow);
       for (let change = 0; change < diff; change++) {
@@ -64,6 +104,7 @@ class TableTool extends Tool {
           for (let i = 0; i < currentColumn; i++) {
             let cell = row.insertCell(i);
             cell.innerHTML = 'Table Data';
+            cell.style.padding = paddingValue;
           }
         } else if (this.value < currentRow) {
           that.componentEditElement.children[0].deleteRow(-1);
@@ -85,6 +126,7 @@ class TableTool extends Tool {
     this.columnBlock.children[1].onchange = function () {
       let currentRow = that.componentEditElement.children[0].rows.length;
       let currentColumn = that.componentEditElement.children[0].rows[0].cells.length;
+      let paddingValue = that.componentEditElement.children[0].rows[0].cells[0].style.padding;
       let diff = Math.abs(this.value - currentColumn);
       for (let change = 0; change < diff; change++) {
 
@@ -98,6 +140,7 @@ class TableTool extends Tool {
             } else
               cell = that.componentEditElement.children[0].rows[i].insertCell(-1);
             cell.innerHTML = 'Table Data';
+            cell.style.padding = paddingValue;
           }
         } else if (this.value < currentColumn) {
           for (let i = 0; i < currentRow; i++) {
@@ -170,6 +213,46 @@ class TableTool extends Tool {
     };
   }
 
+  moveComponentTool() {
+    let that = this;
+    this.moveComponentBlock = document.createElement('div');
+    this.moveComponentBlock.classList.add('text-style');
+    this.moveComponentBlock.classList.add('moverow-block-layout');
+    this.moveComponentBlock.innerHTML =
+      '<span>Move</span>' +
+      '<div class="move-button-row">' +
+      '<button data-move="top"><i class="fa fa-angle-up"></i></button>' +
+      '<button data-move="bottom"><i class="fa fa-angle-down"></i></button>' +
+      '</div>';
+    this.tableTool.appendChild(this.moveComponentBlock);
+
+    Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+      val.onclick = function () {
+        if (that.componentEditElement !== undefined) {
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveComponentUp !== undefined) {
+                that.componentEditElement.parentNode.insertBefore(that.componentEditElement, that.moveComponentUp);
+                that.updateChanges();
+              }
+              break;
+            case 'bottom':
+              if (that.moveComponentDown === 'last') {
+                that.componentEditElement.parentNode.appendChild(that.componentEditElement);
+                that.updateChanges();
+              } else {
+                if (that.moveComponentDown !== undefined) {
+                  that.componentEditElement.parentNode.insertBefore(that.componentEditElement, that.moveComponentDown);
+                  that.updateChanges();
+                }
+              }
+              break;
+          }
+
+        }
+      }
+    });
+  }
 
   removeAll() {
     let that = this;

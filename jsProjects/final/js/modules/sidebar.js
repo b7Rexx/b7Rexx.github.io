@@ -29,6 +29,7 @@ class Sidebar {
     this.listTool = undefined;
     this.tableTool = undefined;
     this.iframeTool = undefined;
+    this.formTool = undefined;
 
     this.init();
     this.initTools();
@@ -104,6 +105,7 @@ class Sidebar {
     this.listTool = new ListTool(this.sidebarToolBlock);
     this.tableTool = new TableTool(this.sidebarToolBlock);
     this.iframeTool = new IframeTool(this.sidebarToolBlock);
+    this.formTool = new FormTool(this.sidebarToolBlock);
 
 
     this.updateSidebarTools();
@@ -142,6 +144,7 @@ class Sidebar {
     this.listTool.listTool.style.display = 'none';
     this.tableTool.tableTool.style.display = 'none';
     this.iframeTool.iframeTool.style.display = 'none';
+    this.formTool.formTool.style.display = 'none';
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';
@@ -170,6 +173,10 @@ class Sidebar {
         case 'b7-component-iframe':
           this.iframeTool.iframeTool.style.display = 'block';
           this.iframeTool.updateStyleTools(this.componentEditElement);
+          break;
+        case 'b7-component-form':
+          this.formTool.formTool.style.display = 'block';
+          this.formTool.updateStyleTools(this.componentEditElement);
           break;
         default:
           this.exampleTool.exampleTool.style.display = 'block';

@@ -454,7 +454,7 @@ class LayoutTool extends Tool {
       '<span>Right </span> <input type="text" data-position="right" id="right-position-wrapper"><br>' +
       '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-wrapper"><br>' +
       '<span>Left </span> <input type="text" data-position="left" id="left-position-wrapper"><br>' +
-      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-wrapper"><br>';
+      '<span>Z Index </span> <input type="number" max="980" data-position="zIndex" id="z-position-wrapper"><br>';
     this.positionValueBlock.style.display = 'none';
 
     this.wrapperPositionBlock.children[0].onchange = function () {

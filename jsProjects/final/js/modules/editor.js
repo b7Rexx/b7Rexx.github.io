@@ -7,6 +7,9 @@ class Editor extends EditorEvent {
     this.editorMargin = undefined;
     this.editorContent = undefined;
     this.contentEditableText = undefined;
+    this.modalDiv = undefined;
+    this.formModal = undefined;
+    this.modalContent = undefined;
 
     this.init();
   }
@@ -17,6 +20,7 @@ class Editor extends EditorEvent {
     this.parentElement.appendChild(this.editor);
     this.setEmptyEditor();
     this.editorContentEvent();
+    this.initFormModal();
   }
 
   setEmptyEditor() {
@@ -287,6 +291,15 @@ class Editor extends EditorEvent {
           }
         }
       }
+
+      Object.values(event.path).forEach(function (value) {
+        if (value.className !== undefined) {
+          if (value.className.startsWith('b7-form')) {
+            that.formModal = value;
+            that.setFormModalState();
+          }
+        }
+      });
     };
   }
 
@@ -312,6 +325,81 @@ class Editor extends EditorEvent {
       this.colEditElement,
       this.componentEditElement
     ));
+  }
 
+  initFormModal() {
+    let that = this;
+    this.modalDiv = document.createElement('div');
+    this.modalDiv.classList.add('modal-bg');
+    this.modalDiv.style.display = 'none';
+    let modalWrap = document.createElement('div');
+    modalWrap.classList.add('modal-form');
+
+    let modalHeading = document.createElement('div');
+    modalHeading.innerHTML = '<h3>Edit form inputs</h3>';
+    modalWrap.appendChild(modalHeading);
+
+    this.modalContent = document.createElement('table');
+    modalWrap.appendChild(this.modalContent);
+    this.modalDiv.appendChild(modalWrap);
+    this.parentElement.appendChild(this.modalDiv);
+
+    this.modalDiv.onclick = function (event) {
+      if (event.path[0].className.startsWith('modal-bg'))
+        that.modalDiv.style.display = 'none';
+    };
+  }
+
+  setFormModalState() {
+    let that = this;
+    this.modalDiv.style.display = 'block';
+    this.modalContent.innerHTML = '<tr>' +
+      '<th>SN</th>' +
+      '<th>Title</th>' +
+      '<th>Label</th>' +
+      '<th>Type</th>' +
+      '<th>Name</th>' +
+      '<th>Default</th>' +
+      '<th>Options</th>' +
+      '</tr>';
+    let fitems = this.formModal.getElementsByClassName('b7-fitem');
+    Object.values(fitems).forEach(function (value, index) {
+      let row = document.createElement('tr');
+      let col1 = document.createElement('td');
+      col1.innerHTML = index + 1;
+      let col2 = document.createElement('td');
+      col2.innerHTML = value.getAttribute('form-head');
+      let col3 = document.createElement('td');
+      col3.innerHTML = value.getAttribute('form-label');
+
+      //type
+      let col4 = document.createElement('td');
+      let selectType = document.createElement('select');
+      let optionType1 = document.createElement('option');
+      optionType1.innerText = 'text';
+      let optionType5 = document.createElement('option');
+      optionType5.innerText = 'button';
+
+      selectType.appendChild(optionType1);
+      selectType.appendChild(optionType5);
+      selectType.value = value.getAttribute('form-type');
+      col4.appendChild(selectType);
+
+      let col5 = document.createElement('td');
+      col5.innerHTML = value.getAttribute('form-name');
+      let col6 = document.createElement('td');
+      col6.innerHTML = value.getAttribute('form-default');
+      let col7 = document.createElement('td');
+      col7.innerHTML = value.getAttribute('form-options');
+
+      row.appendChild(col1);
+      row.appendChild(col2);
+      row.appendChild(col3);
+      row.appendChild(col4);
+      row.appendChild(col5);
+      row.appendChild(col6);
+      row.appendChild(col7);
+      that.modalContent.appendChild(row);
+    });
   }
 }

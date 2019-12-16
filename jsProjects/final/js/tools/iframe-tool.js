@@ -89,7 +89,7 @@ class IframeTool extends Tool {
     let that = this;
     let removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-comp');
-    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove list';
+    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove iframe';
     removeBtn.onclick = function () {
       that.componentEditElement.remove();
     };

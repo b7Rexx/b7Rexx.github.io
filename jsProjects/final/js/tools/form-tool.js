@@ -17,6 +17,7 @@ class FormTool extends Tool {
 
     this.formTool.append('Select the component');
     this.moveComponentTool();
+    this.removeAll();
   }
 
   updateStyleTools(component) {
@@ -108,5 +109,15 @@ class FormTool extends Tool {
         }
       }
     });
+  }
+  removeAll() {
+    let that = this;
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-comp');
+    removeBtn.innerHTML = '<i class="fa fa-times"></i> remove form';
+    removeBtn.onclick = function () {
+      that.componentEditElement.remove();
+    };
+    this.formTool.appendChild(removeBtn);
   }
 }

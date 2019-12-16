@@ -568,6 +568,7 @@ white
 
 .modal-form table tr td {
   color: #4e4e4e;
+  max-width: 150px;
 }
 
 .modal-form table tr th, .modal-form table tr td {

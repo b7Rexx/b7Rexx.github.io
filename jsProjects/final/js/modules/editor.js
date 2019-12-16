@@ -337,6 +337,16 @@ class Editor extends EditorEvent {
 
     let modalHeading = document.createElement('div');
     modalHeading.innerHTML = '<h3>Edit form inputs</h3>';
+
+    let addInputBtn = document.createElement('button');
+    addInputBtn.style.float = 'right';
+    addInputBtn.classList.add('add-input-btn');
+    addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add input';
+    addInputBtn.onclick = function () {
+      that.addFormInput();
+    };
+
+    modalHeading.appendChild(addInputBtn);
     modalWrap.appendChild(modalHeading);
 
     this.modalContent = document.createElement('table');
@@ -354,52 +364,108 @@ class Editor extends EditorEvent {
     let that = this;
     this.modalDiv.style.display = 'block';
     this.modalContent.innerHTML = '<tr>' +
-      '<th>SN</th>' +
       '<th>Title</th>' +
       '<th>Label</th>' +
       '<th>Type</th>' +
       '<th>Name</th>' +
-      '<th>Default</th>' +
+      '<th>Value / Default</th>' +
       '<th>Options</th>' +
+      '<th>Action</th>' +
       '</tr>';
     let fitems = this.formModal.getElementsByClassName('b7-fitem');
     Object.values(fitems).forEach(function (value, index) {
-      let row = document.createElement('tr');
-      let col1 = document.createElement('td');
-      col1.innerHTML = index + 1;
-      let col2 = document.createElement('td');
-      col2.innerHTML = value.getAttribute('form-head');
-      let col3 = document.createElement('td');
-      col3.innerHTML = value.getAttribute('form-label');
+      let title = value.getAttribute('form-head');
+      let label = value.getAttribute('form-label');
+      let type = value.getAttribute('form-type');
+      let name = value.getAttribute('form-name');
+      let defaultValue = value.getAttribute('form-default');
+      let options = value.getAttribute('form-options');
 
-      //type
-      let col4 = document.createElement('td');
-      let selectType = document.createElement('select');
-      let optionType1 = document.createElement('option');
-      optionType1.innerText = 'text';
-      let optionType5 = document.createElement('option');
-      optionType5.innerText = 'button';
-
-      selectType.appendChild(optionType1);
-      selectType.appendChild(optionType5);
-      selectType.value = value.getAttribute('form-type');
-      col4.appendChild(selectType);
-
-      let col5 = document.createElement('td');
-      col5.innerHTML = value.getAttribute('form-name');
-      let col6 = document.createElement('td');
-      col6.innerHTML = value.getAttribute('form-default');
-      let col7 = document.createElement('td');
-      col7.innerHTML = value.getAttribute('form-options');
-
-      row.appendChild(col1);
-      row.appendChild(col2);
-      row.appendChild(col3);
-      row.appendChild(col4);
-      row.appendChild(col5);
-      row.appendChild(col6);
-      row.appendChild(col7);
-      that.modalContent.appendChild(row);
+      that.addFormInput( title, label, type, name, defaultValue, options);
     });
+  }
+
+  addFormInput(title, label, type, name, defaultValue, options) {
+    let that = this;
+    let row = document.createElement('tr');
+    let col2 = document.createElement('td');
+    col2.innerHTML = title || '';
+    //title
+    col2.setAttribute('contenteditable', true);
+
+    let col3 = document.createElement('td');
+    col3.innerHTML = label || '';
+    //label
+    col3.setAttribute('contenteditable', true);
+
+    //type
+    let col4 = document.createElement('td');
+    let selectType = document.createElement('select');
+
+    let optionType1 = document.createElement('option');
+    optionType1.innerText = 'text';
+    let optionType2 = document.createElement('option');
+    optionType2.innerText = 'email';
+    let optionType3 = document.createElement('option');
+    optionType3.innerText = 'date';
+    let optionType4 = document.createElement('option');
+    optionType4.innerText = 'password';
+    let optionType5 = document.createElement('option');
+    optionType5.innerText = 'button';
+    let optionType6 = document.createElement('option');
+    optionType6.innerText = 'submit';
+    let optionType7 = document.createElement('option');
+    optionType7.innerText = 'checkbox';
+    let optionType8 = document.createElement('option');
+    optionType8.innerText = 'radio';
+    let optionType9 = document.createElement('option');
+    optionType9.innerText = 'color';
+    let optionType10 = document.createElement('option');
+    optionType10.innerText = 'file';
+
+    selectType.appendChild(optionType1);
+    selectType.appendChild(optionType2);
+    selectType.appendChild(optionType3);
+    selectType.appendChild(optionType4);
+    selectType.appendChild(optionType5);
+    selectType.appendChild(optionType6);
+    selectType.appendChild(optionType7);
+    selectType.appendChild(optionType8);
+    selectType.appendChild(optionType9);
+    selectType.appendChild(optionType10);
+
+    selectType.value = type || 'text';
+    col4.appendChild(selectType);
+
+    let col5 = document.createElement('td');
+    col5.innerHTML = name || '';
+    //name
+    col5.setAttribute('contenteditable', true);
+
+    let col6 = document.createElement('td');
+    col6.innerHTML = defaultValue || '';
+    //default
+    col6.setAttribute('contenteditable', true);
+    let col7 = document.createElement('td');
+    col7.innerHTML = options || '';
+    //options
+    col7.setAttribute('contenteditable', true);
+
+    let col8 = document.createElement('td');
+    let removeBtn = document.createElement('button');
+    removeBtn.innerHTML = '<i class="fa fa-trash"></i>';
+    removeBtn.onclick = function () {
+      that.modalContent.deleteRow(this.parentNode.parentNode.rowIndex);
+    };
+    col8.appendChild(removeBtn);
+
+    row.appendChild(col2);
+    row.appendChild(col3);
+    row.appendChild(col4);
+    row.appendChild(col5);
+    row.appendChild(col6);
+    row.appendChild(col7);
+    row.appendChild(col8);
+    that.modalContent.appendChild(row);
   }
 }

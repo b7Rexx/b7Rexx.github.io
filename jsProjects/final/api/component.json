@@ -257,28 +257,28 @@
                 },
                 {
                   "name": "form-type",
-                  "value": "button"
+                  "value": "submit"
                 },
                 {
-                  "name": "form-name",
+                  "name": "form-default",
                   "value": "submit"
                 }
               ],
               "children": [
                 {
-                  "tagName": "button",
-                  "innerText": "Submit",
+                  "tagName": "input",
+                  "innerText": "",
                   "attributes": [
-                    {
-                      "name": "class",
-                      "value": "b7-button-form"
-                    },
                     {
                       "name": "data-css",
                       "value": 1
                     },
                     {
                       "name": "type",
+                      "value": "submit"
+                    },
+                    {
+                      "name": "value",
                       "value": "submit"
                     }
                   ],

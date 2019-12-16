@@ -1,8 +1,7 @@
 class DomHelper {
   static getIndexOfElement(el) {
-    var children = el.parentNode.childNodes,
-      i = 0;
-    for (; i < children.length; i++) {
+   let children = el.parentNode.childNodes;
+    for (let i = 0; i < children.length; i++) {
       if (children[i] == el) {
         return i;
       }

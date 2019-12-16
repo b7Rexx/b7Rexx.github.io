@@ -54,6 +54,10 @@
               "value": "image"
             },
             {
+              "name": "onerror",
+              "value": "errorImage(event)"
+            },
+            {
               "name": "data-css",
               "value": 1
             }

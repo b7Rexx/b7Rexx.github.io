@@ -9,6 +9,8 @@ class TextTool extends Tool {
     this.textContentBlock = undefined;
     this.linkDiv = undefined;
     this.alignBlock = undefined;
+    this.headingBlock = undefined;
+    this.headingSelect = undefined;
     this.lineHeightBlock = undefined;
     this.textSpacingBlock = undefined;
     this.fontSizeBlock = undefined;
@@ -34,6 +36,7 @@ class TextTool extends Tool {
     this.parentElement.appendChild(this.textTool);
     this.moveComponentTool();
     this.setLink();
+    this.headingTool();
     this.textSizeTool();
     this.textStyleTool();
     this.lineHeightTool();
@@ -70,9 +73,13 @@ class TextTool extends Tool {
         val.classList.add('active');
       }
     });
-
+    this.headingSelect.value = 'none';
+    if (this.componentEditElement.children[0] !== undefined) {
+      this.headingSelect.value = (this.componentEditElement.children[0].tagName).toLowerCase();
+    }
+// this.headingSelect.value =
     // this.textContentBlock.innerHTML = this.componentProps.text;
-    this.linkDiv.children[1].value = that.componentEditElement.getAttribute('data-href');
+    this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
     this.lineHeightBlock.children[1].value = this.componentProps.lineHeight;
     this.textSpacingBlock.children[1].value = this.componentProps.letterSpacing;
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
@@ -157,7 +164,7 @@ class TextTool extends Tool {
       }
     });
 
-  //move component
+    //move component
     if (this.componentEditElement !== undefined) {
       let rowIndex = DomHelper.getIndexOfElement(this.componentEditElement);
       let childrenLength = this.componentEditElement.parentNode.childNodes.length;
@@ -221,6 +228,35 @@ class TextTool extends Tool {
     this.linkDiv.appendChild(linkSpan);
     this.linkDiv.appendChild(linkInput);
     this.textTool.appendChild(this.linkDiv);
+  }
+
+  headingTool() {
+    let that = this;
+    this.headingBlock = document.createElement('div');
+    this.headingBlock.classList.add('text-style');
+
+    let headingSpan = document.createElement('span');
+    headingSpan.innerHTML = 'Category : ';
+    this.headingSelect = document.createElement('select');
+    this.headingSelect.innerHTML =
+      '<option value="none">None</option>' +
+      '<option value="p">Paragraph P</option>' +
+      '<option value="h1">Heading H1</option>' +
+      '<option value="h2">Heading H2</option>' +
+      '<option value="h3">Heading H3</option>' +
+      '<option value="h4">Heading H4</option>' +
+      '<option value="h5">Heading H5</option>';
+
+    this.headingSelect.onchange = function () {
+      if (this.value === 'none') {
+        that.componentEditElement.innerHTML = that.componentEditElement.innerText;
+      } else {
+        that.componentEditElement.innerHTML = `<${this.value}>${that.componentEditElement.innerText}</${this.value}>`;
+      }
+    };
+    this.headingBlock.appendChild(headingSpan);
+    this.headingBlock.appendChild(this.headingSelect);
+    this.textTool.appendChild(this.headingBlock);
   }
 
   alignTool() {

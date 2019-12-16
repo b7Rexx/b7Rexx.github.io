@@ -27,4 +27,3 @@ Object.values(listLinkes).forEach(function (value) {
     };
   }
 });
-

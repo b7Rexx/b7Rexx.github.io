@@ -15,8 +15,8 @@ class Body {
     this.editTopbar = undefined;
     this.editEditor = undefined;
     this.template = undefined;
+    this.templateListDiv = undefined;
     this.templateList = [];
-
 
     this.init();
   }
@@ -72,7 +72,7 @@ class Body {
 
     let progessButton = document.createElement('a');
     progessButton.classList.add('splash-button');
-    progessButton.innerHTML = 'Upload Progress';
+    progessButton.innerHTML = '<i class="fa fa-upload"></i>  Upload Progress';
     progessButton.setAttribute('data-value', 'progress');
     splash.appendChild(progessButton);
 
@@ -148,13 +148,48 @@ class Body {
     heading.classList.add('template-heading');
     heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Templates';
     template.appendChild(heading);
-    let templateList = document.createElement('div');
-    templateList.classList.add('template-list');
+
+    let templateSearch = document.createElement('div');
+    templateSearch.classList.add('template-search');
+    templateSearch.innerHTML =
+      '<div class="search-input"><input type="search"> <i class="fa fa-search"></i></div>';
+
+    templateSearch.children[0].children[0].onchange = function () {
+      let search = (this.value.trim()).toLowerCase();
+      that.templateListDiv.innerHTML = '';
+
+      that.templateList.forEach(function (value, index) {
+        if (index !== 0) {
+          if (search === '') {
+            that.templateListDiv.appendChild(value.getTemplateBlock());
+          } else if ((value.name).toLowerCase().includes(search)) {
+            that.templateListDiv.appendChild(value.getTemplateBlock());
+          }
+        } else {
+          that.templateListDiv.appendChild(value.getTemplateBlock());
+        }
+      });
+    };
+
+
+    let progressBtn = document.createElement('button');
+    progressBtn.innerHTML = '<i class="fa fa-upload"></i> Upload progress';
+    progressBtn.onclick = function () {
+      //  upload previous progress
+      let getUploadFile = document.getElementById('upload-progress');
+      getUploadFile.click();
+    };
+
+    templateSearch.appendChild(progressBtn);
+
+    this.templateListDiv = document.createElement('div');
+    this.templateListDiv.classList.add('template-list');
 
     //viewport height
-    templateList.style.height = (ViewportHelper.height() - 60) + 'px';
+    this.templateListDiv.style.height = (ViewportHelper.height() - 60) + 'px';
 
-    template.appendChild(templateList);
+    template.appendChild(templateSearch);
+    template.appendChild(this.templateListDiv);
     this.body.appendChild(template);
     let apiTemplate = [];
     FileHelper.getFileContent('api/template.json', 'get', function (val) {
@@ -166,7 +201,9 @@ class Body {
         let date = value.date || Date.now();
         let templateObj = new Template(name, image, data, date);
         that.templateList.push(templateObj);
-        templateList.appendChild(templateObj.getTemplateBlock());
+
+        //all templates
+        that.templateListDiv.appendChild(templateObj.getTemplateBlock());
       });
     });
     return template;

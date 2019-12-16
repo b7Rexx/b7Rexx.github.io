@@ -65,6 +65,7 @@ class FileHelper {
       "  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">" +
       "  <title>b7 Web Builder</title>" +
       "  <link rel=\"stylesheet\" href=\"custom.css\">" +
+      "  <!--  error image--><script>function errorImage(e) {e.target.src = 'no-image.png';}</script>" +
       "</head>" +
       "<body>" +
       parsedHtmlCss.html.outerHTML +

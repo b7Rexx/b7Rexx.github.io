@@ -551,48 +551,103 @@ white
   padding: 20px;
 }
 
-.modal-form table tr td, .modal-form table tr th {
+.form-table-wrapper table tr td, .form-table-wrapper table tr th {
   border: 1px solid #131313;
   padding: 5px;
 }
 
-.modal-form table {
+.form-table-wrapper table {
   width: 100%;
   background: #f8f8f8;
   margin-bottom: 2.8125em;
 }
 
-.modal-form table tr th {
+.form-table-wrapper table tr th {
   color: #869091;
 }
 
-.modal-form table tr td {
+.form-table-wrapper table tr td {
   color: #4e4e4e;
   max-width: 150px;
 }
 
-.modal-form table tr th, .modal-form table tr td {
+.form-table-wrapper table tr th, .form-table-wrapper table tr td {
   text-align: left;
   font-size: 1em;
   padding: 0.9375em;
   border: 1px solid #ececec;
 }
 
-.modal-form table tr:first-child th {
+.form-table-wrapper table tr:first-child th {
   border-top: 0;
 }
 
-.modal-form table tr td:first-child,
-.modal-form table tr th:first-child {
+.form-table-wrapper table tr td:first-child,
+.form-table-wrapper table tr th:first-child {
   border-left: 0;
 }
 
-.modal-form table tr td:last-child,
-.modal-form table tr th:last-child {
+.form-table-wrapper table tr td:last-child,
+.form-table-wrapper table tr th:last-child {
   border-right: 0;
 }
 
-.modal-form select{
+.form-table-wrapper select {
   width: 100%;
   padding: 5px;
+}
+
+.form-table-wrapper {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.modal-heading {
+  margin-bottom: 25px;
+}
+
+.add-input-btn {
+  float: right;
+  padding: 10px 20px;
+}
+
+.template-search {
+  margin: 10px 0 10px 70px;
+}
+
+.search-input {
+  position: relative;
+  width: 400px;
+  height: 30px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.search-input input {
+  width: 400px;
+  height: 30px;
+  border: none;
+  padding-right: 30px;
+}
+
+.search-input i {
+  position: absolute;
+  right: 0;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.template-search button {
+  cursor: pointer;
+  float: right;
+  background: #2874A6;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+}
+
+.template-search button:hover {
+  background: white;
+  color: #2874A6;
 }

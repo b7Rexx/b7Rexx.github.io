@@ -264,8 +264,9 @@ class Editor extends EditorEvent {
 
       if (event.path.hasOwnProperty(0)) {
         let eventClickDom = event.path[0];
+        let eventClickDom1 = event.path[1];
         if (eventClickDom.className !== undefined) {
-          if (eventClickDom.className.startsWith('b7-component-text')) {
+          if (eventClickDom.className.startsWith('b7-component-text') || eventClickDom1.className.startsWith('b7-component-text')) {
             that.contentEditableText = eventClickDom;
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
@@ -336,21 +337,45 @@ class Editor extends EditorEvent {
     modalWrap.classList.add('modal-form');
 
     let modalHeading = document.createElement('div');
-    modalHeading.innerHTML = '<h3>Edit form inputs</h3>';
+    modalHeading.classList.add('modal-heading');
+    modalHeading.innerHTML = 'Edit form inputs';
+
+    let tableWrap = document.createElement('div');
+    tableWrap.classList.add('form-table-wrapper');
 
     let addInputBtn = document.createElement('button');
-    addInputBtn.style.float = 'right';
     addInputBtn.classList.add('add-input-btn');
     addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add input';
     addInputBtn.onclick = function () {
       that.addFormInput();
     };
 
+    let saveInputBtn = document.createElement('button');
+    saveInputBtn.classList.add('add-input-btn');
+    saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update input';
+    saveInputBtn.onclick = function () {
+      that.updateForm();
+    };
+
     modalHeading.appendChild(addInputBtn);
     modalWrap.appendChild(modalHeading);
 
-    this.modalContent = document.createElement('table');
-    modalWrap.appendChild(this.modalContent);
+    let modalTable = document.createElement('table');
+    modalTable.innerHTML = '<thead><tr>' +
+      '<th>Title</th>' +
+      '<th>Label</th>' +
+      '<th>Type</th>' +
+      '<th>Name</th>' +
+      '<th>Value / Default</th>' +
+      '<th>Options</th>' +
+      '<th>Action</th>' +
+      '</tr></thead>';
+
+    this.modalContent = document.createElement('tbody');
+    modalTable.appendChild(this.modalContent);
+    tableWrap.appendChild(modalTable);
+    modalWrap.appendChild(tableWrap);
+    modalWrap.appendChild(saveInputBtn);
     this.modalDiv.appendChild(modalWrap);
     this.parentElement.appendChild(this.modalDiv);
 
@@ -363,17 +388,9 @@ class Editor extends EditorEvent {
   setFormModalState() {
     let that = this;
     this.modalDiv.style.display = 'block';
-    this.modalContent.innerHTML = '<tr>' +
-      '<th>Title</th>' +
-      '<th>Label</th>' +
-      '<th>Type</th>' +
-      '<th>Name</th>' +
-      '<th>Value / Default</th>' +
-      '<th>Options</th>' +
-      '<th>Action</th>' +
-      '</tr>';
+    this.modalContent.innerHTML = '';
     let fitems = this.formModal.getElementsByClassName('b7-fitem');
-    Object.values(fitems).forEach(function (value, index) {
+    Object.values(fitems).forEach(function (value) {
       let title = value.getAttribute('form-head');
       let label = value.getAttribute('form-label');
       let type = value.getAttribute('form-type');
@@ -381,7 +398,7 @@ class Editor extends EditorEvent {
       let defaultValue = value.getAttribute('form-default');
       let options = value.getAttribute('form-options');
 
-      that.addFormInput( title, label, type, name, defaultValue, options);
+      that.addFormInput(title, label, type, name, defaultValue, options);
     });
   }
 
@@ -452,7 +469,32 @@ class Editor extends EditorEvent {
     col7.setAttribute('contenteditable', true);
 
     let col8 = document.createElement('td');
+    let moveUpBtn = document.createElement('button');
+    moveUpBtn.classList.add('btn-form-remove');
+    moveUpBtn.innerHTML = '<i class="fa fa-angle-up"></i>';
+    moveUpBtn.onclick = function () {
+      let row = this.parentNode.parentNode;
+      let sibling = row.previousElementSibling;
+      let parent = row.parentNode;
+      parent.insertBefore(row, sibling);
+    };
+    col8.appendChild(moveUpBtn);
+    let moveDownBtn = document.createElement('button');
+    moveDownBtn.classList.add('btn-form-remove');
+    moveDownBtn.innerHTML = '<i class="fa fa-angle-down"></i>';
+    moveDownBtn.onclick = function () {
+      let row = this.parentNode.parentNode;
+      let parent = row.parentNode;
+      if (row.nextElementSibling !== null) {
+        let sibling = row.nextElementSibling.nextElementSibling;
+        parent.insertBefore(row, sibling);
+      } else {
+        parent.insertBefore(row, parent.firstChild);
+      }
+    };
+    col8.appendChild(moveDownBtn);
     let removeBtn = document.createElement('button');
+    removeBtn.classList.add('btn-form-remove');
     removeBtn.innerHTML = '<i class="fa fa-trash"></i>';
     removeBtn.onclick = function () {
       that.modalContent.deleteRow(this.parentNode.parentNode.rowIndex);
@@ -467,5 +509,79 @@ class Editor extends EditorEvent {
     row.appendChild(col7);
     row.appendChild(col8);
     that.modalContent.appendChild(row);
+  }
+
+  updateForm() {
+    let that = this;
+    that.formModal.innerHTML = '';
+    this.modalDiv.style.display = 'none';
+
+    Object.values(this.modalContent.children).forEach(function (value) {
+      let title = '';
+      let label = '';
+      let type = '';
+      let name = '';
+      let defaultValue = '';
+      let options = '';
+      let inputForm = undefined;
+      let accumulateFormHtml = undefined;
+      Object.values(value.children).forEach(function (val, index) {
+        switch (index) {
+          case 0:
+            title = val.innerText || '';
+            break;
+          case 1:
+            label = val.innerText || '';
+            break;
+          case 2:
+            type = val.children[0].value;
+            break;
+          case 3:
+            name = val.innerText || '';
+            break;
+          case 4:
+            defaultValue = val.innerText || '';
+            break;
+          case 5:
+            options = val.innerText || '';
+            break;
+          default:
+            break;
+        }
+      });
+      accumulateFormHtml = document.createElement('div');
+      accumulateFormHtml.classList.add('b7-fitem');
+      accumulateFormHtml.setAttribute('form-title', title);
+      accumulateFormHtml.setAttribute('form-label', label);
+      accumulateFormHtml.setAttribute('form-type', type);
+      accumulateFormHtml.setAttribute('form-name', name);
+      accumulateFormHtml.setAttribute('form-default', defaultValue);
+      accumulateFormHtml.setAttribute('form-options', options);
+
+      let randomLabel = 'label-' + that.getRandom();
+      if (type !== '') {
+        inputForm = document.createElement('input');
+        inputForm.setAttribute('type', type);
+      }
+      if (title !== '') {
+        accumulateFormHtml.innerHTML += `<span>${title}</span>`;
+      }
+      if (label !== '') {
+        accumulateFormHtml.innerHTML += `<label for="${randomLabel}">${label}</label>`;
+        inputForm.setAttribute('id', randomLabel);
+      }
+      if (name !== '') {
+        inputForm.setAttribute('name', name);
+      }
+      if (defaultValue !== '') {
+        inputForm.setAttribute('value', defaultValue);
+      }
+      accumulateFormHtml.appendChild(inputForm);
+      that.formModal.appendChild(accumulateFormHtml);
+    });
+  }
+
+  getRandom() {
+    return new Date();
   }
 }

@@ -62,7 +62,6 @@ class App {
         if (page === 'progress') {
           //  upload previous progress
           let getUploadFile = document.getElementById('upload-progress');
-          // console.log(getUploadFile);
           getUploadFile.click();
 
         } else

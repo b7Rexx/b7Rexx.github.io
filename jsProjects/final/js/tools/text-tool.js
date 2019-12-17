@@ -6,33 +6,12 @@ class TextTool extends Tool {
     this.componentProps = undefined;
     this.componentEditElement = undefined;
 
-    this.textContentBlock = undefined;
-    this.linkDiv = undefined;
-    this.alignBlock = undefined;
-    this.headingBlock = undefined;
-    this.headingSelect = undefined;
-    this.lineHeightBlock = undefined;
-    this.textSpacingBlock = undefined;
-    this.fontSizeBlock = undefined;
-    this.fontColorBlock = undefined;
-    this.backgroundColorBlock = undefined;
-    this.paddingBlock = undefined;
-    this.borderBlock = undefined;
-    this.broderOptions = undefined;
-    this.fullBorderBlock = undefined;
-    this.partialBorderBlock = undefined;
-    this.positionBlock = undefined;
-    this.opacityBlock = undefined;
-    this.textHeightBlock = undefined;
-    this.textWidthBlock = undefined;
-
     this.init();
   }
 
   init() {
     this.textTool = document.createElement('div');
     this.textTool.classList.add('sidebar-style-block');
-    this.textTool.classList.add('text-style-block');
     this.parentElement.appendChild(this.textTool);
     this.moveComponentTool();
     this.setLink();
@@ -43,11 +22,9 @@ class TextTool extends Tool {
     this.textSpacingTool();
     this.alignTool();
     this.paddingTool();
-
     this.textColorTool();
     this.backgroundColorTool();
     this.opacityTool();
-
     this.textBlockSize();
     this.borderTool();
     this.positionTool();
@@ -220,8 +197,9 @@ class TextTool extends Tool {
     this.linkDiv.classList.add('text-style');
 
     let linkSpan = document.createElement('span');
-    linkSpan.innerHTML = '<br>set link: ';
+    linkSpan.innerHTML = '<i class="fa fa-link"></i> href : ';
     let linkInput = document.createElement('input');
+    linkInput.classList.add('style-href');
     linkInput.onkeyup = function () {
       that.componentEditElement.setAttribute('data-href', this.value);
     };
@@ -531,11 +509,11 @@ class TextTool extends Tool {
     this.positionBlock.appendChild(this.positionValueBlock);
 
     this.positionValueBlock.innerHTML =
-      '<span>Top </span> <input type="text" data-position="top" id="top-position-text"><br>' +
-      '<span>Right </span> <input type="text" data-position="right" id="right-position-text"><br>' +
-      '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-text"><br>' +
-      '<span>Left </span> <input type="text" data-position="left" id="left-position-text"><br>' +
-      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text"><br>';
+      '<span>Top </span> <input type="text" data-position="top" id="top-position-text">' +
+      '<span>Right </span> <input type="text" data-position="right" id="right-position-text">' +
+      '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-text">' +
+      '<span>Left </span> <input type="text" data-position="left" id="left-position-text">' +
+      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text">';
     this.positionValueBlock.style.display = 'none';
 
     this.positionBlock.children[0].onchange = function () {

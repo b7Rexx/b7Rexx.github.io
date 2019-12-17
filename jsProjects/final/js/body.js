@@ -61,12 +61,12 @@ class Body {
     let splash = document.createElement('div');
     splash.classList.add('splash-body');
     splash.innerHTML =
-      `<img src="assets/img/b7-logo.png" alt="">` +
+      `<img src="assets/img/b7-logo.png" alt="logo">` +
       `<h1>${this.appName}</h1>` +
       `<h3>${this.appSlogan}</h3>`;
     let templateButton = document.createElement('a');
     templateButton.classList.add('splash-button');
-    templateButton.innerHTML = 'Check Templates';
+    templateButton.innerHTML = '<i class="fa fa-list-alt"></i> Check Templates';
     templateButton.setAttribute('data-value', 'template');
     splash.appendChild(templateButton);
 
@@ -107,7 +107,7 @@ class Body {
 
     let editButton = document.createElement('a');
     editButton.classList.add('splash-button');
-    editButton.innerHTML = 'Continue Editing';
+    editButton.innerHTML = '<i class="fa fa-edit"></i> Continue Editing';
     editButton.setAttribute('data-value', 'edit');
     splash.appendChild(editButton);
     this.body.appendChild(splash);
@@ -127,10 +127,10 @@ class Body {
     edit.classList.add('edit-body');
     edit.setAttribute('id', 'edit-editor');
 
-    let heading = document.createElement('h2');
-    heading.classList.add('edit-heading');
-    heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Edit';
-    edit.appendChild(heading);
+    // let heading = document.createElement('div');
+    // heading.classList.add('page-heading');
+    // heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Edit';
+    // edit.appendChild(heading);
 
     this.editTopbar = new Topbar(edit);
     this.editEditor = new Editor(edit);
@@ -144,8 +144,8 @@ class Body {
     let template = document.createElement('div');
     template.classList.add('template-body');
     template.classList.add('clearfix');
-    let heading = document.createElement('h2');
-    heading.classList.add('template-heading');
+    let heading = document.createElement('div');
+    heading.classList.add('page-heading');
     heading.innerHTML = `<img src="assets/img/b7-logo_50.png" alt="">` + 'Templates';
     template.appendChild(heading);
 

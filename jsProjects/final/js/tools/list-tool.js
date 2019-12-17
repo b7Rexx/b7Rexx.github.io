@@ -62,62 +62,62 @@ class ListTool extends Tool {
     // this.listBulletTypeBlock.children[1].value = this.componentProps.listStyleType;
 
     //  accumulate list
-    if (this.componentEditElement !== undefined) {
-      this.accumulateListBlock.innerHTML = '';
-      Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
-        let itemDiv = document.createElement('div');
-        itemDiv.classList.add('list-item-div');
-        itemDiv.append((index + 1) + ') ');
-        let itemInput = document.createElement('input');
-        itemInput.value = item.innerText;
+    // if (this.componentEditElement !== undefined) {
+      // this.accumulateListBlock.innerHTML = '';
+      // Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
+      //   let itemDiv = document.createElement('div');
+      //   itemDiv.classList.add('list-item-div');
+      //   itemDiv.append((index + 1) + ') ');
+      //   let itemInput = document.createElement('input');
+      //   itemInput.value = item.innerText;
+      //
+      //   itemInput.onkeyup = function () {
+      //     item.innerText = this.value;
+      //   };
+      //   itemInput.onchange = function () {
+      //     item.innerText = this.value;
+      //   };
+      //
+      //   let itemRemove = document.createElement('button');
+      //   itemRemove.innerHTML = '<i class="fa fa-times"></i>';
+      //   itemRemove.onclick = function () {
+      //     item.remove();
+      //     itemDiv.remove();
+      //   };
 
-        itemInput.onkeyup = function () {
-          item.innerText = this.value;
-        };
-        itemInput.onchange = function () {
-          item.innerText = this.value;
-        };
+      //   let linkSpan = document.createElement('span');
+      //   linkSpan.innerHTML = '<br>set link:';
+      //   let linkInput = document.createElement('input');
+      //   linkInput.value = item.getAttribute('data-href');
+      //   linkInput.onkeyup = function () {
+      //     item.setAttribute('data-href', this.value);
+      //   };
+      //
+      //   that.accumulateListBlock.appendChild(itemDiv);
+      //   itemDiv.appendChild(itemInput);
+      //   itemDiv.appendChild(itemRemove);
+      //   itemDiv.appendChild(linkSpan);
+      //   itemDiv.appendChild(linkInput);
+      // });
+      //
+      // let addItem = document.createElement('button');
+      // addItem.innerHTML = '<i class="fa fa-plus"></i>';
+      // addItem.onclick = function () {
+      //   let newItem = document.createElement('li');
+      //   newItem.classList.add('b7-item');
+      //   newItem.style.padding = that.paddingBlock.children[1].value;
+      //   newItem.innerText = 'List Item';
+      //   that.componentEditElement.children[0].appendChild(newItem);
+      //   that.updateChanges();
+      // };
+      // that.accumulateListBlock.appendChild(addItem);
 
-        let itemRemove = document.createElement('button');
-        itemRemove.innerHTML = '<i class="fa fa-times"></i>';
-        itemRemove.onclick = function () {
-          item.remove();
-          itemDiv.remove();
-        };
-
-        let linkSpan = document.createElement('span');
-        linkSpan.innerHTML = '<br>set link:';
-        let linkInput = document.createElement('input');
-        linkInput.value = item.getAttribute('data-href');
-        linkInput.onkeyup = function () {
-          item.setAttribute('data-href', this.value);
-        };
-
-        that.accumulateListBlock.appendChild(itemDiv);
-        itemDiv.appendChild(itemInput);
-        itemDiv.appendChild(itemRemove);
-        itemDiv.appendChild(linkSpan);
-        itemDiv.appendChild(linkInput);
-      });
-
-      let addItem = document.createElement('button');
-      addItem.innerHTML = '<i class="fa fa-plus"></i>';
-      addItem.onclick = function () {
-        let newItem = document.createElement('li');
-        newItem.classList.add('b7-item');
-        newItem.style.padding = that.paddingBlock.children[1].value;
-        newItem.innerText = 'List Item';
-        that.componentEditElement.children[0].appendChild(newItem);
-        that.updateChanges();
-      };
-      that.accumulateListBlock.appendChild(addItem);
-
-      if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
-        document.getElementById('horizontal-liststyle').checked = true;
-      } else {
-        document.getElementById('vertical-liststyle').checked = true;
-      }
-    }
+    //   if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
+    //     document.getElementById('horizontal-liststyle').checked = true;
+    //   } else {
+    //     document.getElementById('vertical-liststyle').checked = true;
+    //   }
+    // }
 
     //move component
     if (this.componentEditElement !== undefined) {

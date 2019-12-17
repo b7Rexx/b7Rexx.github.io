@@ -67,11 +67,11 @@ class Tool {
         color: (elem.style.color) ? this.rgbToHex(elem.style.color) : '#000000',
         background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
         padding: Tool.getComputed(elem, 'padding ') || '0px 0px 0px 0px',
-        border: Tool.getComputed(elem, 'border') || 'none',
-        borderTop: Tool.getComputed(elem, 'border-top') || 'none',
-        borderRight: Tool.getComputed(elem, 'border-right') || 'none',
-        borderBottom: Tool.getComputed(elem, 'border-bottom') || 'none',
-        borderLeft: Tool.getComputed(elem, 'border-left') || 'none',
+        border: elem.style.border || 'none',
+        borderTop: elem.style.borderTop || 'none',
+        borderRight: elem.style.borderRight || 'none',
+        borderBottom: elem.style.borderBottom || 'none',
+        borderLeft: elem.style.borderLeft || 'none',
         position: Tool.getComputed(elem, 'position') || 'static',
         top: Tool.getComputed(elem, 'top'),
         right: Tool.getComputed(elem, 'right'),
@@ -110,15 +110,15 @@ class Tool {
   static getComputed(elem, propertyName, style) {
     // style = style || true;
     // if (style) {
-      if (elem.style.getPropertyValue(propertyName))
-        return elem.style.getPropertyValue(propertyName);
-      else
-        return window.getComputedStyle(elem).getPropertyValue(propertyName);
+    if (elem.style.getPropertyValue(propertyName))
+      return elem.style.getPropertyValue(propertyName);
+    else
+      return window.getComputedStyle(elem).getPropertyValue(propertyName);
     // } else {
-      // if (elem.getPropertyValue(propertyName))
-      //   return elem.getPropertyValue(propertyName);
-      // else
-      //   return window.getComputedStyle(elem).getPropertyValue(propertyName);
+    // if (elem.getPropertyValue(propertyName))
+    //   return elem.getPropertyValue(propertyName);
+    // else
+    //   return window.getComputedStyle(elem).getPropertyValue(propertyName);
     // }
   }
 }

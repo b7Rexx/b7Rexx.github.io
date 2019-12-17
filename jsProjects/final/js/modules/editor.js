@@ -86,13 +86,14 @@ class Editor extends EditorEvent {
     let that = this;
     this.editorBlock.style.minWidth = '900px';
     this.editorBlock.style.maxWidth = (ViewportHelper.width() - 280 - 120) + 'px';
+    this.editorBlock.style.width = (ViewportHelper.width() - 280 - 120) + 'px';
 
     this.editorContent.style.marginTop = '5px';
-    this.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
+    this.editorMargin.style.height = (ViewportHelper.height() - 160) + 'px';
 
     window.addEventListener("resize", function () {
       that.editorBlock.style.width = (ViewportHelper.width() - 280 - 120) + 'px';
-      that.editorMargin.style.height = (ViewportHelper.height() - 140 - 80) + 'px';
+      that.editorMargin.style.height = (ViewportHelper.height() - 160) + 'px';
     });
   }
 
@@ -482,14 +483,14 @@ class Editor extends EditorEvent {
 
     let addInputBtn = document.createElement('button');
     addInputBtn.classList.add('add-input-btn');
-    addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add input';
+    addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add item';
     addInputBtn.onclick = function () {
       that.addListInput();
     };
 
     let saveInputBtn = document.createElement('button');
     saveInputBtn.classList.add('add-input-btn');
-    saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update input';
+    saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update list';
     saveInputBtn.onclick = function () {
       that.updateList();
     };
@@ -499,10 +500,10 @@ class Editor extends EditorEvent {
 
     let modalTable = document.createElement('table');
     modalTable.innerHTML = '<thead><tr>' +
-      '<th>Item</th>' +
-      '<th>Link</th>' +
-      '<th>Dropdown</th>' +
-      '<th>Action</th>' +
+      '<th style="width: 20%;">Item</th>' +
+      '<th style="width: 20%;">Link</th>' +
+      '<th style="width: 40%;">Dropdown</th>' +
+      '<th style="width: 20%;">Action</th>' +
       '</tr></thead>';
 
     this.listModalContent = document.createElement('tbody');
@@ -558,12 +559,12 @@ class Editor extends EditorEvent {
     let dropdownCheckbox = document.createElement('input');
     dropdownCheckbox.setAttribute('type', 'checkbox');
     let addItem = document.createElement('button');
-    addItem.classList.add('table-btn');
-    addItem.innerHTML = '<i class="fa fa-plus"></i> item';
+    addItem.classList.add('table-btn-item');
+    addItem.innerHTML = '<i class="fa fa-plus"></i> dropdown item';
     addItem.style.display = 'none';
 
     let dropTable = document.createElement('table');
-    addItem.classList.add('drop-table');
+    dropTable.classList.add('drop-table');
     dropTable.style.display = 'none';
     dropdownCheckbox.onchange = function () {
       if (dropdownCheckbox.checked) {
@@ -597,6 +598,9 @@ class Editor extends EditorEvent {
 
     if (dropdown) {
       dropdownCheckbox.checked = true;
+      dropTable.style.display = 'block';
+      addItem.style.display = 'block';
+
       let dropdownList = listValue.querySelector('ul');
       if (dropdownList !== undefined) {
         Object.values(dropdownList.getElementsByTagName('li')).forEach(function (value) {
@@ -969,6 +973,7 @@ class Editor extends EditorEvent {
       if (dropdown){
         listItem.innerHTML = `<span>${name}</span>`;
         listItem.appendChild(dropdownList);
+        listItem.setAttribute('data-dropdown', 'true');
       }
       else
         listItem.innerHTML = name;

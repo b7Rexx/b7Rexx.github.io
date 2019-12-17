@@ -120,8 +120,9 @@ class ImageTool extends Tool {
     this.linkDiv.classList.add('text-style');
 
     let linkSpan = document.createElement('span');
-    linkSpan.innerHTML = '<br>set link: ';
+    linkSpan.innerHTML = '<i class="fa fa-link"></i> href : ';
     let linkInput = document.createElement('input');
+    linkInput.classList.add('style-href');
     linkInput.onkeyup = function () {
       that.componentEditElement.setAttribute('data-href', this.value);
     };

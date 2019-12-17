@@ -79,11 +79,11 @@ class Sidebar {
   setHeightWidthByViewPort() {
     let that = this;
 
-    this.sidebar.style.height = (ViewportHelper.height() - 200) + 'px';
-    this.sidebarToolBlock.style.height = (ViewportHelper.height() - 280) + 'px';
+    this.sidebar.style.height = (ViewportHelper.height() - 90) + 'px';
+    this.sidebarToolBlock.style.height = (ViewportHelper.height() - 180) + 'px';
     window.addEventListener("resize", function () {
-      that.sidebar.style.height = (ViewportHelper.height() - 200) + 'px';
-      that.sidebarToolBlock.style.height = (ViewportHelper.height() - 240) + 'px';
+      that.sidebar.style.height = (ViewportHelper.height() - 90) + 'px';
+      that.sidebarToolBlock.style.height = (ViewportHelper.height() - 180) + 'px';
     });
   }
 

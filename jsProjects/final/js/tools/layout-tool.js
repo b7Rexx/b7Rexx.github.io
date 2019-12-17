@@ -49,30 +49,26 @@ class LayoutTool extends Tool {
     this.layoutTool.appendChild(this.layoutContainerTool);
     this.layoutTool.appendChild(this.layoutColumnTool);
 
-    let hrLine1 = document.createElement('hr');
-    let hrLine2 = document.createElement('hr');
-    let hrLine3 = document.createElement('hr');
 
-    this.layoutWrapperTool.append('WRAPPER');
+    this.layoutWrapperTool.innerHTML = '<span class="layout-style-head">WRAPPER</span>';
     this.moveWrapperTool();
     this.backgroundColorTool();
     this.backgroundImageTool();
     this.wrapperSize();
     this.wrapperOverflow();
     this.wrapperPositionTool();
-    this.layoutWrapperTool.appendChild(hrLine1);
 
-    this.layoutContainerTool.append('CONTAINER');
+    this.layoutContainerTool.innerHTML = '<span class="layout-style-head">CONTAINER</span>';
     this.containerBackgroundColorTool();
     this.containerPaddingTool();
     // this.containerPositionTool();
     this.removeContainer();
-    this.layoutContainerTool.appendChild(hrLine2);
 
-    this.layoutColumnTool.append('ROW');
+    this.layoutColumnTool.innerHTML = '<span class="layout-style-head">ROW</span>';
     this.moveRowTool();
 
-    this.layoutColumnTool.append('COLUMN');
+    this.layoutColumnTool.innerHTML += '<span class="layout-style-head">COLUMN</span>';
+    // this.layoutColumnTool.append('COLUMN');
     this.columnBackgroundColorTool();
     this.columnHeightTool();
     this.removeRow();

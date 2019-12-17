@@ -535,7 +535,7 @@ class TextTool extends Tool {
       '<span>Right </span> <input type="text" data-position="right" id="right-position-text"><br>' +
       '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-text"><br>' +
       '<span>Left </span> <input type="text" data-position="left" id="left-position-text"><br>' +
-      '<span>Z Index </span> <input type="number" max="980" data-position="zIndex" id="z-position-text"><br>';
+      '<span>Z Index </span> <input type="text" data-position="zIndex" id="z-position-text"><br>';
     this.positionValueBlock.style.display = 'none';
 
     this.positionBlock.children[0].onchange = function () {

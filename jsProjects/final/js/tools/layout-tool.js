@@ -26,6 +26,7 @@ class LayoutTool extends Tool {
     this.containerPositionBlock = undefined;
     this.positionValueBlock = undefined;
     this.wrapperPositionBlock = undefined;
+    this.backgroundProperty = undefined;
 
     this.moveWrapperUp = undefined;
     this.moveWrapperDown = undefined;
@@ -55,6 +56,7 @@ class LayoutTool extends Tool {
     this.layoutWrapperTool.append('WRAPPER');
     this.moveWrapperTool();
     this.backgroundColorTool();
+    this.backgroundImageTool();
     this.wrapperSize();
     this.wrapperOverflow();
     this.wrapperPositionTool();
@@ -85,9 +87,7 @@ class LayoutTool extends Tool {
   }
 
   getStyleProperty() {
-    console.log(this.wrapperEditElement);
     this.wrapperProps = super.getWrapperProperty(this.wrapperEditElement);
-    console.log(this.wrapperProps);
     this.containerProps = super.getContainerProperty(this.containerEditElement);
     this.colProps = super.getColProperty(this.colEditElement);
     this.updateChanges();
@@ -187,6 +187,18 @@ class LayoutTool extends Tool {
             break;
         }
       });
+
+      let checkBgImage = this.wrapperEditElement.getAttribute('data-background-image');
+      let bgImage = this.wrapperProps.backgroundImage;
+      if (checkBgImage) {
+        this.linkBgImage.checked = true;
+        this.backgroundProperty.style.display = 'block';
+        this.imageSrcBlock.children[1].value = bgImage;
+      } else {
+        this.linkBgImage.checked = false;
+        this.backgroundProperty.style.display = 'none';
+        this.imageSrcBlock.children[1].value = '';
+      }
     }
 
 
@@ -207,7 +219,8 @@ class LayoutTool extends Tool {
     this.wrapperHeightBlock.children[1].value = this.wrapperProps.height;
     this.wrapperWidthBlock.children[1].value = this.wrapperProps.width;
     this.wrapperOverflowBlock.children[1].value = this.wrapperProps.overflow;
-
+    this.imageRepeatBlock.children[1].value = this.wrapperProps.backgroundRepeat;
+    this.imageSizeBlock.children[1].value = this.wrapperProps.backgroundSize;
   }
 
 
@@ -223,6 +236,85 @@ class LayoutTool extends Tool {
     this.backgroundColorBlock.children[1].onchange = function (event) {
       that.wrapperEditElement.style.background = event.target.value;
     };
+  }
+
+  backgroundImageTool() {
+    let that = this;
+    this.uploadImageBlock = document.createElement('div');
+    this.uploadImageBlock.classList.add('text-style');
+
+    this.linkBgImage = document.createElement('input');
+    this.linkBgImage.setAttribute('type', 'checkbox');
+    this.linkBgImage.setAttribute('id', 'wrapper-bg-image');
+    this.linkBgImage.onchange = function () {
+      if (this.checked) {
+        that.wrapperEditElement.setAttribute('data-background-image', true);
+        that.backgroundProperty.style.display = 'block';
+      } else {
+        that.backgroundProperty.style.display = 'none';
+        that.wrapperEditElement.removeAttribute('data-background-image');
+      }
+    };
+
+    let linkBgLabel = document.createElement('label');
+    linkBgLabel.setAttribute('for', 'wrapper-bg-image');
+    linkBgLabel.innerHTML = 'Background Image';
+
+    this.backgroundProperty = document.createElement('div');
+
+    let linkInput = document.createElement('input');
+    linkInput.setAttribute('type', 'file');
+    linkInput.onchange = function () {
+      if (this.files.hasOwnProperty(0)) {
+        let reader = new FileReader();
+        reader.onload = function () {
+          that.imageSrcBlock.children[1].value = reader.result;
+          that.wrapperEditElement.style.backgroundImage = 'url("' + reader.result + '")';
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    };
+
+    this.imageSrcBlock = document.createElement('div');
+    this.imageSrcBlock.classList.add('text-style');
+    this.imageSrcBlock.classList.add('imagesrc-block-text');
+    this.imageSrcBlock.innerHTML =
+      '<span>Image src</span>' +
+      '<input type="text">';
+    this.imageSrcBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.backgroundImage = 'url("' + this.value + '")';
+    };
+
+    this.imageRepeatBlock = document.createElement('div');
+    this.imageRepeatBlock.classList.add('text-style');
+    this.imageRepeatBlock.classList.add('imagesrc-block-text');
+    this.imageRepeatBlock.innerHTML =
+      '<span>Background repeat</span>' +
+      '<input type="text">';
+    this.imageRepeatBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.backgroundRepeat = this.value;
+    };
+
+    this.imageSizeBlock = document.createElement('div');
+    this.imageSizeBlock.classList.add('text-style');
+    this.imageSizeBlock.classList.add('imagesrc-block-text');
+    this.imageSizeBlock.innerHTML =
+      '<span>Background size</span>' +
+      '<input type="text">';
+    this.imageSizeBlock.children[1].onchange = function () {
+      that.wrapperEditElement.style.backgroundSize = this.value;
+    };
+
+    this.uploadImageBlock.appendChild(linkInput);
+
+    this.backgroundProperty.appendChild(this.uploadImageBlock);
+    this.backgroundProperty.appendChild(this.imageSrcBlock);
+    this.backgroundProperty.appendChild(this.imageRepeatBlock);
+    this.backgroundProperty.appendChild(this.imageSizeBlock);
+
+    this.layoutWrapperTool.appendChild(this.linkBgImage);
+    this.layoutWrapperTool.appendChild(linkBgLabel);
+    this.layoutWrapperTool.appendChild(this.backgroundProperty);
   }
 
   containerBackgroundColorTool() {
@@ -456,7 +548,7 @@ class LayoutTool extends Tool {
       '<span>Right </span> <input type="text" data-position="right" id="right-position-wrapper"><br>' +
       '<span>Bottom </span> <input type="text" data-position="bottom" id="bottom-position-wrapper"><br>' +
       '<span>Left </span> <input type="text" data-position="left" id="left-position-wrapper"><br>' +
-      '<span>Z Index </span> <input type="number" max="980" data-position="zIndex" id="z-position-wrapper"><br>';
+      '<span>Z Index </span> <input type="text" max="980" data-position="zIndex" id="z-position-wrapper"><br>';
     this.positionValueBlock.style.display = 'none';
 
     this.wrapperPositionBlock.children[0].onchange = function () {
@@ -473,7 +565,7 @@ class LayoutTool extends Tool {
 
     let positions = this.positionValueBlock.querySelectorAll('input[type="text"]');
     Object.values(positions).forEach(function (value) {
-      value.onchange = function () {
+      value.onchange = function (event) {
         switch (value.getAttribute('data-position')) {
           case 'top':
             that.wrapperEditElement.style.top = this.value;

@@ -19,6 +19,22 @@
 }
 
 
-.b7-component-table{
+.b7-component-table {
   overflow: auto;
+}
+
+.b7-item[data-dropdown="true"] {
+  /*position: relative;*/
+
+}
+
+ul.dropdown-content {
+  position: absolute;
+  display: none;
+  width: inherit;
+  padding: 5px;
+}
+
+.b7-item[data-dropdown="true"]:hover ul.dropdown-content {
+  display: block;
 }

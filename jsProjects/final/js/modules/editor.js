@@ -170,7 +170,7 @@ class Editor extends EditorEvent {
       //save state change
       document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
       // console.log('click pathing ', event.path);
-      console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
+      // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
       if (that.dropType === 'layout') {
         if (eventPath.hasOwnProperty(0)) {
@@ -188,7 +188,7 @@ class Editor extends EditorEvent {
               Object.values(eventPath).map(function (valueDom) {
                 if (valueDom.className !== undefined) {
                   if (valueDom.className.startsWith('b7-col')) {
-                    console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
+                    // console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
                     valueDom.innerHTML += that.dropContent;
                     clearDrag = true;
                   }
@@ -285,7 +285,7 @@ class Editor extends EditorEvent {
         //save state change
         document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
         // console.log('click pathing ', event.path);
-        console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
+        // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
         if (that.dropType === 'layout') {
           if (eventPath.hasOwnProperty(0)) {
@@ -303,7 +303,7 @@ class Editor extends EditorEvent {
                 Object.values(eventPath).map(function (valueDom) {
                   if (valueDom.className !== undefined) {
                     if (valueDom.className.startsWith('b7-col')) {
-                      console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
+                      // console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
                       valueDom.innerHTML += that.dropContent;
                       clearDrag = true;
                     }

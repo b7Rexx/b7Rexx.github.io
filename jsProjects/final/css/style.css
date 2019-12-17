@@ -11,7 +11,7 @@ editor remove css at download
 }
 
 .b7-container-fluid:last-child, .b7-container:last-child {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 div[class^="b7-layout"] {

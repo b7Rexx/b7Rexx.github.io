@@ -151,6 +151,118 @@ class Editor extends EditorEvent {
       }
     };
 
+    this.editorContent.ondragover = function (event) {
+      event.preventDefault();
+    };
+    this.editorContent.ondrop = function (event) {
+      event.preventDefault();
+      if (that.contentEditableText !== undefined) {
+        that.contentEditableText.onclick = null;
+        that.contentEditableText.removeAttribute('contenteditable');
+      }
+
+      //save state change
+      document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
+      // console.log('click pathing ', event.path);
+      console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
+
+      if (that.dropType === 'layout') {
+        if (event.path.hasOwnProperty(0)) {
+          let eventClickDom = event.path[0];
+          if (eventClickDom.className !== undefined) {
+            if (eventClickDom.className.startsWith('b7-container')) {
+              eventClickDom.innerHTML += that.dropContent;
+              clearDrag = true;
+            }
+            let pathArray = Object.values(event.path).map(function (value) {
+              return value.className;
+            });
+            let pathString = JSON.stringify(pathArray);
+            if (pathString.indexOf('b7-layout') === pathString.lastIndexOf('b7-layout')) {
+              Object.values(event.path).map(function (valueDom) {
+                if (valueDom.className !== undefined) {
+                  if (valueDom.className.startsWith('b7-col')) {
+                    console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
+                    valueDom.innerHTML += that.dropContent;
+                    clearDrag = true;
+                  }
+                }
+              });
+            } else {
+              clearDrag = true;
+            }
+          }
+        }
+      }
+
+      if (that.dropType === 'component') {
+        if (event.path.hasOwnProperty(0)) {
+          let eventClickDom = event.path[0];
+          if (eventClickDom.className !== undefined) {
+            if (eventClickDom.className.startsWith('b7-col')) {
+              eventClickDom.innerHTML += that.dropContent;
+              clearDrag = true;
+              //auto select code here
+              //  ...
+            } else {
+              Object.values(event.path).forEach(function (value) {
+                if (value.className !== undefined)
+                  if (value.className.startsWith('b7-col')) {
+                    value.innerHTML += that.dropContent;
+                    clearDrag = true;
+                    //auto select code here
+                    //  ...
+                  }
+              });
+            }
+          }
+        }
+
+      }
+
+      if (clearDrag) {
+        //clear/remove drag
+        that.dropType = undefined;
+        that.dropContent = undefined;
+        that.saveEditStorage();
+        that.parentElement.style.cursor = 'default';
+      }
+
+
+      /*
+      styling tools trigger
+       */
+
+      that.wrapperEditElement = undefined;
+      that.containerEditElement = undefined;
+      that.rowEditElement = undefined;
+      that.colEditElement = undefined;
+      that.componentEditElement = undefined;
+      Object.values(event.path).forEach(function (value) {
+        if (value.className !== undefined) {
+          if (value.className.startsWith('b7-wrapper'))
+            that.wrapperEditElement = value;
+          if (value.className.startsWith('b7-container'))
+            that.containerEditElement = value;
+          if (value.className.startsWith('b7-layout'))
+            that.rowEditElement = value;
+          if (value.className.startsWith('b7-col'))
+            that.colEditElement = value;
+          if (value.className.startsWith('b7-component'))
+            that.componentEditElement = value;
+        }
+      });
+
+      document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+        that.wrapperEditElement,
+        that.containerEditElement,
+        that.rowEditElement,
+        that.colEditElement,
+        that.componentEditElement
+      ));
+    };
+
+
     this.editorContent.onclick =
       function (event) {
 
@@ -177,11 +289,15 @@ class Editor extends EditorEvent {
               });
               let pathString = JSON.stringify(pathArray);
               if (pathString.indexOf('b7-layout') === pathString.lastIndexOf('b7-layout')) {
-                if (eventClickDom.className.startsWith('b7-col')) {
-                  console.log(that.dropType, 'type < < < < <  > > > > content', eventClickDom);
-                  eventClickDom.innerHTML += that.dropContent;
-                  clearDrag = true;
-                }
+                Object.values(event.path).map(function (valueDom) {
+                  if (valueDom.className !== undefined) {
+                    if (valueDom.className.startsWith('b7-col')) {
+                      console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
+                      valueDom.innerHTML += that.dropContent;
+                      clearDrag = true;
+                    }
+                  }
+                });
               } else {
                 clearDrag = true;
               }
@@ -559,6 +675,7 @@ class Editor extends EditorEvent {
       accumulateFormHtml.setAttribute('form-options', options);
 
       let randomLabel = 'label-' + that.getRandom();
+      console.log(randomLabel);
       if (type !== '') {
         inputForm = document.createElement('input');
         inputForm.setAttribute('type', type);
@@ -582,6 +699,6 @@ class Editor extends EditorEvent {
   }
 
   getRandom() {
-    return new Date();
+    return Math.ceil(Math.random(100000, 999999) * 1000000);
   }
 }

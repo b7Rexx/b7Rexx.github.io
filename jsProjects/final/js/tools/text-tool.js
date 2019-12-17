@@ -236,7 +236,7 @@ class TextTool extends Tool {
     this.headingBlock.classList.add('text-style');
 
     let headingSpan = document.createElement('span');
-    headingSpan.innerHTML = 'Category : ';
+    headingSpan.innerHTML = 'Text tags : ';
     this.headingSelect = document.createElement('select');
     this.headingSelect.innerHTML =
       '<option value="none">None</option>' +

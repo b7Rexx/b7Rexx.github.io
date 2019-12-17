@@ -61,6 +61,11 @@ class Topbar {
             document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-layout-click', val.layout));
           };
 
+          newLayout.draggable = true;
+          newLayout.ondragstart = function () {
+            document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-layout-click', val.layout));
+          };
+
           that.listLayoutBlock.appendChild(newLayout);
           layoutCount++;
           that.listLayoutBlock.style.width = (120 * layoutCount) + 'px';
@@ -75,6 +80,10 @@ class Topbar {
           // newComponent.src = 'assets/img/white.png';
           newComponent.src = val.image;
           newComponent.onclick = function () {
+            document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-component-click', val.component));
+          };
+          newComponent.draggable = true;
+          newComponent.ondragstart = function () {
             document.dispatchEvent(EventHelper.customEventparseHtml('custom-event-component-click', val.component));
           };
 

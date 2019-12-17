@@ -10,6 +10,9 @@ class Editor extends EditorEvent {
     this.modalDiv = undefined;
     this.formModal = undefined;
     this.modalContent = undefined;
+    this.listModalDiv = undefined;
+    this.listModal = undefined;
+    this.listModalContent = undefined;
 
     this.init();
   }
@@ -21,6 +24,7 @@ class Editor extends EditorEvent {
     this.setEmptyEditor();
     this.editorContentEvent();
     this.initFormModal();
+    this.initListModal();
   }
 
   setEmptyEditor() {
@@ -423,9 +427,13 @@ class Editor extends EditorEvent {
 
       Object.values(eventPath).forEach(function (value) {
         if (value.className !== undefined) {
-          if (value.className.startsWith('b7-form')) {
+          if (value.className.startsWith('b7-component-form')) {
             that.formModal = value;
             that.setFormModalState();
+          }
+          if (value.className.startsWith('b7-component-list')) {
+            that.listModal = value;
+            that.setListModalState();
           }
         }
       });
@@ -454,6 +462,208 @@ class Editor extends EditorEvent {
       this.colEditElement,
       this.componentEditElement
     ));
+  }
+
+
+  initListModal() {
+    let that = this;
+    this.listModalDiv = document.createElement('div');
+    this.listModalDiv.classList.add('modal-bg');
+    this.listModalDiv.style.display = 'none';
+    let modalWrap = document.createElement('div');
+    modalWrap.classList.add('modal-form');
+
+    let modalHeading = document.createElement('div');
+    modalHeading.classList.add('modal-heading');
+    modalHeading.innerHTML = 'Edit list items';
+
+    let tableWrap = document.createElement('div');
+    tableWrap.classList.add('form-table-wrapper');
+
+    let addInputBtn = document.createElement('button');
+    addInputBtn.classList.add('add-input-btn');
+    addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add input';
+    addInputBtn.onclick = function () {
+      that.addListInput();
+    };
+
+    let saveInputBtn = document.createElement('button');
+    saveInputBtn.classList.add('add-input-btn');
+    saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update input';
+    saveInputBtn.onclick = function () {
+      that.updateList();
+    };
+
+    modalHeading.appendChild(addInputBtn);
+    modalWrap.appendChild(modalHeading);
+
+    let modalTable = document.createElement('table');
+    modalTable.innerHTML = '<thead><tr>' +
+      '<th>Item</th>' +
+      '<th>Link</th>' +
+      '<th>Dropdown</th>' +
+      '<th>Action</th>' +
+      '</tr></thead>';
+
+    this.listModalContent = document.createElement('tbody');
+    modalTable.appendChild(this.listModalContent);
+    tableWrap.appendChild(modalTable);
+    modalWrap.appendChild(tableWrap);
+    modalWrap.appendChild(saveInputBtn);
+    this.listModalDiv.appendChild(modalWrap);
+    this.parentElement.appendChild(this.listModalDiv);
+
+    this.listModalDiv.onclick = function (event) {
+      let eventPath = event.path || (event.composedPath && event.composedPath());
+
+      if (eventPath[0].className.startsWith('modal-bg'))
+        that.listModalDiv.style.display = 'none';
+    };
+  }
+
+  setListModalState() {
+    let that = this;
+    this.listModalDiv.style.display = 'block';
+    this.listModalContent.innerHTML = '';
+    let listItems = this.listModal.getElementsByClassName('b7-item');
+    Object.values(listItems).forEach(function (value) {
+      let item;
+      let dropdown = value.getAttribute('data-dropdown');
+      let dataHref = value.getAttribute('data-href');
+      if (dropdown) {
+        item = value.querySelector('span').innerText;
+      } else {
+        item = value.innerText;
+      }
+      that.addListInput(value, item, dataHref, dropdown);
+    });
+  }
+
+  addListInput(listValue, item, dataHref, dropdown) {
+    let that = this;
+    let row = document.createElement('tr');
+
+    let col2 = document.createElement('td');
+    col2.innerHTML = item || '';
+    //item
+    col2.setAttribute('contenteditable', true);
+
+    let col3 = document.createElement('td');
+    col3.innerHTML = dataHref || '';
+    //label
+    col3.setAttribute('contenteditable', true);
+
+    //type
+    let col4 = document.createElement('td');
+    let dropdownCheckbox = document.createElement('input');
+    dropdownCheckbox.setAttribute('type', 'checkbox');
+    let addItem = document.createElement('button');
+    addItem.classList.add('table-btn');
+    addItem.innerHTML = '<i class="fa fa-plus"></i> item';
+    addItem.style.display = 'none';
+
+    let dropTable = document.createElement('table');
+    addItem.classList.add('drop-table');
+    dropTable.style.display = 'none';
+    dropdownCheckbox.onchange = function () {
+      if (dropdownCheckbox.checked) {
+        dropTable.style.display = 'block';
+        addItem.style.display = 'block';
+      } else {
+        dropTable.style.display = 'none';
+        addItem.style.display = 'none';
+      }
+    };
+    addItem.onclick = function () {
+      let tr = document.createElement('tr');
+      let td1 = document.createElement('td');
+      td1.setAttribute('contenteditable', true);
+      let td2 = document.createElement('td');
+      td2.setAttribute('contenteditable', true);
+      let td3 = document.createElement('td');
+      let removeDropitem = document.createElement('button');
+      removeDropitem.classList.add('table-btn');
+      removeDropitem.innerHTML = '<i class="fa fa-trash"></i>';
+      removeDropitem.onclick = function () {
+        dropTable.deleteRow(this.parentNode.parentNode.rowIndex);
+      };
+      td3.appendChild(removeDropitem);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+      dropTable.appendChild(tr);
+    };
+
+
+    if (dropdown) {
+      dropdownCheckbox.checked = true;
+      let dropdownList = listValue.querySelector('ul');
+      if (dropdownList !== undefined) {
+        Object.values(dropdownList.getElementsByTagName('li')).forEach(function (value) {
+          let tr = document.createElement('tr');
+          let td1 = document.createElement('td');
+          td1.setAttribute('contenteditable', true);
+          td1.innerText = value.innerHTML;
+          let td2 = document.createElement('td');
+          td2.setAttribute('contenteditable', true);
+          td2.innerText = value.getAttribute('data-href');
+          let td3 = document.createElement('td');
+          let removeDropitem = document.createElement('button');
+          removeDropitem.classList.add('table-btn');
+          removeDropitem.innerHTML = '<i class="fa fa-trash"></i>';
+          removeDropitem.onclick = function () {
+            dropTable.deleteRow(this.parentNode.parentNode.rowIndex);
+          };
+          td3.appendChild(removeDropitem);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          dropTable.appendChild(tr);
+        });
+      }
+    }
+    col4.appendChild(dropdownCheckbox);
+    col4.appendChild(dropTable);
+    col4.appendChild(addItem);
+
+    let col8 = document.createElement('td');
+    let moveUpBtn = document.createElement('button');
+    moveUpBtn.classList.add('btn-form-remove');
+    moveUpBtn.innerHTML = '<i class="fa fa-angle-up"></i>';
+    moveUpBtn.onclick = function () {
+      let row = this.parentNode.parentNode;
+      let sibling = row.previousElementSibling;
+      let parent = row.parentNode;
+      parent.insertBefore(row, sibling);
+    };
+    col8.appendChild(moveUpBtn);
+    let moveDownBtn = document.createElement('button');
+    moveDownBtn.classList.add('btn-form-remove');
+    moveDownBtn.innerHTML = '<i class="fa fa-angle-down"></i>';
+    moveDownBtn.onclick = function () {
+      let row = this.parentNode.parentNode;
+      let parent = row.parentNode;
+      if (row.nextElementSibling !== null) {
+        let sibling = row.nextElementSibling.nextElementSibling;
+        parent.insertBefore(row, sibling);
+      } else {
+        parent.insertBefore(row, parent.firstChild);
+      }
+    };
+    col8.appendChild(moveDownBtn);
+    let removeBtn = document.createElement('button');
+    removeBtn.classList.add('btn-form-remove');
+    removeBtn.innerHTML = '<i class="fa fa-trash"></i>';
+    removeBtn.onclick = function () {
+      that.listModalContent.deleteRow((this.parentNode.parentNode.rowIndex - 1));
+    };
+    col8.appendChild(removeBtn);
+
+    row.appendChild(col2);
+    row.appendChild(col3);
+    row.appendChild(col4);
+    row.appendChild(col8);
+    that.listModalContent.appendChild(row);
   }
 
   initFormModal() {
@@ -714,5 +924,59 @@ class Editor extends EditorEvent {
 
   getRandom() {
     return Math.ceil(Math.random(100000, 999999) * 1000000);
+  }
+
+
+  updateList() {
+    let that = this;
+    that.listModal.innerHTML = '';
+    this.listModalDiv.style.display = 'none';
+    let listParent = document.createElement('ul');
+    listParent.classList.add('b7-list');
+    Object.values(this.listModalContent.children).forEach(function (value) {
+      let name = '';
+      let dataHref = '';
+      let dropdown = false;
+      let dropdownList;
+      Object.values(value.children).forEach(function (val, index) {
+        switch (index) {
+          case 0:
+            name = val.innerText || '';
+            break;
+          case 1:
+            dataHref = val.innerText || '';
+            break;
+          case 2:
+            let dropdownCheck = val.querySelector('input');
+            if (dropdownCheck.checked) {
+              dropdown = true;
+              dropdownList = document.createElement('ul');
+              dropdownList.classList.add('dropdown-content');
+              let dropDownTable = val.querySelector('table');
+              for (let i = 0; i < dropDownTable.rows.length; i++) {
+                let dropdownLi = document.createElement('li');
+                dropdownLi.innerHTML = dropDownTable.rows[i].cells[0].innerText;
+                dropdownLi.setAttribute('data-href', dropDownTable.rows[i].cells[1].innerText);
+                dropdownList.appendChild(dropdownLi);
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      });
+      let listItem = document.createElement('li');
+      if (dropdown){
+        listItem.innerHTML = `<span>${name}</span>`;
+        listItem.appendChild(dropdownList);
+      }
+      else
+        listItem.innerHTML = name;
+      listItem.classList.add('b7-item');
+      listItem.setAttribute('data-href', dataHref);
+
+      listParent.appendChild(listItem);
+    });
+    that.listModal.appendChild(listParent);
   }
 }

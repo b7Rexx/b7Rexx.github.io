@@ -30,9 +30,9 @@ class ListTool extends Tool {
     this.paddingTool();
     this.listStyle();
     this.listStyleType();
-    this.listTool.appendChild(hrLine1);
-    this.listTool.append('List Items');
-    this.accumulateList();
+    // this.listTool.appendChild(hrLine1);
+    // this.listTool.append('List Items');
+    // this.accumulateList();
     this.removeAll();
   }
 

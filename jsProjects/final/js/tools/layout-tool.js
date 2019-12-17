@@ -85,7 +85,9 @@ class LayoutTool extends Tool {
   }
 
   getStyleProperty() {
+    console.log(this.wrapperEditElement);
     this.wrapperProps = super.getWrapperProperty(this.wrapperEditElement);
+    console.log(this.wrapperProps);
     this.containerProps = super.getContainerProperty(this.containerEditElement);
     this.colProps = super.getColProperty(this.colEditElement);
     this.updateChanges();
@@ -460,11 +462,11 @@ class LayoutTool extends Tool {
     this.wrapperPositionBlock.children[0].onchange = function () {
       if (this.checked) {
         that.wrapperEditElement.style.position = 'absolute';
-        that.wrapperEditElement.setAttribute('temp-position', 'fixed');
+        that.wrapperEditElement.setAttribute('data-temp-position', 'fixed');
         that.positionValueBlock.style.display = 'block';
       } else {
         that.wrapperEditElement.style.position = 'static';
-        that.wrapperEditElement.removeAttribute('temp-position');
+        that.wrapperEditElement.removeAttribute('data-temp-position');
         that.positionValueBlock.style.display = 'none';
       }
     };

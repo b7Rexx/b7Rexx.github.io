@@ -156,6 +156,7 @@ class Editor extends EditorEvent {
     };
     this.editorContent.ondrop = function (event) {
       event.preventDefault();
+      let eventPath = event.path || (event.composedPath && event.composedPath());
       if (that.contentEditableText !== undefined) {
         that.contentEditableText.onclick = null;
         that.contentEditableText.removeAttribute('contenteditable');
@@ -167,19 +168,19 @@ class Editor extends EditorEvent {
       console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
       if (that.dropType === 'layout') {
-        if (event.path.hasOwnProperty(0)) {
-          let eventClickDom = event.path[0];
+        if (eventPath.hasOwnProperty(0)) {
+          let eventClickDom = eventPath[0];
           if (eventClickDom.className !== undefined) {
             if (eventClickDom.className.startsWith('b7-container')) {
               eventClickDom.innerHTML += that.dropContent;
               clearDrag = true;
             }
-            let pathArray = Object.values(event.path).map(function (value) {
+            let pathArray = Object.values(eventPath).map(function (value) {
               return value.className;
             });
             let pathString = JSON.stringify(pathArray);
             if (pathString.indexOf('b7-layout') === pathString.lastIndexOf('b7-layout')) {
-              Object.values(event.path).map(function (valueDom) {
+              Object.values(eventPath).map(function (valueDom) {
                 if (valueDom.className !== undefined) {
                   if (valueDom.className.startsWith('b7-col')) {
                     console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
@@ -196,8 +197,8 @@ class Editor extends EditorEvent {
       }
 
       if (that.dropType === 'component') {
-        if (event.path.hasOwnProperty(0)) {
-          let eventClickDom = event.path[0];
+        if (eventPath.hasOwnProperty(0)) {
+          let eventClickDom = eventPath[0];
           if (eventClickDom.className !== undefined) {
             if (eventClickDom.className.startsWith('b7-col')) {
               eventClickDom.innerHTML += that.dropContent;
@@ -205,14 +206,18 @@ class Editor extends EditorEvent {
               //auto select code here
               //  ...
             } else {
-              Object.values(event.path).forEach(function (value) {
-                if (value.className !== undefined)
-                  if (value.className.startsWith('b7-col')) {
-                    value.innerHTML += that.dropContent;
-                    clearDrag = true;
-                    //auto select code here
-                    //  ...
-                  }
+              let flag = true;
+              Object.values(eventPath).forEach(function (value) {
+                if (flag) {
+                  if (value.className !== undefined)
+                    if (value.className.startsWith('b7-col')) {
+                      flag = false;
+                      value.innerHTML += that.dropContent;
+                      clearDrag = true;
+                      //auto select code here
+                      //  ...
+                    }
+                }
               });
             }
           }
@@ -238,7 +243,7 @@ class Editor extends EditorEvent {
       that.rowEditElement = undefined;
       that.colEditElement = undefined;
       that.componentEditElement = undefined;
-      Object.values(event.path).forEach(function (value) {
+      Object.values(eventPath).forEach(function (value) {
         if (value.className !== undefined) {
           if (value.className.startsWith('b7-wrapper'))
             that.wrapperEditElement = value;
@@ -265,6 +270,7 @@ class Editor extends EditorEvent {
 
     this.editorContent.onclick =
       function (event) {
+        let eventPath = event.path || (event.composedPath && event.composedPath());
 
         if (that.contentEditableText !== undefined) {
           that.contentEditableText.onclick = null;
@@ -277,19 +283,19 @@ class Editor extends EditorEvent {
         console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
         if (that.dropType === 'layout') {
-          if (event.path.hasOwnProperty(0)) {
-            let eventClickDom = event.path[0];
+          if (eventPath.hasOwnProperty(0)) {
+            let eventClickDom = eventPath[0];
             if (eventClickDom.className !== undefined) {
               if (eventClickDom.className.startsWith('b7-container')) {
                 eventClickDom.innerHTML += that.dropContent;
                 clearDrag = true;
               }
-              let pathArray = Object.values(event.path).map(function (value) {
+              let pathArray = Object.values(eventPath).map(function (value) {
                 return value.className;
               });
               let pathString = JSON.stringify(pathArray);
               if (pathString.indexOf('b7-layout') === pathString.lastIndexOf('b7-layout')) {
-                Object.values(event.path).map(function (valueDom) {
+                Object.values(eventPath).map(function (valueDom) {
                   if (valueDom.className !== undefined) {
                     if (valueDom.className.startsWith('b7-col')) {
                       console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
@@ -306,8 +312,8 @@ class Editor extends EditorEvent {
         }
 
         if (that.dropType === 'component') {
-          if (event.path.hasOwnProperty(0)) {
-            let eventClickDom = event.path[0];
+          if (eventPath.hasOwnProperty(0)) {
+            let eventClickDom = eventPath[0];
             if (eventClickDom.className !== undefined) {
               if (eventClickDom.className.startsWith('b7-col')) {
                 eventClickDom.innerHTML += that.dropContent;
@@ -315,14 +321,18 @@ class Editor extends EditorEvent {
                 //auto select code here
                 //  ...
               } else {
-                Object.values(event.path).forEach(function (value) {
-                  if (value.className !== undefined)
-                    if (value.className.startsWith('b7-col')) {
-                      value.innerHTML += that.dropContent;
-                      clearDrag = true;
-                      //auto select code here
-                      //  ...
-                    }
+                let flag = true;
+                Object.values(eventPath).forEach(function (value) {
+                  if (flag) {
+                    if (value.className !== undefined)
+                      if (value.className.startsWith('b7-col')) {
+                        flag = false;
+                        value.innerHTML += that.dropContent;
+                        clearDrag = true;
+                        //auto select code here
+                        //  ...
+                      }
+                  }
                 });
               }
             }
@@ -348,7 +358,7 @@ class Editor extends EditorEvent {
         that.rowEditElement = undefined;
         that.colEditElement = undefined;
         that.componentEditElement = undefined;
-        Object.values(event.path).forEach(function (value) {
+        Object.values(eventPath).forEach(function (value) {
           if (value.className !== undefined) {
             if (value.className.startsWith('b7-wrapper'))
               that.wrapperEditElement = value;
@@ -375,12 +385,14 @@ class Editor extends EditorEvent {
 
     // this.editorContent.oncontextmenu = function (event) {
     this.editorContent.ondblclick = function (event) {
+      let eventPath = event.path || (event.composedPath && event.composedPath());
+
       //save state change
       document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
 
-      if (event.path.hasOwnProperty(0)) {
-        let eventClickDom = event.path[0];
-        let eventClickDom1 = event.path[1];
+      if (eventPath.hasOwnProperty(0)) {
+        let eventClickDom = eventPath[0];
+        let eventClickDom1 = eventPath[1];
         if (eventClickDom.className !== undefined) {
           if (eventClickDom.className.startsWith('b7-component-text') || eventClickDom1.className.startsWith('b7-component-text')) {
             that.contentEditableText = eventClickDom;
@@ -409,7 +421,7 @@ class Editor extends EditorEvent {
         }
       }
 
-      Object.values(event.path).forEach(function (value) {
+      Object.values(eventPath).forEach(function (value) {
         if (value.className !== undefined) {
           if (value.className.startsWith('b7-form')) {
             that.formModal = value;
@@ -483,7 +495,7 @@ class Editor extends EditorEvent {
       '<th>Type</th>' +
       '<th>Name</th>' +
       '<th>Value / Default</th>' +
-      '<th>Options</th>' +
+      // '<th>Options</th>' +
       '<th>Action</th>' +
       '</tr></thead>';
 
@@ -496,7 +508,9 @@ class Editor extends EditorEvent {
     this.parentElement.appendChild(this.modalDiv);
 
     this.modalDiv.onclick = function (event) {
-      if (event.path[0].className.startsWith('modal-bg'))
+      let eventPath = event.path || (event.composedPath && event.composedPath());
+
+      if (eventPath[0].className.startsWith('modal-bg'))
         that.modalDiv.style.display = 'none';
     };
   }
@@ -507,18 +521,18 @@ class Editor extends EditorEvent {
     this.modalContent.innerHTML = '';
     let fitems = this.formModal.getElementsByClassName('b7-fitem');
     Object.values(fitems).forEach(function (value) {
-      let title = value.getAttribute('form-head');
-      let label = value.getAttribute('form-label');
-      let type = value.getAttribute('form-type');
-      let name = value.getAttribute('form-name');
-      let defaultValue = value.getAttribute('form-default');
-      let options = value.getAttribute('form-options');
+      let title = value.getAttribute('data-form-head');
+      let label = value.getAttribute('data-form-label');
+      let type = value.getAttribute('data-form-type');
+      let name = value.getAttribute('data-form-name');
+      let defaultValue = value.getAttribute('data-form-default');
+      // let options = value.getAttribute('data-form-options');
 
-      that.addFormInput(title, label, type, name, defaultValue, options);
+      that.addFormInput(title, label, type, name, defaultValue);
     });
   }
 
-  addFormInput(title, label, type, name, defaultValue, options) {
+  addFormInput(title, label, type, name, defaultValue) {
     let that = this;
     let row = document.createElement('tr');
     let col2 = document.createElement('td');
@@ -579,10 +593,10 @@ class Editor extends EditorEvent {
     col6.innerHTML = defaultValue || '';
     //default
     col6.setAttribute('contenteditable', true);
-    let col7 = document.createElement('td');
-    col7.innerHTML = options || '';
+    // let col7 = document.createElement('td');
+    // col7.innerHTML = options || '';
     //options
-    col7.setAttribute('contenteditable', true);
+    // col7.setAttribute('contenteditable', true);
 
     let col8 = document.createElement('td');
     let moveUpBtn = document.createElement('button');
@@ -622,7 +636,7 @@ class Editor extends EditorEvent {
     row.appendChild(col4);
     row.appendChild(col5);
     row.appendChild(col6);
-    row.appendChild(col7);
+    // row.appendChild(col7);
     row.appendChild(col8);
     that.modalContent.appendChild(row);
   }
@@ -667,12 +681,12 @@ class Editor extends EditorEvent {
       });
       accumulateFormHtml = document.createElement('div');
       accumulateFormHtml.classList.add('b7-fitem');
-      accumulateFormHtml.setAttribute('form-title', title);
-      accumulateFormHtml.setAttribute('form-label', label);
-      accumulateFormHtml.setAttribute('form-type', type);
-      accumulateFormHtml.setAttribute('form-name', name);
-      accumulateFormHtml.setAttribute('form-default', defaultValue);
-      accumulateFormHtml.setAttribute('form-options', options);
+      accumulateFormHtml.setAttribute('data-form-title', title);
+      accumulateFormHtml.setAttribute('data-form-label', label);
+      accumulateFormHtml.setAttribute('data-form-type', type);
+      accumulateFormHtml.setAttribute('data-form-name', name);
+      accumulateFormHtml.setAttribute('data-form-default', defaultValue);
+      accumulateFormHtml.setAttribute('data-form-options', options);
 
       let randomLabel = 'label-' + that.getRandom();
       console.log(randomLabel);

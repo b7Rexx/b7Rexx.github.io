@@ -2,11 +2,11 @@ class Tool {
   getWrapperProperty(elem) {
     if (elem !== undefined) {
       return {
-        height: Tool.getComputed(elem, 'height ') || 'auto',
-        width: Tool.getComputed(elem, 'width ') || 'auto',
-        padding: Tool.getComputed(elem, 'padding ') || 0,
+        height: Tool.getComputed(elem, 'height') || 'auto',
+        width: Tool.getComputed(elem, 'width') || 'auto',
+        padding: Tool.getComputed(elem, 'padding') || 0,
         background: elem.style.background ? this.rgbToHex(elem.style.background) : '#ffffff',
-        position: Tool.getComputed(elem, 'position ') || 'static',
+        position: Tool.getComputed(elem, 'position') || 'static',
         top: Tool.getComputed(elem, 'top'),
         right: Tool.getComputed(elem, 'right'),
         bottom: Tool.getComputed(elem, 'bottom'),
@@ -21,10 +21,10 @@ class Tool {
   getContainerProperty(elem) {
     if (elem !== undefined) {
       return {
-        height: Tool.getComputed(elem, 'height ') || 'auto',
-        width: Tool.getComputed(elem, 'width ') || 'auto',
-        padding: Tool.getComputed(elem, 'padding ') || 0,
-        position: Tool.getComputed(elem, 'position ') || 'static',
+        height: Tool.getComputed(elem, 'height') || 'auto',
+        width: Tool.getComputed(elem, 'width') || 'auto',
+        padding: Tool.getComputed(elem, 'padding') || 0,
+        position: Tool.getComputed(elem, 'position') || 'static',
         top: Tool.getComputed(elem, 'top'),
         right: Tool.getComputed(elem, 'right'),
         bottom: Tool.getComputed(elem, 'bottom'),
@@ -64,22 +64,22 @@ class Tool {
         color: (elem.style.color) ? this.rgbToHex(elem.style.color) : '#000000',
         background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
         padding: Tool.getComputed(elem, 'padding ') || '0px 0px 0px 0px',
-        border: Tool.getComputed(elem, 'border ') || 'none',
-        borderTop: Tool.getComputed(elem, 'borderTop ') || 'none',
-        borderRight: Tool.getComputed(elem, 'borderRight ') || 'none',
-        borderBottom: Tool.getComputed(elem, 'borderBottom ') || 'none',
-        borderLeft: Tool.getComputed(elem, 'borderLeft ') || 'none',
-        position: Tool.getComputed(elem, 'position ') || 'static',
+        border: Tool.getComputed(elem, 'border') || 'none',
+        borderTop: Tool.getComputed(elem, 'borderTop') || 'none',
+        borderRight: Tool.getComputed(elem, 'borderRight') || 'none',
+        borderBottom: Tool.getComputed(elem, 'borderBottom') || 'none',
+        borderLeft: Tool.getComputed(elem, 'borderLeft') || 'none',
+        position: Tool.getComputed(elem, 'position') || 'static',
         top: Tool.getComputed(elem, 'top'),
         right: Tool.getComputed(elem, 'right'),
         bottom: Tool.getComputed(elem, 'bottom'),
         left: Tool.getComputed(elem, 'left'),
         zIndex: Tool.getComputed(elem, 'zIndex'),
-        opacity: Tool.getComputed(elem, 'opacity ') || 1,
-        fontWeight: Tool.getComputed(elem, 'fontWeight ') || 'normal',
-        fontStyle: Tool.getComputed(elem, 'fontStyle ') || 'normal',
-        textDecoration: Tool.getComputed(elem, 'textDecoration ') || 'none',
-        listStyle: Tool.getComputed(elem, 'listStyle ') || 'none',
+        opacity: Tool.getComputed(elem, 'opacity') || 1,
+        fontWeight: Tool.getComputed(elem, 'fontWeight') || 'normal',
+        fontStyle: Tool.getComputed(elem, 'fontStyle') || 'normal',
+        textDecoration: Tool.getComputed(elem, 'textDecoration') || 'none',
+        listStyle: Tool.getComputed(elem, 'listStyle') || 'none',
       };
     }
     return undefined;
@@ -104,7 +104,18 @@ class Tool {
 
   getComputed if inline is empty
    */
-  static getComputed(elem, propertyName) {
-    return elem.style.getPropertyValue(propertyName) || window.getComputedStyle(elem).getPropertyValue(propertyName);
+  static getComputed(elem, propertyName, style) {
+    // style = style || true;
+    // if (style) {
+      if (elem.style.getPropertyValue(propertyName))
+        return elem.style.getPropertyValue(propertyName);
+      else
+        return window.getComputedStyle(elem).getPropertyValue(propertyName);
+    // } else {
+      // if (elem.getPropertyValue(propertyName))
+      //   return elem.getPropertyValue(propertyName);
+      // else
+      //   return window.getComputedStyle(elem).getPropertyValue(propertyName);
+    // }
   }
 }

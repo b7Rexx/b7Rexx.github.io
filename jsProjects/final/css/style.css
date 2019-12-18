@@ -790,37 +790,28 @@ i.fa-trash {
   margin-bottom: 5px;
 }
 
-.left-tab-btn {
+.left-tab-btn, .right-tab-btn {
   position: absolute;
   border-radius: 50%;
   height: 40px;
   width: 50px;
   padding-top: 10px;
-  top: 10%;
+  top: 5%;
   text-align: center;
-  left: 0;
   font-size: 30px;
   z-index: 989;
-  opacity: 0.2;
+  opacity: 0.5;
   background: white;
+  box-shadow: 2px 2px 5px #2874A6;
   cursor: pointer;
 }
 
+.left-tab-btn {
+  left: 10px;
+}
+
 .right-tab-btn {
-  position: absolute;
-  border-radius: 50%;
-  height: 40px;
-  width: 50px;
-  padding-top: 10px;
-  text-align: center;
-  top: 10%;
-  right: 0;
-  font-size: 30px;
-  z-index: 989;
-  opacity: 0.2;
-  box-shadow: 2px 2px 5px #2874A6;
-  background: white;
-  cursor: pointer;
+  right: 10px;
 }
 
 .left-tab-btn:hover, .right-tab-btn:hover {

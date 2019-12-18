@@ -19,6 +19,7 @@ class Editor extends EditorEvent {
     this.rowEditElement = undefined;
     this.colEditElement = undefined;
     this.componentEditElement = undefined;
+    this.currentTabElement = undefined;
 
     this.init();
   }
@@ -34,7 +35,7 @@ class Editor extends EditorEvent {
   }
 
   setEmptyEditor() {
-    let that=this;
+    let that = this;
     this.editorBlock = document.createElement('div');
     this.editorBlock.classList.add('editor-block');
 
@@ -47,25 +48,64 @@ class Editor extends EditorEvent {
     this.leftTabButton = document.createElement('a');
     this.leftTabButton.classList.add('left-tab-btn');
     this.leftTabButton.innerHTML = '<i class="fa fa-angle-left"></i>';
-    this.leftTabButton.onclick=function () {
-      console.log( that.wrapperEditElement ,
-      that.containerEditElement ,
-      that.rowEditElement ,
-      that.colEditElement ,
-      that.componentEditElement
-    );
+    this.leftTabButton.onclick = function () {
+      that.rowEditElement = undefined;
+      that.colEditElement = undefined;
+      that.componentEditElement = undefined;
+      if (that.currentTabElement !== undefined) {
+        let leftElement = that.currentTabElement.closest('div[class^="b7-wrapper"]');
+        if (leftElement.previousSibling !== null) {
+          that.currentTabElement = leftElement.previousSibling;
+          that.wrapperEditElement = leftElement.previousSibling;
+        } else {
+          that.wrapperEditElement = that.editorContent.lastChild;
+          that.currentTabElement = that.editorContent.lastChild;
+        }
+        that.containerEditElement = that.wrapperEditElement.firstChild;
+      } else {
+        that.wrapperEditElement = that.editorContent.lastChild;
+        if (that.wrapperEditElement){
+          that.containerEditElement = that.wrapperEditElement.firstChild;
+          that.currentTabElement = that.editorContent.lastChild;
+        }
+      }
+      document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+        that.wrapperEditElement,
+        that.containerEditElement,
+        that.rowEditElement,
+        that.colEditElement,
+        that.componentEditElement
+      ));
     };
 
     this.rightTabButton = document.createElement('a');
     this.rightTabButton.classList.add('right-tab-btn');
     this.rightTabButton.innerHTML = '<i class="fa fa-angle-right"></i>';
-    this.rightTabButton.onclick=function () {
-      console.log( that.wrapperEditElement ,
-        that.containerEditElement ,
-        that.rowEditElement ,
-        that.colEditElement ,
+    this.rightTabButton.onclick = function () {
+      if (that.currentTabElement !== undefined) {
+        let rightElement = that.currentTabElement.closest('div[class^="b7-wrapper"]');
+        if (rightElement.nextSibling !== null) {
+          that.currentTabElement = rightElement.nextSibling;
+          that.wrapperEditElement = rightElement.nextSibling;
+        } else {
+          that.wrapperEditElement = that.editorContent.firstChild;
+          that.currentTabElement = that.editorContent.firstChild;
+        }
+        that.containerEditElement = that.wrapperEditElement.firstChild;
+      } else {
+        that.wrapperEditElement = that.editorContent.firstChild;
+        if (that.wrapperEditElement){
+          that.containerEditElement = that.wrapperEditElement.firstChild;
+          that.currentTabElement = that.editorContent.firstChild;
+        }
+      }
+      document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+        that.wrapperEditElement,
+        that.containerEditElement,
+        that.rowEditElement,
+        that.colEditElement,
         that.componentEditElement
-      );
+      ));
     };
 
     this.setHeightWidthByViewPort();
@@ -390,6 +430,19 @@ class Editor extends EditorEvent {
             }
           });
 
+          /*
+          left right tab button | assign current element
+           */
+          if (that.componentEditElement !== undefined) {
+            that.currentTabElement = that.componentEditElement;
+          } else if (that.colEditElement !== undefined) {
+            that.currentTabElement = that.colEditElement;
+          } else if (that.containerEditElement !== undefined) {
+            that.currentTabElement = that.containerEditElement;
+          } else {
+            that.currentTabElement = undefined;
+          }
+
           document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
             that.wrapperEditElement,
             that.containerEditElement,
@@ -477,6 +530,7 @@ class Editor extends EditorEvent {
   clearStylingTools() {
     this.dropType = undefined;
     this.dropContent = undefined;
+    this.currentTabElement = undefined;
     this.parentElement.style.cursor = 'default';
     if (this.contentEditableText !== undefined) {
       this.contentEditableText.onclick = null;

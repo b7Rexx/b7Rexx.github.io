@@ -68,6 +68,7 @@ class Template {
     let that = this;
     this.editTemplate.onclick = function () {
       FileHelper.getFileContent(that.data, 'get', function (val) {
+        //Set template object for edit
         StoreHelper.setTemplateStorage(val);
         /*
         edit template on click - asynchronous file load
@@ -77,6 +78,10 @@ class Template {
     };
   }
 
+  /**
+   *
+   * @returns template DOM
+   */
   getTemplateBlock() {
     return this.template;
   }

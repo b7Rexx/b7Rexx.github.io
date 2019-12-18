@@ -18,16 +18,6 @@ class LayoutTool extends Tool {
     this.rowProps = undefined;
     this.colProps = undefined;
 
-    this.backgroundColorBlock = undefined;
-    this.containerBackgroundColorBlock = undefined;
-    this.containerPaddingBlock = undefined;
-    this.colBackgroundColorBlock = undefined;
-    this.colHeightBlock = undefined;
-    this.containerPositionBlock = undefined;
-    this.positionValueBlock = undefined;
-    this.wrapperPositionBlock = undefined;
-    this.backgroundProperty = undefined;
-
     this.moveWrapperUp = undefined;
     this.moveWrapperDown = undefined;
     this.moveRowUp = undefined;
@@ -36,6 +26,9 @@ class LayoutTool extends Tool {
     this.init();
   }
 
+  /***
+   * initialize layout tools, variables
+   */
   init() {
     this.layoutTool = document.createElement('div');
     this.layoutTool.classList.add('sidebar-style-block');

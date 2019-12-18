@@ -1,8 +1,9 @@
 class FileHelper {
   /*
+  asynchronous callback on file load
   @param {string} file - file url
   @param {string} method - get,post
-  @param {function} callbackResponse - asynchronous call back on file load
+  @param {function} callbackResponse
    */
   static getFileContent(file, method, callbackResponse) {
     let fileName = file || 'nofile';
@@ -28,9 +29,9 @@ class FileHelper {
   }
 
   /*
+    synchronous callback on file load
     @param {string} file - file url
     @param {string} method - get,post
-    @param {function} callbackResponse - asynchronous call back on file load
      */
   static getFileContentSync(file, method) {
     let fileName = file || 'nofile';
@@ -52,7 +53,7 @@ class FileHelper {
   }
 
   /*
-@param {array} webContent - edited web content for download
+@param {array} webContent - edited web content make ready for download
  */
   static downloadWebContent(webContent) {
     let parsedHtmlCss = this.parseTemplateWithCss(webContent);
@@ -108,6 +109,7 @@ class FileHelper {
 
 
   /*
+  parse json to html
   @param {array} templateData - preview template object
    */
   static parseTemplate(templateData) {
@@ -143,7 +145,8 @@ class FileHelper {
   }
 
   /*
-  @param {array} templateData - download object
+  separate html css from DOM object for download
+  @param {array} templateData
    */
   static parseTemplateWithCss(templateData) {
     let cssCounter = 1;
@@ -199,6 +202,7 @@ class FileHelper {
 
 
   /*
+  parse json to html for editor preview
   @param {array} editorData - preview template object
    */
   static parseEditorStorage(editorData) {

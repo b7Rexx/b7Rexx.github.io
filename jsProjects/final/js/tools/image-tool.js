@@ -7,16 +7,12 @@ class ImageTool extends Tool {
     this.childComponentProps = undefined;
     this.componentEditElement = undefined;
     this.componentEditImage = undefined;
-
-    this.imageSrcBlock = undefined;
-    this.imageAltBlock = undefined;
-    this.imageHeightBlock = undefined;
-    this.imageWidthBlock = undefined;
-    this.uploadImageBlock = undefined;
-    this.linkDiv = undefined;
     this.init();
   }
 
+  /**
+   * initialize image tools, variable
+   */
   init() {
     this.imageTool = document.createElement('div');
     this.imageTool.classList.add('sidebar-style-block');

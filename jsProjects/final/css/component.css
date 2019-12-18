@@ -55,27 +55,95 @@ ul.dropdown-content li {
   padding: 10px;
 }
 
+
 .b7-fitem {
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin: 15px 0;
+  font-size: 16 p x;
+  display: block;
 }
 
 .b7-fitem span {
   display: inline-block;
-  width: 25%;
-  font-weight: bold;
+  width: 30%;
+  text-align: right;
+  padding: 0 10px
 }
 
 .b7-fitem label {
-  display: inline-block;
-  width: 20%;
+  /*visibility: hidden;*/
+  font-size: 0;
+  width: 0;
 }
 
 .b7-fitem input {
   display: inline-block;
-  width: 45%;
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+  padding: 5px;
 }
 
-/*.b7-fitem[data-form-type="checkbox"]{*/
+.b7-fitem[data-form-type="checkbox"],
+.b7-fitem[data-form-type="radio"] {
+  display: inline;
+}
 
-/*}*/
+.b7-fitem[data-form-type="checkbox"] input,
+.b7-fitem[data-form-type="radio"] input {
+  width: 5%;
+}
+
+.b7-fitem[data-form-type="checkbox"] label,
+.b7-fitem[data-form-type="radio"] label {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.b7-fitem[data-form-type="button"],
+.b7-fitem[data-form-type="submit"] {
+  text-align: right;
+}
+
+.b7-fitem[data-form-type="button"] input,
+.b7-fitem[data-form-type="submit"] input {
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.b7-fitem[data-form-type="button"] input:hover,
+.b7-fitem[data-form-type="submit"] input:hover {
+  background: lightgrey;
+}
+
+/*
+wide style form component
+ */
+.b7-component-form[data-form-style="compact"] .b7-fitem span {
+  text-align: left
+}
+
+.b7-component-form[data-form-style="compact"] .b7-fitem input {
+  width: 90%;
+}
+
+.b7-component-form[data-form-style="compact"] .b7-fitem[data-form-type="checkbox"] input,
+.b7-component-form[data-form-style="compact"] .b7-fitem[data-form-type="radio"] input {
+  width: 5%;
+}
+
+.b7-component-form[data-form-style="compact"] .b7-fitem[data-form-type="button"] input,
+.b7-component-form[data-form-style="compact"] .b7-fitem[data-form-type="submit"] input {
+  width: 150px;
+}
+
+.b7-component-iframe {
+  overflow: auto;
+}
+
+.b7-component-image {
+  height: 200px;
+  width: 200px;
+}

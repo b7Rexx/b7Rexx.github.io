@@ -496,7 +496,6 @@ white
 .saved-edit {
   background: white !important;
   color: green !important;
-  box-shadow: 1px 1px 5px green !important;
 }
 
 .saved-edit:hover {
@@ -506,15 +505,14 @@ white
 }
 
 .unsaved-edit {
-  background: white !important;
-  color: #ffeb3b !important;
+  background: #ffeb3b !important;
+  color: #2874A6 !important;
 }
 
 .unsaved-edit:hover {
-  background: #ffeb3b !important;
-  color: white !important;
+  background: #2874A6 !important;
+  color: #ffeb3b !important;
 }
-
 
 .imagesrc-block-text input,
 .imagealt-block-text input {

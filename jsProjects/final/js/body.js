@@ -32,31 +32,10 @@ class Body {
     this.setNav = this.nav;
   }
 
-  set setNav(value) {
-    this.splash.style.display = 'none';
-    this.edit.style.display = 'none';
-    this.preview.style.display = 'none';
-    this.template.style.display = 'none';
-
-    this.nav = value;
-    switch (this.nav) {
-      case 'splash':
-        this.splash.style.display = 'block';
-        break;
-      case 'preview':
-        this.preview.style.display = 'block';
-        this.previewContent.updateContent(this.previewIntended);
-        break;
-      case 'edit':
-        this.edit.style.display = 'block';
-        this.editEditor.updateEditorContent();
-        break;
-      default:
-        this.template.style.display = 'block';
-        break;
-    }
-  }
-
+  /**
+   * Splash screen
+   * @returns {HTMLDivElement}
+   */
   getSplash() {
     let splash = document.createElement('div');
     splash.classList.add('splash-body');
@@ -114,6 +93,10 @@ class Body {
     return splash;
   }
 
+  /**
+   * Preview page
+   * @returns {HTMLDivElement}
+   */
   getPreview() {
     let preview = document.createElement('div');
     preview.classList.add('preview-body');
@@ -122,6 +105,10 @@ class Body {
     return preview;
   }
 
+  /**
+   * Editor page
+   * @returns {HTMLDivElement}
+   */
   getEdit() {
     let edit = document.createElement('div');
     edit.classList.add('edit-body');
@@ -139,6 +126,10 @@ class Body {
     return edit;
   }
 
+  /**
+   * Template list page
+   * @returns {HTMLDivElement}
+   */
   getTemplate() {
     var that = this;
     let template = document.createElement('div');
@@ -207,6 +198,35 @@ class Body {
       });
     });
     return template;
+  }
+
+  /**
+   * set page
+   * @param value
+   */
+  set setNav(value) {
+    this.splash.style.display = 'none';
+    this.edit.style.display = 'none';
+    this.preview.style.display = 'none';
+    this.template.style.display = 'none';
+
+    this.nav = value;
+    switch (this.nav) {
+      case 'splash':
+        this.splash.style.display = 'block';
+        break;
+      case 'preview':
+        this.preview.style.display = 'block';
+        this.previewContent.updateContent(this.previewIntended);
+        break;
+      case 'edit':
+        this.edit.style.display = 'block';
+        this.editEditor.updateEditorContent();
+        break;
+      default:
+        this.template.style.display = 'block';
+        break;
+    }
   }
 
   getTemplateList() {

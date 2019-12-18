@@ -1,4 +1,9 @@
 class DomHelper {
+  /**
+   *
+   * @param el {object} dom element of which index calculated
+   * @returns {string|number} number if success, string if fail
+   */
   static getIndexOfElement(el) {
     if (!el.parentNode)
       return 'parentNodeEmpty';

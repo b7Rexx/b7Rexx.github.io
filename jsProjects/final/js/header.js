@@ -34,6 +34,10 @@ class Header {
     this.setStatus = this.status;
   }
 
+  /**
+   *
+   * @returns header list
+   */
   getNavList() {
     return [
       // {name: this.appName, value: 'splash'},
@@ -46,6 +50,11 @@ class Header {
     ];
   }
 
+  /**
+   * set page
+   * @param navValue
+   * @returns {string}
+   */
   setNavImage(navValue) {
     let navImage = '';
     switch (navValue) {
@@ -76,6 +85,10 @@ class Header {
     return navImage;
   }
 
+  /**
+   * control header nav button visibility
+   * @param value
+   */
   set setStatus(value) {
     let that = this;
     this.status = value;

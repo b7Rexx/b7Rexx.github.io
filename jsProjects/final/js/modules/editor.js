@@ -34,6 +34,9 @@ class Editor extends EditorEvent {
     this.initListModal();
   }
 
+  /*
+  init empty editor with left right tab buttons
+   */
   setEmptyEditor() {
     let that = this;
     this.editorBlock = document.createElement('div');
@@ -48,6 +51,7 @@ class Editor extends EditorEvent {
     this.leftTabButton = document.createElement('a');
     this.leftTabButton.classList.add('left-tab-btn');
     this.leftTabButton.innerHTML = '<i class="fa fa-angle-left"></i>';
+    this.leftTabButton.setAttribute('title', 'prev wrapper');
     this.leftTabButton.onclick = function () {
       that.rowEditElement = undefined;
       that.colEditElement = undefined;
@@ -64,7 +68,7 @@ class Editor extends EditorEvent {
         that.containerEditElement = that.wrapperEditElement.firstChild;
       } else {
         that.wrapperEditElement = that.editorContent.lastChild;
-        if (that.wrapperEditElement){
+        if (that.wrapperEditElement) {
           that.containerEditElement = that.wrapperEditElement.firstChild;
           that.currentTabElement = that.editorContent.lastChild;
         }
@@ -81,6 +85,7 @@ class Editor extends EditorEvent {
     this.rightTabButton = document.createElement('a');
     this.rightTabButton.classList.add('right-tab-btn');
     this.rightTabButton.innerHTML = '<i class="fa fa-angle-right"></i>';
+    this.rightTabButton.setAttribute('title', 'next wrapper');
     this.rightTabButton.onclick = function () {
       if (that.currentTabElement !== undefined) {
         let rightElement = that.currentTabElement.closest('div[class^="b7-wrapper"]');
@@ -94,7 +99,7 @@ class Editor extends EditorEvent {
         that.containerEditElement = that.wrapperEditElement.firstChild;
       } else {
         that.wrapperEditElement = that.editorContent.firstChild;
-        if (that.wrapperEditElement){
+        if (that.wrapperEditElement) {
           that.containerEditElement = that.wrapperEditElement.firstChild;
           that.currentTabElement = that.editorContent.firstChild;
         }
@@ -150,8 +155,7 @@ class Editor extends EditorEvent {
   updateEditorContent() {
     let editStorage = StoreHelper.getEditStorage();
     this.editorContent.innerHTML = '';
-    let newEditContent = FileHelper.parseEditorStorage(editStorage);
-    this.editorContent.innerHTML = newEditContent;
+    this.editorContent.innerHTML = FileHelper.parseEditorStorage(editStorage);
   }
 
 
@@ -212,10 +216,18 @@ class Editor extends EditorEvent {
     }
   }
 
+  /**
+   * Editor click / dblclick event handler
+   * Editor drag and drop event handler
+   * Editor save state change handler
+   */
   editorContentEvent() {
     let that = this;
     let clearDrag = false;
 
+    /**
+     *Clear drag, click layout/component on esc key/outer document click
+     */
     document.onkeydown = function (event) {
       if (event.key === 'Escape') {
         clearDrag = true;
@@ -229,9 +241,17 @@ class Editor extends EditorEvent {
       }
     };
 
+    /**
+     * layout,component on drag
+     * @param event
+     */
     this.editorContent.ondragover = function (event) {
       event.preventDefault();
     };
+    /**
+     * layout,component on drop
+     * @param event
+     */
     this.editorContent.ondrop = function (event) {
       event.preventDefault();
       let eventPath = event.path || (event.composedPath && event.composedPath());
@@ -245,6 +265,9 @@ class Editor extends EditorEvent {
       // console.log('click pathing ', event.path);
       // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
+      /**
+       * drop type layout case
+       */
       if (that.dropType === 'layout') {
         if (eventPath.hasOwnProperty(0)) {
           let eventClickDom = eventPath[0];
@@ -277,6 +300,9 @@ class Editor extends EditorEvent {
         }
       }
 
+      /**
+       * drop type component case
+       */
       if (that.dropType === 'component') {
         if (eventPath.hasOwnProperty(0)) {
           let eventClickDom = eventPath[0];
@@ -318,7 +344,10 @@ class Editor extends EditorEvent {
 
     };
 
-
+    /**
+     * Editor on click event
+     * @param event
+     */
     this.editorContent.onclick =
       function (event) {
         let eventStyle = true;
@@ -334,6 +363,9 @@ class Editor extends EditorEvent {
         // console.log('click pathing ', event.path);
         // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
 
+        /**
+         * click with layout case
+         */
         if (that.dropType === 'layout') {
           if (eventPath.hasOwnProperty(0)) {
             let eventClickDom = eventPath[0];
@@ -368,6 +400,9 @@ class Editor extends EditorEvent {
           }
         }
 
+        /**
+         * click with component case
+         */
         if (that.dropType === 'component') {
           if (eventPath.hasOwnProperty(0)) {
             let eventClickDom = eventPath[0];
@@ -453,7 +488,6 @@ class Editor extends EditorEvent {
         }
       };
 
-    // this.editorContent.oncontextmenu = function (event) {
     this.editorContent.ondblclick = function (event) {
       let eventPath = event.path || (event.composedPath && event.composedPath());
 
@@ -527,6 +561,9 @@ class Editor extends EditorEvent {
     };
   }
 
+  /**
+   * clear/reset styling tools
+   */
   clearStylingTools() {
     this.dropType = undefined;
     this.dropContent = undefined;
@@ -552,7 +589,13 @@ class Editor extends EditorEvent {
     ));
   }
 
-
+  /**
+   * List Modal Editor
+   * Init
+   * Set
+   * Add
+   * Update
+   */
   initListModal() {
     let that = this;
     this.listModalDiv = document.createElement('div');
@@ -682,6 +725,9 @@ class Editor extends EditorEvent {
       dropTable.appendChild(tr);
     };
 
+    /**
+     * List with dropdown
+     */
     if (dropdown) {
       dropdownCheckbox.checked = true;
       dropTable.style.display = 'block';
@@ -756,6 +802,72 @@ class Editor extends EditorEvent {
     that.listModalContent.appendChild(row);
   }
 
+  updateList() {
+    let that = this;
+
+    let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
+    let dropdownBackground = that.listModal.style.background || '#ffffff';
+
+    that.listModal.innerHTML = '';
+    this.listModalDiv.style.display = 'none';
+    let listParent = document.createElement('ul');
+    listParent.classList.add('b7-list');
+    Object.values(this.listModalContent.children).forEach(function (value) {
+      let name = '';
+      let dataHref = '';
+      let dropdown = false;
+      let dropdownList;
+      Object.values(value.children).forEach(function (val, index) {
+        switch (index) {
+          case 0:
+            name = val.innerText || '';
+            break;
+          case 1:
+            dataHref = val.innerText || '';
+            break;
+          case 2:
+            let dropdownCheck = val.querySelector('input');
+            if (dropdownCheck.checked) {
+              dropdown = true;
+              dropdownList = document.createElement('ul');
+              dropdownList.classList.add('dropdown-content');
+              dropdownList.style.background = dropdownBackground;
+              let dropDownTable = val.querySelector('table');
+              for (let i = 0; i < dropDownTable.rows.length; i++) {
+                let dropdownLi = document.createElement('li');
+                dropdownLi.innerHTML = dropDownTable.rows[i].cells[0].innerText;
+                dropdownLi.setAttribute('data-href', dropDownTable.rows[i].cells[1].innerText);
+                dropdownList.appendChild(dropdownLi);
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      });
+      let listItem = document.createElement('li');
+      listItem.style.padding = listPadding;
+      if (dropdown) {
+        listItem.innerHTML = `<span>${name}</span>`;
+        listItem.appendChild(dropdownList);
+        listItem.setAttribute('data-dropdown', 'true');
+      } else
+        listItem.innerHTML = name;
+      listItem.classList.add('b7-item');
+      listItem.setAttribute('data-href', dataHref);
+
+      listParent.appendChild(listItem);
+    });
+    that.listModal.appendChild(listParent);
+  }
+
+  /**
+   * Form Modal Editor
+   * Init
+   * Set
+   * Add
+   * Update
+   */
   initFormModal() {
     let that = this;
     this.modalDiv = document.createElement('div');
@@ -821,7 +933,7 @@ class Editor extends EditorEvent {
     this.modalContent.innerHTML = '';
     let fitems = this.formModal.getElementsByClassName('b7-fitem');
     Object.values(fitems).forEach(function (value) {
-      let title = value.getAttribute('data-form-head');
+      let title = value.getAttribute('data-form-title');
       let label = value.getAttribute('data-form-label');
       let type = value.getAttribute('data-form-type');
       let name = value.getAttribute('data-form-name');
@@ -1012,67 +1124,11 @@ class Editor extends EditorEvent {
     });
   }
 
+  /**
+   * Get random number of 6 digits for unique label
+   * @returns {number}
+   */
   getRandom() {
     return Math.ceil(Math.random(100000, 999999) * 1000000);
-  }
-
-
-  updateList() {
-    let that = this;
-
-    let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
-    let dropdownBackground = that.listModal.style.background || '#ffffff';
-
-    that.listModal.innerHTML = '';
-    this.listModalDiv.style.display = 'none';
-    let listParent = document.createElement('ul');
-    listParent.classList.add('b7-list');
-    Object.values(this.listModalContent.children).forEach(function (value) {
-      let name = '';
-      let dataHref = '';
-      let dropdown = false;
-      let dropdownList;
-      Object.values(value.children).forEach(function (val, index) {
-        switch (index) {
-          case 0:
-            name = val.innerText || '';
-            break;
-          case 1:
-            dataHref = val.innerText || '';
-            break;
-          case 2:
-            let dropdownCheck = val.querySelector('input');
-            if (dropdownCheck.checked) {
-              dropdown = true;
-              dropdownList = document.createElement('ul');
-              dropdownList.classList.add('dropdown-content');
-              dropdownList.style.background = dropdownBackground;
-              let dropDownTable = val.querySelector('table');
-              for (let i = 0; i < dropDownTable.rows.length; i++) {
-                let dropdownLi = document.createElement('li');
-                dropdownLi.innerHTML = dropDownTable.rows[i].cells[0].innerText;
-                dropdownLi.setAttribute('data-href', dropDownTable.rows[i].cells[1].innerText);
-                dropdownList.appendChild(dropdownLi);
-              }
-            }
-            break;
-          default:
-            break;
-        }
-      });
-      let listItem = document.createElement('li');
-      listItem.style.padding = listPadding;
-      if (dropdown) {
-        listItem.innerHTML = `<span>${name}</span>`;
-        listItem.appendChild(dropdownList);
-        listItem.setAttribute('data-dropdown', 'true');
-      } else
-        listItem.innerHTML = name;
-      listItem.classList.add('b7-item');
-      listItem.setAttribute('data-href', dataHref);
-
-      listParent.appendChild(listItem);
-    });
-    that.listModal.appendChild(listParent);
   }
 }

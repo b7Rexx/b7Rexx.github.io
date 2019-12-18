@@ -23,6 +23,10 @@ class Topbar {
     this.setLayoutComponent();
   }
 
+  /**
+   * set Layout from layout.json
+   * set Component from component.json
+   */
   setLayoutComponent() {
     let that = this;
     this.btnDiv = document.createElement('div');
@@ -51,6 +55,10 @@ class Topbar {
     };
 
     let layoutCount = 0;
+    /**
+     * load layout list
+     * dispatch click, drag event
+     */
     FileHelper.getFileContent('api/layout.json', 'get', function (value) {
       if (Array.isArray(value))
         value.forEach(function (val) {
@@ -71,7 +79,12 @@ class Topbar {
           that.listLayoutBlock.style.width = (120 * layoutCount) + 'px';
         });
     });
+
     let componentCount = 0;
+    /**
+     * load layout list
+     * dispatch click, drag event
+     */
     FileHelper.getFileContent('api/component.json', 'get', function (value) {
       if (Array.isArray(value))
         value.forEach(function (val) {
@@ -92,8 +105,8 @@ class Topbar {
           that.listComponentBlock.style.width = (120 * componentCount) + 'px';
         });
     });
-    // this.setActive = 'layout';
-    this.setActive = 'component';
+    this.setActive = 'layout';
+    // this.setActive = 'component';
     this.btnDiv.appendChild(this.layoutBtn);
     this.btnDiv.appendChild(this.componentBtn);
     this.topbar.appendChild(this.btnDiv);
@@ -102,6 +115,10 @@ class Topbar {
     this.listDiv.appendChild(this.listComponentBlock);
   }
 
+  /**
+   * set layout,component tab on topbar
+   * @param value
+   */
   set setActive(value) {
     let that = this;
     if (this.active !== value) {

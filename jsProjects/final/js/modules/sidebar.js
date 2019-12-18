@@ -36,6 +36,9 @@ class Sidebar {
     this.changeToolElement();
   }
 
+  /**
+   * init sidebar components
+   */
   init() {
     let that = this;
     this.sidebar = document.createElement('div');
@@ -76,6 +79,9 @@ class Sidebar {
     this.setHeightWidthByViewPort();
   }
 
+  /**
+   * change height by viewport resize
+   */
   setHeightWidthByViewPort() {
     let that = this;
 
@@ -87,6 +93,10 @@ class Sidebar {
     });
   }
 
+  /**
+   * layout component tab
+   * @param value
+   */
   set setActiveBtn(value) {
     this.activeBtn = value;
     this.styleLayout.classList.remove('active');
@@ -97,6 +107,9 @@ class Sidebar {
       this.styleComponent.classList.add('active');
   }
 
+  /**
+   * init layout component edit tools
+   */
   initTools() {
     this.layoutTool = new LayoutTool(this.sidebarToolBlock);
     this.exampleTool = new ExampleTool(this.sidebarToolBlock);
@@ -107,10 +120,12 @@ class Sidebar {
     this.iframeTool = new IframeTool(this.sidebarToolBlock);
     this.formTool = new FormTool(this.sidebarToolBlock);
 
-
     this.updateSidebarTools();
   }
 
+  /**
+   * reset tools by click event on editor
+   */
   changeToolElement() {
     let that = this;
     document.addEventListener('custom-event-style-tool', function (event) {
@@ -135,8 +150,11 @@ class Sidebar {
     });
   }
 
+  /**
+   * selective display tools
+   */
   updateSidebarTools() {
-    //display none all
+    //display none to all before selective display
     this.layoutTool.layoutTool.style.display = 'none';
     this.exampleTool.exampleTool.style.display = 'none';
     this.textTool.textTool.style.display = 'none';
@@ -145,14 +163,16 @@ class Sidebar {
     this.tableTool.tableTool.style.display = 'none';
     this.iframeTool.iframeTool.style.display = 'none';
     this.formTool.formTool.style.display = 'none';
+
+    /**
+     * selective display and update property values
+     */
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';
         this.layoutTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.rowEditElement, this.colEditElement);
-        //    display block
-      }
+       }
     } else {
-      //    display block
       switch (this.toolType) {
         case 'b7-component-text':
           this.textTool.textTool.style.display = 'block';

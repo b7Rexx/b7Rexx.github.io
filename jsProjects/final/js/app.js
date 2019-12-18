@@ -3,8 +3,8 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    this.page = 'splash';
-    // this.page = 'edit';
+    // this.page = 'splash';
+    this.page = 'edit';
     // this.page = 'template';
     this.pageIntendedFrom = 'splash';
     this.editSaveState = true;
@@ -12,18 +12,30 @@ class App {
   }
 
   init() {
+    /**
+     * init header
+     * @type {Header}
+     */
     this.header = new Header(this.page, this.parentElement, 'b7WebBuilder');
+
+    /**
+     * init body
+     * @type {Body}
+     */
     this.body = new Body(this.page, this.parentElement, 'b7WebBuilder');
     this.changePageEvents();
   }
 
-  /*
-  route actions - trigger events
+  /**
+   * Event handlers
+   * trigger routes
    */
   changePageEvents() {
     var that = this;
+    /**
+     * header nav click events
+     */
     Object.values(this.header.navItems).forEach(function (value1) {
-
       let pageAttr = value1.getAttribute('data-value');
       switch (pageAttr) {
         case 'save':
@@ -56,6 +68,10 @@ class App {
           break;
       }
     });
+
+    /**
+     * splash button click events
+     */
     Object.values(document.getElementsByClassName('splash-button')).forEach(function (value) {
       value.onclick = function () {
         let page = value.getAttribute('data-value');
@@ -69,14 +85,28 @@ class App {
 
       };
     });
+
+    /**
+     * custom event from
+     */
     document.addEventListener('custom-event-progress-edit', function () {
       that.setPage = 'edit';
       that.body.previewIntended = 'splash';
     });
+
+    /**
+     * custom event from class Template
+     * template block preview on click
+     */
     document.addEventListener('custom-event-preview-template', function () {
       that.setPage = 'preview';
       that.body.previewIntended = 'template';
     });
+
+    /**
+     * custom event from class Template
+     * template block edit on click
+     */
     document.addEventListener('custom-event-edit-template', function () {
       //backup edit page and load preview to edit
       let backup = StoreHelper.getEditStorage();
@@ -85,6 +115,11 @@ class App {
       StoreHelper.setEditStorage(template);
       that.setPage = 'edit';
     });
+
+    /**
+     * custom event from class Editor
+     * edit state change
+     */
     document.addEventListener('custom-event-unsaved-state', function () {
       Object.values(that.header.navItems).forEach(function (value1) {
         if (value1.getAttribute('data-value') === 'save') {
@@ -96,7 +131,8 @@ class App {
   }
 
   /*
-  set current page > set header active > set body content
+  set page synchronous
+  set current page -> set header active -> set body content
    */
   set setPage(value) {
     this.pageIntendedFrom = this.page;
@@ -104,6 +140,9 @@ class App {
     this.header.setStatus = this.page;
     this.body.setNav = this.page;
 
+    /**
+     * disable editor css on preview and download
+     */
     if (value === 'preview') {
       if (document.styleSheets.hasOwnProperty(5))
         document.styleSheets[5].disabled = true;

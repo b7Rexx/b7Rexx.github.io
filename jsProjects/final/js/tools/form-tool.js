@@ -9,6 +9,9 @@ class FormTool extends Tool {
     this.init();
   }
 
+  /**
+   * initialize form tools, variable
+   */
   init() {
     this.formTool = document.createElement('div');
     this.formTool.classList.add('sidebar-style-block');
@@ -16,6 +19,7 @@ class FormTool extends Tool {
     this.parentElement.appendChild(this.formTool);
 
     this.moveComponentTool();
+    this.textColorTool();
     this.formDesignTool();
     this.displayTool();
 
@@ -36,6 +40,7 @@ class FormTool extends Tool {
     let that = this;
     this.displaySelect.value = this.componentProps.display;
     this.designSelect.value = this.componentEditElement.getAttribute('data-form-style') || 'compact';
+    this.fontColorBlock.children[1].value = this.componentProps.color;
 
     //move component
     if (this.componentEditElement !== undefined) {
@@ -97,6 +102,20 @@ class FormTool extends Tool {
     this.displayBlock.appendChild(displaySpan);
     this.displayBlock.appendChild(this.displaySelect);
     this.formTool.appendChild(this.displayBlock);
+  }
+
+  textColorTool() {
+    let that = this;
+    this.fontColorBlock = document.createElement('div');
+    this.fontColorBlock.classList.add('text-style');
+    this.fontColorBlock.classList.add('fontcolor-block-text');
+    this.fontColorBlock.innerHTML =
+      '<span>Font color </span>' +
+      '<input type="color">';
+    this.formTool.appendChild(this.fontColorBlock);
+    this.fontColorBlock.children[1].onchange = function () {
+      that.componentEditElement.style.color = this.value;
+    };
   }
 
   formDesignTool() {

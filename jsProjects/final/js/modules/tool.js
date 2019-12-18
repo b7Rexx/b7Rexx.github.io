@@ -1,4 +1,9 @@
 class Tool {
+  /**
+   *Wrapper css property
+   * @param elem
+   * @returns CSS properties
+   */
   getWrapperProperty(elem) {
     if (elem !== undefined) {
       return {
@@ -22,6 +27,11 @@ class Tool {
     return undefined;
   }
 
+  /**
+   *Container css property
+   * @param elem
+   * @returns CSS properties
+   */
   getContainerProperty(elem) {
     if (elem !== undefined) {
       return {
@@ -42,6 +52,11 @@ class Tool {
     return undefined;
   }
 
+  /**
+   *Column css property
+   * @param elem
+   * @returns CSS properties
+   */
   getColProperty(elem) {
     if (elem !== undefined) {
       return {
@@ -55,6 +70,11 @@ class Tool {
     return undefined;
   }
 
+  /**
+   *Component css property
+   * @param elem
+   * @returns CSS properties
+   */
   getComponentProperty(elem) {
     if (elem !== undefined) {
       return {
@@ -93,6 +113,11 @@ class Tool {
     return undefined;
   }
 
+  /**
+   * convert rgb to hex color code
+   * @param rgb from background, color
+   * @returns {string} color code
+   */
   rgbToHex(rgb) {
     let hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 
@@ -117,17 +142,9 @@ class Tool {
   getComputed if inline is empty
    */
   static getComputed(elem, propertyName, style) {
-    // style = style || true;
-    // if (style) {
     if (elem.style.getPropertyValue(propertyName))
       return elem.style.getPropertyValue(propertyName);
     else
       return window.getComputedStyle(elem).getPropertyValue(propertyName);
-    // } else {
-    // if (elem.getPropertyValue(propertyName))
-    //   return elem.getPropertyValue(propertyName);
-    // else
-    //   return window.getComputedStyle(elem).getPropertyValue(propertyName);
-    // }
   }
 }

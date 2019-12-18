@@ -17,6 +17,7 @@ class IframeTool extends Tool {
     this.moveComponentTool();
 
     this.textContent();
+    this.iframeSize();
     this.displayTool();
 
     this.removeAll();
@@ -36,6 +37,8 @@ class IframeTool extends Tool {
     let that = this;
     this.textContentBlock.innerHTML = this.componentEditElement.innerHTML;
     this.displaySelect.value = this.componentProps.display;
+    this.imageHeightBlock.children[1].value = this.componentProps.height;
+    this.imageWidthBlock.children[1].value = this.componentProps.width;
 
 
     //move component
@@ -112,6 +115,38 @@ class IframeTool extends Tool {
     this.displayBlock.appendChild(this.displaySelect);
     this.iframeTool.appendChild(this.displayBlock);
   }
+
+  iframeSize() {
+    let that = this;
+    this.iframeHeightBlock = document.createElement('div');
+    this.iframeHeightBlock.classList.add('text-style');
+    this.iframeHeightBlock.classList.add('imageheight-block-text');
+    this.iframeHeightBlock.innerHTML =
+      '<span>Height</span>' +
+      '<input type="text">';
+    this.iframeTool.appendChild(this.iframeHeightBlock);
+    this.iframeHeightBlock.children[1].onchange = function () {
+      that.componentEditElement.style.height = this.value;
+    };
+    this.iframeHeightBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.height = this.value;
+    };
+
+    this.iframeWidthBlock = document.createElement('div');
+    this.iframeWidthBlock.classList.add('text-style');
+    this.iframeWidthBlock.classList.add('imagewidth-block-text');
+    this.iframeWidthBlock.innerHTML =
+      '<span>Width</span>' +
+      '<input type="text">';
+    this.iframeTool.appendChild(this.iframeWidthBlock);
+    this.iframeWidthBlock.children[1].onchange = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+    this.iframeWidthBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.width = this.value;
+    };
+  }
+
 
   removeAll() {
     let that = this;

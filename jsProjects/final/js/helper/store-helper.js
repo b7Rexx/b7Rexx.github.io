@@ -1,7 +1,9 @@
+/*
+get/set localStorage
+ */
 class StoreHelper {
-
   /*
-  @param {object} webData
+  @param  {object}  webData
    */
   static setPreviewStorage(webData) {
     let webString = JSON.stringify(webData);
@@ -9,14 +11,14 @@ class StoreHelper {
   }
 
   /*
-  @return localStorage object
+  @return localStorage  object
    */
   static getPreviewStorage() {
     return JSON.parse(localStorage.getItem('preview-b7-web-builder'));
   }
 
   /*
-@param {object} webData
+@param  {object}  webData
  */
   static setTemplateStorage(webData) {
     let webString = JSON.stringify(webData);
@@ -24,14 +26,14 @@ class StoreHelper {
   }
 
   /*
-  @return localStorage object
+  @return localStorage  object
    */
   static getTemplateStorage() {
     return JSON.parse(localStorage.getItem('template-b7-web-builder'));
   }
 
   /*
-@param {object} webData
+@param  {object}  webData
  */
   static setEditStorage(webData) {
     let webString = JSON.stringify(webData);
@@ -46,7 +48,7 @@ class StoreHelper {
   }
 
   /*
-  @param {object} webData
+  @param  {object}  webData
    */
   static setEditBackupStorage(webData) {
     let webString = JSON.stringify(webData);
@@ -54,14 +56,14 @@ class StoreHelper {
   }
 
   /*
-  @return localStorage object
+  @return localStorage  object
    */
   static getEditBackupStorage() {
     return JSON.parse(localStorage.getItem('edit-backup-b7-web-builder'));
   }
 
   /*
-@param {object} webData
+@param  {object}  webData
  */
   static setDownloadStorage(webData) {
     let webString = JSON.stringify(webData);
@@ -69,7 +71,7 @@ class StoreHelper {
   }
 
   /*
-  @return localStorage object
+  @return localStorage  object
    */
   static getDownloadStorage() {
     return JSON.parse(localStorage.getItem('download-b7-web-builder'));

@@ -3,20 +3,13 @@ class EditorEvent {
     this.dropContent = undefined;
     this.dropType = undefined;
 
-    /*
-    Sidebar styling elements
-     */
-    this.wrapperEditElement = undefined;
-    this.containerEditElement = undefined;
-    this.rowEditElement = undefined;
-    this.colEditElement = undefined;
-    this.componentEditElement = undefined;
-
-
     this.layoutEvent();
     this.componentEvent();
   }
 
+  /**
+   * throw layout click event
+   */
   layoutEvent() {
     let that = this;
     document.addEventListener('custom-event-layout-click', function (val) {
@@ -26,6 +19,9 @@ class EditorEvent {
     })
   }
 
+  /**
+   * throw component click event
+   */
   componentEvent() {
     let that = this;
     document.addEventListener('custom-event-component-click', function (val) {

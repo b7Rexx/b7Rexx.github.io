@@ -18,7 +18,6 @@ class ListTool extends Tool {
     this.listTool.classList.add('sidebar-style-block');
     this.listTool.classList.add('image-style-block');
     this.parentElement.appendChild(this.listTool);
-    let hrLine1 = document.createElement('hr');
     this.moveComponentTool();
     this.fontSizeTool();
     this.textColorTool();
@@ -27,9 +26,6 @@ class ListTool extends Tool {
     this.listStyleType();
     this.displayTool();
     this.floatTool();
-    // this.listTool.appendChild(hrLine1);
-    // this.listTool.append('List Items');
-    // this.accumulateList();
     this.removeAll();
   }
 
@@ -57,7 +53,7 @@ class ListTool extends Tool {
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
 
     if (this.componentEditLi)
-    this.paddingBlock.children[1].value = this.componentEditLi.style.padding || 0;
+      this.paddingBlock.children[1].value = this.componentEditLi.style.padding || 0;
     this.listBulletTypeBlock.children[1].value = this.componentPropsUl.listStyleType;
     this.displaySelect.value = this.componentProps.display;
     this.fontColorBlock.children[1].value = this.componentProps.color;
@@ -66,63 +62,12 @@ class ListTool extends Tool {
       this.floatSelect.value = this.componentEditElement.firstChild.style.float;
     else
       this.floatSelect.value = 'none';
-    //  accumulate list
-    // if (this.componentEditElement !== undefined) {
-    // this.accumulateListBlock.innerHTML = '';
-    // Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
-    //   let itemDiv = document.createElement('div');
-    //   itemDiv.classList.add('list-item-div');
-    //   itemDiv.append((index + 1) + ') ');
-    //   let itemInput = document.createElement('input');
-    //   itemInput.value = item.innerText;
-    //
-    //   itemInput.onkeyup = function () {
-    //     item.innerText = this.value;
-    //   };
-    //   itemInput.onchange = function () {
-    //     item.innerText = this.value;
-    //   };
-    //
-    //   let itemRemove = document.createElement('button');
-    //   itemRemove.innerHTML = '<i class="fa fa-times"></i>';
-    //   itemRemove.onclick = function () {
-    //     item.remove();
-    //     itemDiv.remove();
-    //   };
 
-    //   let linkSpan = document.createElement('span');
-    //   linkSpan.innerHTML = '<br>set link:';
-    //   let linkInput = document.createElement('input');
-    //   linkInput.value = item.getAttribute('data-href');
-    //   linkInput.onkeyup = function () {
-    //     item.setAttribute('data-href', this.value);
-    //   };
-    //
-    //   that.accumulateListBlock.appendChild(itemDiv);
-    //   itemDiv.appendChild(itemInput);
-    //   itemDiv.appendChild(itemRemove);
-    //   itemDiv.appendChild(linkSpan);
-    //   itemDiv.appendChild(linkInput);
-    // });
-    //
-    // let addItem = document.createElement('button');
-    // addItem.innerHTML = '<i class="fa fa-plus"></i>';
-    // addItem.onclick = function () {
-    //   let newItem = document.createElement('li');
-    //   newItem.classList.add('b7-item');
-    //   newItem.style.padding = that.paddingBlock.children[1].value;
-    //   newItem.innerText = 'List Item';
-    //   that.componentEditElement.children[0].appendChild(newItem);
-    //   that.updateChanges();
-    // };
-    // that.accumulateListBlock.appendChild(addItem);
-
-      if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
-        document.getElementById('horizontal-liststyle').checked = true;
-      } else {
-        document.getElementById('vertical-liststyle').checked = true;
-      }
-    // }
+    if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
+      document.getElementById('horizontal-liststyle').checked = true;
+    } else {
+      document.getElementById('vertical-liststyle').checked = true;
+    }
 
     //move component
     if (this.componentEditElement !== undefined) {

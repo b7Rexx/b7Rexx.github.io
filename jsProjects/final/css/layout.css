@@ -2,6 +2,10 @@ div[class^="b7-wrapper"] {
   position: relative;
 }
 
+.b7-wrapper[data-temp-position="fixed"] {
+  z-index: 100;
+}
+
 .b7-container-fluid {
   width: 100%;
 }
@@ -27,7 +31,6 @@ div[class^="b7-col"] {
   height: auto;
   float: left;
   word-break: break-all;
-  overflow: auto;
 }
 
 div[class^="b7-col"]:after {

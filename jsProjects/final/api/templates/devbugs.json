@@ -1,0 +1,445 @@
+[
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(52, 58, 64); position: absolute; width: 100%; overflow: visible; height: 70px; top: 0px; z-index: 100;"
+      },
+      {
+        "name": "data-temp-position",
+        "value": "fixed"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-four"
+              },
+              {
+                "name": "data-css",
+                "value": "1"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-2"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "2"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "3"
+                      },
+                      {
+                        "name": "style",
+                        "value": "height: 50px; width: 50px; display: inline-block;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://images.vexels.com/media/users/3/157968/isolated/lists/d641e9bf473de1da0e89cab313b16a68-earth-nature-love-icon.png"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "logo"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "4"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "devBugs",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "5"
+                      },
+                      {
+                        "name": "style",
+                        "value": "display: inline-block; position: absolute; top: 15px; right: auto; bottom: auto; left: 60px; z-index: auto; font-weight: normal; font-size: 18px; color: rgb(255, 255, 255);"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-4"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "6"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-list"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "7"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(255, 255, 255); font-size: 18px;"
+                      },
+                      {
+                        "name": "list-style",
+                        "value": "horizontal-list"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "UL",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-list"
+                          },
+                          {
+                            "name": "style",
+                            "value": "float: right; list-style: circle;"
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "LI",
+                            "innerText": "Posts",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "data-href",
+                                "value": ""
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "data-dropdown",
+                                "value": "true"
+                              },
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "data-href",
+                                "value": ""
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": [
+                              {
+                                "tagName": "SPAN",
+                                "innerText": "Categories",
+                                "attributes": [],
+                                "children": []
+                              },
+                              {
+                                "tagName": "UL",
+                                "innerText": "",
+                                "attributes": [
+                                  {
+                                    "name": "class",
+                                    "value": "dropdown-content"
+                                  },
+                                  {
+                                    "name": "style",
+                                    "value": "background: rgb(0, 0, 0);"
+                                  }
+                                ],
+                                "children": [
+                                  {
+                                    "tagName": "LI",
+                                    "innerText": "Development",
+                                    "attributes": [
+                                      {
+                                        "name": "data-href",
+                                        "value": ""
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "tagName": "LI",
+                                    "innerText": "Software",
+                                    "attributes": [
+                                      {
+                                        "name": "data-href",
+                                        "value": ""
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Projects",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "data-href",
+                                "value": ""
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "About",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "data-href",
+                                "value": ""
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Contact",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "data-href",
+                                "value": ""
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "data-background-image",
+        "value": "set"
+      },
+      {
+        "name": "style",
+        "value": "background-image: url(\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrUigBmA463K_AE0MsSQVWkFT7FziDUTyMCh9I6WiTvUd6Xs-JAg&s\");"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container-fluid"
+          },
+          {
+            "name": "style",
+            "value": "padding: 70px 0px 0px;"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-one"
+              },
+              {
+                "name": "data-css",
+                "value": "1"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-6"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "2"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "font-size: 40px; text-align: center; color: rgb(255, 255, 255); padding: 150px 0px 0px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "H1",
+                        "innerText": "devBugs",
+                        "attributes": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "A personal developer Blog",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "text-align: center; color: rgb(255, 255, 255); font-size: 24px; padding: 20px 0px 150px;"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

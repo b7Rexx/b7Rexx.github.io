@@ -10,12 +10,6 @@ class ListTool extends Tool {
     this.componentEditUl = undefined;
     this.componentEditLi = undefined;
 
-    this.fontSizeBlock = undefined;
-    this.accumulateListBlock = undefined;
-    this.fontSizeBlock = undefined;
-    this.listStyleBlock = undefined;
-    this.paddingBlock = undefined;
-    this.listBulletTypeBlock = undefined;
     this.init();
   }
 
@@ -27,10 +21,12 @@ class ListTool extends Tool {
     let hrLine1 = document.createElement('hr');
     this.moveComponentTool();
     this.fontSizeTool();
+    this.textColorTool();
     this.paddingTool();
     this.listStyle();
     this.listStyleType();
     this.displayTool();
+    this.floatTool();
     // this.listTool.appendChild(hrLine1);
     // this.listTool.append('List Items');
     // this.accumulateList();
@@ -39,10 +35,10 @@ class ListTool extends Tool {
 
   updateStyleTools(component) {
     this.componentEditElement = component;
-    if (component.children[0] !== undefined) {
-      this.componentEditUl = component.children[0];
-      if (component.children[0].children[0] !== undefined) {
-        this.componentEditLi = component.children[0].children[0];
+    if (component.firstChild !== undefined) {
+      this.componentEditUl = component.firstChild;
+      if (component.firstChild.firstChild !== undefined) {
+        this.componentEditLi = component.firstChild.firstChild;
       }
     }
 
@@ -59,10 +55,17 @@ class ListTool extends Tool {
   updateChanges() {
     let that = this;
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
-    this.paddingBlock.children[1].value = this.componentPropsLi.padding || 0;
-    // this.listBulletTypeBlock.children[1].value = this.componentProps.listStyleType;
-    this.displaySelect.value = this.componentProps.display;
 
+    if (this.componentEditLi)
+    this.paddingBlock.children[1].value = this.componentEditLi.style.padding || 0;
+    this.listBulletTypeBlock.children[1].value = this.componentPropsUl.listStyleType;
+    this.displaySelect.value = this.componentProps.display;
+    this.fontColorBlock.children[1].value = this.componentProps.color;
+
+    if (this.componentEditElement.firstChild.style.float)
+      this.floatSelect.value = this.componentEditElement.firstChild.style.float;
+    else
+      this.floatSelect.value = 'none';
     //  accumulate list
     // if (this.componentEditElement !== undefined) {
     // this.accumulateListBlock.innerHTML = '';
@@ -114,11 +117,11 @@ class ListTool extends Tool {
     // };
     // that.accumulateListBlock.appendChild(addItem);
 
-    //   if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
-    //     document.getElementById('horizontal-liststyle').checked = true;
-    //   } else {
-    //     document.getElementById('vertical-liststyle').checked = true;
-    //   }
+      if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
+        document.getElementById('horizontal-liststyle').checked = true;
+      } else {
+        document.getElementById('vertical-liststyle').checked = true;
+      }
     // }
 
     //move component
@@ -183,6 +186,20 @@ class ListTool extends Tool {
     };
     this.fontSizeBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.fontSize = this.value;
+    };
+  }
+
+  textColorTool() {
+    let that = this;
+    this.fontColorBlock = document.createElement('div');
+    this.fontColorBlock.classList.add('text-style');
+    this.fontColorBlock.classList.add('fontcolor-block-text');
+    this.fontColorBlock.innerHTML =
+      '<span>Font color </span>' +
+      '<input type="color">';
+    this.listTool.appendChild(this.fontColorBlock);
+    this.fontColorBlock.children[1].onchange = function () {
+      that.componentEditElement.style.color = this.value;
     };
   }
 
@@ -253,6 +270,27 @@ class ListTool extends Tool {
     this.displayBlock.appendChild(displaySpan);
     this.displayBlock.appendChild(this.displaySelect);
     this.listTool.appendChild(this.displayBlock);
+  }
+
+  floatTool() {
+    let that = this;
+    this.floatBlock = document.createElement('div');
+    this.floatBlock.classList.add('text-style');
+
+    let floatSpan = document.createElement('span');
+    floatSpan.innerHTML = 'Float : ';
+    this.floatSelect = document.createElement('select');
+    this.floatSelect.innerHTML =
+      '<option value="none">none</option>' +
+      '<option value="left">left</option>' +
+      '<option value="right">right</option>';
+
+    this.floatSelect.onchange = function () {
+      that.componentEditElement.firstChild.style.float = this.value;
+    };
+    this.floatBlock.appendChild(floatSpan);
+    this.floatBlock.appendChild(this.floatSelect);
+    this.listTool.appendChild(this.floatBlock);
   }
 
   listStyleType() {

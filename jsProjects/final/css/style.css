@@ -1,55 +1,4 @@
 /*
-editor remove css at download
- */
-.b7-container-fluid, .b7-container {
-  min-height: 50px;
-  margin-bottom: 20px;
-  -webkit-box-shadow: 0 0 2px 0 #2874A6;
-  -moz-box-shadow: 0 0 2px 0 #2874A6;
-  box-shadow: 0 0 2px 0 #2874A6;
-
-}
-
-.b7-container-fluid:last-child, .b7-container:last-child {
-  padding-bottom: 30px;
-}
-
-div[class^="b7-layout"] {
-  /*margin: 10px 0;*/
-  min-height: 50px;
-  -webkit-box-shadow: 0 0 2px 0 #2874A6;
-  -moz-box-shadow: 0 0 2px 0 #2874A6;
-  box-shadow: 0 0 2px 0 #2874A6;
-}
-
-div[class^="b7-col"] {
-  min-height: 50px;
-  -webkit-box-shadow: 0 0 2px 0 #f15a22;
-  -moz-box-shadow: 0 0 2px 0 #f15a22;
-  box-shadow: 0 0 2px 0 #f15a22;
-}
-
-div[class^="b7-component"]:hover {
-  min-height: 20px;
-  -webkit-box-shadow: 0 0 2px 0 #f15a22;
-  -moz-box-shadow: 0 0 2px 0 #f15a22;
-  box-shadow: 0 0 2px 0 #f15a22;
-}
-
-.b7-container-fluid:hover, .b7-container:hover {
-  -webkit-box-shadow: 0 0 10px 2px #2874A6;
-  -moz-box-shadow: 0 0 10px 2px #2874A6;
-  box-shadow: 0 0 10px 2px #2874A6;
-}
-
-div[class^="b7-col"]:hover {
-  min-height: 50px;
-  -webkit-box-shadow: 0 0 10px 2px #f15a22;
-  -moz-box-shadow: 0 0 10px 2px #f15a22;
-  box-shadow: 0 0 10px 2px #f15a22;
-}
-
-/*
 whitesmoke
 #2874A6
 #f15a22
@@ -172,6 +121,7 @@ white
 
 .template-name {
   position: absolute;
+  opacity: 0.1;
   padding: 10px;
   color: #f15a22;
   z-index: 10;
@@ -204,6 +154,10 @@ white
 
 .template-content:hover .template-preview, .template-content:hover .template-edit {
   display: block;
+}
+
+.template-content:hover .template-name {
+  opacity: 1;
 }
 
 .template-content:hover .template-image {

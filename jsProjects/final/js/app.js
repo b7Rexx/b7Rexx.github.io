@@ -103,5 +103,13 @@ class App {
     this.page = value;
     this.header.setStatus = this.page;
     this.body.setNav = this.page;
+
+    if (value === 'preview') {
+      if (document.styleSheets.hasOwnProperty(5))
+        document.styleSheets[5].disabled = true;
+    } else {
+      if (document.styleSheets.hasOwnProperty(5))
+        document.styleSheets[5].disabled = false;
+    }
   }
 }

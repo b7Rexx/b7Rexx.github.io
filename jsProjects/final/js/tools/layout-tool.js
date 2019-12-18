@@ -187,17 +187,17 @@ class LayoutTool extends Tool {
           }
         });
       }
-      let checkBgImage = this.wrapperEditElement.getAttribute('data-background-image');
-      let bgImage = this.wrapperProps.backgroundImage;
-      if (checkBgImage) {
-        this.linkBgImage.checked = true;
-        this.backgroundProperty.style.display = 'block';
-        this.imageSrcBlock.children[1].value = bgImage;
-      } else {
-        this.linkBgImage.checked = false;
-        this.backgroundProperty.style.display = 'none';
-        this.imageSrcBlock.children[1].value = '';
-      }
+    }
+    let checkBgImage = this.wrapperEditElement.getAttribute('data-background-image');
+    let bgImage = this.wrapperProps.backgroundImage;
+    if (checkBgImage === 'set') {
+      this.linkBgImage.checked = true;
+      this.backgroundProperty.style.display = 'block';
+      this.imageSrcBlock.children[1].value = bgImage;
+    } else {
+      this.linkBgImage.checked = false;
+      this.backgroundProperty.style.display = 'none';
+      this.imageSrcBlock.children[1].value = '';
     }
 
 
@@ -247,7 +247,7 @@ class LayoutTool extends Tool {
     this.linkBgImage.setAttribute('id', 'wrapper-bg-image');
     this.linkBgImage.onchange = function () {
       if (this.checked) {
-        that.wrapperEditElement.setAttribute('data-background-image', true);
+        that.wrapperEditElement.setAttribute('data-background-image', 'set');
         that.backgroundProperty.style.display = 'block';
       } else {
         that.backgroundProperty.style.display = 'none';

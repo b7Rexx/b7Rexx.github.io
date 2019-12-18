@@ -53,7 +53,7 @@ class Preview {
   /*
   custom.js export functions
    */
-  customJsFunctions(){
+  customJsFunctions() {
 
     let wrappers = document.getElementsByClassName('b7-wrapper');
     Object.values(wrappers).forEach(function (value) {
@@ -83,6 +83,5 @@ class Preview {
         };
       }
     });
-
   }
 }

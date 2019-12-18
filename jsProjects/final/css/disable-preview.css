@@ -1,0 +1,52 @@
+.b7-container-fluid, .b7-container {
+  min-height: 50px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 2px 0 #2874A6;
+  -moz-box-shadow: 0 0 2px 0 #2874A6;
+  box-shadow: 0 0 2px 0 #2874A6;
+
+}
+
+.b7-wrapper[data-temp-position="fixed"] .b7-container-fluid:last-child,
+.b7-wrapper[data-temp-position="fixed"] .b7-container:last-child {
+  padding-bottom: 15px;
+}
+
+.b7-wrapper .b7-container-fluid:last-child, .b7-wrapper .b7-container:last-child {
+  padding-bottom: 30px;
+}
+
+div[class^="b7-layout"] {
+  /*margin: 10px 0;*/
+  min-height: 50px;
+  -webkit-box-shadow: 0 0 2px 0 #2874A6;
+  -moz-box-shadow: 0 0 2px 0 #2874A6;
+  box-shadow: 0 0 2px 0 #2874A6;
+}
+
+div[class^="b7-col"] {
+  min-height: 50px;
+  -webkit-box-shadow: 0 0 2px 0 #f15a22;
+  -moz-box-shadow: 0 0 2px 0 #f15a22;
+  box-shadow: 0 0 2px 0 #f15a22;
+}
+
+div[class^="b7-component"]:hover {
+  min-height: 20px;
+  -webkit-box-shadow: 0 0 2px 0 #f15a22;
+  -moz-box-shadow: 0 0 2px 0 #f15a22;
+  box-shadow: 0 0 2px 0 #f15a22;
+}
+
+.b7-container-fluid:hover, .b7-container:hover {
+  -webkit-box-shadow: 0 0 10px 2px #2874A6;
+  -moz-box-shadow: 0 0 10px 2px #2874A6;
+  box-shadow: 0 0 10px 2px #2874A6;
+}
+
+div[class^="b7-col"]:hover {
+  min-height: 50px;
+  -webkit-box-shadow: 0 0 10px 2px #f15a22;
+  -moz-box-shadow: 0 0 10px 2px #f15a22;
+  box-shadow: 0 0 10px 2px #f15a22;
+}

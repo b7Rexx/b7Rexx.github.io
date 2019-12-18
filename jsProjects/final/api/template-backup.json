@@ -16,11 +16,5 @@
     "image": "assets/templates/template1.png",
     "date": 1575693962065,
     "data": "api/templates/template-2.json"
-  },
-  {
-    "name": "Dev Bugs | Nav section",
-    "image": "assets/templates/devbugs.png",
-    "date": 1575693982065,
-    "data": "api/templates/devbugs.json"
   }
 ]

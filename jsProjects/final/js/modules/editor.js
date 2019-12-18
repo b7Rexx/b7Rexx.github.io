@@ -595,7 +595,6 @@ class Editor extends EditorEvent {
       dropTable.appendChild(tr);
     };
 
-
     if (dropdown) {
       dropdownCheckbox.checked = true;
       dropTable.style.display = 'block';
@@ -933,6 +932,10 @@ class Editor extends EditorEvent {
 
   updateList() {
     let that = this;
+
+    let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
+    let dropdownBackground = that.listModal.style.background || '#000000';
+
     that.listModal.innerHTML = '';
     this.listModalDiv.style.display = 'none';
     let listParent = document.createElement('ul');
@@ -956,6 +959,7 @@ class Editor extends EditorEvent {
               dropdown = true;
               dropdownList = document.createElement('ul');
               dropdownList.classList.add('dropdown-content');
+              dropdownList.style.background = dropdownBackground;
               let dropDownTable = val.querySelector('table');
               for (let i = 0; i < dropDownTable.rows.length; i++) {
                 let dropdownLi = document.createElement('li');
@@ -970,6 +974,7 @@ class Editor extends EditorEvent {
         }
       });
       let listItem = document.createElement('li');
+      listItem.style.padding = listPadding;
       if (dropdown) {
         listItem.innerHTML = `<span>${name}</span>`;
         listItem.appendChild(dropdownList);

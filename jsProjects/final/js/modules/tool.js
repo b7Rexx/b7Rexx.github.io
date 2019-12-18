@@ -87,6 +87,7 @@ class Tool {
         fontStyle: Tool.getComputed(elem, 'font-style') || 'normal',
         textDecoration: Tool.getComputed(elem, 'text-decoration') || 'none',
         listStyle: Tool.getComputed(elem, 'list-style') || 'none',
+        listStyleType: Tool.getComputed(elem, 'list-style-type') || 'none',
       };
     }
     return undefined;
@@ -97,7 +98,11 @@ class Tool {
 
 //Function to convert rgb color to hex format
     rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+
+    if (rgb)
+      return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    else
+      return '#000000';
 
     function hex(x) {
       return isNaN(x) ? '00' : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];

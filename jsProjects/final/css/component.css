@@ -39,6 +39,7 @@ ul.dropdown-content {
   padding: 5px;
   min-width: 150px;
   z-index: 50;
+  border-radius: 10px;
 }
 
 ul.dropdown-content li {
@@ -49,3 +50,32 @@ ul.dropdown-content li {
 .b7-item[data-dropdown="true"]:hover ul.dropdown-content {
   display: block;
 }
+
+.b7-component-form {
+  padding: 10px;
+}
+
+.b7-fitem {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.b7-fitem span {
+  display: inline-block;
+  width: 25%;
+  font-weight: bold;
+}
+
+.b7-fitem label {
+  display: inline-block;
+  width: 20%;
+}
+
+.b7-fitem input {
+  display: inline-block;
+  width: 45%;
+}
+
+/*.b7-fitem[data-form-type="checkbox"]{*/
+
+/*}*/

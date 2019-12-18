@@ -1021,7 +1021,7 @@ class Editor extends EditorEvent {
     let that = this;
 
     let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
-    let dropdownBackground = that.listModal.style.background || '#000000';
+    let dropdownBackground = that.listModal.style.background || '#ffffff';
 
     that.listModal.innerHTML = '';
     this.listModalDiv.style.display = 'none';

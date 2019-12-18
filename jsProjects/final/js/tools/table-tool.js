@@ -39,8 +39,8 @@ class TableTool extends Tool {
     this.rowBlock.children[1].value = this.componentEditElement.children[0].tBodies[0].rows.length;
     this.columnBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells.length;
     this.paddingBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells[0].style.padding || 0;
-    this.tableHeightBlock.children[1].value = this.componentProps.height;
-    this.tableWidthBlock.children[1].value = this.componentProps.width;
+    this.tableHeightBlock.children[1].value = this.componentEditElement.firstChild.style.height;
+    this.tableWidthBlock.children[1].value = this.componentEditElement.firstChild.style.width;
     this.displaySelect.value = this.componentProps.display;
 
     //move component
@@ -165,10 +165,10 @@ class TableTool extends Tool {
       '<input type="text">';
     this.tableTool.appendChild(this.tableHeightBlock);
     this.tableHeightBlock.children[1].onchange = function () {
-      that.componentEditElement.style.height = this.value;
+      that.componentEditElement.firstChild.style.height = this.value;
     };
     this.tableHeightBlock.children[1].onkeyup = function () {
-      that.componentEditElement.style.height = this.value;
+      that.componentEditElement.firstChild.style.height = this.value;
     };
 
     this.tableWidthBlock = document.createElement('div');
@@ -179,10 +179,10 @@ class TableTool extends Tool {
       '<input type="text">';
     this.tableTool.appendChild(this.tableWidthBlock);
     this.tableWidthBlock.children[1].onchange = function () {
-      that.componentEditElement.style.width = this.value;
+      that.componentEditElement.firstChild.style.width = this.value;
     };
     this.tableWidthBlock.children[1].onkeyup = function () {
-      that.componentEditElement.style.width = this.value;
+      that.componentEditElement.firstChild.style.width = this.value;
     };
   }
 

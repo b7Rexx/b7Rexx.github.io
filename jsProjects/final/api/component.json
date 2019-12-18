@@ -260,11 +260,11 @@
                   "value": 1
                 },
                 {
-                  "name": "form-type",
+                  "name": "data-form-type",
                   "value": "submit"
                 },
                 {
-                  "name": "form-default",
+                  "name": "data-form-default",
                   "value": "submit"
                 }
               ],

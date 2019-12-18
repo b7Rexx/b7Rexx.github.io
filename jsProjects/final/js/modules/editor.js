@@ -14,6 +14,12 @@ class Editor extends EditorEvent {
     this.listModal = undefined;
     this.listModalContent = undefined;
 
+    this.wrapperEditElement = undefined;
+    this.containerEditElement = undefined;
+    this.rowEditElement = undefined;
+    this.colEditElement = undefined;
+    this.componentEditElement = undefined;
+
     this.init();
   }
 
@@ -28,6 +34,7 @@ class Editor extends EditorEvent {
   }
 
   setEmptyEditor() {
+    let that=this;
     this.editorBlock = document.createElement('div');
     this.editorBlock.classList.add('editor-block');
 
@@ -37,10 +44,36 @@ class Editor extends EditorEvent {
     this.editorContent = document.createElement('div');
     this.editorContent.classList.add('editor-content');
 
+    this.leftTabButton = document.createElement('a');
+    this.leftTabButton.classList.add('left-tab-btn');
+    this.leftTabButton.innerHTML = '<i class="fa fa-angle-left"></i>';
+    this.leftTabButton.onclick=function () {
+      console.log( that.wrapperEditElement ,
+      that.containerEditElement ,
+      that.rowEditElement ,
+      that.colEditElement ,
+      that.componentEditElement
+    );
+    };
+
+    this.rightTabButton = document.createElement('a');
+    this.rightTabButton.classList.add('right-tab-btn');
+    this.rightTabButton.innerHTML = '<i class="fa fa-angle-right"></i>';
+    this.rightTabButton.onclick=function () {
+      console.log( that.wrapperEditElement ,
+        that.containerEditElement ,
+        that.rowEditElement ,
+        that.colEditElement ,
+        that.componentEditElement
+      );
+    };
+
     this.setHeightWidthByViewPort();
     this.contentWrapper();
     this.editorMargin.appendChild(this.editorContent);
     this.editorBlock.appendChild(this.editorMargin);
+    this.editorBlock.appendChild(this.leftTabButton);
+    this.editorBlock.appendChild(this.rightTabButton);
     this.editor.appendChild(this.editorBlock);
   }
 

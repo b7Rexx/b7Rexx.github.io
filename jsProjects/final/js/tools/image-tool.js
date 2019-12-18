@@ -22,6 +22,7 @@ class ImageTool extends Tool {
 
     this.uploadImage();
     this.imageUrl();
+    this.paddingTool();
     this.imageSize();
     this.displayTool();
     this.setLink();
@@ -48,6 +49,7 @@ class ImageTool extends Tool {
     this.imageAltBlock.children[1].value = this.childComponentProps.alt;
     this.imageHeightBlock.children[1].value = this.componentProps.height;
     this.imageWidthBlock.children[1].value = this.componentProps.width;
+    this.paddingBlock.children[1].value = this.componentProps.padding;
     this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
     this.displaySelect.value = this.componentProps.display;
 
@@ -186,6 +188,23 @@ class ImageTool extends Tool {
       that.componentEditElement.style.width = this.value;
     };
   }
+  paddingTool() {
+    let that = this;
+    this.paddingBlock = document.createElement('div');
+    this.paddingBlock.classList.add('text-style');
+    this.paddingBlock.classList.add('padding-block-text');
+    this.paddingBlock.innerHTML =
+      '<span>Padding </span>' +
+      '<input type="text">';
+    this.imageTool.appendChild(this.paddingBlock);
+    this.paddingBlock.children[1].onchange = function () {
+      that.componentEditElement.style.padding = this.value;
+    };
+    this.paddingBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.padding = this.value;
+    };
+  }
+
 
   displayTool() {
     let that = this;

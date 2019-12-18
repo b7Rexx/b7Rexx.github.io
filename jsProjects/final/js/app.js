@@ -3,8 +3,8 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    // this.page = 'splash';
-    this.page = 'edit';
+    this.page = 'splash';
+    // this.page = 'edit';
     // this.page = 'template';
     this.pageIntendedFrom = 'splash';
     this.editSaveState = true;
@@ -87,7 +87,7 @@ class App {
     });
 
     /**
-     * custom event from
+     * custom event from splash page redirect to edit
      */
     document.addEventListener('custom-event-progress-edit', function () {
       that.setPage = 'edit';

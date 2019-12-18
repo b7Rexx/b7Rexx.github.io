@@ -179,6 +179,7 @@ class Editor extends EditorEvent {
             if (eventClickDom.className.startsWith('b7-container')) {
               eventClickDom.innerHTML += that.dropContent;
               clearDrag = true;
+              that.clearStylingTools();
             }
             let pathArray = Object.values(eventPath).map(function (value) {
               return value.className;
@@ -191,11 +192,13 @@ class Editor extends EditorEvent {
                     // console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
                     valueDom.innerHTML += that.dropContent;
                     clearDrag = true;
+                    that.clearStylingTools();
                   }
                 }
               });
             } else {
               clearDrag = true;
+              that.clearStylingTools();
             }
           }
         }
@@ -208,6 +211,7 @@ class Editor extends EditorEvent {
             if (eventClickDom.className.startsWith('b7-col')) {
               eventClickDom.innerHTML += that.dropContent;
               clearDrag = true;
+              that.clearStylingTools();
               //auto select code here
               //  ...
             } else {
@@ -219,6 +223,7 @@ class Editor extends EditorEvent {
                       flag = false;
                       value.innerHTML += that.dropContent;
                       clearDrag = true;
+                      that.clearStylingTools();
                       //auto select code here
                       //  ...
                     }
@@ -238,43 +243,12 @@ class Editor extends EditorEvent {
         that.parentElement.style.cursor = 'default';
       }
 
-
-      /*
-      styling tools trigger
-       */
-
-      that.wrapperEditElement = undefined;
-      that.containerEditElement = undefined;
-      that.rowEditElement = undefined;
-      that.colEditElement = undefined;
-      that.componentEditElement = undefined;
-      Object.values(eventPath).forEach(function (value) {
-        if (value.className !== undefined) {
-          if (value.className.startsWith('b7-wrapper'))
-            that.wrapperEditElement = value;
-          if (value.className.startsWith('b7-container'))
-            that.containerEditElement = value;
-          if (value.className.startsWith('b7-layout'))
-            that.rowEditElement = value;
-          if (value.className.startsWith('b7-col'))
-            that.colEditElement = value;
-          if (value.className.startsWith('b7-component'))
-            that.componentEditElement = value;
-        }
-      });
-
-      document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
-        that.wrapperEditElement,
-        that.containerEditElement,
-        that.rowEditElement,
-        that.colEditElement,
-        that.componentEditElement
-      ));
     };
 
 
     this.editorContent.onclick =
       function (event) {
+        let eventStyle = true;
         let eventPath = event.path || (event.composedPath && event.composedPath());
 
         if (that.contentEditableText !== undefined) {
@@ -294,6 +268,8 @@ class Editor extends EditorEvent {
               if (eventClickDom.className.startsWith('b7-container')) {
                 eventClickDom.innerHTML += that.dropContent;
                 clearDrag = true;
+                that.clearStylingTools();
+                eventStyle = false;
               }
               let pathArray = Object.values(eventPath).map(function (value) {
                 return value.className;
@@ -306,11 +282,14 @@ class Editor extends EditorEvent {
                       // console.log(that.dropType, 'type < < < < < 2nd gen > > > > content', valueDom);
                       valueDom.innerHTML += that.dropContent;
                       clearDrag = true;
+                      that.clearStylingTools();
+                      eventStyle = false;
                     }
                   }
                 });
               } else {
                 clearDrag = true;
+                eventStyle = false;
               }
             }
           }
@@ -323,8 +302,8 @@ class Editor extends EditorEvent {
               if (eventClickDom.className.startsWith('b7-col')) {
                 eventClickDom.innerHTML += that.dropContent;
                 clearDrag = true;
-                //auto select code here
-                //  ...
+                that.clearStylingTools();
+                eventStyle = false;
               } else {
                 let flag = true;
                 Object.values(eventPath).forEach(function (value) {
@@ -334,8 +313,8 @@ class Editor extends EditorEvent {
                         flag = false;
                         value.innerHTML += that.dropContent;
                         clearDrag = true;
-                        //auto select code here
-                        //  ...
+                        that.clearStylingTools();
+                        eventStyle = false;
                       }
                   }
                 });
@@ -357,35 +336,35 @@ class Editor extends EditorEvent {
         /*
         styling tools trigger
          */
+        if (eventStyle) {
+          that.wrapperEditElement = undefined;
+          that.containerEditElement = undefined;
+          that.rowEditElement = undefined;
+          that.colEditElement = undefined;
+          that.componentEditElement = undefined;
+          Object.values(eventPath).forEach(function (value) {
+            if (value.className !== undefined) {
+              if (value.className.startsWith('b7-wrapper'))
+                that.wrapperEditElement = value;
+              if (value.className.startsWith('b7-container'))
+                that.containerEditElement = value;
+              if (value.className.startsWith('b7-layout'))
+                that.rowEditElement = value;
+              if (value.className.startsWith('b7-col'))
+                that.colEditElement = value;
+              if (value.className.startsWith('b7-component'))
+                that.componentEditElement = value;
+            }
+          });
 
-        that.wrapperEditElement = undefined;
-        that.containerEditElement = undefined;
-        that.rowEditElement = undefined;
-        that.colEditElement = undefined;
-        that.componentEditElement = undefined;
-        Object.values(eventPath).forEach(function (value) {
-          if (value.className !== undefined) {
-            if (value.className.startsWith('b7-wrapper'))
-              that.wrapperEditElement = value;
-            if (value.className.startsWith('b7-container'))
-              that.containerEditElement = value;
-            if (value.className.startsWith('b7-layout'))
-              that.rowEditElement = value;
-            if (value.className.startsWith('b7-col'))
-              that.colEditElement = value;
-            if (value.className.startsWith('b7-component'))
-              that.componentEditElement = value;
-          }
-        });
-
-        document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
-          that.wrapperEditElement,
-          that.containerEditElement,
-          that.rowEditElement,
-          that.colEditElement,
-          that.componentEditElement
-        ));
-
+          document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
+            that.wrapperEditElement,
+            that.containerEditElement,
+            that.rowEditElement,
+            that.colEditElement,
+            that.componentEditElement
+          ));
+        }
       };
 
     // this.editorContent.oncontextmenu = function (event) {
@@ -401,6 +380,10 @@ class Editor extends EditorEvent {
         if (eventClickDom.className !== undefined) {
           if (eventClickDom.className.startsWith('b7-component-text') || eventClickDom1.className.startsWith('b7-component-text')) {
             that.contentEditableText = eventClickDom;
+            if (window.getSelection)
+              window.getSelection().removeAllRanges();
+            else if (document.selection)
+              document.selection.empty();
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
@@ -409,6 +392,10 @@ class Editor extends EditorEvent {
           }
           if (eventClickDom.className.startsWith('b7-item')) {
             that.contentEditableText = eventClickDom;
+            if (window.getSelection)
+              window.getSelection().removeAllRanges();
+            else if (document.selection)
+              document.selection.empty();
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
@@ -417,6 +404,10 @@ class Editor extends EditorEvent {
           }
           if (eventClickDom.tagName === 'TH' || eventClickDom.tagName === 'TD') {
             that.contentEditableText = eventClickDom;
+            if (window.getSelection)
+              window.getSelection().removeAllRanges();
+            else if (document.selection)
+              document.selection.empty();
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
@@ -430,10 +421,19 @@ class Editor extends EditorEvent {
         if (value.className !== undefined) {
           if (value.className.startsWith('b7-component-form')) {
             that.formModal = value;
+            if (window.getSelection)
+              window.getSelection().removeAllRanges();
+            else if (document.selection)
+              document.selection.empty();
+
             that.setFormModalState();
           }
           if (value.className.startsWith('b7-component-list')) {
             that.listModal = value;
+            if (window.getSelection)
+              window.getSelection().removeAllRanges();
+            else if (document.selection)
+              document.selection.empty();
             that.setListModalState();
           }
         }
@@ -970,12 +970,11 @@ class Editor extends EditorEvent {
         }
       });
       let listItem = document.createElement('li');
-      if (dropdown){
+      if (dropdown) {
         listItem.innerHTML = `<span>${name}</span>`;
         listItem.appendChild(dropdownList);
         listItem.setAttribute('data-dropdown', 'true');
-      }
-      else
+      } else
         listItem.innerHTML = name;
       listItem.classList.add('b7-item');
       listItem.setAttribute('data-href', dataHref);

@@ -594,7 +594,7 @@ white
 }
 
 .style-href {
-  width: 180px;
+  width: 160px;
   float: right;
   border: none;
   border-radius: 5px;
@@ -701,8 +701,6 @@ white
 
 .form-table-wrapper table tr th, .form-table-wrapper table tr td {
   text-align: left;
-  font-size: 1em;
-  padding: 0.9375em;
   border: 1px solid #ececec;
 }
 
@@ -757,7 +755,7 @@ i.fa-trash {
 
 .drop-table {
   border: 1px solid lightgrey;
-margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .drop-table tr td {

@@ -30,6 +30,7 @@ class ListTool extends Tool {
     this.paddingTool();
     this.listStyle();
     this.listStyleType();
+    this.displayTool();
     // this.listTool.appendChild(hrLine1);
     // this.listTool.append('List Items');
     // this.accumulateList();
@@ -60,57 +61,58 @@ class ListTool extends Tool {
     this.fontSizeBlock.children[1].value = this.componentProps.fontSize;
     this.paddingBlock.children[1].value = this.componentPropsLi.padding || 0;
     // this.listBulletTypeBlock.children[1].value = this.componentProps.listStyleType;
+    this.displaySelect.value = this.componentProps.display;
 
     //  accumulate list
     // if (this.componentEditElement !== undefined) {
-      // this.accumulateListBlock.innerHTML = '';
-      // Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
-      //   let itemDiv = document.createElement('div');
-      //   itemDiv.classList.add('list-item-div');
-      //   itemDiv.append((index + 1) + ') ');
-      //   let itemInput = document.createElement('input');
-      //   itemInput.value = item.innerText;
-      //
-      //   itemInput.onkeyup = function () {
-      //     item.innerText = this.value;
-      //   };
-      //   itemInput.onchange = function () {
-      //     item.innerText = this.value;
-      //   };
-      //
-      //   let itemRemove = document.createElement('button');
-      //   itemRemove.innerHTML = '<i class="fa fa-times"></i>';
-      //   itemRemove.onclick = function () {
-      //     item.remove();
-      //     itemDiv.remove();
-      //   };
+    // this.accumulateListBlock.innerHTML = '';
+    // Object.values(this.componentEditElement.children[0].children).forEach(function (item, index) {
+    //   let itemDiv = document.createElement('div');
+    //   itemDiv.classList.add('list-item-div');
+    //   itemDiv.append((index + 1) + ') ');
+    //   let itemInput = document.createElement('input');
+    //   itemInput.value = item.innerText;
+    //
+    //   itemInput.onkeyup = function () {
+    //     item.innerText = this.value;
+    //   };
+    //   itemInput.onchange = function () {
+    //     item.innerText = this.value;
+    //   };
+    //
+    //   let itemRemove = document.createElement('button');
+    //   itemRemove.innerHTML = '<i class="fa fa-times"></i>';
+    //   itemRemove.onclick = function () {
+    //     item.remove();
+    //     itemDiv.remove();
+    //   };
 
-      //   let linkSpan = document.createElement('span');
-      //   linkSpan.innerHTML = '<br>set link:';
-      //   let linkInput = document.createElement('input');
-      //   linkInput.value = item.getAttribute('data-href');
-      //   linkInput.onkeyup = function () {
-      //     item.setAttribute('data-href', this.value);
-      //   };
-      //
-      //   that.accumulateListBlock.appendChild(itemDiv);
-      //   itemDiv.appendChild(itemInput);
-      //   itemDiv.appendChild(itemRemove);
-      //   itemDiv.appendChild(linkSpan);
-      //   itemDiv.appendChild(linkInput);
-      // });
-      //
-      // let addItem = document.createElement('button');
-      // addItem.innerHTML = '<i class="fa fa-plus"></i>';
-      // addItem.onclick = function () {
-      //   let newItem = document.createElement('li');
-      //   newItem.classList.add('b7-item');
-      //   newItem.style.padding = that.paddingBlock.children[1].value;
-      //   newItem.innerText = 'List Item';
-      //   that.componentEditElement.children[0].appendChild(newItem);
-      //   that.updateChanges();
-      // };
-      // that.accumulateListBlock.appendChild(addItem);
+    //   let linkSpan = document.createElement('span');
+    //   linkSpan.innerHTML = '<br>set link:';
+    //   let linkInput = document.createElement('input');
+    //   linkInput.value = item.getAttribute('data-href');
+    //   linkInput.onkeyup = function () {
+    //     item.setAttribute('data-href', this.value);
+    //   };
+    //
+    //   that.accumulateListBlock.appendChild(itemDiv);
+    //   itemDiv.appendChild(itemInput);
+    //   itemDiv.appendChild(itemRemove);
+    //   itemDiv.appendChild(linkSpan);
+    //   itemDiv.appendChild(linkInput);
+    // });
+    //
+    // let addItem = document.createElement('button');
+    // addItem.innerHTML = '<i class="fa fa-plus"></i>';
+    // addItem.onclick = function () {
+    //   let newItem = document.createElement('li');
+    //   newItem.classList.add('b7-item');
+    //   newItem.style.padding = that.paddingBlock.children[1].value;
+    //   newItem.innerText = 'List Item';
+    //   that.componentEditElement.children[0].appendChild(newItem);
+    //   that.updateChanges();
+    // };
+    // that.accumulateListBlock.appendChild(addItem);
 
     //   if (this.componentEditElement.getAttribute('list-style') === 'horizontal-list') {
     //     document.getElementById('horizontal-liststyle').checked = true;
@@ -122,38 +124,40 @@ class ListTool extends Tool {
     //move component
     if (this.componentEditElement !== undefined) {
       let rowIndex = DomHelper.getIndexOfElement(this.componentEditElement);
-      let childrenLength = this.componentEditElement.parentNode.childNodes.length;
-      this.moveComponentUp = undefined;
-      this.moveComponentDown = undefined;
-      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
-        this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
-      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
-        this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
-      if (rowIndex === 0) {
+      if (rowIndex !== 'parentNodeEmpty') {
+        let childrenLength = this.componentEditElement.parentNode.childNodes.length;
         this.moveComponentUp = undefined;
-      }
-      if (rowIndex === (childrenLength - 1)) {
         this.moveComponentDown = undefined;
-      }
-      if (rowIndex === (childrenLength - 2)) {
-        this.moveComponentDown = 'last';
-      }
-
-      Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
-        val.style.pointerEvents = 'none';
-        switch (val.getAttribute('data-move')) {
-          case 'top':
-            if (that.moveComponentUp !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
-          case 'bottom':
-            if (that.moveComponentDown !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
+        if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+          this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
+        if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+          this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
+        if (rowIndex === 0) {
+          this.moveComponentUp = undefined;
         }
-      });
+        if (rowIndex === (childrenLength - 1)) {
+          this.moveComponentDown = undefined;
+        }
+        if (rowIndex === (childrenLength - 2)) {
+          this.moveComponentDown = 'last';
+        }
+
+        Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+          val.style.pointerEvents = 'none';
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveComponentUp !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+            case 'bottom':
+              if (that.moveComponentDown !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+          }
+        });
+      }
     }
   }
 
@@ -229,6 +233,28 @@ class ListTool extends Tool {
   }
 
 
+  displayTool() {
+    let that = this;
+    this.displayBlock = document.createElement('div');
+    this.displayBlock.classList.add('text-style');
+
+    let displaySpan = document.createElement('span');
+    displaySpan.innerHTML = 'Display : ';
+    this.displaySelect = document.createElement('select');
+    this.displaySelect.innerHTML =
+      '<option value="block">block</option>' +
+      '<option value="inline-block">inline-block</option>' +
+      '<option value="inline">inline</option>' +
+      '<option value="inherit">inherit</option>';
+
+    this.displaySelect.onchange = function () {
+      that.componentEditElement.style.display = this.value;
+    };
+    this.displayBlock.appendChild(displaySpan);
+    this.displayBlock.appendChild(this.displaySelect);
+    this.listTool.appendChild(this.displayBlock);
+  }
+
   listStyleType() {
     let that = this;
     this.listBulletTypeBlock = document.createElement('div');
@@ -288,6 +314,7 @@ class ListTool extends Tool {
       }
     });
   }
+
   removeAll() {
     let that = this;
     let removeBtn = document.createElement('button');

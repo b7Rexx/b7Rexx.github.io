@@ -115,75 +115,78 @@ class LayoutTool extends Tool {
 
     if (this.wrapperEditElement !== undefined) {
       let rowIndex = DomHelper.getIndexOfElement(this.wrapperEditElement);
-      let childrenLength = this.wrapperEditElement.parentNode.childNodes.length;
-      this.moveWrapperUp = undefined;
-      this.moveWrapperDown = undefined;
-      if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
-        this.moveWrapperUp = this.wrapperEditElement.parentNode.childNodes[rowIndex - 1];
-      if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
-        this.moveWrapperDown = this.wrapperEditElement.parentNode.childNodes[rowIndex + 2];
-      if (rowIndex === 0) {
+      if (rowIndex !== 'parentNodeEmpty') {
+        let childrenLength = this.wrapperEditElement.parentNode.childNodes.length;
         this.moveWrapperUp = undefined;
-      }
-      if (rowIndex === (childrenLength - 1)) {
         this.moveWrapperDown = undefined;
-      }
-      if (rowIndex === (childrenLength - 2)) {
-        this.moveWrapperDown = 'last';
-      }
-
-      Object.values(this.moveWrapperBlock.children[1].children).forEach(function (val) {
-        val.style.pointerEvents = 'none';
-        switch (val.getAttribute('data-move')) {
-          case 'top':
-            if (that.moveWrapperUp !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
-          case 'bottom':
-            if (that.moveWrapperDown !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
+        if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+          this.moveWrapperUp = this.wrapperEditElement.parentNode.childNodes[rowIndex - 1];
+        if (this.wrapperEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+          this.moveWrapperDown = this.wrapperEditElement.parentNode.childNodes[rowIndex + 2];
+        if (rowIndex === 0) {
+          this.moveWrapperUp = undefined;
         }
-      });
+        if (rowIndex === (childrenLength - 1)) {
+          this.moveWrapperDown = undefined;
+        }
+        if (rowIndex === (childrenLength - 2)) {
+          this.moveWrapperDown = 'last';
+        }
+
+        Object.values(this.moveWrapperBlock.children[1].children).forEach(function (val) {
+          val.style.pointerEvents = 'none';
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveWrapperUp !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+            case 'bottom':
+              if (that.moveWrapperDown !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+          }
+        });
+      }
     }
 
     if (this.rowEditElement !== undefined) {
       let rowIndex = DomHelper.getIndexOfElement(this.rowEditElement);
-      let childrenLength = this.rowEditElement.parentNode.childNodes.length;
-      this.moveRowUp = undefined;
-      this.moveRowDown = undefined;
-      if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
-        this.moveRowUp = this.rowEditElement.parentNode.childNodes[rowIndex - 1];
-      if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
-        this.moveRowDown = this.rowEditElement.parentNode.childNodes[rowIndex + 2];
-      if (rowIndex === 0) {
+      if (rowIndex !== 'parentNodeEmpty') {
+        let childrenLength = this.rowEditElement.parentNode.childNodes.length;
         this.moveRowUp = undefined;
-      }
-      if (rowIndex === (childrenLength - 1)) {
         this.moveRowDown = undefined;
-      }
-      if (rowIndex === (childrenLength - 2)) {
-        this.moveRowDown = 'last';
-      }
-
-      Object.values(this.moveRowBlock.children[1].children).forEach(function (val) {
-        val.style.pointerEvents = 'none';
-        switch (val.getAttribute('data-move')) {
-          case 'top':
-            if (that.moveRowUp !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
-          case 'bottom':
-            if (that.moveRowDown !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
+        if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+          this.moveRowUp = this.rowEditElement.parentNode.childNodes[rowIndex - 1];
+        if (this.rowEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+          this.moveRowDown = this.rowEditElement.parentNode.childNodes[rowIndex + 2];
+        if (rowIndex === 0) {
+          this.moveRowUp = undefined;
         }
-      });
+        if (rowIndex === (childrenLength - 1)) {
+          this.moveRowDown = undefined;
+        }
+        if (rowIndex === (childrenLength - 2)) {
+          this.moveRowDown = 'last';
+        }
 
+        Object.values(this.moveRowBlock.children[1].children).forEach(function (val) {
+          val.style.pointerEvents = 'none';
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveRowUp !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+            case 'bottom':
+              if (that.moveRowDown !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+          }
+        });
+      }
       let checkBgImage = this.wrapperEditElement.getAttribute('data-background-image');
       let bgImage = this.wrapperProps.backgroundImage;
       if (checkBgImage) {

@@ -16,6 +16,7 @@ class Tool {
         backgroundRepeat: Tool.getComputed(elem, 'background-repeat'),
         backgroundSize: Tool.getComputed(elem, 'background-size'),
         backgroundImage: Tool.getComputed(elem, 'background-image').slice(4, -1).replace(/"/g, ""),
+        display: Tool.getComputed(elem, 'display') || 'block',
       };
     }
     return undefined;
@@ -35,6 +36,7 @@ class Tool {
         zIndex: Tool.getComputed(elem, 'z-index'),
         opacity: Tool.getComputed(elem, 'opacity ') || 1,
         background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
+        display: Tool.getComputed(elem, 'display') || 'block',
       };
     }
     return undefined;
@@ -47,6 +49,7 @@ class Tool {
         width: Tool.getComputed(elem, 'width ') || 'auto',
         padding: Tool.getComputed(elem, 'padding ') || 0,
         background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
+        display: Tool.getComputed(elem, 'display') || 'block',
       };
     }
     return undefined;
@@ -58,10 +61,11 @@ class Tool {
         text: elem.innerHTML,
         src: elem.src,
         alt: elem.alt,
+        display: Tool.getComputed(elem, 'display') || 'block',
         height: Tool.getComputed(elem, 'height') || 'auto',
         width: Tool.getComputed(elem, 'width') || 'auto',
         textAlign: Tool.getComputed(elem, 'text-align') || 'left',
-        lineHeight: Tool.getComputed(elem, 'line-height') || 1,
+        lineHeight: elem.style.lineHeight || 1,
         letterSpacing: Tool.getComputed(elem, 'letter-spacing') || '0px',
         fontSize: Tool.getComputed(elem, 'font-size') || '16px',
         color: (elem.style.color) ? this.rgbToHex(elem.style.color) : '#000000',

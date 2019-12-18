@@ -19,6 +19,7 @@ class TableTool extends Tool {
     this.tableSize();
     this.tableTool.appendChild(hrline1);
     this.imageSize();
+    this.displayTool();
     this.paddingTool();
     this.removeAll();
   }
@@ -40,43 +41,45 @@ class TableTool extends Tool {
     this.paddingBlock.children[1].value = this.componentEditElement.children[0].rows[0].cells[0].style.padding || 0;
     this.tableHeightBlock.children[1].value = this.componentProps.height;
     this.tableWidthBlock.children[1].value = this.componentProps.width;
-
+    this.displaySelect.value = this.componentProps.display;
 
     //move component
     if (this.componentEditElement !== undefined) {
       let rowIndex = DomHelper.getIndexOfElement(this.componentEditElement);
-      let childrenLength = this.componentEditElement.parentNode.childNodes.length;
-      this.moveComponentUp = undefined;
-      this.moveComponentDown = undefined;
-      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
-        this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
-      if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
-        this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
-      if (rowIndex === 0) {
+      if (rowIndex !== 'parentNodeEmpty') {
+        let childrenLength = this.componentEditElement.parentNode.childNodes.length;
         this.moveComponentUp = undefined;
-      }
-      if (rowIndex === (childrenLength - 1)) {
         this.moveComponentDown = undefined;
-      }
-      if (rowIndex === (childrenLength - 2)) {
-        this.moveComponentDown = 'last';
-      }
-
-      Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
-        val.style.pointerEvents = 'none';
-        switch (val.getAttribute('data-move')) {
-          case 'top':
-            if (that.moveComponentUp !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
-          case 'bottom':
-            if (that.moveComponentDown !== undefined) {
-              val.style.pointerEvents = 'auto';
-            }
-            break;
+        if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex - 1))
+          this.moveComponentUp = this.componentEditElement.parentNode.childNodes[rowIndex - 1];
+        if (this.componentEditElement.parentNode.childNodes.hasOwnProperty(rowIndex + 2))
+          this.moveComponentDown = this.componentEditElement.parentNode.childNodes[rowIndex + 2];
+        if (rowIndex === 0) {
+          this.moveComponentUp = undefined;
         }
-      });
+        if (rowIndex === (childrenLength - 1)) {
+          this.moveComponentDown = undefined;
+        }
+        if (rowIndex === (childrenLength - 2)) {
+          this.moveComponentDown = 'last';
+        }
+
+        Object.values(this.moveComponentBlock.children[1].children).forEach(function (val) {
+          val.style.pointerEvents = 'none';
+          switch (val.getAttribute('data-move')) {
+            case 'top':
+              if (that.moveComponentUp !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+            case 'bottom':
+              if (that.moveComponentDown !== undefined) {
+                val.style.pointerEvents = 'auto';
+              }
+              break;
+          }
+        });
+      }
     }
   }
 
@@ -181,6 +184,28 @@ class TableTool extends Tool {
     this.tableWidthBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.width = this.value;
     };
+  }
+
+  displayTool() {
+    let that = this;
+    this.displayBlock = document.createElement('div');
+    this.displayBlock.classList.add('text-style');
+
+    let displaySpan = document.createElement('span');
+    displaySpan.innerHTML = 'Display : ';
+    this.displaySelect = document.createElement('select');
+    this.displaySelect.innerHTML =
+      '<option value="block">block</option>' +
+      '<option value="inline-block">inline-block</option>' +
+      '<option value="inline">inline</option>' +
+      '<option value="inherit">inherit</option>';
+
+    this.displaySelect.onchange = function () {
+      that.componentEditElement.style.display = this.value;
+    };
+    this.displayBlock.appendChild(displaySpan);
+    this.displayBlock.appendChild(this.displaySelect);
+    this.tableTool.appendChild(this.displayBlock);
   }
 
   paddingTool() {

@@ -22,5 +22,11 @@
     "image": "assets/templates/devbugs.png",
     "date": 1575693982065,
     "data": "api/templates/devbugs.json"
+  },
+  {
+    "name": "Industrious | Example Template",
+    "image": "assets/templates/industrious.png",
+    "date": 1575693982065,
+    "data": "api/templates/industrious.json"
   }
 ]

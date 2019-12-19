@@ -140,7 +140,8 @@ wide style form component
 }
 
 .b7-component-iframe {
-  overflow: auto;
+  padding: 20px;
+  overflow: hidden;
 }
 
 .b7-component-image {

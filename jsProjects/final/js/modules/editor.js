@@ -30,6 +30,13 @@ class Editor extends EditorEvent {
     this.editorContentEvent();
     this.initFormModal();
     this.initListModal();
+
+    /**
+     * right click copy,paste event halders
+     */
+    this.rightClickMenu();
+    this.editor.appendChild(this.rightMenu);
+    this.copyEvent(this.editor);
   }
 
   /*
@@ -328,6 +335,7 @@ class Editor extends EditorEvent {
      */
     this.editorContent.onclick =
       function (event) {
+        that.rightMenu.style.display = 'none';
         let eventStyle = true;
         let eventPath = event.path || (event.composedPath && event.composedPath());
         if (that.contentEditableText !== undefined) {
@@ -457,7 +465,9 @@ class Editor extends EditorEvent {
      * Editor component on double click
      * @param event
      */
-    this.editorContent.ondblclick = function (event) {
+    this.editorContent.ondblclick =
+      function (event) {
+      that.rightMenu.style.display = 'none';
       let eventPath = event.path || (event.composedPath && event.composedPath());
       //save state change
       document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
@@ -527,6 +537,8 @@ class Editor extends EditorEvent {
    * clear/reset styling tools
    */
   clearStylingTools() {
+    this.rightMenu.style.display = 'none';
+
     this.dropType = undefined;
     this.dropContent = undefined;
     this.currentTabElement = undefined;
@@ -756,7 +768,10 @@ class Editor extends EditorEvent {
   updateList() {
     let that = this;
     let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
+    let wrapperBg = that.listModal.closest('.b7-wrapper');
     let dropdownBackground = that.listModal.style.background || '#ffffff';
+    if (wrapperBg !== undefined)
+      dropdownBackground = wrapperBg.style.background || '#ffffff';
     that.listModal.innerHTML = '';
     this.listModalDiv.style.display = 'none';
     let listParent = document.createElement('ul');

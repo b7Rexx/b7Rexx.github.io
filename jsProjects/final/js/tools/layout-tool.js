@@ -242,9 +242,11 @@ class LayoutTool extends Tool {
       if (this.checked) {
         that.wrapperEditElement.setAttribute('data-background-image', 'set');
         that.backgroundProperty.style.display = 'block';
+        that.wrapperEditElement.style.backgroundImage = 'url("' + that.imageSrcBlock.children[1].value + '")';
       } else {
         that.backgroundProperty.style.display = 'none';
         that.wrapperEditElement.removeAttribute('data-background-image');
+        that.wrapperEditElement.style.backgroundImage='none';
       }
     };
 

@@ -796,7 +796,7 @@ i.fa-trash {
   height: 40px;
   width: 50px;
   padding-top: 10px;
-  top: 5%;
+  top:0;
   text-align: center;
   font-size: 30px;
   z-index: 989;
@@ -820,4 +820,26 @@ i.fa-trash {
 
 td[contenteditable="true"]:hover {
   box-shadow: 0 0 3px #2874A6;
+}
+
+.right-context-menu {
+  position: fixed;
+  height: 90px;
+  width: 150px;
+  background: lightslategrey;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 1px #2874A6;
+  z-index: 999;
+}
+
+.right-context-menu a {
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 1px solid lightgrey;
+  cursor: pointer;
+}
+.right-context-menu a:hover {
+  background: darkgrey;
 }

@@ -37,9 +37,8 @@ class IframeTool extends Tool {
     let that = this;
     this.textContentBlock.innerHTML = this.componentEditElement.innerHTML;
     this.displaySelect.value = this.componentProps.display;
-    this.imageHeightBlock.children[1].value = this.componentProps.height;
-    this.imageWidthBlock.children[1].value = this.componentProps.width;
-
+    this.iframeHeightBlock.children[1].value = this.componentProps.height;
+    this.iframeWidthBlock.children[1].value = this.componentProps.width;
 
     //move component
     if (this.componentEditElement !== undefined) {

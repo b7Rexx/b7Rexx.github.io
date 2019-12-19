@@ -109,6 +109,7 @@ class Tool {
         listStyle: Tool.getComputed(elem, 'list-style') || 'none',
         listStyleType: Tool.getComputed(elem, 'list-style-type') || 'none',
         borderRadius: Tool.getComputed(elem, 'border-radius') || 'none',
+        margin: Tool.getComputed(elem, 'margin') || 'none',
       };
     }
     return undefined;

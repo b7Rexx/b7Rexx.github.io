@@ -23,6 +23,7 @@ class ImageTool extends Tool {
     this.uploadImage();
     this.imageUrl();
     this.paddingTool();
+    this.marginTool();
     this.imageSize();
     this.displayTool();
     this.setLink();
@@ -50,6 +51,7 @@ class ImageTool extends Tool {
     this.imageHeightBlock.children[1].value = this.componentProps.height;
     this.imageWidthBlock.children[1].value = this.componentProps.width;
     this.paddingBlock.children[1].value = this.componentProps.padding;
+    this.marginBlock.children[1].value = this.componentProps.margin;
     this.linkDiv.children[1].value = this.componentEditElement.getAttribute('data-href');
     this.displaySelect.value = this.componentProps.display;
 
@@ -187,6 +189,7 @@ class ImageTool extends Tool {
       that.componentEditElement.style.width = this.value;
     };
   }
+
   paddingTool() {
     let that = this;
     this.paddingBlock = document.createElement('div');
@@ -204,6 +207,23 @@ class ImageTool extends Tool {
     };
   }
 
+
+  marginTool() {
+    let that = this;
+    this.marginBlock = document.createElement('div');
+    this.marginBlock.classList.add('text-style');
+    this.marginBlock.classList.add('padding-block-text');
+    this.marginBlock.innerHTML =
+      '<span>Margin </span>' +
+      '<input type="text">';
+    this.imageTool.appendChild(this.marginBlock);
+    this.marginBlock.children[1].onchange = function () {
+      that.componentEditElement.style.margin = this.value;
+    };
+    this.marginBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.margin = this.value;
+    };
+  }
 
   displayTool() {
     let that = this;

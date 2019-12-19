@@ -854,7 +854,8 @@ class Editor extends EditorEvent {
       } else
         listItem.innerHTML = name;
       listItem.classList.add('b7-item');
-      listItem.setAttribute('data-href', dataHref);
+      if (dataHref !== '')
+        listItem.setAttribute('data-href', dataHref);
 
       listParent.appendChild(listItem);
     });
@@ -1101,7 +1102,6 @@ class Editor extends EditorEvent {
       accumulateFormHtml.setAttribute('data-form-options', options);
 
       let randomLabel = 'label-' + that.getRandom();
-      console.log(randomLabel);
       if (type !== '') {
         inputForm = document.createElement('input');
         inputForm.setAttribute('type', type);

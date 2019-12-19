@@ -27,6 +27,7 @@ class TextTool extends Tool {
     this.opacityTool();
     this.textBlockSize();
     this.displayTool();
+    this.borderRadiusTool();
     this.borderTool();
     this.positionTool();
     this.removeAll();
@@ -66,6 +67,7 @@ class TextTool extends Tool {
     this.backgroundColorBlock.children[1].value = this.componentProps.background;
     this.opacityBlock.children[1].value = this.componentProps.opacity;
     this.paddingBlock.children[1].value = this.componentProps.padding;
+    this.borderRadiusBlock.children[1].value = this.componentProps.borderRadius;
     this.textHeightBlock.children[1].value = this.componentProps.height;
     this.textWidthBlock.children[1].value = this.componentProps.width;
 
@@ -427,6 +429,23 @@ class TextTool extends Tool {
     };
     this.paddingBlock.children[1].onkeyup = function () {
       that.componentEditElement.style.padding = this.value;
+    };
+  }
+
+  borderRadiusTool() {
+    let that = this;
+    this.borderRadiusBlock = document.createElement('div');
+    this.borderRadiusBlock.classList.add('text-style');
+    this.borderRadiusBlock.classList.add('fontsize-block-text');
+    this.borderRadiusBlock.innerHTML =
+      '<span>Border radius </span>' +
+      '<input type="text">';
+    this.textTool.appendChild(this.borderRadiusBlock);
+    this.borderRadiusBlock.children[1].onchange = function () {
+      that.componentEditElement.style.borderRadius = this.value;
+    };
+    this.borderRadiusBlock.children[1].onkeyup = function () {
+      that.componentEditElement.style.borderRadius = this.value;
     };
   }
 

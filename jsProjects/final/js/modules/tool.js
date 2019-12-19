@@ -90,7 +90,7 @@ class Tool {
         fontSize: Tool.getComputed(elem, 'font-size') || '16px',
         color: (elem.style.color) ? this.rgbToHex(elem.style.color) : '#000000',
         background: (elem.style.background) ? this.rgbToHex(elem.style.background) : '#ffffff',
-        padding: Tool.getComputed(elem, 'padding ') || '0px 0px 0px 0px',
+        padding: elem.style.padding || '0px 0px 0px 0px',
         border: elem.style.border || 'none',
         borderTop: elem.style.borderTop || 'none',
         borderRight: elem.style.borderRight || 'none',
@@ -108,6 +108,7 @@ class Tool {
         textDecoration: Tool.getComputed(elem, 'text-decoration') || 'none',
         listStyle: Tool.getComputed(elem, 'list-style') || 'none',
         listStyleType: Tool.getComputed(elem, 'list-style-type') || 'none',
+        borderRadius: Tool.getComputed(elem, 'border-radius') || 'none',
       };
     }
     return undefined;

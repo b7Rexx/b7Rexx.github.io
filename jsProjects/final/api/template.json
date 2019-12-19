@@ -6,18 +6,6 @@
     "data": "api/templates/blank.json"
   },
   {
-    "name": "All in one | container layouts",
-    "image": "assets/templates/template1.png",
-    "date": 1575693962065,
-    "data": "api/templates/template-1.json"
-  },
-  {
-    "name": "All in one | fluid container layouts",
-    "image": "assets/templates/template1.png",
-    "date": 1575693962065,
-    "data": "api/templates/template-2.json"
-  },
-  {
     "name": "Dev Bugs | Example Template",
     "image": "assets/templates/devbugs.png",
     "date": 1575693982065,
@@ -28,5 +16,17 @@
     "image": "assets/templates/industrious.png",
     "date": 1575693982065,
     "data": "api/templates/industrious.json"
+  },
+  {
+    "name": "Furnish | Example Template",
+    "image": "assets/templates/furnish.png",
+    "date": 1575693982065,
+    "data": "api/templates/furnish.json"
+  },
+  {
+    "name": "All in one | container layouts",
+    "image": "assets/templates/template1.png",
+    "date": 1575693962065,
+    "data": "api/templates/template-1.json"
   }
 ]

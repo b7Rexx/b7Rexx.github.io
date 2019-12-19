@@ -1,0 +1,1399 @@
+[
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(255, 255, 255); position: absolute; width: 100%; overflow: visible; height: 70px; top: 0px; z-index: 100;"
+      },
+      {
+        "name": "data-temp-position",
+        "value": "fixed"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-four"
+              },
+              {
+                "name": "data-css",
+                "value": "1"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-2"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "2"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "3"
+                      },
+                      {
+                        "name": "style",
+                        "value": "height: 50px; width: 50px; display: inline-block; padding: 5px 0px 0px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://cdn.iconscout.com/icon/premium/png-256-thumb/wood-10-126352.png"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "logo"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "4"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "Logo",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "5"
+                      },
+                      {
+                        "name": "style",
+                        "value": "display: inline-block; position: absolute; top: 15px; right: auto; bottom: auto; left: 60px; z-index: auto; font-weight: normal; font-size: 18px; color: rgb(128, 64, 0);"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-4"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "6"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-list"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "7"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(128, 64, 0); font-size: 18px;"
+                      },
+                      {
+                        "name": "list-style",
+                        "value": "horizontal-list"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "UL",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-list"
+                          },
+                          {
+                            "name": "style",
+                            "value": "float: right;"
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "LI",
+                            "innerText": "Posts",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "data-dropdown",
+                                "value": "true"
+                              },
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": [
+                              {
+                                "tagName": "SPAN",
+                                "innerText": "Categories",
+                                "attributes": [],
+                                "children": []
+                              },
+                              {
+                                "tagName": "UL",
+                                "innerText": "",
+                                "attributes": [
+                                  {
+                                    "name": "class",
+                                    "value": "dropdown-content"
+                                  },
+                                  {
+                                    "name": "style",
+                                    "value": "background: rgb(52, 58, 64);"
+                                  }
+                                ],
+                                "children": [
+                                  {
+                                    "tagName": "LI",
+                                    "innerText": "Drop 1",
+                                    "attributes": [
+                                      {
+                                        "name": "data-href",
+                                        "value": ""
+                                      }
+                                    ],
+                                    "children": []
+                                  },
+                                  {
+                                    "tagName": "LI",
+                                    "innerText": "Drop 2",
+                                    "attributes": [
+                                      {
+                                        "name": "data-href",
+                                        "value": ""
+                                      }
+                                    ],
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Projects",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "About",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Contact",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 15px 10px 0px 0px;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "data-background-image",
+        "value": "set"
+      },
+      {
+        "name": "style",
+        "value": "background-image: url(\"http://3wpthemes.com/wp-content/uploads/2016/07/Wood-Pattern-Background_3.jpg\"); background-repeat: no-repeat; background-size: 100%; height: 509.111px;"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container-fluid"
+          },
+          {
+            "name": "style",
+            "value": "padding: 70px 0px 0px;"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-one"
+              },
+              {
+                "name": "data-css",
+                "value": "8"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-6"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "9"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "10"
+                      },
+                      {
+                        "name": "style",
+                        "value": "font-size: 40px; text-align: center; color: rgb(255, 255, 255); padding: 150px 0px 0px; letter-spacing: 20px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "H1",
+                        "innerText": "Furnish",
+                        "attributes": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "Create your own home space",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "11"
+                      },
+                      {
+                        "name": "style",
+                        "value": "text-align: center; color: rgb(255, 255, 255); font-size: 24px; padding: 20px 0px 150px; text-decoration: underline; letter-spacing: 5px;"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(192, 192, 192);"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-five"
+              },
+              {
+                "name": "data-css",
+                "value": "1"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-2"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "2"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "margin: auto; padding: 20px 0px 0px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://cdn.iconscout.com/icon/premium/png-256-thumb/wood-1585179-1337162.png"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "image"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "2"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "All about Wood",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(255, 255, 255); text-align: center; font-size: 24px; padding: 20px;"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-2"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "3"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "margin: auto; padding: 30px 0px 0px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://cdn.iconscout.com/icon/premium/png-256-thumb/wood-1585179-1337162.png"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "image"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "2"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "All about Wood",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(255, 255, 255); text-align: center; font-size: 24px; padding: 20px;"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-2"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "4"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "margin: auto; padding: 30px 0px 0px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://cdn.iconscout.com/icon/premium/png-256-thumb/wood-1585179-1337162.png"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "image"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "2"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "All about Wood",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(255, 255, 255); text-align: center; font-size: 24px; padding: 20px;"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-one"
+              },
+              {
+                "name": "data-css",
+                "value": "12"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-6"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "13"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(128, 64, 0); text-align: center; letter-spacing: 3px; padding: 10px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "H1",
+                        "innerText": "Wood & Furniture",
+                        "attributes": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-list"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(192, 192, 192);"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "UL",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-list"
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "LI",
+                            "innerText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis debitis ex quas rem. Animi dicta distinctio esse quod voluptates. Asperiores doloremque ea esse ex, natus numquam quod tempore veniam.",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 10px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis debitis ex quas rem. Animi dicta distinctio esse quod voluptates. Asperiores doloremque ea esse ex, natus numquam quod tempore veniam.",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 10px;"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LI",
+                            "innerText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis debitis ex quas rem. Animi dicta distinctio esse quod voluptates. Asperiores doloremque ea esse ex, natus numquam quod tempore veniam.",
+                            "attributes": [
+                              {
+                                "name": "class",
+                                "value": "b7-item"
+                              },
+                              {
+                                "name": "style",
+                                "value": "padding: 10px;"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(192, 192, 192);"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          },
+          {
+            "name": "style",
+            "value": "padding: 20px 0px 30px;"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-two"
+              },
+              {
+                "name": "data-css",
+                "value": "30"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-3"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "31"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-image"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "32"
+                      },
+                      {
+                        "name": "style",
+                        "value": "width: 80%; height: auto; margin: auto; padding: 10px;"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "IMG",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-image"
+                          },
+                          {
+                            "name": "src",
+                            "value": "https://i.pinimg.com/originals/2b/6a/4d/2b6a4d33c53680f6df51beb0aeb14540.jpg"
+                          },
+                          {
+                            "name": "alt",
+                            "value": "image"
+                          },
+                          {
+                            "name": "onerror",
+                            "value": "errorImage(event)"
+                          },
+                          {
+                            "name": "data-css",
+                            "value": "33"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-3"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "34"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "Login to create your own Furnish",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "1"
+                      },
+                      {
+                        "name": "style",
+                        "value": "text-align: center; color: rgb(128, 64, 0); padding: 50px 0px 30px;"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "tagName": "DIV",
+                    "innerText": "",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-form"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "35"
+                      },
+                      {
+                        "name": "data-form-style",
+                        "value": "wide"
+                      },
+                      {
+                        "name": "style",
+                        "value": "color: rgb(128, 128, 128);"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "tagName": "DIV",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-fitem"
+                          },
+                          {
+                            "name": "data-form-title",
+                            "value": "Username"
+                          },
+                          {
+                            "name": "data-form-label",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-type",
+                            "value": "text"
+                          },
+                          {
+                            "name": "data-form-name",
+                            "value": "username"
+                          },
+                          {
+                            "name": "data-form-default",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-options",
+                            "value": ""
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "SPAN",
+                            "innerText": "Username",
+                            "attributes": [],
+                            "children": []
+                          },
+                          {
+                            "tagName": "INPUT",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "type",
+                                "value": "text"
+                              },
+                              {
+                                "name": "name",
+                                "value": "username"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "DIV",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-fitem"
+                          },
+                          {
+                            "name": "data-form-title",
+                            "value": "Password"
+                          },
+                          {
+                            "name": "data-form-label",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-type",
+                            "value": "password"
+                          },
+                          {
+                            "name": "data-form-name",
+                            "value": "password"
+                          },
+                          {
+                            "name": "data-form-default",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-options",
+                            "value": ""
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "SPAN",
+                            "innerText": "Password",
+                            "attributes": [],
+                            "children": []
+                          },
+                          {
+                            "tagName": "INPUT",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "type",
+                                "value": "password"
+                              },
+                              {
+                                "name": "name",
+                                "value": "password"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "DIV",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-fitem"
+                          },
+                          {
+                            "name": "data-form-title",
+                            "value": "Remember"
+                          },
+                          {
+                            "name": "data-form-label",
+                            "value": "me"
+                          },
+                          {
+                            "name": "data-form-type",
+                            "value": "checkbox"
+                          },
+                          {
+                            "name": "data-form-name",
+                            "value": "remember"
+                          },
+                          {
+                            "name": "data-form-default",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-options",
+                            "value": ""
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "SPAN",
+                            "innerText": "Remember",
+                            "attributes": [],
+                            "children": []
+                          },
+                          {
+                            "tagName": "LABEL",
+                            "innerText": "me",
+                            "attributes": [
+                              {
+                                "name": "for",
+                                "value": "label-769446"
+                              }
+                            ],
+                            "children": []
+                          },
+                          {
+                            "tagName": "INPUT",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "type",
+                                "value": "checkbox"
+                              },
+                              {
+                                "name": "id",
+                                "value": "label-769446"
+                              },
+                              {
+                                "name": "name",
+                                "value": "remember"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "DIV",
+                        "innerText": "",
+                        "attributes": [
+                          {
+                            "name": "class",
+                            "value": "b7-fitem"
+                          },
+                          {
+                            "name": "data-form-title",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-label",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-type",
+                            "value": "submit"
+                          },
+                          {
+                            "name": "data-form-name",
+                            "value": ""
+                          },
+                          {
+                            "name": "data-form-default",
+                            "value": "Login"
+                          },
+                          {
+                            "name": "data-form-options",
+                            "value": ""
+                          }
+                        ],
+                        "children": [
+                          {
+                            "tagName": "INPUT",
+                            "innerText": "",
+                            "attributes": [
+                              {
+                                "name": "type",
+                                "value": "submit"
+                              },
+                              {
+                                "name": "value",
+                                "value": "Login"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(128, 64, 0); height: 5px; width: 100%;"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          }
+        ],
+        "children": []
+      }
+    ]
+  },
+  {
+    "tagName": "DIV",
+    "innerText": "",
+    "attributes": [
+      {
+        "name": "class",
+        "value": "b7-wrapper"
+      },
+      {
+        "name": "style",
+        "value": "background: rgb(255, 255, 255);"
+      }
+    ],
+    "children": [
+      {
+        "tagName": "DIV",
+        "innerText": "",
+        "attributes": [
+          {
+            "name": "class",
+            "value": "b7-container"
+          },
+          {
+            "name": "data-edit",
+            "value": "select"
+          }
+        ],
+        "children": [
+          {
+            "tagName": "DIV",
+            "innerText": "",
+            "attributes": [
+              {
+                "name": "class",
+                "value": "b7-layout-one"
+              },
+              {
+                "name": "data-css",
+                "value": "36"
+              }
+            ],
+            "children": [
+              {
+                "tagName": "DIV",
+                "innerText": "",
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "b7-col-6"
+                  },
+                  {
+                    "name": "data-css",
+                    "value": "37"
+                  },
+                  {
+                    "name": "data-edit",
+                    "value": "select"
+                  }
+                ],
+                "children": [
+                  {
+                    "tagName": "DIV",
+                    "innerText": "All rights reserved. 2019",
+                    "attributes": [
+                      {
+                        "name": "class",
+                        "value": "b7-component-text"
+                      },
+                      {
+                        "name": "data-css",
+                        "value": "38"
+                      },
+                      {
+                        "name": "style",
+                        "value": "text-align: center; color: rgb(128, 64, 0); padding: 20px;"
+                      },
+                      {
+                        "name": "data-edit",
+                        "value": "select"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

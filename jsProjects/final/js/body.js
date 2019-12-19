@@ -88,7 +88,15 @@ class Body {
     editButton.classList.add('splash-button');
     editButton.innerHTML = '<i class="fa fa-edit"></i> Continue Editing';
     editButton.setAttribute('data-value', 'edit');
+
+    let guideline = document.createElement('div');
+    guideline.innerHTML =
+      '<div class="guideline">' +
+      '<img src="assets/img/guideline.png" alt="image">' +
+      '<div class="guideline-text">Guidelines<ul><li>Add Container/Fluid Container</li><li>Drag and Drop Layout</li><li>Then add Component</li><li>Edit Layout, component from Style tools</li></ul></div>' +
+      '</div>';
     splash.appendChild(editButton);
+    splash.appendChild(guideline);
     this.body.appendChild(splash);
     return splash;
   }

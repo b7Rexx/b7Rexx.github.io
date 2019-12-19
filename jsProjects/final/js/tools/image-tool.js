@@ -143,7 +143,6 @@ class ImageTool extends Tool {
       '<input type="text">';
     this.imageTool.appendChild(this.imageSrcBlock);
     this.imageSrcBlock.children[1].onchange = function () {
-      console.log(this.value);
       that.componentEditImage.src = this.value;
     };
     this.imageAltBlock = document.createElement('div');

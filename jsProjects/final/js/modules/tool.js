@@ -139,7 +139,6 @@ class Tool {
   @param {object} elem
   @param {string} propertyName
   @return property value
-
   getComputed if inline is empty
    */
   static getComputed(elem, propertyName, style) {

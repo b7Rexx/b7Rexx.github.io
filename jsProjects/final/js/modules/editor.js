@@ -13,14 +13,12 @@ class Editor extends EditorEvent {
     this.listModalDiv = undefined;
     this.listModal = undefined;
     this.listModalContent = undefined;
-
     this.wrapperEditElement = undefined;
     this.containerEditElement = undefined;
     this.rowEditElement = undefined;
     this.colEditElement = undefined;
     this.componentEditElement = undefined;
     this.currentTabElement = undefined;
-
     this.init();
   }
 
@@ -41,13 +39,10 @@ class Editor extends EditorEvent {
     let that = this;
     this.editorBlock = document.createElement('div');
     this.editorBlock.classList.add('editor-block');
-
     this.editorMargin = document.createElement('div');
     this.editorMargin.classList.add('editor-margin');
-
     this.editorContent = document.createElement('div');
     this.editorContent.classList.add('editor-content');
-
     this.leftTabButton = document.createElement('a');
     this.leftTabButton.classList.add('left-tab-btn');
     this.leftTabButton.innerHTML = '<i class="fa fa-angle-left"></i>';
@@ -158,16 +153,13 @@ class Editor extends EditorEvent {
     this.editorContent.innerHTML = FileHelper.parseEditorStorage(editStorage);
   }
 
-
   setHeightWidthByViewPort() {
     let that = this;
     this.editorBlock.style.minWidth = '900px';
     this.editorBlock.style.maxWidth = (ViewportHelper.width() - 280 - 120) + 'px';
     this.editorBlock.style.width = (ViewportHelper.width() - 280 - 120) + 'px';
-
     this.editorContent.style.marginTop = '5px';
     this.editorMargin.style.height = (ViewportHelper.height() - 160) + 'px';
-
     window.addEventListener("resize", function () {
       that.editorBlock.style.width = (ViewportHelper.width() - 280 - 120) + 'px';
       that.editorMargin.style.height = (ViewportHelper.height() - 160) + 'px';
@@ -179,7 +171,6 @@ class Editor extends EditorEvent {
       this.contentEditableText.onclick = null;
       this.contentEditableText.removeAttribute('contenteditable');
     }
-
     let saveObject = {};
     parseDOM(this.editorContent, saveObject);
     let saveArray = Object.values(saveObject.children).map(function (val) {
@@ -224,7 +215,6 @@ class Editor extends EditorEvent {
   editorContentEvent() {
     let that = this;
     let clearDrag = false;
-
     /**
      *Clear drag, click layout/component on esc key/outer document click
      */
@@ -240,7 +230,6 @@ class Editor extends EditorEvent {
         that.clearStylingTools();
       }
     };
-
     /**
      * layout,component on drag
      * @param event
@@ -259,12 +248,8 @@ class Editor extends EditorEvent {
         that.contentEditableText.onclick = null;
         that.contentEditableText.removeAttribute('contenteditable');
       }
-
       //save state change
       document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
-      // console.log('click pathing ', event.path);
-      // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
-
       /**
        * drop type layout case
        */
@@ -299,7 +284,6 @@ class Editor extends EditorEvent {
           }
         }
       }
-
       /**
        * drop type component case
        */
@@ -311,29 +295,24 @@ class Editor extends EditorEvent {
               eventClickDom.innerHTML += that.dropContent;
               clearDrag = true;
               that.clearStylingTools();
-              //auto select code here
-              //  ...
             } else {
               let flag = true;
               Object.values(eventPath).forEach(function (value) {
                 if (flag) {
-                  if (value.className !== undefined)
+                  if (value.className !== undefined) {
                     if (value.className.startsWith('b7-col')) {
                       flag = false;
                       value.innerHTML += that.dropContent;
                       clearDrag = true;
                       that.clearStylingTools();
-                      //auto select code here
-                      //  ...
                     }
+                  }
                 }
               });
             }
           }
         }
-
       }
-
       if (clearDrag) {
         //clear/remove drag
         that.dropType = undefined;
@@ -341,7 +320,6 @@ class Editor extends EditorEvent {
         that.saveEditStorage();
         that.parentElement.style.cursor = 'default';
       }
-
     };
 
     /**
@@ -352,17 +330,12 @@ class Editor extends EditorEvent {
       function (event) {
         let eventStyle = true;
         let eventPath = event.path || (event.composedPath && event.composedPath());
-
         if (that.contentEditableText !== undefined) {
           that.contentEditableText.onclick = null;
           that.contentEditableText.removeAttribute('contenteditable');
         }
-
         //save state change
         document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
-        // console.log('click pathing ', event.path);
-        // console.log('TRY DROP >', that.dropType, 'type < < < < <  > > > > content', that.dropContent,);
-
         /**
          * click with layout case
          */
@@ -399,7 +372,6 @@ class Editor extends EditorEvent {
             }
           }
         }
-
         /**
          * click with component case
          */
@@ -429,9 +401,7 @@ class Editor extends EditorEvent {
               }
             }
           }
-
         }
-
         if (clearDrag) {
           //clear/remove drag
           that.dropType = undefined;
@@ -439,8 +409,6 @@ class Editor extends EditorEvent {
           that.saveEditStorage();
           that.parentElement.style.cursor = 'default';
         }
-
-
         /*
         styling tools trigger
          */
@@ -464,7 +432,6 @@ class Editor extends EditorEvent {
                 that.componentEditElement = value;
             }
           });
-
           /*
           left right tab button | assign current element
            */
@@ -477,7 +444,6 @@ class Editor extends EditorEvent {
           } else {
             that.currentTabElement = undefined;
           }
-
           document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
             that.wrapperEditElement,
             that.containerEditElement,
@@ -487,13 +453,14 @@ class Editor extends EditorEvent {
           ));
         }
       };
-
+    /**
+     * Editor component on double click
+     * @param event
+     */
     this.editorContent.ondblclick = function (event) {
       let eventPath = event.path || (event.composedPath && event.composedPath());
-
       //save state change
       document.dispatchEvent(EventHelper.customEvent('custom-event-unsaved-state'));
-
       if (eventPath.hasOwnProperty(0)) {
         let eventClickDom = eventPath[0];
         let eventClickDom1 = eventPath[1];
@@ -507,7 +474,6 @@ class Editor extends EditorEvent {
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
-
             eventClickDom.setAttribute('contenteditable', 'true');
           }
           if (eventClickDom.className.startsWith('b7-item')) {
@@ -519,7 +485,6 @@ class Editor extends EditorEvent {
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
-
             eventClickDom.setAttribute('contenteditable', 'true');
           }
           if (eventClickDom.tagName === 'TH' || eventClickDom.tagName === 'TD') {
@@ -531,12 +496,10 @@ class Editor extends EditorEvent {
             that.contentEditableText.onclick = function (eventPrevent) {
               eventPrevent.stopPropagation();
             };
-
             eventClickDom.setAttribute('contenteditable', 'true');
           }
         }
       }
-
       Object.values(eventPath).forEach(function (value) {
         if (value.className !== undefined) {
           if (value.className.startsWith('b7-component-form')) {
@@ -545,7 +508,6 @@ class Editor extends EditorEvent {
               window.getSelection().removeAllRanges();
             else if (document.selection)
               document.selection.empty();
-
             that.setFormModalState();
           }
           if (value.className.startsWith('b7-component-list')) {
@@ -573,13 +535,11 @@ class Editor extends EditorEvent {
       this.contentEditableText.onclick = null;
       this.contentEditableText.removeAttribute('contenteditable');
     }
-
     this.wrapperEditElement = undefined;
     this.containerEditElement = undefined;
     this.rowEditElement = undefined;
     this.colEditElement = undefined;
     this.componentEditElement = undefined;
-
     document.dispatchEvent(EventHelper.customEventStyleTool('custom-event-style-tool',
       this.wrapperEditElement,
       this.containerEditElement,
@@ -603,31 +563,25 @@ class Editor extends EditorEvent {
     this.listModalDiv.style.display = 'none';
     let modalWrap = document.createElement('div');
     modalWrap.classList.add('modal-form');
-
     let modalHeading = document.createElement('div');
     modalHeading.classList.add('modal-heading');
     modalHeading.innerHTML = 'Edit list items';
-
     let tableWrap = document.createElement('div');
     tableWrap.classList.add('form-table-wrapper');
-
     let addInputBtn = document.createElement('button');
     addInputBtn.classList.add('add-input-btn');
     addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add item';
     addInputBtn.onclick = function () {
       that.addListInput();
     };
-
     let saveInputBtn = document.createElement('button');
     saveInputBtn.classList.add('add-input-btn');
     saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update list';
     saveInputBtn.onclick = function () {
       that.updateList();
     };
-
     modalHeading.appendChild(addInputBtn);
     modalWrap.appendChild(modalHeading);
-
     let modalTable = document.createElement('table');
     modalTable.innerHTML = '<thead><tr>' +
       '<th style="width: 20%;">Item</th>' +
@@ -643,7 +597,6 @@ class Editor extends EditorEvent {
     modalWrap.appendChild(saveInputBtn);
     this.listModalDiv.appendChild(modalWrap);
     this.parentElement.appendChild(this.listModalDiv);
-
     this.listModalDiv.onclick = function (event) {
       let eventPath = event.path || (event.composedPath && event.composedPath());
 
@@ -673,17 +626,14 @@ class Editor extends EditorEvent {
   addListInput(listValue, item, dataHref, dropdown) {
     let that = this;
     let row = document.createElement('tr');
-
+    //item
     let col2 = document.createElement('td');
     col2.innerHTML = item || '';
-    //item
     col2.setAttribute('contenteditable', true);
-
+    //label
     let col3 = document.createElement('td');
     col3.innerHTML = dataHref || '';
-    //label
     col3.setAttribute('contenteditable', true);
-
     //type
     let col4 = document.createElement('td');
     let dropdownCheckbox = document.createElement('input');
@@ -805,10 +755,8 @@ class Editor extends EditorEvent {
 
   updateList() {
     let that = this;
-
     let listPadding = that.listModal.firstChild.firstChild.style.padding || 0;
     let dropdownBackground = that.listModal.style.background || '#ffffff';
-
     that.listModal.innerHTML = '';
     this.listModalDiv.style.display = 'none';
     let listParent = document.createElement('ul');
@@ -846,7 +794,6 @@ class Editor extends EditorEvent {
             break;
         }
       });
-
       let listItem = document.createElement('li');
       listItem.style.padding = listPadding;
       if (dropdown) {
@@ -858,9 +805,7 @@ class Editor extends EditorEvent {
       listItem.classList.add('b7-item');
       if (dataHref !== '')
         listItem.setAttribute('data-href', dataHref);
-
       listParent.appendChild(listItem);
-
     });
     that.listModal.appendChild(listParent);
   }
@@ -879,31 +824,25 @@ class Editor extends EditorEvent {
     this.modalDiv.style.display = 'none';
     let modalWrap = document.createElement('div');
     modalWrap.classList.add('modal-form');
-
     let modalHeading = document.createElement('div');
     modalHeading.classList.add('modal-heading');
     modalHeading.innerHTML = 'Edit form inputs';
-
     let tableWrap = document.createElement('div');
     tableWrap.classList.add('form-table-wrapper');
-
     let addInputBtn = document.createElement('button');
     addInputBtn.classList.add('add-input-btn');
     addInputBtn.innerHTML = '<i class="fa fa-plus"></i> Add input';
     addInputBtn.onclick = function () {
       that.addFormInput();
     };
-
     let saveInputBtn = document.createElement('button');
     saveInputBtn.classList.add('add-input-btn');
     saveInputBtn.innerHTML = '<i class="fa fa-check"></i> update input';
     saveInputBtn.onclick = function () {
       that.updateForm();
     };
-
     modalHeading.appendChild(addInputBtn);
     modalWrap.appendChild(modalHeading);
-
     let modalTable = document.createElement('table');
     modalTable.innerHTML = '<thead><tr>' +
       '<th>Title</th>' +
@@ -914,7 +853,6 @@ class Editor extends EditorEvent {
       // '<th>Options</th>' +
       '<th>Action</th>' +
       '</tr></thead>';
-
     this.modalContent = document.createElement('tbody');
     modalTable.appendChild(this.modalContent);
     tableWrap.appendChild(modalTable);
@@ -922,7 +860,6 @@ class Editor extends EditorEvent {
     modalWrap.appendChild(saveInputBtn);
     this.modalDiv.appendChild(modalWrap);
     this.parentElement.appendChild(this.modalDiv);
-
     this.modalDiv.onclick = function (event) {
       let eventPath = event.path || (event.composedPath && event.composedPath());
 
@@ -942,8 +879,6 @@ class Editor extends EditorEvent {
       let type = value.getAttribute('data-form-type');
       let name = value.getAttribute('data-form-name');
       let defaultValue = value.getAttribute('data-form-default');
-      // let options = value.getAttribute('data-form-options');
-
       that.addFormInput(title, label, type, name, defaultValue);
     });
   }
@@ -951,16 +886,14 @@ class Editor extends EditorEvent {
   addFormInput(title, label, type, name, defaultValue) {
     let that = this;
     let row = document.createElement('tr');
+    //title
     let col2 = document.createElement('td');
     col2.innerHTML = title || '';
-    //title
     col2.setAttribute('contenteditable', true);
-
+    //label
     let col3 = document.createElement('td');
     col3.innerHTML = label || '';
-    //label
     col3.setAttribute('contenteditable', true);
-
     //type
     let col4 = document.createElement('td');
     let selectType = document.createElement('select');
@@ -1000,19 +933,14 @@ class Editor extends EditorEvent {
     selectType.value = type || 'text';
     col4.appendChild(selectType);
 
+    //name
     let col5 = document.createElement('td');
     col5.innerHTML = name || '';
-    //name
     col5.setAttribute('contenteditable', true);
-
+    //default
     let col6 = document.createElement('td');
     col6.innerHTML = defaultValue || '';
-    //default
     col6.setAttribute('contenteditable', true);
-    // let col7 = document.createElement('td');
-    // col7.innerHTML = options || '';
-    //options
-    // col7.setAttribute('contenteditable', true);
 
     let col8 = document.createElement('td');
     let moveUpBtn = document.createElement('button');
@@ -1061,7 +989,6 @@ class Editor extends EditorEvent {
     let that = this;
     that.formModal.innerHTML = '';
     this.modalDiv.style.display = 'none';
-
     Object.values(this.modalContent.children).forEach(function (value) {
       let title = '';
       let label = '';

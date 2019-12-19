@@ -137,7 +137,6 @@ class FileHelper {
         parseHtmlFromJson(value, domTag);
       });
       if (downloadedHtml.innerText !== '')
-      // console.log(downloadedHtml.innerText);
         domTag.innerText = downloadedHtml.innerText;
 
       parentElem.appendChild(domTag);
@@ -195,7 +194,6 @@ class FileHelper {
         parseHtmlFromJson(value, domTag);
       });
       if (downloadedHtml.innerText !== '')
-      // console.log(downloadedHtml.innerText);
         domTag.innerText = downloadedHtml.innerText;
     }
   }
@@ -229,7 +227,6 @@ class FileHelper {
         parseHtmlFromJson(value, domTag);
       });
       if (downloadedHtml.innerText !== '')
-      // console.log(downloadedHtml.innerText);
         domTag.innerText = downloadedHtml.innerText;
 
       parentElem.appendChild(domTag);

@@ -154,8 +154,7 @@ class Sidebar {
    * selective display tools
    */
   updateSidebarTools() {
-    //display none to all before selective display
-    this.layoutTool.layoutTool.style.display = 'none';
+     this.layoutTool.layoutTool.style.display = 'none';
     this.exampleTool.exampleTool.style.display = 'none';
     this.textTool.textTool.style.display = 'none';
     this.imageTool.imageTool.style.display = 'none';
@@ -165,8 +164,7 @@ class Sidebar {
     this.formTool.formTool.style.display = 'none';
 
     /**
-     * selective display and update property values
-     */
+     * selective display and update property values*/
     if (this.activeBtn === 'layout') {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';

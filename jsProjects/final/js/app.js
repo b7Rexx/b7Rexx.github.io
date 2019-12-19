@@ -3,8 +3,7 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    // this.page = 'splash';
-    this.page = 'edit';
+    this.page = 'splash';
     this.pageIntendedFrom = 'splash';
     this.editSaveState = true;
     this.init();
@@ -129,9 +128,10 @@ class App {
     });
   }
 
-  /*
-  set page synchronous
-  set intended page -> set current page -> set header active -> set body content
+  /**
+   *set page synchronous
+   *set intended page -> set current page -> set header active -> set body content
+   * @param value | splash, edit, preview, template
    */
   set setPage(value) {
     this.pageIntendedFrom = this.page;

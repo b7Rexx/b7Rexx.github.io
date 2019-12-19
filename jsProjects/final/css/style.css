@@ -710,6 +710,7 @@ i.fa-trash {
 .drop-table {
   border: 1px solid lightgrey;
   margin-bottom: 0;
+  font-size: 12px;
 }
 
 .drop-table tr td {
@@ -815,4 +816,8 @@ i.fa-trash {
 
 .left-tab-btn:hover, .right-tab-btn:hover {
   opacity: 1;
+}
+
+td[contenteditable="true"]:hover {
+  box-shadow: 0 0 3px #2874A6;
 }

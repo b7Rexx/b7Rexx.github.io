@@ -56,14 +56,14 @@ class App {
           break;
         case'back':
           value1.onclick = function () {
-            that.setPage = that.pageIntendedFrom;
             that.body.previewIntended = that.page;
+            that.setPage = that.pageIntendedFrom;
           };
           break;
         default:
           value1.onclick = function () {
-            that.setPage = pageAttr;
             that.body.previewIntended = that.page;
+            that.setPage = pageAttr;
           };
           break;
       }
@@ -90,8 +90,8 @@ class App {
      * custom event from splash page redirect to edit
      */
     document.addEventListener('custom-event-progress-edit', function () {
-      that.setPage = 'edit';
       that.body.previewIntended = 'splash';
+      that.setPage = 'edit';
     });
 
     /**
@@ -99,8 +99,8 @@ class App {
      * template block preview on click
      */
     document.addEventListener('custom-event-preview-template', function () {
-      that.setPage = 'preview';
       that.body.previewIntended = 'template';
+      that.setPage = 'preview';
     });
 
     /**
@@ -132,7 +132,7 @@ class App {
 
   /*
   set page synchronous
-  set current page -> set header active -> set body content
+  set intended page -> set current page -> set header active -> set body content
    */
   set setPage(value) {
     this.pageIntendedFrom = this.page;

@@ -696,6 +696,7 @@ class Editor extends EditorEvent {
     let dropTable = document.createElement('table');
     dropTable.classList.add('drop-table');
     dropTable.style.display = 'none';
+    dropTable.innerHTML = '<tr><td>Item</td><td>Link</td><td>Action</td></tr>';
     dropdownCheckbox.onchange = function () {
       if (dropdownCheckbox.checked) {
         dropTable.style.display = 'block';
@@ -833,7 +834,7 @@ class Editor extends EditorEvent {
               dropdownList.classList.add('dropdown-content');
               dropdownList.style.background = dropdownBackground;
               let dropDownTable = val.querySelector('table');
-              for (let i = 0; i < dropDownTable.rows.length; i++) {
+              for (let i = 1; i < dropDownTable.rows.length; i++) {
                 let dropdownLi = document.createElement('li');
                 dropdownLi.innerHTML = dropDownTable.rows[i].cells[0].innerText;
                 dropdownLi.setAttribute('data-href', dropDownTable.rows[i].cells[1].innerText);
@@ -845,6 +846,7 @@ class Editor extends EditorEvent {
             break;
         }
       });
+
       let listItem = document.createElement('li');
       listItem.style.padding = listPadding;
       if (dropdown) {
@@ -858,6 +860,7 @@ class Editor extends EditorEvent {
         listItem.setAttribute('data-href', dataHref);
 
       listParent.appendChild(listItem);
+
     });
     that.listModal.appendChild(listParent);
   }

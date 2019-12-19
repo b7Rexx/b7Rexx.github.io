@@ -39,7 +39,7 @@ class FormTool extends Tool {
   updateChanges() {
     let that = this;
     this.displaySelect.value = this.componentProps.display;
-    this.designSelect.value = this.componentEditElement.getAttribute('data-form-style') || 'compact';
+    this.designSelect.value = this.componentEditElement.getAttribute('data-form-style') || 'wide';
     this.fontColorBlock.children[1].value = this.componentProps.color;
 
     //move component
@@ -127,8 +127,8 @@ class FormTool extends Tool {
     displaySpan.innerHTML = 'Style : ';
     this.designSelect = document.createElement('select');
     this.designSelect.innerHTML =
-      '<option value="compact">Compact</option>' +
-      '<option value="wide">Wide</option>';
+      '<option value="wide">Wide</option>'+
+      '<option value="compact">Compact</option>';
 
     this.designSelect.onchange = function () {
       that.componentEditElement.setAttribute('data-form-style', this.value);

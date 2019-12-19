@@ -3,7 +3,8 @@ class App {
     this.parentElement = parentElement;
     this.header = undefined;
     this.body = undefined;
-    this.page = 'splash';
+    // this.page = 'splash';
+    this.page = 'edit';
     this.pageIntendedFrom = 'splash';
     this.editSaveState = true;
     this.init();

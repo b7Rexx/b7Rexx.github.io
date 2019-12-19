@@ -147,6 +147,7 @@ class Sidebar {
         that.toolType = undefined;
       }
       that.updateSidebarTools();
+      that.highlightOnSelected();
     });
   }
 
@@ -154,7 +155,7 @@ class Sidebar {
    * selective display tools
    */
   updateSidebarTools() {
-     this.layoutTool.layoutTool.style.display = 'none';
+    this.layoutTool.layoutTool.style.display = 'none';
     this.exampleTool.exampleTool.style.display = 'none';
     this.textTool.textTool.style.display = 'none';
     this.imageTool.imageTool.style.display = 'none';
@@ -169,7 +170,7 @@ class Sidebar {
       if (this.toolStatus !== undefined) {
         this.layoutTool.layoutTool.style.display = 'block';
         this.layoutTool.updateStyleTools(this.wrapperEditElement, this.containerEditElement, this.rowEditElement, this.colEditElement);
-       }
+      }
     } else {
       switch (this.toolType) {
         case 'b7-component-text':
@@ -203,4 +204,32 @@ class Sidebar {
       }
     }
   }
+
+  /**
+   * highlight wrapper on selected
+   */
+  highlightOnSelected() {
+    let containers = document.querySelectorAll('div[class^=b7-container]');
+    Object.values(containers).forEach(function (value) {
+      value.removeAttribute('data-edit');
+    });
+    let columns = document.querySelectorAll('div[class^=b7-col]');
+    Object.values(columns).forEach(function (value) {
+      value.removeAttribute('data-edit');
+    });
+    let components = document.querySelectorAll('div[class^=b7-component]');
+    Object.values(components).forEach(function (value) {
+      value.removeAttribute('data-edit');
+    });
+    if (this.containerEditElement !== undefined) {
+      this.containerEditElement.setAttribute('data-edit', 'select');
+    }
+    if (this.colEditElement !== undefined) {
+      this.colEditElement.setAttribute('data-edit', 'select');
+    }
+    if (this.componentEditElement !== undefined) {
+      this.componentEditElement.setAttribute('data-edit', 'select');
+    }
+  }
+
 }

@@ -33,20 +33,38 @@ div[class^="b7-col"] {
 
 div[class^="b7-component"]:hover {
   min-height: 20px;
-  -webkit-box-shadow: 0 0 2px 0 #f15a22;
-  -moz-box-shadow: 0 0 2px 0 #f15a22;
-  box-shadow: 0 0 2px 0 #f15a22;
+  -webkit-box-shadow: 0 0 5px 1px #f15a22;
+  -moz-box-shadow: 0 0 5px 1px #f15a22;
+  box-shadow: 0 0 5px 1px #f15a22;
 }
 
 .b7-container-fluid:hover, .b7-container:hover {
-  -webkit-box-shadow: 0 0 10px 2px #2874A6;
-  -moz-box-shadow: 0 0 10px 2px #2874A6;
-  box-shadow: 0 0 10px 2px #2874A6;
+  -webkit-box-shadow: 0 0 5px 1px #2874A6;
+  -moz-box-shadow: 0 0 5px 1px #2874A6;
+  box-shadow: 0 0 5px 1px #2874A6;
 }
 
 div[class^="b7-col"]:hover {
   min-height: 50px;
-  -webkit-box-shadow: 0 0 10px 2px #f15a22;
-  -moz-box-shadow: 0 0 10px 2px #f15a22;
-  box-shadow: 0 0 10px 2px #f15a22;
+  -webkit-box-shadow: 0 0 5px 1px #f15a22;
+  -moz-box-shadow: 0 0 5px 1px #f15a22;
+  box-shadow: 0 0 5px 1px #f15a22;
+}
+
+.b7-container-fluid[data-edit='select'], .b7-container[data-edit='select'] {
+  -webkit-box-shadow: 0 0 5px 1px #2874A6;
+  -moz-box-shadow: 0 0 5px 1px #2874A6;
+  box-shadow: 0 0 5px 1px #2874A6;
+}
+
+div[class^="b7-col"][data-edit="select"] {
+  -webkit-box-shadow: 0 0 5px 1px #f15a22;
+  -moz-box-shadow: 0 0 5px 1px #f15a22;
+  box-shadow: 0 0 5px 1px #f15a22;
+}
+
+div[class^="b7-component"][data-edit="select"] {
+  -webkit-box-shadow: 0 0 5px 1px #f15a22;
+  -moz-box-shadow: 0 0 5px 1px #f15a22;
+  box-shadow: 0 0 5px 1px #f15a22;
 }

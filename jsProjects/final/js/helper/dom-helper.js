@@ -15,4 +15,13 @@ class DomHelper {
     }
     return -1;
   }
+
+  /**
+   * Get random number of 6 digits for unique label
+   * @returns {number}
+   */
+  static getRandom() {
+    return Math.ceil(Math.random(100000, 999999) * 1000000);
+  }
+
 }

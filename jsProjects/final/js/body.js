@@ -93,7 +93,15 @@ class Body {
     guideline.innerHTML =
       '<div class="guideline">' +
       '<img src="assets/img/guideline.png" alt="image">' +
-      '<div class="guideline-text">Guidelines<ul><li>Add Container/Fluid Container</li><li>Drag and Drop Layout</li><li>Then add Component</li><li>Edit Layout, component from Style tools</li></ul></div>' +
+      '<div class="guideline-text">Guidelines' +
+      '<ul><li>Add Container/Fluid Container</li>' +
+      '<li>Drag and Drop Layout</li>' +
+      '<li>Then add Component</li>' +
+      '<li>Edit Layout, component from Style tools</li>' +
+      '<li>Click to select layout,component</li>' +
+      '<li>Double click to edit text, list, form</li>' +
+      '<li>Right click to copy, paste, remove column</li></ul>' +
+      '</div>' +
       '</div>';
     splash.appendChild(editButton);
     splash.appendChild(guideline);

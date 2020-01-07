@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+  .nav-item {
+    padding: 10px 0 10px 0;
+    letter-spacing: 1px;
+    font-size: 18px;
+    overflow: hidden;
+  }
+
+  .nav-item.active {
+    padding: 10px 0 7px 0;
+  }
+
+}
